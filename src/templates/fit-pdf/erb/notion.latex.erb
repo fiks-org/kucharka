@@ -1,0 +1,8 @@
+<%# introduction of a new notion %>
+<%# index: optional index entry %>
+<%# label: optional label %>
+\textbf{<%=r(content, glue: true) %>}<% if meta? 'index' %>
+<% document.index.register(meta['index'], self) %>
+<%= index_macro meta['index'] %><% end %><% if meta['label'] %>
+\label{<%= meta['label'] %>}
+<% end %>

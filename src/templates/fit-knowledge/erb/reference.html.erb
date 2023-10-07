@@ -1,0 +1,10 @@
+<%# reference to other part of the document %>
+<%# ref: label %>
+<%# link: url %>
+<% if pointer && meta?('ref') %>
+  <ref target="<%= meta['ref'] %>"><%= r content %></ref>
+<% elsif pointer && meta?('link') %>
+  <a href="<%= meta['link'] %>"><span class="fa fa-external-link-alt"></span> <%= r content %></a>
+<% else %>
+  <a href="<%= link_to(dump.strip) %>"><%= numeric_label_of(dump.strip) %></a>
+<% end %>

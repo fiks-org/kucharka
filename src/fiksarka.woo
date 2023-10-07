@@ -11,17 +11,17 @@
 .include chapter1.woo
 
 
-.include chapter2.woo
+% .include chapter2.woo
 
 
-.include chapter3.woo
+% .include chapter3.woo
 
 
-.include chapter4.woo
+% .include chapter4.woo
 
 
-.include chapter5.woo
+% .include chapter5.woo
 
 
-.include chapter6.woo
+% .include chapter6.woo
 

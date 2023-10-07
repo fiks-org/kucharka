@@ -1,0 +1,6 @@
+<%# inline todo note , works only outside draft mode %>
+<% if document.meta['draft'] %>
+<div class="alert alert-info">
+<%= r content %>
+</div>
+<% end %>

@@ -30,10 +30,9 @@ pages:
   script:
     - mkdir public
     - cp -r src/build/fit-html/* public/
-    - cp src/build/fit-pdf/sandbox*.pdf public/
+    - cp src/build/fit-pdf/fiksarka*.pdf public/
     - cp .fit-pages.yml public/
   dependencies:
-    - html
   artifacts:
     paths:
       - public/

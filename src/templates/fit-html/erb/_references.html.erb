@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="cs">
+
+<%= r '_head', binding: self.get_binding %>
+
+<body>
+  <%= r '_navbar', binding: self.get_binding %>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-md-3">
+        <%= r '_menu', binding: self.get_binding %>
+      </div>
+      <div class="col-xs-12 col-md-9">
+        <h1>Literatura</h1>
+        <ol>
+          <% bibliography.references.each do |ref| %>
+            <li>
+              <%= bibliography.render_reference(ref).first %>
+            </li>
+          <% end %>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <%= r '_scripts', binding: self.get_binding %>
+</body>
+
+<%= r '_footer', binding: self.get_binding %>
+
+</html>

@@ -1,0 +1,31 @@
+<%# Question with an optional solution %>
+<%# solution: optional, a brief solution %>
+<%# label: optional label %>
+<div class="woowoo-question card mb-3" id="<%= label %>">
+  <h5 class="card-header">
+    <div class="d-flex justify-content-between">
+    <span class="anchored" data-anchor-id="<%= label %>">Otázka 
+    <% if false # meta?('difficulty') TODO %>
+    <span class="fa fa-battery-<%= meta['difficulty'].to_s %>" data-toggle="tooltip" title="<%= %w[triviální lehká průměrná těžká zabiják][meta['difficulty'].to_i] %>"></span>
+    <% end %>
+    <%= numeric_label %>
+    </span>
+    <span class="fa fa-question"></span>
+  </h5>
+
+  <div class="card-body">
+    <%=r content %>
+    <% if meta['solution'] %>
+    <p class="card-text">
+      <a class="btn btn-secondary" data-bs-toggle="collapse" href="#collapse<%= label %>" role="button">Zobrazit odpověď <span class="fa fa-eye"></span></a>
+    </p>
+    <div class="collapse" id="collapse<%= label %>">
+      <div class="card card-body" >
+        <p class="card-text">
+          <%= r(parse_text_stub(meta['solution']), glue: true) %>
+        </p>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>

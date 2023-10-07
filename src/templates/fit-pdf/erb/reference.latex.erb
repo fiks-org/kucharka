@@ -1,0 +1,7 @@
+<%# reference to other part of the document %>
+<%# ref: label %>
+<%# link: url %>
+<% if pointer && meta?('ref') %>
+\hyperref[<%= meta['ref'] %>]{<%=r content %>}<% elsif pointer && meta?('link') %>
+\href{<%= meta['link'].strip %>}{<%=r content %>}<% else %>
+\ref{<%= dump.strip %>}<% end %>

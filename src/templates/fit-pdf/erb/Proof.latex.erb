@@ -1,0 +1,10 @@
+<%# Proof wobject %>
+<%# optional: title %>
+<%# TODO: Halmos tombstone placement %>
+
+\begin{proof}<% if meta['title'] %>[<%= r(parse_text_stub(meta['title']), glue: true) %>]<% end %>
+
+<%= r(content).rstrip %>
+
+\end{proof}
+

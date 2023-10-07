@@ -1,0 +1,22 @@
+<%# Proof wobject %>
+<%# optional: title %>
+<%# optional: show (immediately?) %>
+<%# TODO: Halmos tombstone placement %>
+<% cls = meta?('show') ? 'collapse show' : 'collapse' %>
+<div class="woowoo-proof">
+<p class="anchored" id="<%= label %>">
+<% if meta?('title') %>
+<button type="button" class="btn btn-secondary" data-bs-toggle="collapse" href="#collapse<%= label %>"><%= r(parse_text_stub(meta['title']), glue: true) %> <span class="fa fa-eye"></span></button>
+<% else %>
+<a class="btn btn-secondary" data-bs-toggle="collapse" href="#collapse<%= label %>" role="button">Zobrazit důkaz <span class="fa fa-eye"></span></a>
+<% end %>
+</p>
+<div class="<%= cls %>" id="collapse<%= label %>">
+  <div class="card card-body mb-3">
+    <%= r content %>
+    <p class="text-end card-text">
+      <span class="pull-right">$\square$</span>
+    </p>
+  </div>
+</div>
+</div>

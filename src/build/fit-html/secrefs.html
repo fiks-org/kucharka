@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="cs">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>  Fiksařka | 2.2 Reference, citace a odkazy    </title>
+  <!-- favicon -->
+  <link rel="icon" type="image/ico" href="favicon.ico" />
+
+  <!-- Bootstrap CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet" id="bs-theme-link" />
+
+  <!-- Custom font -->
+  <link href="https://fonts.googleapis.com/css?family=Noto+Serif&amp;subset=latin-ext" rel="stylesheet" />
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      extensions: ["tex2jax.js"],
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        processEscapes: true,
+        processEnvironments: true
+      },
+      positionToHash: false,
+      TeX: {
+        Macros: {
+          N: "\\mathbb{N}",
+          R: "\\mathbb{R}",
+          Z: "\\mathbb{Z}",
+          Q: "\\mathbb{Q}",
+          R: "\\mathbb{R}",
+          eR: "\\overline{\\mathbb{R}}",
+          CC: "\\mathbb{C}",
+          ee: "\\mathrm{e}",
+          ii: "\\mathrm{i}",
+          Re: "\\mathrm{Re}\\,",
+          Im: "\\mathrm{Im}\\,",
+          tg: "\\mathrm{tg}",
+          ctg: "\\mathrm{cotg}",
+          cotg: "\\mathrm{cotg}",
+          arctg: "\\mathrm{arctg}",
+          arcctg: "\\mathrm{arccotg}",
+          tr: "\\mathrm{tr}",
+          ceq: "\\mathrel{\\mathop:}=",
+          veps: "\\varepsilon",
+          sgn: "\\mathrm{sgn}",
+          dt: "\\mathrm{d}t",
+          dx: "\\mathrm{d}x",
+          lano: "o",
+          lanO: "\\mathcal{O}",
+          mA: "\\mathbf{A}",
+          mB: "\\mathbf{B}",
+          mC: "\\mathbf{C}",
+          mD: "\\mathbf{D}",
+          mE: "\\mathbf{E}",
+          mP: "\\mathbf{P}",
+          mQ: "\\mathbf{Q}",
+          mX: "\\mathbf{X}",
+          mI: "\\mathbf{I}",
+          mF: "\\mathbf{F}",
+          mG: "\\mathbf{G}",
+          mR: "\\mathbf{R}",
+          mS: "\\mathbf{S}",
+          mSigma: "\\boldsymbol{\\Sigma}",
+          mU: "\\mathbf{U}",
+          mV: "\\mathbf{V}",
+          mL: "\\mathbf{L}",
+          mY: "\\mathbf{Y}",
+          vx: "\\mathbf{x}",
+          vy: "\\mathbf{y}",
+          vz: "\\mathbf{z}",
+          va: "\\mathbf{a}",
+          vb: "\\mathbf{b}",
+          vc: "\\mathbf{c}",
+          ve: "\\mathbf{e}",
+          vq: "\\mathbf{q}",
+          vell: "\\boldsymbol{\\ell}",
+          vu: "\\mathbf{u}",
+          vv: "\\mathbf{v}",
+          vw: "\\mathbf{w}",
+          XX: "\\mathcal{X}",
+          YY: "\\mathcal{Y}",
+          EE: "\\mathcal{E}",
+          PP: "\\mathcal{P}",
+          UU: "\\mathcal{U}",
+          lcm: "\\mathrm{lcm}",
+          ssubset: "\\subset\\subset",
+          fl: "\\mathrm{f \\kern 0.04em l}",
+          logi: "\\mkern4mu{\\Large\\shortmid}\\mkern-8mu\\raise{0.5pt}=\\mkern-8mu{\\Large\\shortmid}\\mkern4mu",
+          thus: "\\mkern4mu{\\Large\\shortmid}\\mkern-8mu\\raise{0.5pt}=\\mkern-8mu\\mkern8mu",
+          pmat: [ "\\left(\\!\\!\\begin{array}{#1}#2\\end{array}\\!\\!\\right)", 2 ],
+          clr: [ "\\color{#1}{#2}", 2 ],
+        }
+      },
+      CommonHTML: { linebreaks: { automatic: false } },
+      "HTML-CSS": { linebreaks: { automatic: false } },
+      SVG: { linebreaks: { automatic: false } }
+    });
+  </script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+
+  <!-- Font Awesome -->
+  <link href="css/all.min.css" rel="stylesheet" />
+
+  <!-- Pseudocode -->
+  <link rel="stylesheet" href="css/pseudocode.min.css">
+  <script src="js/pseudocode.min.js"></script>
+
+  <!-- Highlight pygmentized code -->
+  <link href="css/highlight.css" rel="stylesheet" id="pygments-theme-link" />
+  <!-- Custom stuff -->
+  <link href="css/custom.css" rel="stylesheet" />
+</head>
+<body>
+  <nav class="navbar navbar-expand sticky-top navbar-light bg-light mb-4">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="index.html">Fiksařka</a>
+    <ul class="navbar-nav">
+      <ul class="nav-item">
+        <a class="nav-link" href="secrefs.html">Reference, citace a odkazy</a>
+      </ul>
+    </ul>
+    <a href="#" id="theme-switch-link" title="přepínání vzhledu"><span id="theme-switch-icon" class="fa fa-moon"></span></a>
+  </div>
+</nav>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-md-3">
+        <div class="list-group mb-3">
+      <a class="list-group-item list-group-item-action" href="chap-parts.html">
+    1 Strukturování obsahu    </a>
+
+          <a class="list-group-item list-group-item-action" href="chaptext.html">
+    2 Práce s textem    </a>
+
+                <a class="list-group-item list-group-item-secondary list-group-item-action" href="secplain.html">
+      <small>2.1 Obyčejný text</small>
+      </a>
+            <a class="list-group-item list-group-item-secondary list-group-item-action active" href="secrefs.html">
+      <small>2.2 Reference, citace a odkazy</small>
+      </a>
+            <a class="list-group-item list-group-item-secondary list-group-item-action" href="label.html">
+      <small>2.3 Výčty a seznamy</small>
+      </a>
+                <a class="list-group-item list-group-item-action" href="chap-math.html">
+    3 Matematická symbolika    </a>
+
+          <a class="list-group-item list-group-item-action" href="chap-other.html">
+    4 Obrázky, Tabulky a Kód    </a>
+
+          <a class="list-group-item list-group-item-action" href="chap-wootom.html">
+    5 Wootom    </a>
+
+          <a class="list-group-item list-group-item-action" href="chap_special.html">
+    6 $\kappa$ -- kapitola...    </a>
+
+        <a class="list-group-item list-group-item-action list-group-item-dark" href="index_page.html">Index</a>
+    <a class="list-group-item list-group-item-action list-group-item-dark" href="references.html">Literatura</a>
+  </div>      </div>
+      <div class="col-xs-12 col-md-9">
+        <h3 class="anchored" id="secrefs">
+          <span>2.2</span>
+          <span>Reference, citace a&nbsp;odkazy</span>
+                  </h3>
+
+        <p class="woowoo-paragraph" id="paragraph150740950df466b8932da2c701990ccc30473ea04b">
+V&nbsp;jako každém elektronickém dokumentu můžeme vytvářet několik druhů odkazů na jiné části dokumentu, ven na internet nebo na literaturu.</p>
+
+                  <h4 class="anchored" id="subsecreference">
+  <span>2.2.1</span>
+  <span>Vnitřní odkaz</span>
+  </h4>
+
+<p class="woowoo-paragraph" id="paragraph16d778921a4e0a45b6d08c223f0ae22decc52ce619">
+Další kapitola například bude obsahovat formulaci věty&nbsp;<a href="sec-objects.html#thm-theorem">3.1</a>.
+Toto je odkaz na větu s&nbsp;<code>label</code> rovným <code>thm-theorem</code>.</p>
+<div class="highlight"><pre><span></span>Další kapitola například bude obsahovat formulaci
+věty .reference:thm-theorem.
+</pre></div>
+<p class="woowoo-paragraph-part">
+</p>
+                  <h4 class="anchored" id="subseclink">
+  <span>2.2.2</span>
+  <span>Externí odkaz</span>
+  </h4>
+
+<p class="woowoo-paragraph" id="paragraph17d229f1c1556e6f076285716f016d491e534af806">
+O&nbsp;smyslu &bdquo;věty&ldquo; se čtenář může dozvědět na&nbsp;<a href="https://en.wikipedia.org/wiki/Theorem"><span class="fa fa-external-link-alt"></span> Wiki</a>. Alternativně lze použít malinko zkráceného odkazu na&nbsp;<a href="https://en.wikipedia.org/wiki/Theorem"><span class="fa fa-external-link-alt"></span> Wiki</a>.
+Tato syntaxe už vyžaduje informaci v&nbsp;meta-bloku:</p>
+<div class="highlight"><pre><span></span>O smyslu &quot;věty&quot;.quoted se čtenář může dozvědět na &quot;Wiki&quot;.reference.1.
+Alternativně lze použít malinko zkráceného odkazu na &quot;Wiki&quot;@1.
+</pre></div>
+<p class="woowoo-paragraph-part">
+</p>
+                  <h4 class="anchored" id="subseccitace">
+  <span>2.2.3</span>
+  <span>Citace</span>
+  </h4>
+
+<p class="woowoo-paragraph" id="paragraph18929342711cc3b7b1858503fc304e00580258568d">
+V&nbsp;seznamu literatury pak najde velmi zajímavou knihu&nbsp;<a tabindex="0" role="button" data-bs-trigger="focus" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-html="true" data-bs-content='Autor. (1234). <i>Úžasná kniha</i>. Vydavatel.'>(Autor, 1234)</a>.
+Odkaz na literaturu, která je uložena v&nbsp;<code>bib</code> souboru, se zadává takto:</p>
+<div class="highlight"><pre><span></span>V seznamu literatury pak najde velmi zajímavou knihu .cite:book.
+</pre></div>
+<p class="woowoo-paragraph-part">
+</p>
+                  <h4 class="anchored" id="subsecfullref">
+  <span>2.2.4</span>
+  <span>Podrobný odkaz</span>
+  </h4>
+
+<p class="woowoo-paragraph" id="paragraph1968b40fa34433cb36382a70b8f677890ed21ed52b">
+V&nbsp;neposlední řadě se lze odkázat na nějakou označkovanou část dokumentu, například dříve zmíněnou&nbsp;<a class="text-success" tabindex="0" role="button" data-bs-trigger="focus" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-html="true" data-bs-content='<p class="woowoo-paragraph card-text" id="paragraph82eeea6d0043a289fbaab85ab95cf381a087cda162">
+Toto je definice s&nbsp;rovnicí.</p><div class="woowoo-equation">
+\begin{equation*}
+1 + 1 = 2.
+\end{equation*}
+</div>
+<p class="woowoo-paragraph-part"></p>
+'>větu</a> pomocí zkrácené notace:</p>
+<div class="highlight"><pre><span></span>V neposlední řadě se lze odkázat na nějakou označkovanou část dokumentu,
+například dříve zmíněnou &quot;větu&quot;#def-definition pomocí zkrácené notace:
+</pre></div>
+<p class="woowoo-paragraph-part">
+V&nbsp;HTML výstupu si lze rovnou na tomto místě příslušnou větu rozkliknout v&nbsp;pop-upu.
+V&nbsp;PDF verzi se vytvoří pouze interní odkaz.</p>
+        
+        <div class="section-navigation d-flex justify-content-between">
+                                <small><a href="secplain.html" data-bs-toggle="tooltip" title="Obyčejný text"><span class="fa fa-arrow-left"></span> předchozí</a></small>
+                                <small><a href="label.html" data-bs-toggle="tooltip" title="Výčty a seznamy">následující <span class="fa fa-arrow-right"></span></a></small>
+                </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- jQuery -->
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<!-- Bootstrap JavaScript -->
+<script src="js/bootstrap.bundle.js"></script>
+<!-- AnchorJS -->
+<script type="text/javascript" src="js/anchor.min.js"></script>
+<!-- Custom stuff -->
+<script type="text/javascript" src="js/custom.js"></script>
+</body>
+
+<footer class="footer">
+<div class="container">
+  <small>
+        <a href="mailto:autor@cloud.com"><span class="fa fa-envelope-o"> FIKS</span></a>      </small>
+  <ul>
+    <li><small title="FIT HTML Template v0.2.3">WooWoo ver. 0.3.7</small></li>
+    <li><small title="okamžik vygenerování">2023-10-07 08:39:47 +0000</small></li>
+                <li><small><a href="https://gitlab.fit.cvut.cz/havlialb/fiksarka">zdrojový kód a hlášení chyb</a></small></li>
+      </ul>
+</div>
+</footer>
+</html>

@@ -1,0 +1,14 @@
+<%# Table float %>
+<%# options - string, table environment options %>
+<%# label: optional label %>
+<div class="table" id="<%= label %>">
+<%= r fetch_all(['tabular', 'table']) %>
+<div class="container-fluid">
+<div class="row">
+<div class="col-xs-10 col-xs-offset-1 caption text-center">
+<p class="anchored" data-anchor-id="<%= label %>">
+Tabulka <%= numeric_label %>:
+<%=r fetch_one('caption').content.first.content %>
+</p>
+</div>
+</div>

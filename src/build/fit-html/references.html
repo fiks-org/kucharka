@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="cs">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>  Fiksařka    </title>
+  <!-- favicon -->
+  <link rel="icon" type="image/ico" href="favicon.ico" />
+
+  <!-- Bootstrap CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet" id="bs-theme-link" />
+
+  <!-- Custom font -->
+  <link href="https://fonts.googleapis.com/css?family=Noto+Serif&amp;subset=latin-ext" rel="stylesheet" />
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      extensions: ["tex2jax.js"],
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        processEscapes: true,
+        processEnvironments: true
+      },
+      positionToHash: false,
+      TeX: {
+        Macros: {
+          N: "\\mathbb{N}",
+          R: "\\mathbb{R}",
+          Z: "\\mathbb{Z}",
+          Q: "\\mathbb{Q}",
+          R: "\\mathbb{R}",
+          eR: "\\overline{\\mathbb{R}}",
+          CC: "\\mathbb{C}",
+          ee: "\\mathrm{e}",
+          ii: "\\mathrm{i}",
+          Re: "\\mathrm{Re}\\,",
+          Im: "\\mathrm{Im}\\,",
+          tg: "\\mathrm{tg}",
+          ctg: "\\mathrm{cotg}",
+          cotg: "\\mathrm{cotg}",
+          arctg: "\\mathrm{arctg}",
+          arcctg: "\\mathrm{arccotg}",
+          tr: "\\mathrm{tr}",
+          ceq: "\\mathrel{\\mathop:}=",
+          veps: "\\varepsilon",
+          sgn: "\\mathrm{sgn}",
+          dt: "\\mathrm{d}t",
+          dx: "\\mathrm{d}x",
+          lano: "o",
+          lanO: "\\mathcal{O}",
+          mA: "\\mathbf{A}",
+          mB: "\\mathbf{B}",
+          mC: "\\mathbf{C}",
+          mD: "\\mathbf{D}",
+          mE: "\\mathbf{E}",
+          mP: "\\mathbf{P}",
+          mQ: "\\mathbf{Q}",
+          mX: "\\mathbf{X}",
+          mI: "\\mathbf{I}",
+          mF: "\\mathbf{F}",
+          mG: "\\mathbf{G}",
+          mR: "\\mathbf{R}",
+          mS: "\\mathbf{S}",
+          mSigma: "\\boldsymbol{\\Sigma}",
+          mU: "\\mathbf{U}",
+          mV: "\\mathbf{V}",
+          mL: "\\mathbf{L}",
+          mY: "\\mathbf{Y}",
+          vx: "\\mathbf{x}",
+          vy: "\\mathbf{y}",
+          vz: "\\mathbf{z}",
+          va: "\\mathbf{a}",
+          vb: "\\mathbf{b}",
+          vc: "\\mathbf{c}",
+          ve: "\\mathbf{e}",
+          vq: "\\mathbf{q}",
+          vell: "\\boldsymbol{\\ell}",
+          vu: "\\mathbf{u}",
+          vv: "\\mathbf{v}",
+          vw: "\\mathbf{w}",
+          XX: "\\mathcal{X}",
+          YY: "\\mathcal{Y}",
+          EE: "\\mathcal{E}",
+          PP: "\\mathcal{P}",
+          UU: "\\mathcal{U}",
+          lcm: "\\mathrm{lcm}",
+          ssubset: "\\subset\\subset",
+          fl: "\\mathrm{f \\kern 0.04em l}",
+          logi: "\\mkern4mu{\\Large\\shortmid}\\mkern-8mu\\raise{0.5pt}=\\mkern-8mu{\\Large\\shortmid}\\mkern4mu",
+          thus: "\\mkern4mu{\\Large\\shortmid}\\mkern-8mu\\raise{0.5pt}=\\mkern-8mu\\mkern8mu",
+          pmat: [ "\\left(\\!\\!\\begin{array}{#1}#2\\end{array}\\!\\!\\right)", 2 ],
+          clr: [ "\\color{#1}{#2}", 2 ],
+        }
+      },
+      CommonHTML: { linebreaks: { automatic: false } },
+      "HTML-CSS": { linebreaks: { automatic: false } },
+      SVG: { linebreaks: { automatic: false } }
+    });
+  </script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+
+  <!-- Font Awesome -->
+  <link href="css/all.min.css" rel="stylesheet" />
+
+  <!-- Pseudocode -->
+  <link rel="stylesheet" href="css/pseudocode.min.css">
+  <script src="js/pseudocode.min.js"></script>
+
+  <!-- Highlight pygmentized code -->
+  <link href="css/highlight.css" rel="stylesheet" id="pygments-theme-link" />
+  <!-- Custom stuff -->
+  <link href="css/custom.css" rel="stylesheet" />
+</head>
+<body>
+  <nav class="navbar navbar-expand sticky-top navbar-light bg-light mb-4">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="index.html">Fiksařka</a>
+    <a href="#" id="theme-switch-link" title="přepínání vzhledu"><span id="theme-switch-icon" class="fa fa-moon"></span></a>
+  </div>
+</nav>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-md-3">
+        <div class="list-group mb-3">
+      <a class="list-group-item list-group-item-action" href="chap-parts.html">
+    1 Strukturování obsahu    </a>
+
+        <a class="list-group-item list-group-item-action list-group-item-dark" href="index_page.html">Index</a>
+    <a class="list-group-item list-group-item-action list-group-item-dark" href="references.html">Literatura</a>
+  </div>      </div>
+      <div class="col-xs-12 col-md-9">
+        <h1>Literatura</h1>
+        <ol>
+                  </ol>
+      </div>
+    </div>
+  </div>
+
+  <!-- jQuery -->
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<!-- Bootstrap JavaScript -->
+<script src="js/bootstrap.bundle.js"></script>
+<!-- AnchorJS -->
+<script type="text/javascript" src="js/anchor.min.js"></script>
+<!-- Custom stuff -->
+<script type="text/javascript" src="js/custom.js"></script>
+</body>
+
+<footer class="footer">
+<div class="container">
+  <small>
+        <a href="mailto:autor@cloud.com"><span class="fa fa-envelope-o"> FIKS</span></a>      </small>
+  <ul>
+    <li><small title="FIT HTML Template v0.2.3">WooWoo ver. 0.3.7</small></li>
+    <li><small title="okamžik vygenerování">2023-10-07 08:44:52 +0000</small></li>
+                <li><small><a href="https://gitlab.fit.cvut.cz/havlialb/fiksarka">zdrojový kód a hlášení chyb</a></small></li>
+      </ul>
+</div>
+</footer>
+</html>

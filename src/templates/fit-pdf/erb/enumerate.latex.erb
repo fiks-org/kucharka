@@ -1,0 +1,7 @@
+<%# enumeration %>
+<%# type: defaults to `1` (numeric), possibly `a` (alphabetical) %>
+\begin{enumerate}<%= meta?('type') && meta['type'] == 'a' ? '[a.]' : '[1.]' %>
+
+<%= r(content).strip %>
+
+\end{enumerate}

@@ -1,0 +1,18 @@
+<%# verbose table %>
+<%# columns: required definition of columns %>
+<% rows = fetch_all('row') %>
+\begingroup
+<% if meta['arraystretch'] %>\renewcommand*{\arraystretch}{<%= meta['arraystretch'] %>}<% end %>
+\begin{longtable}[]{<%= meta['columns'] %>}
+\toprule
+<%=r rows.first %>
+<% if meta['noheader'].nil? || !meta['noheader'] %>\midrule<% end %>
+\endhead
+
+<% rows[1..].each do |row| %>
+  <%=r row %>
+<% end %>
+\bottomrule
+\end{longtable}
+\addtocounter{table}{-1} % longtable and table both increases the counter
+\endgroup

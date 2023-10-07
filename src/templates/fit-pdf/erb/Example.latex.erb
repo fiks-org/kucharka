@@ -1,0 +1,23 @@
+<%# Example wobject %>
+<%# title: optional title %>
+<%# english: optional english title %>
+<%# label: optinal label %>
+<%# index: optinal index entry %>
+<%# star: optional boolean %>
+
+\begin{example<%= meta['star'] ? '*' : '' %>}<% if meta? 'title' %>[<%= r(parse_text_stub(meta['title']), glue: true) %><% if meta? 'english' %> / \textit{<%= r(parse_text_stub(meta['english']), glue: true) %>}<% end %>]<% end %>
+<% if meta?('label') && meta?('index') %>
+<% document.index.register(meta['index'], self) %>
+\label{<%= meta['label'] %>}<%= index_macro meta['index'] %>
+<% elsif meta?('label') %>
+\label{<%= meta['label'] %>}
+<% elsif meta?('index') %>
+<% document.index.register(meta['index'], self) %>
+<%= index_macro meta['index'] %>
+<% else %>
+
+<% end %>
+<%= r(content).rstrip %>
+
+\end{example<%= meta['star'] ? '*' : '' %>}
+

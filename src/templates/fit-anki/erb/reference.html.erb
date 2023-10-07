@@ -1,0 +1,1 @@
+<% if pointer && meta?('ref') %><%=r content %><% elsif pointer && meta?('link') %><%=r content %><% else %><%= numeric_label_of(dump.strip) %><% end %>

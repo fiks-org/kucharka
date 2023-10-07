@@ -1,0 +1,10 @@
+<%# Solution wobject %>
+<%# title: optional title %>
+<%# label: LaTeX label %>
+
+\begin{solution}<% if meta['title'] %>{<%= r(parse_text_stub(meta['title']), glue: true) %>}<% else %>{Řešení}<% end %><% if meta['label'] %>\label{<%= meta['label'] %>}<% end %>
+
+<%= r(content).rstrip %>
+
+\end{solution}
+

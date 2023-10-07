@@ -1,0 +1,9 @@
+<%# include images, pdfs only, copy it to build directory %>
+<%# options: options of includegraphics macro %>
+<% builder.register_job({
+  command: "cp #{File.join(builder.project_dir, builder.figures_dir, dump.strip + '.*')} #{builder.template_figures_dir}/"
+})
+%>
+\includegraphics<% if meta['options'] %>
+[<%= meta['options'] %>]<% end %>
+{<%= File.join(builder.figures_dir, dump.strip + '.pdf') %>}

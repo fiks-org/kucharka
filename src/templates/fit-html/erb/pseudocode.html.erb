@@ -1,0 +1,15 @@
+<%# pseudocode block %>
+<%# linenumber - does not work %>
+<% if is_child_of?('paragraph') %>
+</p>
+<% end %>
+<pre class="pseudocode" style="display:hidden;">
+\begin{algorithm}
+\begin{algorithmic}
+<%= strip_indent(dump).strip %>
+\end{algorithmic}
+\end{algorithm}
+</pre>
+<% if is_child_of?('paragraph') %>
+<p class="woowoo-paragraph-part">
+<% end %>

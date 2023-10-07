@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="cs">
+
+<%= r '_head', binding: self.get_binding %>
+
+<body>
+  <%= r '_navbar', binding: self.get_binding %>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-md-3">
+        <%= r '_menu', binding: self.get_binding %>
+      </div>
+      <div class="col-xs-12 col-md-9">
+        <h3 class="anchored" id="<%= label %>">
+          <span><%= numeric_label %></span>
+          <span><%= r(parse_text_stub(title), glue: true) %></span>
+        </h3>
+
+        <%= r content %>
+
+        <% children.each do |subsec| %>
+          <%= r subsec %>
+        <% end %>
+
+        <div class="section-navigation d-flex justify-content-between">
+        <% i = parent.children.index self %>
+        <% if i > 0 %>
+        <% prev_chap = parent.children[i-1] %>
+        <small><a href="<%= prev_chap.label %>.html" data-bs-toggle="tooltip" title="<%= prev_chap.title %>"><span class="fa fa-arrow-left"></span> předchozí</a></small>
+        <% else %>
+        <span></span>
+        <% end %>
+        <% if i < parent.children.length - 1 %>
+        <% next_chap = parent.children[i + 1] %>
+        <small><a href="<%= next_chap.label %>.html" data-bs-toggle="tooltip" title="<%= next_chap.title %>">následující <span class="fa fa-arrow-right"></span></a></small>
+        <% else %>
+        <span></span>
+        <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%= r '_scripts', binding: spine.document.get_binding %>
+</body>
+
+<%= r '_footer', binding: spine.document.get_binding %>
+
+</html>

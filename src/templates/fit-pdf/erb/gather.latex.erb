@@ -1,0 +1,12 @@
+<%# AMSMath gather environment %>
+<%# label: optional label %>
+<% if meta?('label') %>\begin{gather}
+<%= r(content).strip %>
+
+\label{<%= meta['label'] %>}
+\end{gather}
+<% else %>\begin{gather*}
+<%= r(content).strip.gsub(/\n[ ]+/,"\n") %>
+
+\end{gather*}
+<% end %>

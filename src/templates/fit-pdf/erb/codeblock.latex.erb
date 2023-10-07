@@ -1,0 +1,8 @@
+<%# minted code block %>
+<%# language: optional language specifier, c is the default %>
+<% if meta['language'] %>\begin{minted}{<%= meta['language'] %>}
+<% else %>\begin{minted}{c}
+<% end %>
+<%= strip_indent(dump).strip %>
+
+\end{minted}

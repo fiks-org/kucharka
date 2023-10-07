@@ -1,0 +1,327 @@
+body {
+    margin: 0;
+    font-family: "Arial", serif;
+}
+
+h1 {
+    color: #1c2324;
+}
+
+h2 {
+    color: #2f3536;
+}
+
+#container {
+    position: relative;
+    overflow: hidden;
+    cursor: move;
+}
+
+
+.canvas {
+    height: 100%;
+    width: 100%;
+}
+
+.node {
+    z-index: 1;
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    cursor: auto;
+    width: max-content;
+}
+
+.node:not(.selected) {
+    max-width: 1000px;
+}
+
+.innerNode {
+    margin-left: -50%;
+    margin-right: +50%;
+    min-width: 0;
+    transition: all 0.75s ease-in-out;
+    transition-property: min-width, height;
+
+
+    border-radius: 10px;
+    border: 1px solid #181818;
+
+    display: flex;
+    flex-flow: column;
+
+    position: relative;
+}
+
+.nodeHeading {
+    padding: 15px 30px;
+    font-size: 3rem;
+    text-align: center;
+    transition-duration: 1s;
+}
+
+.MathJax_CHTML {
+    pointer-events: none;
+}
+
+.selected .nodeHeading {
+    font-size: 2rem !important;
+}
+
+.nodeBody {
+    background: rgb(255, 255, 255);
+    color: #181818;
+    display: none;
+    padding: 0.5em 1em;
+    border-radius: 0 10px;
+    transition: min-height 0.75s ease-in-out;
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+    flex-grow: 1;
+}
+
+.selected {
+    z-index: 2;
+}
+
+.selected .innerNode .nodeBody {
+    display: block;
+}
+
+.selected .innerNode {
+    height: calc(100vh - 230px);
+    min-width: 90vw;
+    max-width: 90vw;
+}
+
+#controller {
+    z-index: 0;
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+#app:after {
+    z-index: -1;
+}
+
+ref {
+    color: #F0941F;
+}
+
+ref:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.referenceDescriptionWrapper {
+    width: 8em;
+}
+
+.referenceDescription {
+    color: black;
+    font-size: 0.9em;
+    background-color: white;
+    border-radius: 3px;
+    padding: 8px;
+    text-align: center;
+}
+
+.referenceAbsolute {
+    position: absolute;
+    left: -50%;
+    min-width: 100%;
+}
+
+.refEnvironmentScroller {
+    width: 90vw;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    position: relative;
+    left: -50%;
+}
+
+.refScrollerItems {
+    display: inline-flex;
+    align-items: flex-start;
+    align-content: flex-start;
+}
+
+.refEnvironmentScroller .referenceDescription {
+    margin: 5px;
+    display: block;
+}
+
+.refEnvironmentScroller .referenceDescriptionWrapper {
+    height: 6em;
+    width: 8em;
+}
+
+.referenceDescription:hover {
+    z-index: 4;
+}
+
+.referenceTop {
+    bottom: 5px;
+    position: absolute;
+}
+
+.referenceBottom {
+    top: 5px;
+}
+
+.referencePath {
+    transition: 0.3s ease-out;
+    stroke: #90a19d;
+    stroke-width: 3;
+    fill: none;
+}
+
+.referencePath.hovered {
+    stroke-width: 7;
+    stroke: #363432;
+}
+
+.referencePath.notHovered {
+    stroke-width: 1;
+}
+
+.referencePath.hidden {
+    display: none;
+}
+
+.secondaryPath {
+    stroke: #2497ef;
+}
+
+.secondaryPath.hovered {
+    stroke: #02255f;
+    stroke-width: 7;
+}
+
+
+#loading {
+    position: absolute;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    transition-duration: 0.5s;
+    background-color: #30b6ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+}
+
+.textbookRef {
+    display: none;
+    position: absolute;
+    right: 20px;
+    top: 22px;
+    height: 25px;
+}
+
+.selected .textbookRef {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+
+.textbookRef .importance {
+    font-size: 1.5em;
+    padding: 0 20px;
+
+}
+
+.fa-arrow-up-right-from-square {
+    color: white;
+    transition-duration: 0.2s;
+}
+
+.fa-arrow-up-right-from-square:hover {
+    color: #e7e7e7;
+}
+
+#info {
+    position: absolute;
+    left: 2em;
+    top: 2em;
+    z-index: 12;
+}
+
+#info i {
+    font-size: 2em;
+    color: #000000;
+    opacity: 0.5;
+    transition: .3s;
+}
+
+#info i:hover {
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+#info i:active {
+    opacity: 0.8;
+    transition: 0s;
+    cursor: pointer;
+}
+
+#legend {
+    position: absolute;
+    z-index: 11;
+    width: 100%;
+    height: 100%;
+    transition-duration: 0.3s;
+    background-color: #ffffff;
+
+    display: flex;
+    align-items: center;
+    flex-flow: column;
+    overflow: scroll;
+}
+
+#legend .legendPiece {
+    text-align: center;
+    padding-top: 5%;
+    width: 30%;
+}
+
+#legend .legendPiece h2 {
+    text-align: left;
+    padding: 0;
+    margin: 30px 0 0 0;
+}
+
+#legend .legendNode .node {
+    margin: 10px 0;
+    width: 100%;
+}
+
+
+#legend .legendNode .nodeHeading {
+    font-size: 1.3em;
+}
+
+#legend .legendNode .innerNode {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+#legend svg {
+    height: 10px;
+    width: 100%;
+}
+
+.timestamp {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 5px 10px;
+    color: #645c56;
+    font-size: 0.8em;
+}

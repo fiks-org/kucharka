@@ -1,0 +1,39 @@
+<%# Figure float %>
+<%# options - string, figure envirnment options %>
+<%# columns - integer, number of columns, defaults to 1 %>
+<%# glue - middle padding, defaults to \hfill %>
+<%# vertical - column separator, defaults to \medskip %>
+<%# label - LaTeX label %>
+
+\begin{figure}<% if meta['options'] %>
+[<%= meta['options'] %>] <% end %>
+
+<% stuff = fetch_all(['image', 'tikz']) %>
+<% col_counter = 0 %>
+<% img_counter = 0 %>
+<% columns = meta['columns'] ? meta['columns'].to_i : 1 %>
+<% stuff.each_with_index do |graphics, id| %>
+<% if col_counter == 0 %>
+{\centering
+<% elsif col_counter < columns %>
+<%= meta['glue'] || '\hfill' %>
+
+<% end %>
+<% img_counter += 1 %>
+<%=r graphics %>
+
+<% if col_counter == columns - 1 || id == stuff.length - 1 %>
+\par}
+<% if img_counter < stuff.length %>
+
+<%= meta['vertical'] || '\medskip' %>
+
+<% end %>
+<% end %>
+<% col_counter = (col_counter + 1) % columns %>
+<% end # each %>
+<%=r fetch_one('caption') %>
+
+\label{<%= meta['label'] %>}
+\end{figure}
+

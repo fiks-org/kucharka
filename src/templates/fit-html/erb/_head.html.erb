@@ -1,0 +1,136 @@
+<head>
+  <% if meta['gtag'] %>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=<%= meta['gtag'] %>"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', '<%= meta['gtag'] %>');
+  </script>
+  <% end %>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><% if self.is_a? Section %>
+  <%= spine.document.title %> | <%= numeric_label %> <%= meta['plain_title'] || title %>
+  <% else # Document %>
+  <%= title %>
+  <% end %>
+  </title>
+  <!-- favicon -->
+  <link rel="icon" type="image/ico" href="favicon.ico" />
+
+  <!-- Bootstrap CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet" id="bs-theme-link" />
+
+  <!-- Custom font -->
+  <link href="https://fonts.googleapis.com/css?family=Noto+Serif&amp;subset=latin-ext" rel="stylesheet" />
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      extensions: ["tex2jax.js"],
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        processEscapes: true,
+        processEnvironments: true
+      },
+      positionToHash: false,
+      TeX: {
+        Macros: {
+          N: "\\mathbb{N}",
+          R: "\\mathbb{R}",
+          Z: "\\mathbb{Z}",
+          Q: "\\mathbb{Q}",
+          R: "\\mathbb{R}",
+          eR: "\\overline{\\mathbb{R}}",
+          CC: "\\mathbb{C}",
+          ee: "\\mathrm{e}",
+          ii: "\\mathrm{i}",
+          Re: "\\mathrm{Re}\\,",
+          Im: "\\mathrm{Im}\\,",
+          tg: "\\mathrm{tg}",
+          ctg: "\\mathrm{cotg}",
+          cotg: "\\mathrm{cotg}",
+          arctg: "\\mathrm{arctg}",
+          arcctg: "\\mathrm{arccotg}",
+          tr: "\\mathrm{tr}",
+          ceq: "\\mathrel{\\mathop:}=",
+          veps: "\\varepsilon",
+          sgn: "\\mathrm{sgn}",
+          dt: "\\mathrm{d}t",
+          dx: "\\mathrm{d}x",
+          lano: "o",
+          lanO: "\\mathcal{O}",
+          mA: "\\mathbf{A}",
+          mB: "\\mathbf{B}",
+          mC: "\\mathbf{C}",
+          mD: "\\mathbf{D}",
+          mE: "\\mathbf{E}",
+          mP: "\\mathbf{P}",
+          mQ: "\\mathbf{Q}",
+          mX: "\\mathbf{X}",
+          mI: "\\mathbf{I}",
+          mF: "\\mathbf{F}",
+          mG: "\\mathbf{G}",
+          mR: "\\mathbf{R}",
+          mS: "\\mathbf{S}",
+          mSigma: "\\boldsymbol{\\Sigma}",
+          mU: "\\mathbf{U}",
+          mV: "\\mathbf{V}",
+          mL: "\\mathbf{L}",
+          mY: "\\mathbf{Y}",
+          vx: "\\mathbf{x}",
+          vy: "\\mathbf{y}",
+          vz: "\\mathbf{z}",
+          va: "\\mathbf{a}",
+          vb: "\\mathbf{b}",
+          vc: "\\mathbf{c}",
+          ve: "\\mathbf{e}",
+          vq: "\\mathbf{q}",
+          vell: "\\boldsymbol{\\ell}",
+          vu: "\\mathbf{u}",
+          vv: "\\mathbf{v}",
+          vw: "\\mathbf{w}",
+          XX: "\\mathcal{X}",
+          YY: "\\mathcal{Y}",
+          EE: "\\mathcal{E}",
+          PP: "\\mathcal{P}",
+          UU: "\\mathcal{U}",
+          lcm: "\\mathrm{lcm}",
+          ssubset: "\\subset\\subset",
+          fl: "\\mathrm{f \\kern 0.04em l}",
+          logi: "\\mkern4mu{\\Large\\shortmid}\\mkern-8mu\\raise{0.5pt}=\\mkern-8mu{\\Large\\shortmid}\\mkern4mu",
+          thus: "\\mkern4mu{\\Large\\shortmid}\\mkern-8mu\\raise{0.5pt}=\\mkern-8mu\\mkern8mu",
+          pmat: [ "\\left(\\!\\!\\begin{array}{#1}#2\\end{array}\\!\\!\\right)", 2 ],
+          clr: [ "\\color{#1}{#2}", 2 ],
+        }
+      },
+      CommonHTML: { linebreaks: { automatic: <%= spine.document.meta['disable_line_breaks_in_mathjax'].nil? ? true : !spine.document.meta['disable_line_breaks_in_mathjax'] %> } },
+      "HTML-CSS": { linebreaks: { automatic: <%= spine.document.meta['disable_line_breaks_in_mathjax'].nil? ? true : !spine.document.meta['disable_line_breaks_in_mathjax'] %> } },
+      SVG: { linebreaks: { automatic: <%= spine.document.meta['disable_line_breaks_in_mathjax'].nil? ? true : !spine.document.meta['disable_line_breaks_in_mathjax'] %> } }
+    });
+  </script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+
+  <!-- Font Awesome -->
+  <link href="css/all.min.css" rel="stylesheet" />
+
+  <!-- Pseudocode -->
+  <link rel="stylesheet" href="css/pseudocode.min.css">
+  <script src="js/pseudocode.min.js"></script>
+
+  <!-- Highlight pygmentized code -->
+  <link href="css/highlight.css" rel="stylesheet" id="pygments-theme-link" />
+  <!-- Custom stuff -->
+  <link href="css/custom.css" rel="stylesheet" />
+</head>

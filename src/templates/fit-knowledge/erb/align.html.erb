@@ -1,0 +1,19 @@
+<%# AMSMath align environment %>
+<%# label: optional wobject label %>
+<%# todo: multiline labels %>
+<% if parent && parent.identifier == 'paragraph'%></p><% end %>
+<% if meta?('label') %>
+<div class="woowoo-align" id="<%= meta['label'] %>">
+\begin{align}
+<%= r(content.first.content).strip %>
+\label{<%= meta['label'] %>}\tag{<%= numeric_label %>}
+\end{align}
+</div>
+<% else %>
+<div class="woowoo-align">
+\begin{align*}
+<%= r(content.first.content).strip %>
+\end{align*}
+</div>
+<% end %>
+<% if parent && parent.identifier == 'paragraph'%><p class="woowoo-paragraph-part"><% end %>

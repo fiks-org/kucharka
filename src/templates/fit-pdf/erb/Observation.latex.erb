@@ -1,0 +1,22 @@
+<%# A general observation %>
+<%# title: optional %>
+<%# english: optional english title %>
+<%# label: optional wobject label %>
+<%# index: optional index entry %>
+
+\begin{observation}<% if meta? 'title' %>[<%= r(parse_text_stub(meta['title']), glue: true) %><% if meta? 'english' %> / \textit{<%= r(parse_text_stub(meta['english']), glue: true) %>}<% end %>]<% end %>
+<% if meta?('label') && meta?('index') %>
+<% document.index.register(meta['index'], self) %>
+\label{<%= meta['label'] %>}<%= index_macro meta['index'] %>
+<% elsif meta?('label') %>
+\label{<%= meta['label'] %>}
+<% elsif meta?('index') %>
+<% document.index.register(meta['index'], self) %>
+<%= index_macro meta['index'] %>
+<% else %>
+
+<% end %>
+<%= r(content).rstrip %>
+
+\end{observation}
+

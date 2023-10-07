@@ -1,0 +1,10 @@
+<%# centered row %>
+<% if parent && parent.identifier == 'paragraph'%></p><% end %>
+<div class="container-fluid">
+<div class="row align-items-center">
+<% content.first.content.each do |element| %>
+<div class="col"><%=r element %></div>
+<% end %>
+</div>
+</div>
+<% if parent && parent.identifier == 'paragraph'%><p class="woowoo-paragraph-part"><% end %>

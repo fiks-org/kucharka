@@ -1,0 +1,115 @@
+<%# tikz picture nevironment %>
+<%# filename: required name of the file %>
+<% builder.register_job({
+  output_file: meta['filename'] + '.svg',
+  source_file: meta['filename'] + '.tex',
+  command: meta['command'] || "pdflatex -halt-on-error -interaction nonstopmode #{meta['filename']} && pdf2svg #{meta['filename'] + '.pdf'} #{meta['filename'] + '.svg'}",
+  source: <<DOC
+\\documentclass[12pt]{standalone}
+\\usepackage[utf8]{inputenc}
+\\usepackage[T1]{fontenc}
+\\usepackage[czech]{babel}
+\\usepackage{libertine}
+\\usepackage{amsmath}
+\\usepackage{amssymb}
+\\usepackage{tikz}
+\\usepackage{ifthen}
+\\usepackage{pgfplots}
+\\usepackage{bbding}
+\\newcommand{\\N}{\\mathbb{N}}
+\\newcommand{\\Z}{\\mathbb{Z}}
+\\newcommand{\\Q}{\\mathbb{Q}}
+\\newcommand{\\R}{\\mathbb{R}}
+\\newcommand{\\CC}{\\mathbb{C}}
+\\newcommand{\\e}{\\mathrm{e}}
+\\newcommand{\\ii}{\\mathrm{i}}
+\\renewcommand{\\Re}{\\mathrm{Re}\\,}
+\\renewcommand{\\Im}{\\mathrm{Im}\\,}
+\\DeclareMathOperator{\\tg}{\\mathrm{tg}}
+\\DeclareMathOperator{\\ctg}{\\mathrm{cotg}}
+\\DeclareMathOperator{\\cotg}{\\mathrm{cotg}}
+\\DeclareMathOperator{\\arctg}{\\mathrm{arctg}}
+\\DeclareMathOperator{\\arcctg}{\\mathrm{arccotg}}
+\\newcommand{\\ceq}{\\mathrel{\\mathop:}=}
+\\newcommand{\\veps}{\\varepsilon}
+\\DeclareMathOperator{\\sgn}{\\mathrm{sgn}}
+\\newcommand{\\dx}{\\,\\mathrm{d}x}
+\\newcommand{\\dt}{\\,\\mathrm{d}t}
+
+% matrices and vectors
+\\newcommand{\\mA}{\\mathbf{A}}
+\\newcommand{\\mB}{\\mathbf{B}}
+\\newcommand{\\mC}{\\mathbf{C}}
+\\newcommand{\\mD}{\\mathbf{D}}
+\\newcommand{\\mE}{\\mathbf{E}}
+\\newcommand{\\mP}{\\mathbf{P}}
+\\newcommand{\\mQ}{\\mathbf{Q}}
+\\newcommand{\\mX}{\\mathbf{X}}
+\\newcommand{\\vx}{\\mathbf{x}}
+\\newcommand{\\vy}{\\mathbf{y}}
+\\newcommand{\\vz}{\\mathbf{z}}
+\\newcommand{\\va}{\\mathbf{a}}
+\\newcommand{\\vb}{\\mathbf{b}}
+\\newcommand{\\vc}{\\mathbf{c}}
+\\newcommand{\\ve}{\\mathbf{e}}
+\\newcommand{\\vu}{\\mathbf{u}}
+\\newcommand{\\vv}{\\mathbf{v}}
+\\newcommand{\\vw}{\\mathbf{w}}
+\\newcommand{\\XX}{\\mathcal{X}}
+\\newcommand{\\YY}{\\mathcal{Y}}
+\\newcommand{\\EE}{\\mathcal{E}}
+\\newcommand{\\ssubset}{\\subset\\subset}
+
+% matrices with vertical lines
+\\newcommand{\\pmat}[2]{\\left(\\!\\!\\begin{array}{#1}#2\\end{array}\\!\\!\\right)}
+\\usetikzlibrary{
+  shapes.geometric,
+  calc,
+  arrows,
+  decorations.markings,
+  decorations.pathmorphing
+}
+\\pgfplotsset{
+  % all plots are thick and without point marks
+  every axis plot/.append style={
+    thick,
+    mark=none,
+    smooth
+  },
+  % axis style
+  every axis/.append style={
+    axis lines=middle,
+    axis line style={->,thick},
+    grid=major,
+    minor tick num=1,
+    tick label style={font=\\footnotesize,fill=white,opacity=0.5,text opacity=1.0}
+  },
+  % grid style
+  every axis grid/.style={
+    thin,
+    gray,
+    dashed
+  },
+  % legend style
+  every axis legend/.append style={
+    at={(1.1,0.5)},
+    anchor=west,
+    %legend pos=outer east,
+    %legend columns=2,
+    cells={anchor=west},
+    font=\\footnotesize,
+    rounded corners=2pt
+  },
+  xlabel={$x$},ylabel={$y$}
+}
+\\begin{document}
+\\begin{tikzpicture}[#{ meta['options'] || '' }]
+#{ strip_indent(dump).strip }
+\\end{tikzpicture}
+\\end{document}
+
+DOC
+
+})
+%>
+<img class="woowoo-tikz figure-img img-fluid" src="<%= File.join(builder.figures_dir, meta['filename'] + '.svg') %>" alt="<%= meta['alt']%>"></img>

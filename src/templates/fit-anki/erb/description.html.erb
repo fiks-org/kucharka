@@ -1,0 +1,6 @@
+<%# bootstrap description %>
+<% if parent && parent.identifier == 'paragraph'%></p><% end %>
+<dl class="row">
+<%= r content.first.content %>
+</dl>
+<% if parent && parent.identifier == 'paragraph'%><p class="woowoo-paragraph-part"><% end %>

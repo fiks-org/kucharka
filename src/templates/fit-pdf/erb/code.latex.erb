@@ -1,0 +1,3 @@
+<%# inline code using minted package %>
+<%# language: optional language specifier, c is the default %>
+<% if meta?('language') %>\mintinline{<%= meta['language'] %>}|<%= dump.strip %>|<% else %>\mintinline{c}|<%= dump.strip %>|<% end %>

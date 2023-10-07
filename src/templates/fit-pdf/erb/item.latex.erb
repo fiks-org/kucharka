@@ -1,0 +1,5 @@
+<%# general list item %> 
+<%# bullet: optional bullet %>
+\item<% if meta['bullet'] %>[<%= r(parse_text_stub(meta['bullet']), glue: true) %>]<% end %>
+
+<%= r(content).lstrip %>
