@@ -1,0 +1,27 @@
+%%%
+%
+% Ukázkový WooWoo dokument
+%
+% Poznámka: komentáře začínají znakem dolaru na začátku řádky.
+%
+
+% Dokument lze rozdělit na několik částí:
+
+
+.include chapter1.woo
+
+
+.include chapter2.woo
+
+
+.include chapter3.woo
+
+
+.include chapter4.woo
+
+
+.include chapter5.woo
+
+
+.include chapter6.woo
+

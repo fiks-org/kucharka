@@ -1,0 +1,63 @@
+%
+% Základní tvorba osbahu
+%
+
+.Chapter Strukturování obsahu
+  label: chap-parts
+  index: obsah!strukturování
+
+"WooWoo FIT šablona".emphasize, jak verze "PDF"@1, případně "PDF vhodné pro menší monitory"@3 tak i "HTML"@2, umožňuje používat tři úrovně kapitol: Chapter, Section a Subsection.
+  1:
+    link: sandbox.pdf
+  2:
+    link: https://woowoo.pages.fit/sandbox
+  3:
+    link: sandbox_small.pdf
+
+
+Začátek kapitoly (.emphasize:Chapter, u další typů pouze změníme na .emphasize:Section případně .emphasize:Subsection) je uvozena následujícím kódem
+
+!codeblock:
+  language: text
+
+  .Chapter NÁZEV KAPITOLY
+    label: label-kapitoly
+    index: index!kapitoly
+    short_title: KRÁTKÝ NÁZEV KAPITOLY
+    plain_title: TEXTOVÁ REPREZENTACE NÁZVU
+
+V meta-bloku (část odražená o dvě mezery) je povinný klíč pouze .code:label, odvozuje se z něj totiž název HTML souboru obsahujícího danou část dokumentu.
+Krátký název předaný pod klíčem "short_title".code je dobré nastavit pokud je název kapitoly příliš dlouhý a jeho zobrazení v zápatí PDF nebo v liště v HTML by bylo nehezké.
+Podobně pod "plain_title".code můžeme předat reprezentaci názvu, která se použije například v titulku okna prohlížeče.
+Klíč .code:index přidává nadpis do indexu, používáme jednoduchou LaTeX syntaxi.
+Před a po deklaraci kapitoly by měly následovat alespoň dva prázdné řádky.
+
+WooWoo dokument lze rozdělit na více souborů a ty potom vkládat pomocí kódu
+
+!codeblock:
+  language: text
+
+  .include SOUBOR.woo
+
+Před a za touto inkantací musí být alespoň jeden prázdný řádek.
+
+
+Odstavce jsou odděleny dvěma prázdnými řádky.
+Jednořádkové mezery se používá k oddělení různých částí odstavce (text, rovnice, kód,...).
+
+
+.Section První sekce
+  label: sec-first
+
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+
+Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+
+
+.Subsection První podsekce
+  label: subsec-first
+
+
+Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?

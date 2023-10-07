@@ -1,0 +1,33 @@
+root_file: fiksarka.woo
+
+builder:
+  build_dir: build
+  figures_dir: figures
+  bibtex: references.bib
+
+template:
+  block: paragraph
+  indented_block: equation
+  inline_math: '$'
+  item: '*'
+  numbered_dividers:
+    - Chapter
+    - Section
+    - Subsection
+
+document:
+  title: Fiksařka
+  authors:
+    - name: FIKS
+      email: autor@cloud.com
+      institution: Ústaf
+  meta:
+    # semester: Zimní semestr 2020/2021
+    keywords: 'fiks, tutorial'
+    subject: 'fiks'
+    draft: false
+    repository: https://gitlab.fit.cvut.cz/havlialb/fiksarka
+    language: czech
+    disable_line_breaks_in_mathjax: true
+    hyphenation:
+      - Zej-mé-na

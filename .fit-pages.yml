@@ -1,0 +1,13 @@
+#
+# FIT Pages configuration
+#
+
+access:
+  master:
+    /:
+      allow:
+        - AUTHENTICATED
+  "*":
+    /:
+      allow:
+        - AUTHENTICATED

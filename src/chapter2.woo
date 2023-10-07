@@ -1,0 +1,235 @@
+%
+% Text
+%
+
+.Chapter Práce s textem
+  label: chaptext
+
+
+Tato kapitola shrnuje možnosti vytváření obyčejného textového obsahu.
+Nejprve v Sekci .reference:secplain probereme různé styly textu.
+Poté v Sekci .reference:secrefs ukážeme jak vytvářet odkazy dovnitř i vně dokumentu.
+
+
+.Section Obyčejný text
+  label: secplain
+
+
+.Subsection Kurzíva
+  label: subsecemphasize
+
+
+Části textu můžeme "zdůraznit".emphasize pomocí .emphasize:kurzívy.
+Ve zdrojovém kódu jsme toho docílili takto:
+
+!codeblock:
+  language: text
+
+  Části textu "můžeme zdůraznit".emphasize pomocí .emphasize:kurzívy.
+
+Druhý, kratší, zápis bez uvozovek můžeme využít pouze pro jedno slovo.
+
+
+.Subsection Menší písmo
+  label: subsecsmall
+
+
+Pokud chceme část textu psát "menším písmem".small docílíme toho pomocí .code:small:
+
+!codeblock:
+  language: text
+
+  Pokud chceme část textu psát "menším písmem".small docílíme toho
+  pomocí .code:small.
+
+
+.Subsection Podtržení
+  label: subsecunderline
+
+
+Podobně můžeme kusy textu .underline:podtrhnout pomocí .code:underline:
+
+!codeblock:
+  language: text
+
+  Podobně můžeme kusy textu .underline:podtrhnout pomocí
+  .code:underline:
+
+
+.Subsection Uvozovky
+  label: subsecquoted
+
+
+"Kusy textu".quoted můžeme ohraničit .quoted:uvozovkami.
+Syntaxe je následující:
+
+!codeblock:
+  language: text
+
+  "Kusy textu".quoted můžeme ohraničit .quoted:uvozovkami.
+
+
+.Subsection Pojmy
+  label: subsecnotion
+
+
+Můžeme definovat "pojmy".notion.1, které mohou být indexovány.
+  1:
+    index: pojem!ukázkový
+
+Syntaxe této konstrukce využívá meta-bloku odstavce:
+
+!codeblock:
+  language: text
+
+  Můžeme definovat "pojmy".notion.1, které mohou být indexovány.
+    1:
+      index: pojem!ukázkový
+
+Zde je na nový pojem navázán meta-blok s klíčem .code:1.
+V indexu najdete odkaz na tento odstavec pod klíčem "pojem, ukázkový".quoted.
+
+
+.Subsection Poznámky pod čarou
+  label: subsecfootnote
+
+
+Do textu můžeme přidávat poznámky pod čarou"Toto je velmi důležitá poznámka!".footnote, které obsahují dodatečné informace.
+
+!codeblock:
+  language: text
+
+  Do textu můžeme přidávat poznámky pod čarou"Toto je velmi
+  důležitá poznámka!".footnote, které obsahují dodatečné
+  informace.
+
+
+.Subsection Krátký kód v textu
+  label: subseccode
+
+
+Ve větě můžeme používat kód "for k in range(10)".code.
+
+!codeblock:
+  language: text
+
+  Ve větě můžeme používat kód "for k in range(10)".code.
+
+
+.Section Reference, citace a odkazy
+  label: secrefs
+
+
+V jako každém elektronickém dokumentu můžeme vytvářet několik druhů odkazů na jiné části dokumentu, ven na internet nebo na literaturu.
+
+
+.Subsection Vnitřní odkaz
+  label: subsecreference
+
+
+Další kapitola například bude obsahovat formulaci věty .reference:thm-theorem.
+Toto je odkaz na větu s .code:label rovným "thm-theorem".code.
+
+!codeblock:
+  language: text
+
+  Další kapitola například bude obsahovat formulaci
+  věty .reference:thm-theorem.
+
+
+.Subsection Externí odkaz
+  label: subseclink
+
+
+O smyslu "věty".quoted se čtenář může dozvědět na "Wiki".reference.1. Alternativně lze použít malinko zkráceného odkazu na "Wiki"@1.
+Tato syntaxe už vyžaduje informaci v meta-bloku:
+  1:
+    link: https://en.wikipedia.org/wiki/Theorem
+
+!codeblock:
+  language: text
+
+  O smyslu "věty".quoted se čtenář může dozvědět na "Wiki".reference.1.
+  Alternativně lze použít malinko zkráceného odkazu na "Wiki"@1.
+
+
+.Subsection Citace
+  label: subseccitace
+
+
+V seznamu literatury pak najde velmi zajímavou knihu .cite:book.
+Odkaz na literaturu, která je uložena v .code:bib souboru, se zadává takto:
+
+!codeblock:
+  language: text
+
+  V seznamu literatury pak najde velmi zajímavou knihu .cite:book.
+
+
+.Subsection Podrobný odkaz
+  label: subsecfullref
+
+
+V neposlední řadě se lze odkázat na nějakou označkovanou část dokumentu, například dříve zmíněnou "větu"#def-definition pomocí zkrácené notace:
+
+!codeblock:
+  language: text
+
+  V neposlední řadě se lze odkázat na nějakou označkovanou část dokumentu,
+  například dříve zmíněnou "větu"#def-definition pomocí zkrácené notace:
+
+V HTML výstupu si lze rovnou na tomto místě příslušnou větu rozkliknout v pop-upu.
+V PDF verzi se vytvoří pouze interní odkaz.
+
+
+.Section Výčty a seznamy
+  label:sec_vycty_a_seznamy
+
+Jednoduchý výčet vytvoříme pomocí "itemize".code a "item".code.
+
+.itemize:
+
+  .item:
+
+    Mějmě $n$-tici $(x_1,\ldots,x_n)$.
+
+  .item:
+
+    Buď $x$ reálné číslo.
+
+
+Číslovaný seznam pak pomocí "enumerate".code a "item".code.
+
+.enumerate:
+
+  .item:
+
+    První ponožka.
+
+  .item:
+
+    Druhá ponožka.
+
+
+Dále je možné, aby položky obsahovaly i celé odstavce.
+
+.enumerate:
+
+  .item:
+
+    První krátká položka.
+
+  .item:
+
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+    Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+
+  .item:
+
+    Poslední krátká položka.
+

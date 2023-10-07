@@ -1,0 +1,15 @@
+
+.Chapter $\kappa$ -- kapitola...
+  pdf_string: 'k - kapitola...'
+  label: chap_special
+
+Tato sekce pouze testuje správné chování r;zn7ch speciálních znaků v nadpisu.
+
+
+.Section $\XX$ -- "speciální".emphasize
+  pdf_string: 'X - speciální'
+  label: sec_special
+
+Tato sekce pouze testuje správné chování různých speciálních znaků v nadpisu.
+
+

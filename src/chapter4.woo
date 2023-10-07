@@ -1,0 +1,394 @@
+
+.Chapter Obrázky, Tabulky a Kód
+  label: chap-other
+
+
+.Section Obrázky
+  label: sec-fig
+
+Plovoucí (v PDF) obrázky můžeme zadávat pomocí prostředí "Figure".code.
+Viz obrázek č. .reference:fig-1. Šablony podporují TikZ obrázky (kód přímo v dokumentu) nebo obyčejné vložení obrázků z "figures".code podadresáře.
+
+
+.Figure:
+  label: fig-1
+
+  !tikz:
+    filename: fig1
+
+    \draw[thick] (-1, -1) rectangle (2, 2);
+    \fill[blue] (0, 0) rectangle (1, 1);
+
+  .caption:
+
+    Podrobný popisek obrázku.
+
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+
+Pomocí parametru "columns".code můžeme obrázky v prostředí "Figure".code rozmísťovat do více sloupců.
+
+
+.Figure:
+  label: fig-2
+  columns: 2
+
+  !tikz:
+    filename: fig2
+
+    \draw[thick] (-1, -1) rectangle (2, 2);
+    \fill[blue] (0, 0) rectangle (1, 1);
+
+  !tikz:
+    filename: fig3
+
+    \draw[thick] (-1, -1) circle (2);
+    \fill[blue] (0, 0) circle (1);
+
+  !tikz:
+    filename: fig4
+
+    \draw[thick] (-1, -1) circle (2);
+    \fill[brown] (0, 0) circle (1);
+
+  !tikz:
+    filename: fig5
+
+    \draw[thick] (-1, -1) circle (2);
+    \fill[red] (0, 0) circle (1);
+
+  .caption:
+
+    Prostředí s více obrázky zarovnanými do dvou sloupců.
+
+
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+
+\clearpage
+  only: fit-pdf
+
+
+%%
+%% Sekce
+%%
+.Section Geogebra
+  label: sec_geogebra
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+
+.Figure:
+  label: geogebra1
+
+  .geogebra:
+    options: width=0.8\textwidth
+
+    szrxn9b2
+
+  .caption:
+    geogebra: szrxn9b2 
+
+    Vnořená interaktivní vizualazace využívající službu "Geogebra"@1.
+      1:
+        link: https://www.geogebra.org
+
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+
+\clearpage
+  only: fit-pdf
+
+
+.Section Tabulky
+  label: sec-table
+
+Podobným způsobem můžeme zadávat tabulky pomocí "Table".code a zjednodušené notace tabulky v křehkém prostředí "tabular".code.
+
+
+.Table:
+  label: tab-1
+
+  !tabular:
+
+    A   B   C
+    --  --  --
+    1   2   3
+    a   b   c
+
+  .caption:
+
+    Popisek tabulky.
+
+
+Nebo máme k dispozici velmi explicitní a robustnější možnost zápisu tabulky pomocí vnějšího prostředí "table".code.1, v kterém se na rozdíl od předchozí možnosti provádí veškeré magické WooWoo parsování.
+Viz Tabulku .reference:tab-2.
+  1:
+    language: text
+
+
+.Table:
+  label: tab-2
+
+  .table:
+    columns: ll
+
+    .row:
+      head: true
+
+      A
+
+      B
+
+    .row:
+
+      popisek
+
+      $1 + 1$
+
+    .row:
+
+      ~
+
+      $2 + 2$
+
+  .caption:
+
+    Popisek první tabulky.
+
+
+Pokud chceme v HTML zvýraznit (typicky první) řádek tabulky, přidáme mu do metabloku "head: true".code.1.
+U tabulky se můžeme vyhnout zvýraznění (podtržení, v HTML neaktivní) řádku s nadpisem zadáním "noheader: true".code.1 v metabloku,
+viz Tabulku .reference:tab-3.
+  1:
+    language: text
+
+
+.Table:
+  label: tab-3
+
+  .table:
+    columns: ll
+    noheader: true
+
+    .row:
+
+      A
+
+      B
+
+    .row:
+
+      popisek
+
+      $1 + 1$
+
+    .row:
+
+      ~
+
+      $2 + 2$
+
+  .caption:
+
+    Popisek druhé tabulky.
+
+
+\clearpage
+  only: fit-pdf
+
+
+Test Danovy tabulky vnořené do wobjektu (zde Věta).
+Aby druhá tabulka nebyla v HTML přelámaná, je potřeba do `meta` bloku ve "Woofile".code.1 přidat "disable_line_breaks_in_mathjax: true".code.1.
+Se zapnutým zalamováním je potřeba ve sloupci mít "větší".quoted kus obyčejného textu, jinak dochází k problémům mezi Bootstrap CSS a MathJax obsahem.
+  1:
+    language: text
+
+
+.Theorem:
+  label: thm-logicke-zakony-4
+  title: Logické zákony - významy implikace
+
+  Buď $A, B$ libovolné výrokové formule.
+  Vždy platí následující logické ekvivalence.
+
+  !tabular:
+
+    Logické ekvivalenty k $\Rightarrow$    Popisek popisek popisek
+    -------------------------------------  ----------------------------------------------------------------
+    Zákon kontrapozice:                    $A\Rightarrow B\logi\neg B\Rightarrow\neg A$
+    Zlaté pravidlo:                        $A \Rightarrow B \logi \neg A \vee B$
+    Stříbrné pravidlo:                     $\neg(A\Rightarrow B)\logi A\wedge\neg B$
+
+  .table:
+    columns: lll
+    noheader: true
+
+    .row:
+
+      $A$:
+
+      K předmětu DML existuje studijní text.
+
+      $v(A) = 1$
+
+    .row:
+
+      $B$:
+
+      Budoucnost patří aluminiu.
+
+      $v(B) = 1$
+
+    .row:
+
+      $C$:
+
+      Prší.
+
+      $v(C) = \, ?$
+
+    .row:
+
+      $D$:
+
+      Je oblačno.
+
+      $v(D) = \, ?$
+
+    .row:
+
+      $E$:
+
+      $2 + 2 = 5$.
+
+      $v(E) = 0$
+
+    .row:
+
+      $F_1$:
+
+      Bitva na Bílé hoře byla v roce 1621.
+
+      $v(F_1) = 0$
+
+    .row:
+
+      $F_2$:
+
+      Bitva na Sommě byla v roce 1916.
+
+      $v(F_2) = 1$
+
+
+\clearpage
+  only: fit-pdf
+
+
+.Section Kód
+  label: sec-code
+
+Drobný kousek kódu v rámci textu se zadává pomocí "code".code vnitřního prostředí, tedy např. "1+1".code.
+Pro větší kusy kódu lze použít křehké prostředí "codeblock".code s možností v meta-bloku pomocí klíče "language".code zadat jazyk kódu pro následné zvýraznění (výchozí hodnota je "C".emphasize, ale lze ji případně změnit).
+
+
+Následující blok obsahuje kousek Python kódu:
+
+!codeblock:
+  language: python
+
+  for k in range(10):
+    print(k)
+
+A druhý blok pak kousek "Mathematica".emphasize kódu.
+
+!codeblock:
+  language: Mathematica
+
+  f[x_] := Transpose[x]
+
+
+.Subsection Pseudokód
+  label: subsec-pseudokod
+
+Pseudokód lze prezentovat pomocí LaTeX balíčku "algorithmic".code.2, a jeho alternativou pro HTML "pseudocode.js"@1.
+Vnější křehké prostředí "pseudocode".code.2 stačí vložit do wobjektu "Algorithm".code.2.
+Například se pokochejme nepojmenovaným pseudokódem v Algoritmu .reference:algo-1.
+  1:
+    link: https://github.com/SaswatPadhi/pseudocode.js
+  2:
+    language: text
+
+
+.Algorithm:
+  label: algo-1
+
+  !pseudocode:
+
+    \FOR {$j = 1, \dots, n $ }
+      \STATE $v_j = a_j$
+      \FOR {$i = 1, \dots, j-1$ }
+        \STATE $r_{ij} = q_i^T a_j$
+        \STATE $v_{j} = v_j - r_{ij}q_i$
+      \ENDFOR
+      \STATE $r_{jj} = \|v_j\|_2$
+      \STATE $q_{j} = \frac{1}{r_{jj}} v_j$
+    \ENDFOR
+
+
+Algoritmus můžeme pojmenovat pomocí klíče "title".code.1 v metabloku a označit ho pomocí labelu, abychom se na něj mohli později odkazovat (viz Algoritmus .reference:algo-1).
+  1:
+    language: text
+
+
+.Algorithm:
+  title: 'Úžasný algoritmus'
+  label: algo-2
+
+  !pseudocode:
+
+    \FOR {$j = 1, \dots, n $ }
+      \STATE $v_j = a_j$
+      \FOR {$i = 1, \dots, j-1$ }
+        \STATE $r_{ij} = q_i^T a_j$
+        \STATE $v_{j} = v_j - r_{ij}q_i$
+      \ENDFOR
+      \STATE $r_{jj} = \|v_j\|_2$
+      \STATE $q_{j} = \frac{1}{r_{jj}} v_j$
+    \ENDFOR
+
+
+Alternativě můžeme do "Algorithm".code.1 vložit jednoduchý výčet.
+  1:
+    language: text
+
+
+.Algorithm:
+
+  .enumerate:
+
+    .item:
+
+      $a = 1$
+
+    .item:
+
+      $b = a + 1$
+
+
+.Algorithm:
+  title: 'S přívlastkem'
+
+  .enumerate:
+
+    .item:
+
+      $a = 1$
+
+    .item:
+
+      $b = a + 1$
+

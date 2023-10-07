@@ -1,0 +1,5 @@
+require 'rake'
+require 'woowoo'
+
+WooWoo::Builder.new.load_tasks
+

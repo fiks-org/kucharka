@@ -1,0 +1,107 @@
+
+.Chapter Wootom
+  label: chap-wootom
+
+
+.Section Rozšíření editoru Atom
+  label: sec-atom
+
+"Atom"@1 je poměrně rozšířený editor používaný spíše programátory.
+Jeho výhodou je jeho snadná modifikovatelnost a rozšiřitelnost pomocí rozsáhlého ekosystému "balíčků".quoted.
+K dispozici je pro Linux, Windows i MacOS (viz předchozí odkaz na domovskou stránku).
+  1:
+    link: https://atom.io
+
+
+"Wootom"@1 je balíček pro Atom vyvinutý v rámci bakalářské práce studentem FIT Davidem Strakou.
+V současné chvíli umožňuje zvýrazňování syntaxe WooWoo dokumentů, zobrazování náhledu WooWoo dokumentu a prohledávání obsahu a labelů v rámci souboru.
+  1:
+    link: https://atom.io/packages/wootom
+
+Instalace libovolného balíčku je jednoduchá:
+
+.enumerate:
+
+  .item:
+
+    Zobrazte okno s "Preferences".emphasize stiskem "CTRL+,".code nebo pomocí volby "Preferences".emphasize v menu "Edit".emphasize.
+
+  .item:
+
+    Vyberte záložku "Install".emphasize.
+
+  .item:
+
+    Do vyhledávacího textového políčka zadejte název (i přibližný) hledaného balíčku.
+
+  .item:
+
+    V obejvivší se nabídce balíčků klikněte na tlačítko "Install".emphasize u balíčku, který chcete nainstalovat
+
+
+Zkuste tento postup provést s balíčkem Wootom.
+
+
+Přehled instalovaných balíčků naleznete v "Preferences".emphasize v záložce "Packages".emphasize.
+Zde můžete balíčky vyhledávat, editovat jejich nastavení, nebo je odinstalovávat.
+
+
+Balíček Wootom má několik nastavení:
+
+.itemize:
+
+  .item:
+    
+    "MathJax Macros".emphasize: LaTeX makra pro správné vykreslování matematických výrazů, která se používají ve FIT šablonách. Viz podkapitolu .reference:sec-makra.
+    Výchozí nastavení by mělo být v souladu s FIT šablonami, není potřeba ho měnit.
+
+  .item:
+
+    "TikZ Preamble".emphasize: LaTeX hlavička pro generování obrázků z TikZ kódu.
+    Výchozí nastavení by mělo být v souladu s FIT šablonami, není potřeba ho měnit.
+
+  .item:
+
+    "TikZ SVG Style".emphasize: nastavení zobrazování SVG obrázků.
+
+  .item:
+
+    "Update on Type".emphasize: Zapnutí/vypnutí generování náhledu dokumentu při psaní nebo při uložení.
+
+
+Dále balíček poskytuje následující náhledy:
+
+.itemize:
+
+  .item:
+
+    "CTRL+n".code: zobrazení navigace, tedy částí aktuálního souboru a seznamu labelů v aktuálním souboru. V obou seznamech funguje fuzzy vyhledávání.
+
+  .item:
+
+    "CTRL+j".code: zobrazení náhledu výsledného WooWoo dokumentu.
+
+
+.Section Doporučené nastavení a balíčky
+  label: sec-packages
+
+Pro Atom je k dispozici celá řada dalších balíčků, která může být užitečná při tvorbě nejen WooWoo dokumentů:
+
+.itemize:
+
+  .item:
+
+    "language-asciidoc".code a "asciidoc-preview".code: zvýrazňování sytantaxe a náhledu Asciidoc dokumentů.
+
+  .item:
+
+    "language-latex".code a "atom-latex".code: podpora práce s LaTeX soubory (zvýrazňování syntaxe, build a náhled dokumentů...).
+
+  .item:
+
+    "minimap".code: náhled dokumentu z ptačí perspektivi v okraji.
+
+
+S Atomem je už i distribuovaný balíček "spell-check".code pro kontrolu pravopisu.
+Je jen potřeba ho správně nastavit, tedy mít slovník a do kontrolovaných gramatik přidat "text.woo".code.
+
