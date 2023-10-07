@@ -1,25 +1,25 @@
 image: alpine:latest
 
-html:
-  image: ${CI_REGISTRY}/woowoo/woowoo:v0.4.1
-  stage: build
-  script:
-    - ruby -v                  # print ruby version
-    - woo -v                   # print woo version
-    - pandoc -v                # print pandoc version
-    - pdflatex -v              # print pdflatex version
-    - pygmentize -V            # print pygmentize version
-    - cd src
-    - cp -r /opt/woowoo/templates ./
-    - woo list                 # check available templates, to be sure
-    - rake fithtml:assets fithtml:build
-    - tar -czvf build/fiksarka.tar.gz build/fit-html
-    - mv build/fiksarka.tar.gz build/fit-html
-  artifacts:
-    expire_in: 2 hours
-    paths:
-      - src/build/fit-html
-
+# html:
+#   image: ${CI_REGISTRY}/woowoo/woowoo:v0.4.1
+#   stage: build
+#   script:
+#     - ruby -v                  # print ruby version
+#     - woo -v                   # print woo version
+#     - pandoc -v                # print pandoc version
+#     - pdflatex -v              # print pdflatex version
+#     - pygmentize -V            # print pygmentize version
+#     - cd src
+#     - cp -r /opt/woowoo/templates ./
+#     - woo list                 # check available templates, to be sure
+#     - rake fithtml:assets fithtml:build
+#     - tar -czvf build/fiksarka.tar.gz build/fit-html
+#     - mv build/fiksarka.tar.gz build/fit-html
+#   artifacts:
+#     expire_in: 2 hours
+#     paths:
+#       - src/build/fit-html
+#
 #
 # Deploy to FIT Pages
 #
