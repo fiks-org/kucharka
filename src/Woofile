@@ -20,7 +20,7 @@ document:
   authors:
     - name: FIKS
       email: autor@cloud.com
-      institution: Ústaf
+      institution: Ústaf a FIKS
   meta:
     # semester: Zimní semestr 2020/2021
     keywords: 'fiks, tutorial'
