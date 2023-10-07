@@ -1,7 +1,7 @@
 image: alpine:latest
 
 html:
-  image: ${CI_REGISTRY}/woowoo/woowoo:v0.4.0
+  image: ${CI_REGISTRY}/woowoo/woowoo:v0.4.1
   stage: build
   script:
     - ruby -v                  # print ruby version
