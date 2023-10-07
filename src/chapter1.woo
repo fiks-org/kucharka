@@ -2,9 +2,23 @@
 % Základní tvorba osbahu
 %
 
-.Chapter Strukturování obsahu
+.Chapter P = NP
   label: chap-parts
-  index: obsah!strukturování
+  index: P = NP
+
+.Theorem:
+  label: p-eq-np
+  index: věta!o konci světa
+  title: Obecná
+  english: General
+
+  Všichni vědí, že $P = NP$
+
+.Proof
+  title: 'Důkaz .reference:p-eq-np'
+
+  Triviální, ponecháno jako cvičení čtenáři.
+
 
 "WooWoo FIT šablona".emphasize, jak verze "PDF"@1, případně "PDF vhodné pro menší monitory"@3 tak i "HTML"@2, umožňuje používat tři úrovně kapitol: Chapter, Section a Subsection.
   1:
