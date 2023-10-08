@@ -5,7 +5,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>  Fiksařka | 1 P = NP    </title>
+  <title>  Fiksařka | 1.2 Úvod do algoritmů    </title>
   <!-- favicon -->
   <link rel="icon" type="image/ico" href="favicon.ico" />
 
@@ -127,7 +127,7 @@
     <a class="navbar-brand" href="index.html">Fiksařka</a>
     <ul class="navbar-nav">
       <ul class="nav-item">
-        <a class="nav-link" href="chap-parts.html">P = NP</a>
+        <a class="nav-link" href="sec-intro-algo.html">Úvod do algoritmů</a>
       </ul>
     </ul>
     <a href="#" id="theme-switch-link" title="přepínání vzhledu"><span id="theme-switch-icon" class="fa fa-moon"></span></a>
@@ -138,22 +138,56 @@
     <div class="row">
       <div class="col-xs-12 col-md-3">
         <div class="list-group mb-3">
-      <a class="list-group-item list-group-item-action active" href="chap-parts.html">
-    1 P = NP    </a>
+      <a class="list-group-item list-group-item-action" href="chap-intro.html">
+    1 Úvod    </a>
 
-                <a class="list-group-item list-group-item-secondary list-group-item-action" href="sec-first.html">
-      <small>1.1 První sekce</small>
+                <a class="list-group-item list-group-item-secondary list-group-item-action" href="fiks.html">
+      <small>1.1 FIKS</small>
+      </a>
+            <a class="list-group-item list-group-item-secondary list-group-item-action active" href="sec-intro-algo.html">
+      <small>1.2 Úvod do algoritmů</small>
+      </a>
+            <a class="list-group-item list-group-item-secondary list-group-item-action" href="sec-first.html">
+      <small>1.3 První sekce</small>
       </a>
               <a class="list-group-item list-group-item-action list-group-item-dark" href="index_page.html">Index</a>
     <a class="list-group-item list-group-item-action list-group-item-dark" href="references.html">Literatura</a>
   </div>      </div>
       <div class="col-xs-12 col-md-9">
-        <h2 class="anchored" id="chap-parts">
-          <span>1</span>
-          <span>P = NP</span>
-                                        </h2>
+        <h3 class="anchored" id="sec-intro-algo">
+          <span>1.2</span>
+          <span>Úvod do algoritmů</span>
+                  </h3>
 
-        <div class="woowoo-theorem card mb-3" id="p-eq-np">
+        <p class="woowoo-paragraph" id="paragraph589392ed14ea614a3759f3dcd01bec796481273a4">
+Co je to vůbec algoritmus?</p>
+<div class="woowoo-definition card mb-3" id="def-algorithm">
+  <h5 class="card-header bg-success text-white">
+    <div class="d-flex justify-content-between">
+    <span class="anchored" data-anchor-id="def-algorithm">Definice 1.2        (Algoritmus)
+    </span>
+    <span class="fa fa-anchor"></span>
+    </div>
+  </h5>
+  <div class="card-body">
+    <p class="woowoo-paragraph card-text" id="paragraph63b22500ad831382c0e209ad9daa612238792d573">
+Algoritmus je přesně daný postup, jak z&nbsp;nějakého vstupu získat nějaký výsledek.</p>
+  </div>
+</div>
+<p class="woowoo-paragraph" id="paragraph78df9a2f5c2880cb6a9199f28f3a9d974fbcc2bba">
+Pokud nějaký algoritmus používáme, tak chceme věřit, že funguje jak má. Na to slouží několik vlastností, které
+od algoritmu požadujeme.</p>
+<p class="woowoo-paragraph" id="paragraph111b3146da487a7c1f936b9084236c1a4e43612de7">
+</p><ol type="1">
+ 
+<li><p class="woowoo-paragraph" id="paragraph8cb6909efa3bdb993a4e0660255b14cad17274327">
+<strong id="notion1b0acb79e17efa878d4a88677708559e9b92338db">Správnost</strong> algoritmu - že opravdu vždy vrátí to, co od něj očekáváme.</p></li>
+ 
+<li><p class="woowoo-paragraph" id="paragraph9dea8f8e08fed1bddd1dd74d38538738e62d78cbc">
+<strong id="notion2223f3ae90d24e2fa12a1387fbc159e9be1cc451f">Konečnost</strong> algoritmu - že se algoritmus nezacyklí a&nbsp;vždy skončí s&nbsp;nějakým výsledkem.</p></li>
+</ol>
+<p class="woowoo-paragraph-part"></p>
+<div class="woowoo-theorem card mb-3" id="p-eq-np">
   <h5 class="card-header bg-info text-white">
     <div class="d-flex justify-content-between">
     <span class="anchored" data-anchor-id="p-eq-np">Věta 1.1        (Obecná / General)
@@ -162,17 +196,17 @@
     </div>
   </h5>
   <div class="card-body">
-    <p class="woowoo-paragraph card-text" id="paragraph14f167372e2b4b4b2b018baee0a5ac0ba2a50e1e6">
+    <p class="woowoo-paragraph card-text" id="paragraph124f167372e2b4b4b2b018baee0a5ac0ba2a50e1e6">
 Všichni vědí, že $P = NP$</p>
   </div>
 </div>
 <div class="woowoo-proof">
 <p class="anchored" id="Proof138e776c3cef675d3710ede0a8f14d9e5445e06ba">
-<button type="button" class="btn btn-secondary" data-bs-toggle="collapse" href="#collapseProof138e776c3cef675d3710ede0a8f14d9e5445e06ba">Důkaz&nbsp;<a href="chap-parts.html#p-eq-np">1.1</a> <span class="fa fa-eye"></span></button>
+<button type="button" class="btn btn-secondary" data-bs-toggle="collapse" href="#collapseProof138e776c3cef675d3710ede0a8f14d9e5445e06ba">Důkaz&nbsp;<a href="sec-intro-algo.html#p-eq-np">1.1</a> <span class="fa fa-eye"></span></button>
 </p>
 <div class="collapse" id="collapseProof138e776c3cef675d3710ede0a8f14d9e5445e06ba">
   <div class="card card-body mb-3">
-    <p class="woowoo-paragraph card-text" id="paragraph238e776c3cef675d3710ede0a8f14d9e5445e06ba">
+    <p class="woowoo-paragraph card-text" id="paragraph1338e776c3cef675d3710ede0a8f14d9e5445e06ba">
 Triviální, ponecháno jako cvičení čtenáři.</p>
     <p class="text-end card-text">
       <span class="pull-right">$\square$</span>
@@ -180,9 +214,9 @@ Triviální, ponecháno jako cvičení čtenáři.</p>
   </div>
 </div>
 </div>
-<p class="woowoo-paragraph" id="paragraph315c90ad74e8508100408041c58efc8bb2fb35c51">
+<p class="woowoo-paragraph" id="paragraph1415c90ad74e8508100408041c58efc8bb2fb35c51">
 <em>WooWoo FIT šablona</em>, jak verze&nbsp;<a href="sandbox.pdf"><span class="fa fa-external-link-alt"></span> PDF</a>, případně&nbsp;<a href="sandbox_small.pdf"><span class="fa fa-external-link-alt"></span> PDF vhodné pro menší monitory</a> tak i&nbsp;<a href="https://woowoo.pages.fit/sandbox"><span class="fa fa-external-link-alt"></span> HTML</a>, umožňuje používat tři úrovně kapitol: Chapter, Section a&nbsp;Subsection.</p>
-<p class="woowoo-paragraph" id="paragraph442e8791b5b643c3b544be39fba939dcb8e87dfb2">
+<p class="woowoo-paragraph" id="paragraph1542e8791b5b643c3b544be39fba939dcb8e87dfb2">
 Začátek kapitoly (<em>Chapter</em>, u&nbsp;další typů pouze změníme na <em>Section</em> případně <em>Subsection</em>) je uvozena následujícím kódem</p>
 <div class="highlight"><pre><span></span>.Chapter NÁZEV KAPITOLY
   label: label-kapitoly
@@ -200,20 +234,14 @@ Před a&nbsp;po deklaraci kapitoly by měly následovat alespoň dva prázdné �
 </pre></div>
 <p class="woowoo-paragraph-part">
 Před a&nbsp;za touto inkantací musí být alespoň jeden prázdný řádek.</p>
-<p class="woowoo-paragraph" id="paragraph5f29c97493ccc30b290c50a1ffd6b9ae6ef3faf4c">
+<p class="woowoo-paragraph" id="paragraph16f29c97493ccc30b290c50a1ffd6b9ae6ef3faf4c">
 Odstavce jsou odděleny dvěma prázdnými řádky.
 Jednořádkové mezery se používá k&nbsp;oddělení různých částí odstavce (text, rovnice, kód,&hellip;).</p>
 
-                  <h3>
-            <a href="sec-first.html">
-              <span>1.1</span>
-              <span>První sekce</span>
-            </a>
-          </h3>
         
         <div class="section-navigation d-flex justify-content-between">
-                        <span></span>
-                        <span></span>
+                                <small><a href="fiks.html" data-bs-toggle="tooltip" title="FIKS"><span class="fa fa-arrow-left"></span> předchozí</a></small>
+                                <small><a href="sec-first.html" data-bs-toggle="tooltip" title="První sekce">následující <span class="fa fa-arrow-right"></span></a></small>
                 </div>
       </div>
     </div>
@@ -235,7 +263,7 @@ Jednořádkové mezery se používá k&nbsp;oddělení různých částí odstav
         <a href="mailto:autor@cloud.com"><span class="fa fa-envelope-o"> FIKS</span></a>      </small>
   <ul>
     <li><small title="FIT HTML Template v0.2.3">WooWoo ver. 0.3.7</small></li>
-    <li><small title="okamžik vygenerování">2023-10-07 09:24:02 +0000</small></li>
+    <li><small title="okamžik vygenerování">2023-10-08 19:27:44 +0000</small></li>
                 <li><small><a href="https://gitlab.fit.cvut.cz/havlialb/fiksarka">zdrojový kód a hlášení chyb</a></small></li>
       </ul>
 </div>

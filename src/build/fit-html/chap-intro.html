@@ -5,7 +5,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>  Fiksařka | 1 P = NP    </title>
+  <title>  Fiksařka | 1 Úvod    </title>
   <!-- favicon -->
   <link rel="icon" type="image/ico" href="favicon.ico" />
 
@@ -127,7 +127,7 @@
     <a class="navbar-brand" href="index.html">Fiksařka</a>
     <ul class="navbar-nav">
       <ul class="nav-item">
-        <a class="nav-link" href="chap-parts.html">P = NP</a>
+        <a class="nav-link" href="chap-intro.html">Úvod</a>
       </ul>
     </ul>
     <a href="#" id="theme-switch-link" title="přepínání vzhledu"><span id="theme-switch-icon" class="fa fa-moon"></span></a>
@@ -138,75 +138,50 @@
     <div class="row">
       <div class="col-xs-12 col-md-3">
         <div class="list-group mb-3">
-      <a class="list-group-item list-group-item-action active" href="chap-parts.html">
-    1 P = NP    </a>
+      <a class="list-group-item list-group-item-action active" href="chap-intro.html">
+    1 Úvod    </a>
 
-                <a class="list-group-item list-group-item-secondary list-group-item-action" href="sec-first.html">
-      <small>1.1 První sekce</small>
+                <a class="list-group-item list-group-item-secondary list-group-item-action" href="fiks.html">
+      <small>1.1 FIKS</small>
+      </a>
+            <a class="list-group-item list-group-item-secondary list-group-item-action" href="sec-intro-algo.html">
+      <small>1.2 Úvod do algoritmů</small>
+      </a>
+            <a class="list-group-item list-group-item-secondary list-group-item-action" href="sec-first.html">
+      <small>1.3 První sekce</small>
       </a>
               <a class="list-group-item list-group-item-action list-group-item-dark" href="index_page.html">Index</a>
     <a class="list-group-item list-group-item-action list-group-item-dark" href="references.html">Literatura</a>
   </div>      </div>
       <div class="col-xs-12 col-md-9">
-        <h2 class="anchored" id="chap-parts">
+        <h2 class="anchored" id="chap-intro">
           <span>1</span>
-          <span>P = NP</span>
+          <span>Úvod</span>
                                         </h2>
 
-        <div class="woowoo-theorem card mb-3" id="p-eq-np">
-  <h5 class="card-header bg-info text-white">
-    <div class="d-flex justify-content-between">
-    <span class="anchored" data-anchor-id="p-eq-np">Věta 1.1        (Obecná / General)
-    </span>
-    <span class="fa fa-rocket"></span>
-    </div>
-  </h5>
-  <div class="card-body">
-    <p class="woowoo-paragraph card-text" id="paragraph14f167372e2b4b4b2b018baee0a5ac0ba2a50e1e6">
-Všichni vědí, že $P = NP$</p>
-  </div>
-</div>
-<div class="woowoo-proof">
-<p class="anchored" id="Proof138e776c3cef675d3710ede0a8f14d9e5445e06ba">
-<button type="button" class="btn btn-secondary" data-bs-toggle="collapse" href="#collapseProof138e776c3cef675d3710ede0a8f14d9e5445e06ba">Důkaz&nbsp;<a href="chap-parts.html#p-eq-np">1.1</a> <span class="fa fa-eye"></span></button>
-</p>
-<div class="collapse" id="collapseProof138e776c3cef675d3710ede0a8f14d9e5445e06ba">
-  <div class="card card-body mb-3">
-    <p class="woowoo-paragraph card-text" id="paragraph238e776c3cef675d3710ede0a8f14d9e5445e06ba">
-Triviální, ponecháno jako cvičení čtenáři.</p>
-    <p class="text-end card-text">
-      <span class="pull-right">$\square$</span>
-    </p>
-  </div>
-</div>
-</div>
-<p class="woowoo-paragraph" id="paragraph315c90ad74e8508100408041c58efc8bb2fb35c51">
-<em>WooWoo FIT šablona</em>, jak verze&nbsp;<a href="sandbox.pdf"><span class="fa fa-external-link-alt"></span> PDF</a>, případně&nbsp;<a href="sandbox_small.pdf"><span class="fa fa-external-link-alt"></span> PDF vhodné pro menší monitory</a> tak i&nbsp;<a href="https://woowoo.pages.fit/sandbox"><span class="fa fa-external-link-alt"></span> HTML</a>, umožňuje používat tři úrovně kapitol: Chapter, Section a&nbsp;Subsection.</p>
-<p class="woowoo-paragraph" id="paragraph442e8791b5b643c3b544be39fba939dcb8e87dfb2">
-Začátek kapitoly (<em>Chapter</em>, u&nbsp;další typů pouze změníme na <em>Section</em> případně <em>Subsection</em>) je uvozena následujícím kódem</p>
-<div class="highlight"><pre><span></span>.Chapter NÁZEV KAPITOLY
-  label: label-kapitoly
-  index: index!kapitoly
-  short_title: KRÁTKÝ NÁZEV KAPITOLY
-  plain_title: TEXTOVÁ REPREZENTACE NÁZVU
-</pre></div>
-<p class="woowoo-paragraph-part">
-V&nbsp;meta-bloku (část odražená o&nbsp;dvě mezery) je povinný klíč pouze <code>label</code>, odvozuje se z&nbsp;něj totiž název HTML souboru obsahujícího danou část dokumentu.
-Krátký název předaný pod klíčem <code>short_title</code> je dobré nastavit pokud je název kapitoly příliš dlouhý a&nbsp;jeho zobrazení v&nbsp;zápatí PDF nebo v&nbsp;liště v&nbsp;HTML by bylo nehezké.
-Podobně pod <code>plain_title</code> můžeme předat reprezentaci názvu, která se použije například v&nbsp;titulku okna prohlížeče.
-Klíč <code>index</code> přidává nadpis do indexu, používáme jednoduchou LaTeX syntaxi.
-Před a&nbsp;po deklaraci kapitoly by měly následovat alespoň dva prázdné řádky.WooWoo dokument lze rozdělit na více souborů a&nbsp;ty potom vkládat pomocí kódu</p>
-<div class="highlight"><pre><span></span>.include SOUBOR.woo
-</pre></div>
-<p class="woowoo-paragraph-part">
-Před a&nbsp;za touto inkantací musí být alespoň jeden prázdný řádek.</p>
-<p class="woowoo-paragraph" id="paragraph5f29c97493ccc30b290c50a1ffd6b9ae6ef3faf4c">
-Odstavce jsou odděleny dvěma prázdnými řádky.
-Jednořádkové mezery se používá k&nbsp;oddělení různých částí odstavce (text, rovnice, kód,&hellip;).</p>
+        <p class="woowoo-paragraph" id="paragraph180e316660d474c296c5b326dfe023084fe3881d3">
+Vítej ve FIKSím průvodci světem teoretické informatiky. V&nbsp;tomto průvodci se
+budeme hodně odkazovat na&nbsp;<a href="http://pruvodce.ucw.cz/"><span class="fa fa-external-link-alt"></span> Průvodce labyrintem algoritmů</a> jako zdroj
+dalších informací o&nbsp;problémech, kterými se budeme zabývat.</p>
+<p class="woowoo-paragraph" id="paragraph247a00dcb04292456b16a963c4894f2f49a5b11a7">
+Tento průvodce je určen jak pro řešitele FIKSu, tak pro kohokoliv, kdo chce zjistit
+něco o&nbsp;teoretické informatice.</p>
 
                   <h3>
-            <a href="sec-first.html">
+            <a href="fiks.html">
               <span>1.1</span>
+              <span>FIKS</span>
+            </a>
+          </h3>
+                  <h3>
+            <a href="sec-intro-algo.html">
+              <span>1.2</span>
+              <span>Úvod do algoritmů</span>
+            </a>
+          </h3>
+                  <h3>
+            <a href="sec-first.html">
+              <span>1.3</span>
               <span>První sekce</span>
             </a>
           </h3>
@@ -235,7 +210,7 @@ Jednořádkové mezery se používá k&nbsp;oddělení různých částí odstav
         <a href="mailto:autor@cloud.com"><span class="fa fa-envelope-o"> FIKS</span></a>      </small>
   <ul>
     <li><small title="FIT HTML Template v0.2.3">WooWoo ver. 0.3.7</small></li>
-    <li><small title="okamžik vygenerování">2023-10-07 09:24:02 +0000</small></li>
+    <li><small title="okamžik vygenerování">2023-10-08 19:27:44 +0000</small></li>
                 <li><small><a href="https://gitlab.fit.cvut.cz/havlialb/fiksarka">zdrojový kód a hlášení chyb</a></small></li>
       </ul>
 </div>

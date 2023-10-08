@@ -2,9 +2,75 @@
 % Základní tvorba osbahu
 %
 
-.Chapter P = NP
-  label: chap-parts
-  index: P = NP
+
+.Chapter Úvod
+  label: chap-intro
+  index: uvod
+
+
+Vítej ve FIKSím průvodci světem teoretické informatiky. V tomto průvodci se
+budeme hodně odkazovat na "Průvodce labyrintem algoritmů"@1 jako zdroj
+dalších informací o problémech, kterými se budeme zabývat.
+  1:
+    link: http://pruvodce.ucw.cz/
+
+
+Tento průvodce je určen jak pro řešitele FIKSu, tak pro kohokoliv, kdo chce zjistit
+něco o teoretické informatice.
+
+
+.Section FIKS
+  label: fiks
+
+
+Ale nejdřív nějaká selfpromotion. Co je to vlastně ten FIKS?
+
+
+.Definition:
+  label: def-fiks
+  index: FIKS
+  title: FIKS
+
+  FIKS neboli Fitácký Informatický Korespondenční Seminář je jak už název napovídá korespondeční
+  seminář, organizovaný hlavně studenty z "FIT ČVUT"@1. Určený je hlavně pro středoškoláky, které si
+  klade za cíl naučit nebo aspon seznámit s algoritmickými problémy a základy teoretické informatiky.
+    1:
+      link: https://fit.cvut.cz
+
+
+.Section Úvod do algoritmů
+  label: sec-intro-algo
+
+
+Co je to vůbec algoritmus?
+
+
+.Definition:
+  title: Algoritmus
+  label: def-algorithm
+  index: algoritmus
+
+  Algoritmus je přesně daný postup, jak z nějakého vstupu získat nějaký výsledek.
+
+
+Pokud nějaký algoritmus používáme, tak chceme věřit, že funguje jak má. Na to slouží několik vlastností, které
+od algoritmu požadujeme.
+
+
+.enumerate:
+
+  .item:
+
+    "Správnost".notion.1 algoritmu - že opravdu vždy vrátí to, co od něj očekáváme.
+      1:
+        index: algoritmus!správnost
+
+  .item:
+
+    "Konečnost".notion.1 algoritmu - že se algoritmus nezacyklí a vždy skončí s nějakým výsledkem.
+      1:
+        index: algoritmus!konečnost
+
 
 .Theorem:
   label: p-eq-np
@@ -14,7 +80,8 @@
 
   Všichni vědí, že $P = NP$
 
-.Proof
+
+.Proof:
   title: 'Důkaz .reference:p-eq-np'
 
   Triviální, ponecháno jako cvičení čtenáři.
