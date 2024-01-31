@@ -1,0 +1,37 @@
+%
+% Geometrie
+%
+
+.Chapter Geometrie
+  title: Geometrie
+  label: chap-geometrie
+  index: geometrie
+
+V této kapitole se budeme zabývat geometrií a algoritmy v geometrii.
+
+Geometrie je typicky počítání v něčem, co označujeme jako "vektorový prostor"@1. Což je matematicky definovaný objekt
+a dá se pomocí něj dobře reprezentovat náš běžný svět. Protože se většinou nesetkáme s úlohami vyžadující víc jak 3 dimenze,
+tak nám nebude vadit omezení se na prostory $\R^2$ a $\R^3$.
+  1:
+    link: https://cs.wikipedia.org/wiki/Vektorov%C3%BD_prostor
+
+
+
+.Definition:
+  label: def-bod
+  index: bod
+
+  Body budeme zapisovat jako dvojice, případně trojice $(x, y, z)$. A budeme je ztotožnovat s vektory, které si můžeme představit
+  jako šipky z bodu $(0, 0, 0)$ do bodu $(x, y, z)$. Bod $(0, 0, 0)$ budeme někdy označovat jako $\theta$. A body budou značené
+  tučně $\vx = (x, y, z)$.
+
+
+Objekty, které se často budou vyskytovat jsou "přímka".emphasize, "úsečka".emphasize a "rovina".emphasize.
+
+
+.Definition:
+  label: def-primka
+  index: přímka
+  title: Přímka
+
+  Přímka bla bla bla bla, jdu spát

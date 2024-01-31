@@ -12,6 +12,9 @@
 .include chapter1.woo
 
 
+.include geometrie.woo
+
+
 % .include chapter2.woo
 
 

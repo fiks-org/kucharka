@@ -9,7 +9,7 @@
 
 
 Vítej ve FIKSím průvodci světem teoretické informatiky. V tomto průvodci se
-budeme hodně odkazovat na "Průvodce labyrintem algoritmů"@1 jako zdroj
+budeme hodně odkazovat na "Průvodce labyrintem algoritmů"@1 .cite:pruvodce jako zdroj
 dalších informací o problémech, kterými se budeme zabývat.
   1:
     link: http://pruvodce.ucw.cz/
@@ -145,7 +145,17 @@ Když už se nakously množiny, tak si zavedeme nějaké pojmy o množinách.
   title: Množina
 
   Množina je matematický objekt neuspořádaných prvků. Můžete si ho představit třeba jako pytel s věcmi.
-  Každá množina obsahuje prvky nějakého univerza $\mathcal{U}$
+  Každá množina obsahuje prvky nějakého univerza $\UU$
 
   
-  Množinu
+  Množina může být zadána jako
+
+  .itemize:
+
+    .item:
+
+      výčet prvků, např. $\{1, 2, 3, 4, 5\}$
+
+    .item:
+
+      prvky univerza \mathcal{U} splnující nějakou vlastnost $v$, např. $\{x \in \UU | v(x)\}$
