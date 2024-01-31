@@ -19,8 +19,8 @@ document:
   title: Fiksařka
   authors:
     - name: FIKS
-      email: autor@cloud.com
-      institution: Ústaf a FIKS
+      email: fiks@fit.cvut.com
+      institution: FIKS
   meta:
     # semester: Zimní semestr 2020/2021
     keywords: 'fiks, tutorial'
