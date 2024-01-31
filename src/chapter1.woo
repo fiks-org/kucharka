@@ -71,74 +71,81 @@ od algoritmu požadujeme.
       1:
         index: algoritmus!konečnost
 
+  .item:
 
-.Theorem:
-  label: p-eq-np
-  index: věta!o konci světa
-  title: Obecná
-  english: General
+    "Časová složitost".notion.1 algoritmu - kolik kroků algoritmus vykoná na základě velikosti vstupu.
+      1:
+        index: algoritmus!časová složitost
 
-  Všichni vědí, že $P = NP$
+  .item:
 
-
-.Proof:
-  title: 'Důkaz .reference:p-eq-np'
-
-  Triviální, ponecháno jako cvičení čtenáři.
+    "Pamětová složitost".notion.1 algoritmu - jak velkou část paměti využije.
+      1:
+        index: algoritmus!pamětová složitost
 
 
-"WooWoo FIT šablona".emphasize, jak verze "PDF"@1, případně "PDF vhodné pro menší monitory"@3 tak i "HTML"@2, umožňuje používat tři úrovně kapitol: Chapter, Section a Subsection.
-  1:
-    link: sandbox.pdf
-  2:
-    link: https://woowoo.pages.fit/sandbox
-  3:
-    link: sandbox_small.pdf
+V této publikaci budeme hojně využívat zavedených matematických pojmů, které si zadefinujeme postupně v průběhu.
+Ale na začátek si zadefinujeme aspon nějaké základní pojmy.
 
 
-Začátek kapitoly (.emphasize:Chapter, u další typů pouze změníme na .emphasize:Section případně .emphasize:Subsection) je uvozena následujícím kódem
-
-!codeblock:
-  language: text
-
-  .Chapter NÁZEV KAPITOLY
-    label: label-kapitoly
-    index: index!kapitoly
-    short_title: KRÁTKÝ NÁZEV KAPITOLY
-    plain_title: TEXTOVÁ REPREZENTACE NÁZVU
-
-V meta-bloku (část odražená o dvě mezery) je povinný klíč pouze .code:label, odvozuje se z něj totiž název HTML souboru obsahujícího danou část dokumentu.
-Krátký název předaný pod klíčem "short_title".code je dobré nastavit pokud je název kapitoly příliš dlouhý a jeho zobrazení v zápatí PDF nebo v liště v HTML by bylo nehezké.
-Podobně pod "plain_title".code můžeme předat reprezentaci názvu, která se použije například v titulku okna prohlížeče.
-Klíč .code:index přidává nadpis do indexu, používáme jednoduchou LaTeX syntaxi.
-Před a po deklaraci kapitoly by měly následovat alespoň dva prázdné řádky.
-
-WooWoo dokument lze rozdělit na více souborů a ty potom vkládat pomocí kódu
-
-!codeblock:
-  language: text
-
-  .include SOUBOR.woo
-
-Před a za touto inkantací musí být alespoň jeden prázdný řádek.
+Pamětová a časová složitost se běžně udávají jako $\lanO$, $\Omega$ nebo $\Theta$. Co to ale znamená?
 
 
-Odstavce jsou odděleny dvěma prázdnými řádky.
-Jednořádkové mezery se používá k oddělení různých částí odstavce (text, rovnice, kód,...).
+.Definition:
+  label: def-asymptoticka-horni-mez
+  index: mez!asymptotická horní
+  title: Asymptotická horní mez
+
+  Mějme dvě funkce $f$ a $g$. $f$ je asymptoticky shora omezená $g$ právě tehdy, když existují nějaké konstanty $c > 0$ a $x_0$ takové,
+  že pro všechna $x > x_0$ platí nerovnost $|f(x)| \le |c*g(x)|$.
 
 
-.Section První sekce
-  label: sec-first
+  Značíme $f(x) = \lanO(g(x))$.
 
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+.Definition:
+  label: def-asymptoticka-dolni-mez
+  index: mez!asymptotická dolní
+  title: Asymptotická dolní mez
+
+  Mějme dvě funkce $f$ a $g$. $f$ je asymptoticky zdola omezená $g$ právě tehdy, když existují nějaké konstanty $c > 0$ a $x_0$ takové,
+  že pro všechna $x > x_0$ platí nerovnost $|f(x)| \ge |c*g(x)|$.
 
 
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+  Značíme $f(x) = \Omega(g(x))$.
 
 
-.Subsection První podsekce
-  label: subsec-first
+Pomocí těch, pak můžeme definovat asymptotickou těsnou mez.
 
 
-Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+.Definition:
+  label: def-asymptoticka-tesna-mez
+  index: mez!asymptotická těsná
+  title: Asymptotická těsná mez
+
+  Mějme dvě funkce $f$ a $g$. $f$ je asymptoticky ekvivalentní $g$ právě tehdy, když
+  $f(x) = \lanO(g(x)) \land f(x) = \Omega(g(x))$.
+
+
+  Značíme $f(x) = \Theta(g(x))$.
+
+
+.Remark:
+  label: rem-asymptotika-mnoziny
+
+  Běžně se lze setkat i s notací $f(x) \in \lanO(g(x))$.
+  Pak se $\lanO(g(x))$ považuje za množinu všech funkcí, které jsou asymptoticky shora omezené $g$.
+
+
+Když už se nakously množiny, tak si zavedeme nějaké pojmy o množinách.
+
+
+.Definition:
+  label: def-mnozina
+  title: Množina
+
+  Množina je matematický objekt neuspořádaných prvků. Můžete si ho představit třeba jako pytel s věcmi.
+  Každá množina obsahuje prvky nějakého univerza $\mathcal{U}$
+
+  
+  Množinu

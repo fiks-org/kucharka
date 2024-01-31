@@ -147,9 +147,6 @@
             <a class="list-group-item list-group-item-secondary list-group-item-action active" href="sec-intro-algo.html">
       <small>1.2 Úvod do algoritmů</small>
       </a>
-            <a class="list-group-item list-group-item-secondary list-group-item-action" href="sec-first.html">
-      <small>1.3 První sekce</small>
-      </a>
               <a class="list-group-item list-group-item-action list-group-item-dark" href="index_page.html">Index</a>
     <a class="list-group-item list-group-item-action list-group-item-dark" href="references.html">Literatura</a>
   </div>      </div>
@@ -177,7 +174,7 @@ Algoritmus je přesně daný postup, jak z&nbsp;nějakého vstupu získat nějak
 <p class="woowoo-paragraph" id="paragraph78df9a2f5c2880cb6a9199f28f3a9d974fbcc2bba">
 Pokud nějaký algoritmus používáme, tak chceme věřit, že funguje jak má. Na to slouží několik vlastností, které
 od algoritmu požadujeme.</p>
-<p class="woowoo-paragraph" id="paragraph111b3146da487a7c1f936b9084236c1a4e43612de7">
+<p class="woowoo-paragraph" id="paragraph136d8c2408ba59fb2948d0741e2d6cf92a54a7c891">
 </p><ol type="1">
  
 <li><p class="woowoo-paragraph" id="paragraph8cb6909efa3bdb993a4e0660255b14cad17274327">
@@ -185,63 +182,104 @@ od algoritmu požadujeme.</p>
  
 <li><p class="woowoo-paragraph" id="paragraph9dea8f8e08fed1bddd1dd74d38538738e62d78cbc">
 <strong id="notion2223f3ae90d24e2fa12a1387fbc159e9be1cc451f">Konečnost</strong> algoritmu - že se algoritmus nezacyklí a&nbsp;vždy skončí s&nbsp;nějakým výsledkem.</p></li>
+ 
+<li><p class="woowoo-paragraph" id="paragraph10262cb18beffd725c20b7d93074bcc23c811a33ce">
+<strong id="notion34826ae8bf9d17ae6e176b2f2e7c406123478590e">Časová složitost</strong> algoritmu - kolik kroků algoritmus vykoná na základě velikosti vstupu.</p></li>
+ 
+<li><p class="woowoo-paragraph" id="paragraph1135a8a37aa54384a56f489b81c77bd8ea95a514e8">
+<strong id="notion42dc0cfabb13293d19c8768eb470a0bd3109f2043">Pamětová složitost</strong> algoritmu - jak velkou část paměti využije.</p></li>
 </ol>
 <p class="woowoo-paragraph-part"></p>
-<div class="woowoo-theorem card mb-3" id="p-eq-np">
-  <h5 class="card-header bg-info text-white">
+<p class="woowoo-paragraph" id="paragraph143c661f18e716bf7e537b29e9f4197dea7b295cc9">
+V&nbsp;této publikaci budeme hojně využívat zavedených matematických pojmů, které si zadefinujeme postupně v&nbsp;průběhu.
+Ale na začátek si zadefinujeme aspon nějaké základní pojmy.</p>
+<p class="woowoo-paragraph" id="paragraph154e038088e6925b74669369b62555923e0767cc02">
+Pamětová a&nbsp;časová složitost se běžně udávají jako $\lanO$, $\Omega$ nebo $\Theta$. Co to ale znamená?</p>
+<div class="woowoo-definition card mb-3" id="def-asymptoticka-horni-mez">
+  <h5 class="card-header bg-success text-white">
     <div class="d-flex justify-content-between">
-    <span class="anchored" data-anchor-id="p-eq-np">Věta 1.1        (Obecná / General)
+    <span class="anchored" data-anchor-id="def-asymptoticka-horni-mez">Definice 1.3        (Asymptotická horní mez)
     </span>
-    <span class="fa fa-rocket"></span>
+    <span class="fa fa-anchor"></span>
     </div>
   </h5>
   <div class="card-body">
-    <p class="woowoo-paragraph card-text" id="paragraph124f167372e2b4b4b2b018baee0a5ac0ba2a50e1e6">
-Všichni vědí, že $P = NP$</p>
+    <p class="woowoo-paragraph card-text" id="paragraph16e4b37a86d8bfd89b6d95c97363f091606ef3f69e">
+Mějme dvě funkce $f$ a&nbsp;$g$. $f$ je asymptoticky shora omezená $g$ právě tehdy, když existují nějaké konstanty $c > 0$ a&nbsp;$x_0$ takové,
+  že pro všechna $x > x_0$ platí nerovnost $|f(x)| \le |c*g(x)|$.</p>
+<p class="woowoo-paragraph card-text" id="paragraph178f8604538fa17f7f561f201c37944a5966366608">
+Značíme $f(x) = \lanO(g(x))$.</p>
   </div>
 </div>
-<div class="woowoo-proof">
-<p class="anchored" id="Proof138e776c3cef675d3710ede0a8f14d9e5445e06ba">
-<button type="button" class="btn btn-secondary" data-bs-toggle="collapse" href="#collapseProof138e776c3cef675d3710ede0a8f14d9e5445e06ba">Důkaz&nbsp;<a href="sec-intro-algo.html#p-eq-np">1.1</a> <span class="fa fa-eye"></span></button>
-</p>
-<div class="collapse" id="collapseProof138e776c3cef675d3710ede0a8f14d9e5445e06ba">
-  <div class="card card-body mb-3">
-    <p class="woowoo-paragraph card-text" id="paragraph1338e776c3cef675d3710ede0a8f14d9e5445e06ba">
-Triviální, ponecháno jako cvičení čtenáři.</p>
-    <p class="text-end card-text">
-      <span class="pull-right">$\square$</span>
-    </p>
+<div class="woowoo-definition card mb-3" id="def-asymptoticka-dolni-mez">
+  <h5 class="card-header bg-success text-white">
+    <div class="d-flex justify-content-between">
+    <span class="anchored" data-anchor-id="def-asymptoticka-dolni-mez">Definice 1.4        (Asymptotická dolní mez)
+    </span>
+    <span class="fa fa-anchor"></span>
+    </div>
+  </h5>
+  <div class="card-body">
+    <p class="woowoo-paragraph card-text" id="paragraph185adf4cd7d7e14df4ae2d4daea9bdd94af4db249b">
+Mějme dvě funkce $f$ a&nbsp;$g$. $f$ je asymptoticky zdola omezená $g$ právě tehdy, když existují nějaké konstanty $c > 0$ a&nbsp;$x_0$ takové,
+  že pro všechna $x > x_0$ platí nerovnost $|f(x)| \ge |c*g(x)|$.</p>
+<p class="woowoo-paragraph card-text" id="paragraph1914b54a3ecd5ab8a78e9dc9e9abf943c9d3fb7502">
+Značíme $f(x) = \Omega(g(x))$.</p>
   </div>
 </div>
+<p class="woowoo-paragraph" id="paragraph20958aa04ce4f4351e405dadbc9903a8b562a7ec07">
+Pomocí těch, pak můžeme definovat asymptotickou těsnou mez.</p>
+<div class="woowoo-definition card mb-3" id="def-asymptoticka-tesna-mez">
+  <h5 class="card-header bg-success text-white">
+    <div class="d-flex justify-content-between">
+    <span class="anchored" data-anchor-id="def-asymptoticka-tesna-mez">Definice 1.5        (Asymptotická těsná mez)
+    </span>
+    <span class="fa fa-anchor"></span>
+    </div>
+  </h5>
+  <div class="card-body">
+    <p class="woowoo-paragraph card-text" id="paragraph21cccc8557e3e330ab7e98f01f5b28bcdc199af112">
+Mějme dvě funkce $f$ a&nbsp;$g$. $f$ je asymptoticky ekvivalentní $g$ právě tehdy, když $f(x) = \lanO(g(x)) \land f(x) = \Omega(g(x))$.</p>
+<p class="woowoo-paragraph card-text" id="paragraph2253e945898cfe18979bd0b06f259e32ffb17796a9">
+Značíme $f(x) = \Theta(g(x))$.</p>
+  </div>
 </div>
-<p class="woowoo-paragraph" id="paragraph1415c90ad74e8508100408041c58efc8bb2fb35c51">
-<em>WooWoo FIT šablona</em>, jak verze&nbsp;<a href="sandbox.pdf"><span class="fa fa-external-link-alt"></span> PDF</a>, případně&nbsp;<a href="sandbox_small.pdf"><span class="fa fa-external-link-alt"></span> PDF vhodné pro menší monitory</a> tak i&nbsp;<a href="https://woowoo.pages.fit/sandbox"><span class="fa fa-external-link-alt"></span> HTML</a>, umožňuje používat tři úrovně kapitol: Chapter, Section a&nbsp;Subsection.</p>
-<p class="woowoo-paragraph" id="paragraph1542e8791b5b643c3b544be39fba939dcb8e87dfb2">
-Začátek kapitoly (<em>Chapter</em>, u&nbsp;další typů pouze změníme na <em>Section</em> případně <em>Subsection</em>) je uvozena následujícím kódem</p>
-<div class="highlight"><pre><span></span>.Chapter NÁZEV KAPITOLY
-  label: label-kapitoly
-  index: index!kapitoly
-  short_title: KRÁTKÝ NÁZEV KAPITOLY
-  plain_title: TEXTOVÁ REPREZENTACE NÁZVU
-</pre></div>
-<p class="woowoo-paragraph-part">
-V&nbsp;meta-bloku (část odražená o&nbsp;dvě mezery) je povinný klíč pouze <code>label</code>, odvozuje se z&nbsp;něj totiž název HTML souboru obsahujícího danou část dokumentu.
-Krátký název předaný pod klíčem <code>short_title</code> je dobré nastavit pokud je název kapitoly příliš dlouhý a&nbsp;jeho zobrazení v&nbsp;zápatí PDF nebo v&nbsp;liště v&nbsp;HTML by bylo nehezké.
-Podobně pod <code>plain_title</code> můžeme předat reprezentaci názvu, která se použije například v&nbsp;titulku okna prohlížeče.
-Klíč <code>index</code> přidává nadpis do indexu, používáme jednoduchou LaTeX syntaxi.
-Před a&nbsp;po deklaraci kapitoly by měly následovat alespoň dva prázdné řádky.WooWoo dokument lze rozdělit na více souborů a&nbsp;ty potom vkládat pomocí kódu</p>
-<div class="highlight"><pre><span></span>.include SOUBOR.woo
-</pre></div>
-<p class="woowoo-paragraph-part">
-Před a&nbsp;za touto inkantací musí být alespoň jeden prázdný řádek.</p>
-<p class="woowoo-paragraph" id="paragraph16f29c97493ccc30b290c50a1ffd6b9ae6ef3faf4c">
-Odstavce jsou odděleny dvěma prázdnými řádky.
-Jednořádkové mezery se používá k&nbsp;oddělení různých částí odstavce (text, rovnice, kód,&hellip;).</p>
+<div class="woowoo-remark card mb-3" id="rem-asymptotika-mnoziny">
+  <h5 class="card-header bg-warning text-white">
+    <div class="d-flex justify-content-between">
+    <span class="anchored" data-anchor-id="rem-asymptotika-mnoziny">Poznámka 1.1    </span>
+    <span class="fa fa-star"></span>
+    </div>
+  </h5>
+  <div class="card-body">
+    <p class="woowoo-paragraph card-text" id="paragraph23679e31d35c774ee8a0354fe7cf315eaedd8e847b">
+Běžně se lze setkat i&nbsp;s notací $f(x) \in \lanO(g(x))$.
+  Pak se $\lanO(g(x))$ považuje za množinu všech funkcí, které jsou asymptoticky shora omezené $g$.</p>
+  </div>
+</div>
+<p class="woowoo-paragraph" id="paragraph247c94e10c884bc575806704dc5413a7c791f9130a">
+Když už se nakously množiny, tak si zavedeme nějaké pojmy o&nbsp;množinách.</p>
+<div class="woowoo-definition card mb-3" id="def-mnozina">
+  <h5 class="card-header bg-success text-white">
+    <div class="d-flex justify-content-between">
+    <span class="anchored" data-anchor-id="def-mnozina">Definice 1.6        (Množina)
+    </span>
+    <span class="fa fa-anchor"></span>
+    </div>
+  </h5>
+  <div class="card-body">
+    <p class="woowoo-paragraph card-text" id="paragraph25d2ef0d964374242ee19a5493383a8d9d3c5b712a">
+Množina je matematický objekt neuspořádaných prvků. Můžete si ho představit třeba jako pytel s&nbsp;věcmi.
+  Každá množina obsahuje prvky nějakého univerza $\mathcal{U}$</p>
+<p class="woowoo-paragraph card-text" id="paragraph26255e0b3276474c7c5be9fb086fc03b8cf72b6a29">
+Množinu</p>
+  </div>
+</div>
 
         
         <div class="section-navigation d-flex justify-content-between">
                                 <small><a href="fiks.html" data-bs-toggle="tooltip" title="FIKS"><span class="fa fa-arrow-left"></span> předchozí</a></small>
-                                <small><a href="sec-first.html" data-bs-toggle="tooltip" title="První sekce">následující <span class="fa fa-arrow-right"></span></a></small>
+                        <span></span>
                 </div>
       </div>
     </div>
@@ -263,7 +301,7 @@ Jednořádkové mezery se používá k&nbsp;oddělení různých částí odstav
         <a href="mailto:autor@cloud.com"><span class="fa fa-envelope-o"> FIKS</span></a>      </small>
   <ul>
     <li><small title="FIT HTML Template v0.2.3">WooWoo ver. 0.3.7</small></li>
-    <li><small title="okamžik vygenerování">2023-10-08 19:27:44 +0000</small></li>
+    <li><small title="okamžik vygenerování">2024-01-31 19:19:01 +0000</small></li>
                 <li><small><a href="https://gitlab.fit.cvut.cz/havlialb/fiksarka">zdrojový kód a hlášení chyb</a></small></li>
       </ul>
 </div>
