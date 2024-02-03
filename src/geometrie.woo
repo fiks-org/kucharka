@@ -7,14 +7,15 @@
   label: chap-geometrie
   index: geometrie
 
+
 V této kapitole se budeme zabývat geometrií a algoritmy v geometrii.
+
 
 Geometrie je typicky počítání v něčem, co označujeme jako "vektorový prostor"@1. Což je matematicky definovaný objekt
 a dá se pomocí něj dobře reprezentovat náš běžný svět. Protože se většinou nesetkáme s úlohami vyžadující víc jak 3 dimenze,
 tak nám nebude vadit omezení se na prostory $\R^2$ a $\R^3$.
   1:
     link: https://cs.wikipedia.org/wiki/Vektorov%C3%BD_prostor
-
 
 
 .Definition:
@@ -34,4 +35,59 @@ Objekty, které se často budou vyskytovat jsou "přímka".emphasize, "úsečka"
   index: přímka
   title: Přímka
 
-  Přímka bla bla bla bla, jdu spát
+  Přímka je množina bodů v prostoru. Tyto body můžeme popsat několika způsoby.
+
+  .enumerate:
+
+    .item:
+
+      "Parametrickou rovnicí".notion.1 přímky, kde máme nějaký parametr $t \in \R$, kterým se posouváme po přímce.
+        1:
+          index: přímka!parametrická rovnice
+
+      .equation:
+
+        P = \{(x, y, z) \mid \forall t \in \R \colon x = x_0 + \alpha t \land y = y_0 + \beta t \land z_0 + \gamma t\}
+
+      Kde $(\alpha, \beta, \gamma)$ je směrový vektor přímky. A $(x_0, y_0, z_0)$ nějaký bod, kterým přímka prochází.
+      Pokud se pohybujeme pouze ve 2D, tak třetí souřadnici $z$ nepoužíváme. Stejně, pokud bychom dělali něco ve 4D a víc, tak
+      přidáme další souřadnice.
+
+    .item:
+
+      "Obecnou rovnicí".notion.1 přímky, která se dá rozumně použít pouze ve 2D.
+        1:
+          index: přímka!obecná rovnice
+
+      .equation:
+
+        P = \{(x, y) \mid \forall x,y \in \R \colon \alpha x + \beta y + c = 0\}
+
+      Kde $(\alpha, \beta)$ je nenulový "normálový vektor přímky"#def-normal-vector a $c$ je posun.
+
+
+.Definition:
+  label: def-usecka
+  index: úsečka
+  title: Úsečka
+
+  Úsečka je stejně jako přímka množina bodů. Určuje se stejně jako přímka, ale s přidaným omezením na souřadnice, nebo parametr $t$.
+
+
+.Definition:
+  label: def-rovina
+  index: rovina
+  title: Rovina
+
+  Rovina ve 2D je celý prostor, takže tam nemá cenu s tím zabývat.
+  Ve 3D a výš už je to zajímavější. Rovina je #TODO
+
+
+.Definition:
+  label: def-normal-vector
+  index: vektor!normálový
+  title: Normálový vektor
+
+  #TODO
+
+
