@@ -153,8 +153,10 @@
           <span>Geometrie</span>
                                         </h2>
 
-        <p class="woowoo-paragraph" id="paragraph3091e1aab30fc4dcd1db37d1dbc005caea1db68249">
-V&nbsp;této kapitole se budeme zabývat geometrií a&nbsp;algoritmy v&nbsp;geometrii.Geometrie je typicky počítání v&nbsp;něčem, co označujeme jako&nbsp;<a href="https://cs.wikipedia.org/wiki/Vektorov%C3%BD_prostor"><span class="fa fa-external-link-alt"></span> vektorový prostor</a>. Což je matematicky definovaný objekt
+        <p class="woowoo-paragraph" id="paragraph30d387baf12d36e3a68d1b71cf2068dca2175e3d0f">
+V&nbsp;této kapitole se budeme zabývat geometrií a&nbsp;algoritmy v&nbsp;geometrii.</p>
+<p class="woowoo-paragraph" id="paragraph316c72c37e34f7d7120b3d8e28d159b54e12c9550e">
+Geometrie je typicky počítání v&nbsp;něčem, co označujeme jako&nbsp;<a href="https://cs.wikipedia.org/wiki/Vektorov%C3%BD_prostor"><span class="fa fa-external-link-alt"></span> vektorový prostor</a>. Což je matematicky definovaný objekt
 a&nbsp;dá se pomocí něj dobře reprezentovat náš běžný svět. Protože se většinou nesetkáme s&nbsp;úlohami vyžadující víc jak 3 dimenze,
 tak nám nebude vadit omezení se na prostory $\R^2$ a&nbsp;$\R^3$.</p>
 <div class="woowoo-definition card mb-3" id="def-bod">
@@ -165,13 +167,13 @@ tak nám nebude vadit omezení se na prostory $\R^2$ a&nbsp;$\R^3$.</p>
     </div>
   </h5>
   <div class="card-body">
-    <p class="woowoo-paragraph card-text" id="paragraph319d5d438a879f5879f1c0d49fd7ee101d7683d9a2">
+    <p class="woowoo-paragraph card-text" id="paragraph329d5d438a879f5879f1c0d49fd7ee101d7683d9a2">
 Body budeme zapisovat jako dvojice, případně trojice $(x, y, z)$. A&nbsp;budeme je ztotožnovat s&nbsp;vektory, které si můžeme představit
   jako šipky z&nbsp;bodu $(0, 0, 0)$ do bodu $(x, y, z)$. Bod $(0, 0, 0)$ budeme někdy označovat jako $\theta$. A&nbsp;body budou značené
   tučně $\vx = (x, y, z)$.</p>
   </div>
 </div>
-<p class="woowoo-paragraph" id="paragraph3270d3ac40deaa67b135b13233b850de5c7eca21b1">
+<p class="woowoo-paragraph" id="paragraph3370d3ac40deaa67b135b13233b850de5c7eca21b1">
 Objekty, které se často budou vyskytovat jsou <em>přímka</em>, <em>úsečka</em> a&nbsp;<em>rovina</em>.</p>
 <div class="woowoo-definition card mb-3" id="def-primka">
   <h5 class="card-header bg-success text-white">
@@ -182,8 +184,70 @@ Objekty, které se často budou vyskytovat jsou <em>přímka</em>, <em>úsečka<
     </div>
   </h5>
   <div class="card-body">
-    <p class="woowoo-paragraph card-text" id="paragraph33780eadcdc1802d6e16d43b3ae270f4ee19f743a8">
-Přímka bla bla bla bla, jdu spát</p>
+    <p class="woowoo-paragraph card-text" id="paragraph39c021552993fb0c9bf43214a0e09fa3c817eccf3e">
+Přímka je množina bodů v&nbsp;prostoru. Tyto body můžeme popsat několika způsoby.</p><ol type="1">
+ 
+<li><p class="woowoo-paragraph" id="paragraph3502d5cce6aefd65bf0e3848ed8eacd714f3bf7da6">
+<strong id="notion56da84d4d55f8479472d440c5e6e989272527f47a">Parametrickou rovnicí</strong> přímky, kde máme nějaký parametr $t \in \R$, kterým se posouváme po přímce.</p><div class="woowoo-equation">
+\begin{equation*}
+P = \{(x, y, z) \mid \forall t \in \R \colon x = x_0 + \alpha t \land y = y_0 + \beta t \land z_0 + \gamma t\}
+\end{equation*}
+</div>
+<p class="woowoo-paragraph-part">Kde $(\alpha, \beta, \gamma)$ je směrový vektor přímky. A&nbsp;$(x_0, y_0, z_0)$ nějaký bod, kterým přímka prochází.
+      Pokud se pohybujeme pouze ve 2D, tak třetí souřadnici $z$ nepoužíváme. Stejně, pokud bychom dělali něco ve 4D a&nbsp;víc, tak
+      přidáme další souřadnice.</p></li>
+ 
+<li><p class="woowoo-paragraph" id="paragraph37128424755550ae51d5ace13cb382b0d04d4a54b6">
+<strong id="notion6967b5fa0aff5cd9720ae8d076c61e9ccd95575cb">Obecnou rovnicí</strong> přímky, která se dá rozumně použít pouze ve 2D.</p><div class="woowoo-equation">
+\begin{equation*}
+P = \{(x, y) \mid \forall x,y \in \R \colon \alpha x + \beta y + c = 0\}
+\end{equation*}
+</div>
+<p class="woowoo-paragraph-part">Kde $(\alpha, \beta)$ je nenulový&nbsp;<a class="text-success" tabindex="0" role="button" data-bs-trigger="focus" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-html="true" data-bs-content='<p class="woowoo-paragraph card-text" id="paragraph4231a01545859f7bcff908a23487fa8586cac9c99d">
+#TODO</p>
+'>normálový vektor přímky</a> a&nbsp;$c$ je posun.</p></li>
+</ol>
+<p class="woowoo-paragraph-part"></p>
+  </div>
+</div>
+<div class="woowoo-definition card mb-3" id="def-usecka">
+  <h5 class="card-header bg-success text-white">
+    <div class="d-flex justify-content-between">
+    <span class="anchored" data-anchor-id="def-usecka">Definice 2.3        (Úsečka)
+    </span>
+    <span class="fa fa-anchor"></span>
+    </div>
+  </h5>
+  <div class="card-body">
+    <p class="woowoo-paragraph card-text" id="paragraph405fd77503039dc92a4d17a6b55fb9cdb808bae175">
+Úsečka je stejně jako přímka množina bodů. Určuje se stejně jako přímka, ale s&nbsp;přidaným omezením na souřadnice, nebo parametr $t$.</p>
+  </div>
+</div>
+<div class="woowoo-definition card mb-3" id="def-rovina">
+  <h5 class="card-header bg-success text-white">
+    <div class="d-flex justify-content-between">
+    <span class="anchored" data-anchor-id="def-rovina">Definice 2.4        (Rovina)
+    </span>
+    <span class="fa fa-anchor"></span>
+    </div>
+  </h5>
+  <div class="card-body">
+    <p class="woowoo-paragraph card-text" id="paragraph41ef62bbf646ee6b41603ddbf0d311f8de1ca23e98">
+Rovina ve 2D je celý prostor, takže tam nemá cenu s&nbsp;tím zabývat.
+  Ve 3D a&nbsp;výš už je to zajímavější. Rovina je #TODO</p>
+  </div>
+</div>
+<div class="woowoo-definition card mb-3" id="def-normal-vector">
+  <h5 class="card-header bg-success text-white">
+    <div class="d-flex justify-content-between">
+    <span class="anchored" data-anchor-id="def-normal-vector">Definice 2.5        (Normálový vektor)
+    </span>
+    <span class="fa fa-anchor"></span>
+    </div>
+  </h5>
+  <div class="card-body">
+    <p class="woowoo-paragraph card-text" id="paragraph4231a01545859f7bcff908a23487fa8586cac9c99d">
+#TODO</p>
   </div>
 </div>
 
@@ -212,7 +276,7 @@ Přímka bla bla bla bla, jdu spát</p>
         <a href="mailto:fiks@fit.cvut.com"><span class="fa fa-envelope-o"> FIKS</span></a>      </small>
   <ul>
     <li><small title="FIT HTML Template v0.2.3">WooWoo ver. 0.3.7</small></li>
-    <li><small title="okamžik vygenerování">2024-01-31 20:52:30 +0000</small></li>
+    <li><small title="okamžik vygenerování">2024-02-03 09:56:12 +0000</small></li>
                 <li><small><a href="https://gitlab.fit.cvut.cz/havlialb/fiksarka">zdrojový kód a hlášení chyb</a></small></li>
       </ul>
 </div>
