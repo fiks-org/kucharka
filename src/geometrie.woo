@@ -18,9 +18,15 @@ tak nám nebude vadit omezení se na prostory $\R^2$ a $\R^3$.
     link: https://cs.wikipedia.org/wiki/Vektorov%C3%BD_prostor
 
 
+% .Section:
+%   title: Zavedení pojmů
+%   label: sec-geom-zavedeni-pojmu
+
+
 .Definition:
   label: def-bod
   index: bod
+  index: vektor
 
   Body budeme zapisovat jako dvojice, případně trojice $(x, y, z)$. A budeme je ztotožnovat s vektory, které si můžeme představit
   jako šipky z bodu $(0, 0, 0)$ do bodu $(x, y, z)$. Bod $(0, 0, 0)$ budeme někdy označovat jako $\theta$. A body budou značené
@@ -45,9 +51,9 @@ Objekty, které se často budou vyskytovat jsou "přímka".emphasize, "úsečka"
         1:
           index: přímka!parametrická rovnice
 
-      .equation:
+      .align:
 
-        P = \{(x, y, z) \mid \forall t \in \R \colon x = x_0 + \alpha t \land y = y_0 + \beta t \land z_0 + \gamma t\}
+        P = \{(x, y, z) \mid \forall t \in \R \colon&\\ x&= x_0 + \alpha t \\ \land y&= y_0 + \beta t \\ \land z&= z_0 + \gamma t\}
 
       Kde $(\alpha, \beta, \gamma)$ je směrový vektor přímky. A $(x_0, y_0, z_0)$ nějaký bod, kterým přímka prochází.
       Pokud se pohybujeme pouze ve 2D, tak třetí souřadnici $z$ nepoužíváme. Stejně, pokud bychom dělali něco ve 4D a víc, tak
@@ -80,7 +86,27 @@ Objekty, které se často budou vyskytovat jsou "přímka".emphasize, "úsečka"
   title: Rovina
 
   Rovina ve 2D je celý prostor, takže tam nemá cenu s tím zabývat.
-  Ve 3D a výš už je to zajímavější. Rovina je #TODO
+  Ve 3D a výš už je to zajímavější. Rovina je množina bodů, která je určená dvěmi vektory.
+  Její "parametrická rovnice".notion.1 se dá napsat jako
+    1:
+      index: rovina!parametrická rovnice
+
+  .align:
+    
+    R = \{ (x, y, z) \mid \forall s,t \in \R \colon x&= x_0 + su_1 + tv_1 \\ \land y&= y_0 + su_2 + tv_2 \\\land z &= z_0 + su_3 + tv_3 \}
+
+  Kde $\vu = (u_1, u_2, u_3)$ a $\vv = (v_1, v_2, v_3)$ jsou vektory udávající rovinu, pro které platí, že $\vu$ není násobek $\vv$.
+
+  Případně opět existuje obecná rovnice ve tvaru
+
+  .equation:
+
+    R = \{(x, y, z) \mid x,y,z\in \R \alpha x + \beta y + \gamma z + c = 0 \}
+
+  Kde $(\alpha, \beta, \gamma)$ je "normálový vektor"#def-normal-vector roviny a $c$ je posunutí.
+
+
+Během různých výpočtů, nebo i definic se používá pojem "normálový vektor".emphasize, i ten se nám bude hodit.
 
 
 .Definition:
@@ -88,6 +114,84 @@ Objekty, které se často budou vyskytovat jsou "přímka".emphasize, "úsečka"
   index: vektor!normálový
   title: Normálový vektor
 
-  #TODO
+  Normálový vektor je vektor, který jednoznačně udává otočení přímky ve 2D, roviny ve 3D nebo obecně nějaké "nadroviny"@1. Je to vektor, který
+  je kolmý na všechny vektory, udávající ten objekt. Platí pro něj tedy, že "skalární součin"#def-skalarni-soucin s každým bodem je roven $0$.
+    1:
+      link: https://cs.wikipedia.org/wiki/Nadrovina
 
 
+A když máme definovaný všechny tyhle věci, tak bychom chtěli vědět nějaké různé vlastnosti, tak se nám hodí nějaké další operace.
+
+
+.Definition:
+  title: Skalární součin
+  label: def-skalarni-soucin
+  index: součin!skalární
+
+  Skalární součin je binární operace nad dvěma vektory, jejíž výsledkem je číslo (skalár). Skalární součin dvou vektorů $\vx$ a $\vy$ se většinou značí
+  $\vx \cdot \vy$ nebo $\braket{\vx}{\vy}$.
+
+  Každý skalární součin má několik klíčových vlastností
+
+  .itemize:
+
+    .item:
+      
+      $\braket{\alpha \vx}{\vy} = \alpha \braket\vx\vy$ pro $\forall \vx,\vy \in \R^n, \alpha \in \R$
+
+    .item:
+      
+      $\braket{\vx + \vy}{\vz} = \braket\vx\vz + \braket\vy\vz$ pro $\forall \vx,\vy,\vz \in \R^n$
+
+    .item:
+
+      $\braket{\vx}{\vy} = \braket\vy\vx$ pro $\forall \vx,\vy \in \R^n$
+
+    .item:
+
+      $\braket\vx\vx \gt 0 \land \braket\vx\vx = 0 \iff \vx = \theta$ pro $\forall \vx \in \R^n$
+
+
+To je ale hodně obecná definice. S tím toho moc nespočítáme, pro různé aplikace se mohou hodit různé přesné definice.
+Nejčastější skalární součin, se kterým jste se asi již setkali je ten, kterému budeme říkat "standardní".emphasize.
+
+
+.Definition:
+  title: Standardní skalární součin
+  label: def-standardni-skalarni-soucin
+  index: součin!standardní skalární
+
+  Pro $\vx,\vy \in \R^2$ vypadá takhle $\braket\vx\vy = x_1y_1 + x_2y_2$.
+  Pro $\vx,\vy \in \R^3$ vypadá takhle $\braket\vx\vy = x_1y_1 + x_2y_2 + x_3y_3$.
+
+  Obecně pro libovolné dva vektory $\vx, \vy \in \R^n$ je standardní skalární součin $\braket\vx\vy = \sum_{i=1}^n x_iy_i$.
+
+
+Máme operaci, jejíž výsledkem je skalár. Ale co když budeme chtít vektor? Na to tu máme vektorový součin.
+
+
+.Definition:
+  title: Vektorový součin
+  label: def-vektorovy-soucin
+  index: součin!vektorový
+
+  Vektorový součin je trochu speciální. Funguje jenom pro vektory z $\R^3$. A je definovaný jako $\vx \times \vy = (x_2y_3 - x_3y_2, x_3y_1 - x_1y_3, x_1y_2 - x_2y_1)$.
+
+
+.Remark:
+  title: Vektorový součin v $\R^2$
+  label: rem-vektorovy-soucin-r2
+
+  Když vektorům v $\R^2$ přidáme třetí, nulovou, složku, tak můžeme vektorově násobit i tyto vektory. Jejich výsledek však bude poněkud zajímavý.
+  Pro $\vx, \vy \in \R^2$, tak bude vektorový součin $\vx \times \vy = (x_2 * 0 - 0*y_2, 0*y_1 - x_1*0, x_1y_2 - x_2y_1) = (0, 0, x_1y_2 - x_2y_1)$.
+  Výsledkem je vždy vektor, který má první dvě složky nulové. A třetí složkou, která se nápadně podobá skalárnímu součinu.
+
+
+Pokud byste chtěli prostě násobit dva vektory, tak doporučuju "tohle video"@1. Výsledek toho však pro nás nemá moc užitek.
+  1: 
+    link: https://www.youtube.com/watch?v=htYh-Tq7ZBI
+
+
+Co pro nás má využití je skalární součin. Pokud je skalární součin dvou vektorů nula, tak jsou na sebe kolmé.
+
+Výsledkem vektorového součinu je taky 
