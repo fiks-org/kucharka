@@ -1,4 +1,14 @@
 
+/* noto-serif-regular - latin_latin-ext */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Noto Serif';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/noto-serif-latin_latin-ext-regular.woff2') format('woff2'), /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+       url('../fonts/noto-serif-latin_latin-ext-regular.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
+}
+
 /* body */
 
 body {
@@ -11,16 +21,19 @@ body {
 div.woowoo-equation {
   max-width: 100%;
   overflow-x: auto;
+  overflow-y: hidden;
 }
 
 div.woowoo-gather {
   max-width: 100%;
   overflow-x: auto;
+  overflow-y: hidden;
 }
 
 div.woowoo-align {
   max-width: 100%;
   overflow-x: auto;
+  overflow-y: hidden;
 }
 
 /* Justified text
@@ -85,6 +98,10 @@ img.woowoo-tikz.fix-dark {
   filter: invert(1) hue-rotate(180deg);
 }
 
+mjx-mstyle.fix-dark {
+  filter: invert(1) hue-rotate(180deg); 
+}
+
 /**
 * AnchorJS tweaks
 * https://www.bryanbraun.com/anchorjs/
@@ -105,3 +122,9 @@ img.woowoo-tikz.fix-dark {
   scroll-margin-top: 6rem;
   border: 2px solid red;
 }
+
+/* inline code */
+
+/*span.inline-code {
+  font-family: var(--bs-font-monospace);
+}*/

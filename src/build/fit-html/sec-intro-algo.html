@@ -5,15 +5,15 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>  Fiksařka | 1.2 Úvod do algoritmů    </title>
+  <title>  1.2 Úvod do algoritmů | Fiksařka    </title>
   <!-- favicon -->
   <link rel="icon" type="image/ico" href="favicon.ico" />
 
   <!-- Bootstrap CSS -->
-  <link href="css/bootstrap.min.css" rel="stylesheet" id="bs-theme-link" />
+  <link href="css/bootstrap.min.css" rel="stylesheet" />
 
   <!-- Custom font -->
-  <link href="https://fonts.googleapis.com/css?family=Noto+Serif&amp;subset=latin-ext" rel="stylesheet" />
+  <!-- <link href="https://fonts.googleapis.com/css?family=Noto+Serif&amp;subset=latin-ext" rel="stylesheet" /> -->
 
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -22,22 +22,47 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
 
-  <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      extensions: ["tex2jax.js"],
-      tex2jax: {
+  <script>
+    window.MathJax = {
+      startup: {
+        // with lazy typesetting disabled:
+        //
+        //pageReady() { %>        //  return MathJax.startup.defaultPageReady().then(function () {
+        //    // We need to fix hints in math equations
+        //    addHints();
+        //  });
+        //}
+
+        // lazy typesetting is tricky:
+        // https://groups.google.com/g/mathjax-users/c/CPU4SBRuFDA/m/z-gMPtvJBgAJ?pli=1
+        // I need to use different state INSERT instead TYPESET.
+        ready() {
+          const {STATE, AbstractMathItem} = MathJax._.core.MathItem;
+          AbstractMathItem.prototype._STATE = AbstractMathItem.prototype.state;
+          AbstractMathItem.prototype.state = function (state, restore) {
+            if (state === STATE.INSERT && this.lazyTypeset === false) {
+              // console.log(this.math);
+              addHints();
+            }
+            return this._STATE(state, restore);
+          }
+          MathJax.startup.defaultReady();
+        }
+      },
+      chtml: {
+        mtextInheritFont: true,
+        merrorInheritFont: true
+      },
+      loader: { load: ['ui/lazy'] },
+      tex: {
         inlineMath: [ ['$','$'], ["\\(","\\)"] ],
         processEscapes: true,
-        processEnvironments: true
-      },
-      positionToHash: false,
-      TeX: {
-        Macros: {
+        processEnvironments: true,
+        macros: {
           N: "\\mathbb{N}",
           R: "\\mathbb{R}",
           Z: "\\mathbb{Z}",
           Q: "\\mathbb{Q}",
-          R: "\\mathbb{R}",
           eR: "\\overline{\\mathbb{R}}",
           CC: "\\mathbb{C}",
           ee: "\\mathrm{e}",
@@ -53,60 +78,110 @@
           ceq: "\\mathrel{\\mathop:}=",
           veps: "\\varepsilon",
           sgn: "\\mathrm{sgn}",
+          spn: "\\mathrm{span}",
           dt: "\\mathrm{d}t",
           dx: "\\mathrm{d}x",
+          dy: "\\mathrm{d}y",
+          dz: "\\mathrm{d}z",
           lano: "o",
           lanO: "\\mathcal{O}",
+          hilb: "\\mathscr{H}",
+          ket: [ "\\vert #1 \\rangle", 1 ],
+          bra: [ "\\langle #1 \\vert", 1 ],
+          braket: [ "\\langle #1 \\vert #2 \\rangle", 2 ],
+          proj: ["\\operatorname{proj}"],
           mA: "\\mathbf{A}",
           mB: "\\mathbf{B}",
           mC: "\\mathbf{C}",
           mD: "\\mathbf{D}",
           mE: "\\mathbf{E}",
-          mP: "\\mathbf{P}",
-          mQ: "\\mathbf{Q}",
-          mX: "\\mathbf{X}",
-          mI: "\\mathbf{I}",
           mF: "\\mathbf{F}",
           mG: "\\mathbf{G}",
+          mH: "\\mathbf{H}",
+          mI: "\\mathbf{I}",
+          mJ: "\\mathbf{J}",
+          mK: "\\mathbf{K}",
+          mL: "\\mathbf{L}",
+          mM: "\\mathbf{M}",
+          mN: "\\mathbf{N}",
+          mO: "\\mathbf{O}",
+          mP: "\\mathbf{P}",
+          mQ: "\\mathbf{Q}",
           mR: "\\mathbf{R}",
           mS: "\\mathbf{S}",
           mSigma: "\\boldsymbol{\\Sigma}",
+          mT: "\\mathbf{T}",
           mU: "\\mathbf{U}",
           mV: "\\mathbf{V}",
-          mL: "\\mathbf{L}",
+          mW: "\\mathbf{W}",
+          mX: "\\mathbf{X}",
           mY: "\\mathbf{Y}",
-          vx: "\\mathbf{x}",
-          vy: "\\mathbf{y}",
-          vz: "\\mathbf{z}",
+          mZ: "\\mathbf{Z}",
           va: "\\mathbf{a}",
           vb: "\\mathbf{b}",
           vc: "\\mathbf{c}",
+          vd: "\\mathbf{d}",
           ve: "\\mathbf{e}",
-          vq: "\\mathbf{q}",
+          vf: "\\mathbf{f}",
+          vg: "\\mathbf{g}",
+          vh: "\\mathbf{h}",
+          vi: "\\mathbf{i}",
+          vj: "\\mathbf{j}",
+          vk: "\\mathbf{k}",
+          vl: "\\mathbf{l}",
           vell: "\\boldsymbol{\\ell}",
+          vm: "\\mathbf{m}",
+          vn: "\\mathbf{n}",
+          vo: "\\mathbf{o}",
+          vp: "\\mathbf{p}",
+          vq: "\\mathbf{q}",
+          vr: "\\mathbf{r}",
+          vs: "\\mathbf{s}",
+          vt: "\\mathbf{t}",
           vu: "\\mathbf{u}",
           vv: "\\mathbf{v}",
           vw: "\\mathbf{w}",
+          vx: "\\mathbf{x}",
+          vy: "\\mathbf{y}",
+          vz: "\\mathbf{z}",
+          AAA: "\\mathcal{A}",
+          BB: "\\mathcal{B}",
+          DD: "\\mathcal{D}",
+          EE: "\\mathcal{E}",
+          FF: "\\mathcal{F}",
+          GG: "\\mathcal{G}",
+          HH: "\\mathcal{H}",
+          II: "\\mathcal{I}",
+          JJ: "\\mathcal{J}",
+          KK: "\\mathcal{K}",
+          LL: "\\mathcal{L}",
+          MM: "\\mathcal{M}",
+          NN: "\\mathcal{N}",
+          OO: "\\mathcal{O}",
+          PP: "\\mathcal{P}",
+          QQ: "\\mathcal{Q}",
+          RR: "\\mathcal{R}",
+          SSS: "\\mathcal{S}",
+          TT: "\\mathcal{T}",
+          UU: "\\mathcal{U}",
+          VV: "\\mathcal{V}",
+          WW: "\\mathcal{W}",
           XX: "\\mathcal{X}",
           YY: "\\mathcal{Y}",
-          EE: "\\mathcal{E}",
-          PP: "\\mathcal{P}",
-          UU: "\\mathcal{U}",
-          lcm: "\\mathrm{lcm}",
+          ZZ: "\\mathcal{Z}",
           ssubset: "\\subset\\subset",
           fl: "\\mathrm{f \\kern 0.04em l}",
-          logi: "\\mkern4mu{\\Large\\shortmid}\\mkern-8mu\\raise{0.5pt}=\\mkern-8mu{\\Large\\shortmid}\\mkern4mu",
-          thus: "\\mkern4mu{\\Large\\shortmid}\\mkern-8mu\\raise{0.5pt}=\\mkern-8mu\\mkern8mu",
-          pmat: [ "\\left(\\!\\!\\begin{array}{#1}#2\\end{array}\\!\\!\\right)", 2 ],
-          clr: [ "\\color{#1}{#2}", 2 ],
+          lcm: "\\mathrm{lcm}",
+          logi: "\\mathrel{\\vert\\mkern-3mu{=}\\mkern-3mu\\vert}",
+          thus: "\\mathrel{\\vert\\mkern-3mu{=}}",
+          nothus: "\\not\\!\\mathrel{\\vert\\mkern-3mu{=}}",
+          pmat: [ "\\left(\\begin{array}{#1}#2\\end{array}\\right)", 2 ],
+          clr: [ "{\\color{#1} #2}", 2 ]
         }
-      },
-      CommonHTML: { linebreaks: { automatic: false } },
-      "HTML-CSS": { linebreaks: { automatic: false } },
-      SVG: { linebreaks: { automatic: false } }
-    });
+      }
+    };
   </script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+  <script type="text/javascript" src="js/mathjax/tex-chtml.js" id="MathJax-script">
   </script>
 
   <!-- Font Awesome -->
@@ -122,12 +197,12 @@
   <link href="css/custom.css" rel="stylesheet" />
 </head>
 <body>
-  <nav class="navbar navbar-expand sticky-top navbar-light bg-light mb-4">
+  <nav class="navbar navbar-expand-md bg-body-tertiary sticky-top mb-4">
   <div class="container-fluid">
-    <a class="navbar-brand" href="index.html">Fiksařka</a>
+    <a class="navbar-brand d-none d-md-block" href="index.html">Fiksařka</a>
     <ul class="navbar-nav">
       <ul class="nav-item">
-        <a class="nav-link" href="sec-intro-algo.html">Úvod do algoritmů</a>
+        <a class="nav-link" href="sec-intro-algo.html">1.2 Úvod do algoritmů</a>
       </ul>
     </ul>
     <a href="#" id="theme-switch-link" title="přepínání vzhledu"><span id="theme-switch-icon" class="fa fa-moon"></span></a>
@@ -184,7 +259,7 @@ od algoritmu požadujeme.</p>
 <strong id="notion1b0acb79e17efa878d4a88677708559e9b92338db">Správnost</strong> algoritmu - že opravdu vždy vrátí to, co od něj očekáváme.</p></li>
  
 <li><p class="woowoo-paragraph" id="paragraph9dea8f8e08fed1bddd1dd74d38538738e62d78cbc">
-<strong id="notion2223f3ae90d24e2fa12a1387fbc159e9be1cc451f">Konečnost</strong> algoritmu - že se algoritmus nezacyklí a&nbsp;vždy skončí s&nbsp;nějakým výsledkem.</p></li>
+<strong id="notion2223f3ae90d24e2fa12a1387fbc159e9be1cc451f">Konečnost</strong> algoritmu - že se algoritmus nezacyklí a vždy skončí s&nbsp;nějakým výsledkem.</p></li>
  
 <li><p class="woowoo-paragraph" id="paragraph10262cb18beffd725c20b7d93074bcc23c811a33ce">
 <strong id="notion34826ae8bf9d17ae6e176b2f2e7c406123478590e">Časová složitost</strong> algoritmu - kolik kroků algoritmus vykoná na základě velikosti vstupu.</p></li>
@@ -197,7 +272,7 @@ od algoritmu požadujeme.</p>
 V&nbsp;této publikaci budeme hojně využívat zavedených matematických pojmů, které si zadefinujeme postupně v&nbsp;průběhu.
 Ale na začátek si zadefinujeme aspon nějaké základní pojmy.</p>
 <p class="woowoo-paragraph" id="paragraph154e038088e6925b74669369b62555923e0767cc02">
-Pamětová a&nbsp;časová složitost se běžně udávají jako $\lanO$, $\Omega$ nebo $\Theta$. Co to ale znamená?</p>
+Pamětová a časová složitost se běžně udávají jako $\lanO$, $\Omega$ nebo $\Theta$. Co to ale znamená?</p>
 <div class="woowoo-definition card mb-3" id="def-asymptoticka-horni-mez">
   <h5 class="card-header bg-success text-white">
     <div class="d-flex justify-content-between">
@@ -208,7 +283,7 @@ Pamětová a&nbsp;časová složitost se běžně udávají jako $\lanO$, $\Omeg
   </h5>
   <div class="card-body">
     <p class="woowoo-paragraph card-text" id="paragraph16e4b37a86d8bfd89b6d95c97363f091606ef3f69e">
-Mějme dvě funkce $f$ a&nbsp;$g$. $f$ je asymptoticky shora omezená $g$ právě tehdy, když existují nějaké konstanty $c > 0$ a&nbsp;$x_0$ takové,
+Mějme dvě funkce $f$ a $g$. $f$ je asymptoticky shora omezená $g$ právě tehdy, když existují nějaké konstanty $c > 0$ a $x_0$ takové,
   že pro všechna $x > x_0$ platí nerovnost $|f(x)| \le |c*g(x)|$.</p>
 <p class="woowoo-paragraph card-text" id="paragraph178f8604538fa17f7f561f201c37944a5966366608">
 Značíme $f(x) = \lanO(g(x))$.</p>
@@ -224,7 +299,7 @@ Značíme $f(x) = \lanO(g(x))$.</p>
   </h5>
   <div class="card-body">
     <p class="woowoo-paragraph card-text" id="paragraph185adf4cd7d7e14df4ae2d4daea9bdd94af4db249b">
-Mějme dvě funkce $f$ a&nbsp;$g$. $f$ je asymptoticky zdola omezená $g$ právě tehdy, když existují nějaké konstanty $c > 0$ a&nbsp;$x_0$ takové,
+Mějme dvě funkce $f$ a $g$. $f$ je asymptoticky zdola omezená $g$ právě tehdy, když existují nějaké konstanty $c > 0$ a $x_0$ takové,
   že pro všechna $x > x_0$ platí nerovnost $|f(x)| \ge |c*g(x)|$.</p>
 <p class="woowoo-paragraph card-text" id="paragraph1914b54a3ecd5ab8a78e9dc9e9abf943c9d3fb7502">
 Značíme $f(x) = \Omega(g(x))$.</p>
@@ -242,7 +317,7 @@ Pomocí těch, pak můžeme definovat asymptotickou těsnou mez.</p>
   </h5>
   <div class="card-body">
     <p class="woowoo-paragraph card-text" id="paragraph21cccc8557e3e330ab7e98f01f5b28bcdc199af112">
-Mějme dvě funkce $f$ a&nbsp;$g$. $f$ je asymptoticky ekvivalentní $g$ právě tehdy, když $f(x) = \lanO(g(x)) \land f(x) = \Omega(g(x))$.</p>
+Mějme dvě funkce $f$ a $g$. $f$ je asymptoticky ekvivalentní $g$ právě tehdy, když $f(x) = \lanO(g(x)) \land f(x) = \Omega(g(x))$.</p>
 <p class="woowoo-paragraph card-text" id="paragraph2253e945898cfe18979bd0b06f259e32ffb17796a9">
 Značíme $f(x) = \Theta(g(x))$.</p>
   </div>
@@ -288,10 +363,33 @@ prvky univerza \mathcal{U} splnující nějakou vlastnost $v$, např. $\{x \in \
 </div>
 
         
-        <div class="section-navigation d-flex justify-content-between">
-                                <small><a href="fiks.html" data-bs-toggle="tooltip" title="FIKS"><span class="fa fa-arrow-left"></span> předchozí</a></small>
-                        <span></span>
-                </div>
+        <hr class="mt-5">
+        <div class="chapter-navigation container-fluid text-center mt-1">
+                      <div class="row">
+              <div class="col">
+                                                  <a href="fiks.html" data-bs-toggle="tooltip" title="FIKS">
+                    <span class="d-block d-sm-none fa fa-angle-left"></span>
+                    <span class="d-none d-sm-block"><span class="fa fa-angle-left"></span> předchozí</span>
+                  </a>
+                              </div>
+              <div class="col">
+                podkapitola              </div>
+              <div class="col">
+                                              </div>
+            </div>
+                                <div class="row">
+              <div class="col">
+                                              </div>
+              <div class="col">
+                kapitola              </div>
+              <div class="col">
+                                                  <a href="chap-geometrie.html" data-bs-toggle="tooltip" title="Geometrie">
+                    <span class="d-block d-sm-none fa fa-angle-double-right"></span>
+                    <span class="d-none d-sm-block">následující <span class="fa fa-angle-double-right"></span></span>
+                  </a>
+                              </div>
+            </div>
+                  </div>
       </div>
     </div>
   </div>
@@ -311,10 +409,10 @@ prvky univerza \mathcal{U} splnující nějakou vlastnost $v$, např. $\{x \in \
   <small>
         <a href="mailto:fiks@fit.cvut.com"><span class="fa fa-envelope-o"> FIKS</span></a>      </small>
   <ul>
-    <li><small title="FIT HTML Template v0.2.3">WooWoo ver. 0.3.7</small></li>
-    <li><small title="okamžik vygenerování">2024-02-03 09:56:12 +0000</small></li>
+    <li><small title="FIT HTML Template v0.2.7">WooWoo ver. 0.4.3</small></li>
+    <li><small title="okamžik vygenerování">2024-02-08 22:03:18 +0000</small></li>
                 <li><small><a href="https://gitlab.fit.cvut.cz/havlialb/fiksarka">zdrojový kód a hlášení chyb</a></small></li>
-      </ul>
+          </ul>
 </div>
 </footer>
 </html>

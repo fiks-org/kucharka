@@ -5,15 +5,15 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>  Fiksařka | 2 Geometrie    </title>
+  <title>  2 Geometrie | Fiksařka    </title>
   <!-- favicon -->
   <link rel="icon" type="image/ico" href="favicon.ico" />
 
   <!-- Bootstrap CSS -->
-  <link href="css/bootstrap.min.css" rel="stylesheet" id="bs-theme-link" />
+  <link href="css/bootstrap.min.css" rel="stylesheet" />
 
   <!-- Custom font -->
-  <link href="https://fonts.googleapis.com/css?family=Noto+Serif&amp;subset=latin-ext" rel="stylesheet" />
+  <!-- <link href="https://fonts.googleapis.com/css?family=Noto+Serif&amp;subset=latin-ext" rel="stylesheet" /> -->
 
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -22,22 +22,47 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
 
-  <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      extensions: ["tex2jax.js"],
-      tex2jax: {
+  <script>
+    window.MathJax = {
+      startup: {
+        // with lazy typesetting disabled:
+        //
+        //pageReady() { %>        //  return MathJax.startup.defaultPageReady().then(function () {
+        //    // We need to fix hints in math equations
+        //    addHints();
+        //  });
+        //}
+
+        // lazy typesetting is tricky:
+        // https://groups.google.com/g/mathjax-users/c/CPU4SBRuFDA/m/z-gMPtvJBgAJ?pli=1
+        // I need to use different state INSERT instead TYPESET.
+        ready() {
+          const {STATE, AbstractMathItem} = MathJax._.core.MathItem;
+          AbstractMathItem.prototype._STATE = AbstractMathItem.prototype.state;
+          AbstractMathItem.prototype.state = function (state, restore) {
+            if (state === STATE.INSERT && this.lazyTypeset === false) {
+              // console.log(this.math);
+              addHints();
+            }
+            return this._STATE(state, restore);
+          }
+          MathJax.startup.defaultReady();
+        }
+      },
+      chtml: {
+        mtextInheritFont: true,
+        merrorInheritFont: true
+      },
+      loader: { load: ['ui/lazy'] },
+      tex: {
         inlineMath: [ ['$','$'], ["\\(","\\)"] ],
         processEscapes: true,
-        processEnvironments: true
-      },
-      positionToHash: false,
-      TeX: {
-        Macros: {
+        processEnvironments: true,
+        macros: {
           N: "\\mathbb{N}",
           R: "\\mathbb{R}",
           Z: "\\mathbb{Z}",
           Q: "\\mathbb{Q}",
-          R: "\\mathbb{R}",
           eR: "\\overline{\\mathbb{R}}",
           CC: "\\mathbb{C}",
           ee: "\\mathrm{e}",
@@ -53,60 +78,110 @@
           ceq: "\\mathrel{\\mathop:}=",
           veps: "\\varepsilon",
           sgn: "\\mathrm{sgn}",
+          spn: "\\mathrm{span}",
           dt: "\\mathrm{d}t",
           dx: "\\mathrm{d}x",
+          dy: "\\mathrm{d}y",
+          dz: "\\mathrm{d}z",
           lano: "o",
           lanO: "\\mathcal{O}",
+          hilb: "\\mathscr{H}",
+          ket: [ "\\vert #1 \\rangle", 1 ],
+          bra: [ "\\langle #1 \\vert", 1 ],
+          braket: [ "\\langle #1 \\vert #2 \\rangle", 2 ],
+          proj: ["\\operatorname{proj}"],
           mA: "\\mathbf{A}",
           mB: "\\mathbf{B}",
           mC: "\\mathbf{C}",
           mD: "\\mathbf{D}",
           mE: "\\mathbf{E}",
-          mP: "\\mathbf{P}",
-          mQ: "\\mathbf{Q}",
-          mX: "\\mathbf{X}",
-          mI: "\\mathbf{I}",
           mF: "\\mathbf{F}",
           mG: "\\mathbf{G}",
+          mH: "\\mathbf{H}",
+          mI: "\\mathbf{I}",
+          mJ: "\\mathbf{J}",
+          mK: "\\mathbf{K}",
+          mL: "\\mathbf{L}",
+          mM: "\\mathbf{M}",
+          mN: "\\mathbf{N}",
+          mO: "\\mathbf{O}",
+          mP: "\\mathbf{P}",
+          mQ: "\\mathbf{Q}",
           mR: "\\mathbf{R}",
           mS: "\\mathbf{S}",
           mSigma: "\\boldsymbol{\\Sigma}",
+          mT: "\\mathbf{T}",
           mU: "\\mathbf{U}",
           mV: "\\mathbf{V}",
-          mL: "\\mathbf{L}",
+          mW: "\\mathbf{W}",
+          mX: "\\mathbf{X}",
           mY: "\\mathbf{Y}",
-          vx: "\\mathbf{x}",
-          vy: "\\mathbf{y}",
-          vz: "\\mathbf{z}",
+          mZ: "\\mathbf{Z}",
           va: "\\mathbf{a}",
           vb: "\\mathbf{b}",
           vc: "\\mathbf{c}",
+          vd: "\\mathbf{d}",
           ve: "\\mathbf{e}",
-          vq: "\\mathbf{q}",
+          vf: "\\mathbf{f}",
+          vg: "\\mathbf{g}",
+          vh: "\\mathbf{h}",
+          vi: "\\mathbf{i}",
+          vj: "\\mathbf{j}",
+          vk: "\\mathbf{k}",
+          vl: "\\mathbf{l}",
           vell: "\\boldsymbol{\\ell}",
+          vm: "\\mathbf{m}",
+          vn: "\\mathbf{n}",
+          vo: "\\mathbf{o}",
+          vp: "\\mathbf{p}",
+          vq: "\\mathbf{q}",
+          vr: "\\mathbf{r}",
+          vs: "\\mathbf{s}",
+          vt: "\\mathbf{t}",
           vu: "\\mathbf{u}",
           vv: "\\mathbf{v}",
           vw: "\\mathbf{w}",
+          vx: "\\mathbf{x}",
+          vy: "\\mathbf{y}",
+          vz: "\\mathbf{z}",
+          AAA: "\\mathcal{A}",
+          BB: "\\mathcal{B}",
+          DD: "\\mathcal{D}",
+          EE: "\\mathcal{E}",
+          FF: "\\mathcal{F}",
+          GG: "\\mathcal{G}",
+          HH: "\\mathcal{H}",
+          II: "\\mathcal{I}",
+          JJ: "\\mathcal{J}",
+          KK: "\\mathcal{K}",
+          LL: "\\mathcal{L}",
+          MM: "\\mathcal{M}",
+          NN: "\\mathcal{N}",
+          OO: "\\mathcal{O}",
+          PP: "\\mathcal{P}",
+          QQ: "\\mathcal{Q}",
+          RR: "\\mathcal{R}",
+          SSS: "\\mathcal{S}",
+          TT: "\\mathcal{T}",
+          UU: "\\mathcal{U}",
+          VV: "\\mathcal{V}",
+          WW: "\\mathcal{W}",
           XX: "\\mathcal{X}",
           YY: "\\mathcal{Y}",
-          EE: "\\mathcal{E}",
-          PP: "\\mathcal{P}",
-          UU: "\\mathcal{U}",
-          lcm: "\\mathrm{lcm}",
+          ZZ: "\\mathcal{Z}",
           ssubset: "\\subset\\subset",
           fl: "\\mathrm{f \\kern 0.04em l}",
-          logi: "\\mkern4mu{\\Large\\shortmid}\\mkern-8mu\\raise{0.5pt}=\\mkern-8mu{\\Large\\shortmid}\\mkern4mu",
-          thus: "\\mkern4mu{\\Large\\shortmid}\\mkern-8mu\\raise{0.5pt}=\\mkern-8mu\\mkern8mu",
-          pmat: [ "\\left(\\!\\!\\begin{array}{#1}#2\\end{array}\\!\\!\\right)", 2 ],
-          clr: [ "\\color{#1}{#2}", 2 ],
+          lcm: "\\mathrm{lcm}",
+          logi: "\\mathrel{\\vert\\mkern-3mu{=}\\mkern-3mu\\vert}",
+          thus: "\\mathrel{\\vert\\mkern-3mu{=}}",
+          nothus: "\\not\\!\\mathrel{\\vert\\mkern-3mu{=}}",
+          pmat: [ "\\left(\\begin{array}{#1}#2\\end{array}\\right)", 2 ],
+          clr: [ "{\\color{#1} #2}", 2 ]
         }
-      },
-      CommonHTML: { linebreaks: { automatic: false } },
-      "HTML-CSS": { linebreaks: { automatic: false } },
-      SVG: { linebreaks: { automatic: false } }
-    });
+      }
+    };
   </script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+  <script type="text/javascript" src="js/mathjax/tex-chtml.js" id="MathJax-script">
   </script>
 
   <!-- Font Awesome -->
@@ -122,12 +197,12 @@
   <link href="css/custom.css" rel="stylesheet" />
 </head>
 <body>
-  <nav class="navbar navbar-expand sticky-top navbar-light bg-light mb-4">
+  <nav class="navbar navbar-expand-md bg-body-tertiary sticky-top mb-4">
   <div class="container-fluid">
-    <a class="navbar-brand" href="index.html">Fiksařka</a>
+    <a class="navbar-brand d-none d-md-block" href="index.html">Fiksařka</a>
     <ul class="navbar-nav">
       <ul class="nav-item">
-        <a class="nav-link" href="chap-geometrie.html">Geometrie</a>
+        <a class="nav-link" href="chap-geometrie.html">2 Geometrie</a>
       </ul>
     </ul>
     <a href="#" id="theme-switch-link" title="přepínání vzhledu"><span id="theme-switch-icon" class="fa fa-moon"></span></a>
@@ -154,11 +229,11 @@
                                         </h2>
 
         <p class="woowoo-paragraph" id="paragraph30d387baf12d36e3a68d1b71cf2068dca2175e3d0f">
-V&nbsp;této kapitole se budeme zabývat geometrií a&nbsp;algoritmy v&nbsp;geometrii.</p>
+V&nbsp;této kapitole se budeme zabývat geometrií a algoritmy v&nbsp;geometrii.</p>
 <p class="woowoo-paragraph" id="paragraph316c72c37e34f7d7120b3d8e28d159b54e12c9550e">
 Geometrie je typicky počítání v&nbsp;něčem, co označujeme jako&nbsp;<a href="https://cs.wikipedia.org/wiki/Vektorov%C3%BD_prostor"><span class="fa fa-external-link-alt"></span> vektorový prostor</a>. Což je matematicky definovaný objekt
-a&nbsp;dá se pomocí něj dobře reprezentovat náš běžný svět. Protože se většinou nesetkáme s&nbsp;úlohami vyžadující víc jak 3 dimenze,
-tak nám nebude vadit omezení se na prostory $\R^2$ a&nbsp;$\R^3$.</p>
+a dá se pomocí něj dobře reprezentovat náš běžný svět. Protože se většinou nesetkáme s&nbsp;úlohami vyžadující víc jak 3 dimenze,
+tak nám nebude vadit omezení se na prostory $\R^2$ a $\R^3$.</p>
 <div class="woowoo-definition card mb-3" id="def-bod">
   <h5 class="card-header bg-success text-white">
     <div class="d-flex justify-content-between">
@@ -168,13 +243,13 @@ tak nám nebude vadit omezení se na prostory $\R^2$ a&nbsp;$\R^3$.</p>
   </h5>
   <div class="card-body">
     <p class="woowoo-paragraph card-text" id="paragraph329d5d438a879f5879f1c0d49fd7ee101d7683d9a2">
-Body budeme zapisovat jako dvojice, případně trojice $(x, y, z)$. A&nbsp;budeme je ztotožnovat s&nbsp;vektory, které si můžeme představit
-  jako šipky z&nbsp;bodu $(0, 0, 0)$ do bodu $(x, y, z)$. Bod $(0, 0, 0)$ budeme někdy označovat jako $\theta$. A&nbsp;body budou značené
+Body budeme zapisovat jako dvojice, případně trojice $(x, y, z)$. A budeme je ztotožnovat s&nbsp;vektory, které si můžeme představit
+  jako šipky z&nbsp;bodu $(0, 0, 0)$ do bodu $(x, y, z)$. Bod $(0, 0, 0)$ budeme někdy označovat jako $\theta$. A body budou značené
   tučně $\vx = (x, y, z)$.</p>
   </div>
 </div>
 <p class="woowoo-paragraph" id="paragraph3370d3ac40deaa67b135b13233b850de5c7eca21b1">
-Objekty, které se často budou vyskytovat jsou <em>přímka</em>, <em>úsečka</em> a&nbsp;<em>rovina</em>.</p>
+Objekty, které se často budou vyskytovat jsou <em>přímka</em>, <em>úsečka</em> a <em>rovina</em>.</p>
 <div class="woowoo-definition card mb-3" id="def-primka">
   <h5 class="card-header bg-success text-white">
     <div class="d-flex justify-content-between">
@@ -184,17 +259,16 @@ Objekty, které se často budou vyskytovat jsou <em>přímka</em>, <em>úsečka<
     </div>
   </h5>
   <div class="card-body">
-    <p class="woowoo-paragraph card-text" id="paragraph39c021552993fb0c9bf43214a0e09fa3c817eccf3e">
+    <p class="woowoo-paragraph card-text" id="paragraph39a649383634ef23942fef385ef94feb79d80d6112">
 Přímka je množina bodů v&nbsp;prostoru. Tyto body můžeme popsat několika způsoby.</p><ol type="1">
  
-<li><p class="woowoo-paragraph" id="paragraph3502d5cce6aefd65bf0e3848ed8eacd714f3bf7da6">
-<strong id="notion56da84d4d55f8479472d440c5e6e989272527f47a">Parametrickou rovnicí</strong> přímky, kde máme nějaký parametr $t \in \R$, kterým se posouváme po přímce.</p><div class="woowoo-equation">
-\begin{equation*}
-P = \{(x, y, z) \mid \forall t \in \R \colon x = x_0 + \alpha t \land y = y_0 + \beta t \land z_0 + \gamma t\}
-\end{equation*}
+<li><p class="woowoo-paragraph" id="paragraph354b3ec9d2d873397fc4f88d2b109c0d7e0d839aed">
+<strong id="notion56da84d4d55f8479472d440c5e6e989272527f47a">Parametrickou rovnicí</strong> přímky, kde máme nějaký parametr $t \in \R$, kterým se posouváme po přímce.</p><div class="woowoo-align">
+\begin{align*}
+P = \{(x, y, z) \mid \forall t \in \R \colon&\\ x&= x_0 + \alpha t \\ \land y&= y_0 + \beta t \\ \land z&= z_0 + \gamma t\}\end{align*}
 </div>
-<p class="woowoo-paragraph-part">Kde $(\alpha, \beta, \gamma)$ je směrový vektor přímky. A&nbsp;$(x_0, y_0, z_0)$ nějaký bod, kterým přímka prochází.
-      Pokud se pohybujeme pouze ve 2D, tak třetí souřadnici $z$ nepoužíváme. Stejně, pokud bychom dělali něco ve 4D a&nbsp;víc, tak
+<p class="woowoo-paragraph-part">Kde $(\alpha, \beta, \gamma)$ je směrový vektor přímky. A $(x_0, y_0, z_0)$ nějaký bod, kterým přímka prochází.
+      Pokud se pohybujeme pouze ve 2D, tak třetí souřadnici $z$ nepoužíváme. Stejně, pokud bychom dělali něco ve 4D a víc, tak
       přidáme další souřadnice.</p></li>
  
 <li><p class="woowoo-paragraph" id="paragraph37128424755550ae51d5ace13cb382b0d04d4a54b6">
@@ -203,9 +277,11 @@ P = \{(x, y, z) \mid \forall t \in \R \colon x = x_0 + \alpha t \land y = y_0 + 
 P = \{(x, y) \mid \forall x,y \in \R \colon \alpha x + \beta y + c = 0\}
 \end{equation*}
 </div>
-<p class="woowoo-paragraph-part">Kde $(\alpha, \beta)$ je nenulový&nbsp;<a class="text-success" tabindex="0" role="button" data-bs-trigger="focus" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-html="true" data-bs-content='<p class="woowoo-paragraph card-text" id="paragraph4231a01545859f7bcff908a23487fa8586cac9c99d">
-#TODO</p>
-'>normálový vektor přímky</a> a&nbsp;$c$ je posun.</p></li>
+<p class="woowoo-paragraph-part">Kde $(\alpha, \beta)$ je nenulový&nbsp;<a class="link-secondary" tabindex="0" role="button" data-bs-trigger="focus" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-html="true" data-bs-content='<p class="woowoo-paragraph card-text" id="paragraph45dd087f07fb730ed7d00c9765a4d35194520952fb">
+Normálový vektor je vektor, který jednoznačně udává otočení přímky ve 2D, roviny ve 3D nebo obecně nějaké&nbsp;<span class="fa fa-external-link-alt"></span> nadroviny. Je to vektor, který
+  je kolmý na všechny vektory, udávající ten objekt. Platí pro něj tedy, že&nbsp;  skalární součin   s&nbsp;každým bodem je roven $0$.</p>
+'>normálový vektor přímky</a>
+   a $c$ je posun.</p></li>
 </ol>
 <p class="woowoo-paragraph-part"></p>
   </div>
@@ -232,11 +308,27 @@ P = \{(x, y) \mid \forall x,y \in \R \colon \alpha x + \beta y + c = 0\}
     </div>
   </h5>
   <div class="card-body">
-    <p class="woowoo-paragraph card-text" id="paragraph41ef62bbf646ee6b41603ddbf0d311f8de1ca23e98">
+    <p class="woowoo-paragraph card-text" id="paragraph43853ce3911db391555736150d05ec7a3797598450">
 Rovina ve 2D je celý prostor, takže tam nemá cenu s&nbsp;tím zabývat.
-  Ve 3D a&nbsp;výš už je to zajímavější. Rovina je #TODO</p>
+  Ve 3D a výš už je to zajímavější. Rovina je množina bodů, která je určená dvěmi vektory.
+  Její <strong id="notion7f9652672cc6a4b62ae1be300387a175ee47dc407">parametrická rovnice</strong> se dá napsat jako</p><div class="woowoo-align">
+\begin{align*}
+R = \{ (x, y, z) \mid \forall s,t \in \R \colon x&= x_0 + su_1 + tv_1 \\ \land y&= y_0 + su_2 + tv_2 \\\land z&nbsp;&= z_0 + su_3 + tv_3 \}\end{align*}
+</div>
+<p class="woowoo-paragraph-part">Kde $\vu = (u_1, u_2, u_3)$ a $\vv = (v_1, v_2, v_3)$ jsou vektory udávající rovinu, pro které platí, že $\vu$ není násobek $\vv$.Případně opět existuje obecná rovnice ve tvaru</p><div class="woowoo-equation">
+\begin{equation*}
+R = \{(x, y, z) \mid x,y,z\in \R \alpha x + \beta y + \gamma z&nbsp;+ c = 0 \}
+\end{equation*}
+</div>
+<p class="woowoo-paragraph-part">Kde $(\alpha, \beta, \gamma)$ je&nbsp;<a class="link-secondary" tabindex="0" role="button" data-bs-trigger="focus" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-html="true" data-bs-content='<p class="woowoo-paragraph card-text" id="paragraph45dd087f07fb730ed7d00c9765a4d35194520952fb">
+Normálový vektor je vektor, který jednoznačně udává otočení přímky ve 2D, roviny ve 3D nebo obecně nějaké&nbsp;<span class="fa fa-external-link-alt"></span> nadroviny. Je to vektor, který
+  je kolmý na všechny vektory, udávající ten objekt. Platí pro něj tedy, že&nbsp;  skalární součin   s&nbsp;každým bodem je roven $0$.</p>
+'>normálový vektor</a>
+   roviny a $c$ je posunutí.</p>
   </div>
 </div>
+<p class="woowoo-paragraph" id="paragraph446430622912209199b31c22f2f9d5a383ee980656">
+Během různých výpočtů, nebo i&nbsp;definic se používá pojem <em>normálový vektor</em>, i&nbsp;ten se nám bude hodit.</p>
 <div class="woowoo-definition card mb-3" id="def-normal-vector">
   <h5 class="card-header bg-success text-white">
     <div class="d-flex justify-content-between">
@@ -246,16 +338,125 @@ Rovina ve 2D je celý prostor, takže tam nemá cenu s&nbsp;tím zabývat.
     </div>
   </h5>
   <div class="card-body">
-    <p class="woowoo-paragraph card-text" id="paragraph4231a01545859f7bcff908a23487fa8586cac9c99d">
-#TODO</p>
+    <p class="woowoo-paragraph card-text" id="paragraph45dd087f07fb730ed7d00c9765a4d35194520952fb">
+Normálový vektor je vektor, který jednoznačně udává otočení přímky ve 2D, roviny ve 3D nebo obecně nějaké&nbsp;<a href="https://cs.wikipedia.org/wiki/Nadrovina"><span class="fa fa-external-link-alt"></span> nadroviny</a>. Je to vektor, který
+  je kolmý na všechny vektory, udávající ten objekt. Platí pro něj tedy, že&nbsp;<a class="link-secondary" tabindex="0" role="button" data-bs-trigger="focus" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-html="true" data-bs-content='<p class="woowoo-paragraph card-text" id="paragraph52936613b8704196ab7813a65dd1b6cd4c16179deb">
+Skalární součin je binární operace nad dvěma vektory, jejíž výsledkem je číslo (skalár). Skalární součin dvou vektorů $\vx$ a $\vy$ se většinou značí $\vx \cdot \vy$ nebo $\braket{\vx}{\vy}$.Každý skalární součin má několik klíčových vlastností</p><ul>
+ 
+<li><p class="woowoo-paragraph" id="paragraph47f4316a02c777ccc6f7d32d26dee527dc9f0af789">
+$\braket{\alpha \vx}{\vy} = \alpha \braket\vx\vy$ pro $\forall \vx,\vy \in \R^n, \alpha \in \R$</p></li>
+ 
+<li><p class="woowoo-paragraph" id="paragraph48e0ab3aca54440bd4c83083253f5ba066b557e87d">
+$\braket{\vx + \vy}{\vz} = \braket\vx\vz + \braket\vy\vz$ pro $\forall \vx,\vy,\vz \in \R^n$</p></li>
+ 
+<li><p class="woowoo-paragraph" id="paragraph49b864581841bcae8e1bdadf969a66b322f7c74d69">
+$\braket{\vx}{\vy} = \braket\vy\vx$ pro $\forall \vx,\vy \in \R^n$</p></li>
+ 
+<li><p class="woowoo-paragraph" id="paragraph50070f8eb3f3d94dd71d50f2f4896c63dc991fd715">
+$\braket\vx\vx \gt 0 \land \braket\vx\vx = 0 \iff \vx = \theta$ pro $\forall \vx \in \R^n$</p></li>
+</ul>
+<p class="woowoo-paragraph-part"></p>
+'>skalární součin</a>
+   s&nbsp;každým bodem je roven $0$.</p>
   </div>
 </div>
+<p class="woowoo-paragraph" id="paragraph4602d46a4d9479634b158367d0abbeee0cbc414f6a">
+A když máme definovaný všechny tyhle věci, tak bychom chtěli vědět nějaké různé vlastnosti, tak se nám hodí nějaké další operace.</p>
+<div class="woowoo-definition card mb-3" id="def-skalarni-soucin">
+  <h5 class="card-header bg-success text-white">
+    <div class="d-flex justify-content-between">
+    <span class="anchored" data-anchor-id="def-skalarni-soucin">Definice 2.6        (Skalární součin)
+    </span>
+    <span class="fa fa-anchor"></span>
+    </div>
+  </h5>
+  <div class="card-body">
+    <p class="woowoo-paragraph card-text" id="paragraph52936613b8704196ab7813a65dd1b6cd4c16179deb">
+Skalární součin je binární operace nad dvěma vektory, jejíž výsledkem je číslo (skalár). Skalární součin dvou vektorů $\vx$ a $\vy$ se většinou značí $\vx \cdot \vy$ nebo $\braket{\vx}{\vy}$.Každý skalární součin má několik klíčových vlastností</p><ul>
+ 
+<li><p class="woowoo-paragraph" id="paragraph47f4316a02c777ccc6f7d32d26dee527dc9f0af789">
+$\braket{\alpha \vx}{\vy} = \alpha \braket\vx\vy$ pro $\forall \vx,\vy \in \R^n, \alpha \in \R$</p></li>
+ 
+<li><p class="woowoo-paragraph" id="paragraph48e0ab3aca54440bd4c83083253f5ba066b557e87d">
+$\braket{\vx + \vy}{\vz} = \braket\vx\vz + \braket\vy\vz$ pro $\forall \vx,\vy,\vz \in \R^n$</p></li>
+ 
+<li><p class="woowoo-paragraph" id="paragraph49b864581841bcae8e1bdadf969a66b322f7c74d69">
+$\braket{\vx}{\vy} = \braket\vy\vx$ pro $\forall \vx,\vy \in \R^n$</p></li>
+ 
+<li><p class="woowoo-paragraph" id="paragraph50070f8eb3f3d94dd71d50f2f4896c63dc991fd715">
+$\braket\vx\vx \gt 0 \land \braket\vx\vx = 0 \iff \vx = \theta$ pro $\forall \vx \in \R^n$</p></li>
+</ul>
+<p class="woowoo-paragraph-part"></p>
+  </div>
+</div>
+<p class="woowoo-paragraph" id="paragraph536ca0f421099f62e501454470211fb190e3f481cc">
+To je ale hodně obecná definice. S&nbsp;tím toho moc nespočítáme, pro různé aplikace se mohou hodit různé přesné definice.
+Nejčastější skalární součin, se kterým jste se asi již setkali je ten, kterému budeme říkat <em>standardní</em>.</p>
+<div class="woowoo-definition card mb-3" id="def-standardni-skalarni-soucin">
+  <h5 class="card-header bg-success text-white">
+    <div class="d-flex justify-content-between">
+    <span class="anchored" data-anchor-id="def-standardni-skalarni-soucin">Definice 2.7        (Standardní skalární součin)
+    </span>
+    <span class="fa fa-anchor"></span>
+    </div>
+  </h5>
+  <div class="card-body">
+    <p class="woowoo-paragraph card-text" id="paragraph540daccf9246199512fc9448a574da48c12510c852">
+Pro $\vx,\vy \in \R^2$ vypadá takhle $\braket\vx\vy = x_1y_1 + x_2y_2$.
+  Pro $\vx,\vy \in \R^3$ vypadá takhle $\braket\vx\vy = x_1y_1 + x_2y_2 + x_3y_3$.Obecně pro libovolné dva vektory $\vx, \vy \in \R^n$ je standardní skalární součin $\braket\vx\vy = \sum_{i=1}^n x_iy_i$.</p>
+  </div>
+</div>
+<p class="woowoo-paragraph" id="paragraph5544cb332309a0d0dcb2f60dd9a260d0c93f43c6f1">
+Máme operaci, jejíž výsledkem je skalár. Ale co když budeme chtít vektor? Na to tu máme vektorový součin.</p>
+<div class="woowoo-definition card mb-3" id="def-vektorovy-soucin">
+  <h5 class="card-header bg-success text-white">
+    <div class="d-flex justify-content-between">
+    <span class="anchored" data-anchor-id="def-vektorovy-soucin">Definice 2.8        (Vektorový součin)
+    </span>
+    <span class="fa fa-anchor"></span>
+    </div>
+  </h5>
+  <div class="card-body">
+    <p class="woowoo-paragraph card-text" id="paragraph560efd91e6fa5ba2d41b75d7c1c873495b3712f884">
+Vektorový součin je trochu speciální. Funguje jenom pro vektory z&nbsp;$\R^3$. A je definovaný jako $\vx \times \vy = (x_2y_3 - x_3y_2, x_3y_1 - x_1y_3, x_1y_2 - x_2y_1)$.</p>
+  </div>
+</div>
+<div class="woowoo-remark card mb-3" id="rem-vektorovy-soucin-r2">
+  <h5 class="card-header bg-warning text-white">
+    <div class="d-flex justify-content-between">
+    <span class="anchored" data-anchor-id="rem-vektorovy-soucin-r2">Poznámka 2.1        (Vektorový součin v&nbsp;$\R^2$)
+    </span>
+    <span class="fa fa-star"></span>
+    </div>
+  </h5>
+  <div class="card-body">
+    <p class="woowoo-paragraph card-text" id="paragraph5767af1da6f9dce8785a32b453a7c8f92e346651fe">
+Když vektorům v&nbsp;$\R^2$ přidáme třetí, nulovou, složku, tak můžeme vektorově násobit i&nbsp;tyto vektory. Jejich výsledek však bude poněkud zajímavý.
+  Pro $\vx, \vy \in \R^2$, tak bude vektorový součin $\vx \times \vy = (x_2 * 0 - 0*y_2, 0*y_1 - x_1*0, x_1y_2 - x_2y_1) = (0, 0, x_1y_2 - x_2y_1)$.
+  Výsledkem je vždy vektor, který má první dvě složky nulové. A třetí složkou, která se nápadně podobá skalárnímu součinu.</p>
+  </div>
+</div>
+<p class="woowoo-paragraph" id="paragraph58ea1fb8a6ff60705a456ac6f61df1906195d9aac3">
+Pokud byste chtěli prostě násobit dva vektory, tak doporučuju&nbsp;<a href="https://www.youtube.com/watch?v=htYh-Tq7ZBI"><span class="fa fa-external-link-alt"></span> tohle video</a>. Výsledek toho však pro nás nemá moc užitek.</p>
+<p class="woowoo-paragraph" id="paragraph59a21df0afb3aad42865166aeed11ee319687c1fef">
+Co pro nás má využití je skalární součin. Pokud je skalární součin dvou vektorů nula, tak jsou na sebe kolmé.Výsledkem vektorového součinu je taky</p>
 
         
-        <div class="section-navigation d-flex justify-content-between">
-                                <small><a href="chap-intro.html" data-bs-toggle="tooltip" title="Úvod"><span class="fa fa-arrow-left"></span> předchozí</a></small>
-                        <span></span>
-                </div>
+        <hr class="mt-5">
+        <div class="chapter-navigation container-fluid text-center mt-1">
+                                <div class="row">
+              <div class="col-4">
+                                                  <a href="chap-intro.html" data-bs-toggle="tooltip" title="Úvod">
+                    <span class="d-block d-sm-none fa fa-angle-double-left"></span>
+                    <span class="d-none d-sm-block"><span class="fa fa-angle-double-left"></span> předchozí</span>
+                  </a>
+                              </div>
+              <div class="col-4">
+                kapitola              </div>
+              <div class="col-4">
+                                              </div>
+            </div>
+                  </div>
       </div>
     </div>
   </div>
@@ -275,10 +476,10 @@ Rovina ve 2D je celý prostor, takže tam nemá cenu s&nbsp;tím zabývat.
   <small>
         <a href="mailto:fiks@fit.cvut.com"><span class="fa fa-envelope-o"> FIKS</span></a>      </small>
   <ul>
-    <li><small title="FIT HTML Template v0.2.3">WooWoo ver. 0.3.7</small></li>
-    <li><small title="okamžik vygenerování">2024-02-03 09:56:12 +0000</small></li>
+    <li><small title="FIT HTML Template v0.2.7">WooWoo ver. 0.4.3</small></li>
+    <li><small title="okamžik vygenerování">2024-02-08 22:03:18 +0000</small></li>
                 <li><small><a href="https://gitlab.fit.cvut.cz/havlialb/fiksarka">zdrojový kód a hlášení chyb</a></small></li>
-      </ul>
+          </ul>
 </div>
 </footer>
 </html>

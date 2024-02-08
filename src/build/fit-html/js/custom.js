@@ -1,36 +1,41 @@
-// Popovers
+// Popovers and hints
 
-MathJax.Hub.Queue(function () {
-  // Fix popovers in math equations
-  $('span.mathpopup').each(function (index) {
+// Fix popovers in math equations
+function addHints() {
+  // console.log('Called...')
+
+  $('.mathpopup').each(function (index) {
     var anchor = $(this).parent();
     var href = anchor.attr('href') // this contains the hint!
 
-    // dump when debugging...
-    // console.log(href)
+    if (href) {
+      // dump when debugging...
+      // console.log('Found one!')
+      // console.log(href);
 
-    anchor.removeAttr('href')
-    anchor.attr('tabindex', '0')
-    anchor.attr('role', 'button')
-    anchor.attr('data-bs-trigger', 'focus')
-    anchor.attr('data-bs-container', 'body')
-    anchor.attr('data-bs-toggle', 'popover')
-    anchor.attr('data-bs-html', 'true')
-    anchor.attr('data-bs-placement', 'top')
-    anchor.attr('data-bs-content', href)
-    anchor.addClass('bg-light')
-    anchor.addClass('text-success')
+      anchor.removeAttr('href')
+      anchor.addClass('fix-popover')
+      anchor.attr('tabindex', '0')
+      anchor.attr('role', 'button')
+      anchor.attr('data-bs-trigger', 'focus')
+      anchor.attr('data-bs-container', 'body')
+      anchor.attr('data-bs-toggle', 'popover')
+      anchor.attr('data-bs-html', 'true')
+      anchor.attr('data-bs-placement', 'top')
+      anchor.attr('data-bs-content', href)
+    }
   });
 
-  var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
-  var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
-    return new bootstrap.Popover(popoverTriggerEl)
+  $('.fix-popover').each(function () {
+    new bootstrap.Popover($(this));
+    $(this).on('shown.bs.popover', function () {
+      MathJax.typeset();
+    });
   });
 
-  $('[data-bs-toggle="popover"]').on('shown.bs.popover', function () {
-    MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
-  });
-});
+  $('.fix-popover').removeClass('fix-popover');
+  $('.mathpopup').removeClass('mathpopup');  
+}
 
 
 // Bootstrap tooltips
@@ -59,52 +64,48 @@ var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
 // Typeset possible math content in popovers
 
 $('[data-bs-toggle="popover"]').on('shown.bs.popover', function () {
-  MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+  MathJax.typeset();
 });
 
-// Hackish theme switching 
-bs_themes = {
-  "default": "css/bootstrap.min.css",
-  "darkly": "css/bootstrap-darkly.min.css"
-}
+// Theme switching 
 pygments_themes = {
-  "default": "css/highlight.css",
-  "darkly": "css/highlight-dark.css"
+  "light": "css/highlight.css",
+  "dark": "css/highlight-dark.css"
 }
 
-bs_theme_link = $('#bs-theme-link')
 pygments_theme_link = $('#pygments-theme-link')
-current_theme = localStorage.getItem('current-woowoo-theme') || 'default'
+current_theme = localStorage.getItem('current-woowoo-theme') || 'light'
 
-bs_theme_link.attr('href', bs_themes[current_theme])
+document.documentElement.setAttribute('data-bs-theme', current_theme)
 pygments_theme_link.attr('href', pygments_themes[current_theme])
-if (current_theme == 'darkly') {
-  $('img.woowoo-image, img.woowoo-tikz').addClass('fix-dark')
+if (current_theme == 'dark') {
+  $('img.woowoo-image, img.woowoo-tikz, span.mjx-mstyle').addClass('fix-dark')
   $('#theme-switch-icon').removeClass('fa-moon')
   $('#theme-switch-icon').addClass('fa-sun')
 }
 
 $('#theme-switch-link').click(function() {
-  bs_theme_link = $('#bs-theme-link')
   pygments_theme_link = $('#pygments-theme-link')
-  current_theme = localStorage.getItem('current-woowoo-theme') || 'default'
+  current_theme = localStorage.getItem('current-woowoo-theme') || 'light'
 
-  if (current_theme == 'darkly') {
+  if (current_theme == 'dark') {
     $("html").fadeOut(1000, function () {
-      bs_theme_link.attr('href', bs_themes['default'])
-      pygments_theme_link.attr('href', pygments_themes['default'])
-      $('img.woowoo-image, img.woowoo-tikz').removeClass('fix-dark')
-      localStorage.setItem('current-woowoo-theme', 'default')
+      // console.log('Going light...')
+      document.documentElement.setAttribute('data-bs-theme', 'light')
+      pygments_theme_link.attr('href', pygments_themes['light'])
+      $('img.woowoo-image, img.woowoo-tikz, mjx-mstyle').removeClass('fix-dark')
+      localStorage.setItem('current-woowoo-theme', 'light')
       $('#theme-switch-icon').removeClass('fa-sun')
       $('#theme-switch-icon').addClass('fa-moon')
       $("html").fadeIn(1000)
     });
   } else {
     $("html").fadeOut(1000, function () {
-      bs_theme_link.attr('href', bs_themes['darkly'])
-      pygments_theme_link.attr('href', pygments_themes['darkly'])
-      $('img.woowoo-image, img.woowoo-tikz').addClass('fix-dark')
-      localStorage.setItem('current-woowoo-theme', 'darkly')
+      // console.log('Going dark...')
+      document.documentElement.setAttribute('data-bs-theme', 'dark')
+      pygments_theme_link.attr('href', pygments_themes['dark'])
+      $('img.woowoo-image, img.woowoo-tikz, mjx-mstyle').addClass('fix-dark')
+      localStorage.setItem('current-woowoo-theme', 'dark')
       $('#theme-switch-icon').removeClass('fa-moon')
       $('#theme-switch-icon').addClass('fa-sun')
       $("html").fadeIn(1000)

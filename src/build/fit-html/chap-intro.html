@@ -5,15 +5,15 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>  Fiksařka | 1 Úvod    </title>
+  <title>  1 Úvod | Fiksařka    </title>
   <!-- favicon -->
   <link rel="icon" type="image/ico" href="favicon.ico" />
 
   <!-- Bootstrap CSS -->
-  <link href="css/bootstrap.min.css" rel="stylesheet" id="bs-theme-link" />
+  <link href="css/bootstrap.min.css" rel="stylesheet" />
 
   <!-- Custom font -->
-  <link href="https://fonts.googleapis.com/css?family=Noto+Serif&amp;subset=latin-ext" rel="stylesheet" />
+  <!-- <link href="https://fonts.googleapis.com/css?family=Noto+Serif&amp;subset=latin-ext" rel="stylesheet" /> -->
 
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -22,22 +22,47 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
 
-  <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      extensions: ["tex2jax.js"],
-      tex2jax: {
+  <script>
+    window.MathJax = {
+      startup: {
+        // with lazy typesetting disabled:
+        //
+        //pageReady() { %>        //  return MathJax.startup.defaultPageReady().then(function () {
+        //    // We need to fix hints in math equations
+        //    addHints();
+        //  });
+        //}
+
+        // lazy typesetting is tricky:
+        // https://groups.google.com/g/mathjax-users/c/CPU4SBRuFDA/m/z-gMPtvJBgAJ?pli=1
+        // I need to use different state INSERT instead TYPESET.
+        ready() {
+          const {STATE, AbstractMathItem} = MathJax._.core.MathItem;
+          AbstractMathItem.prototype._STATE = AbstractMathItem.prototype.state;
+          AbstractMathItem.prototype.state = function (state, restore) {
+            if (state === STATE.INSERT && this.lazyTypeset === false) {
+              // console.log(this.math);
+              addHints();
+            }
+            return this._STATE(state, restore);
+          }
+          MathJax.startup.defaultReady();
+        }
+      },
+      chtml: {
+        mtextInheritFont: true,
+        merrorInheritFont: true
+      },
+      loader: { load: ['ui/lazy'] },
+      tex: {
         inlineMath: [ ['$','$'], ["\\(","\\)"] ],
         processEscapes: true,
-        processEnvironments: true
-      },
-      positionToHash: false,
-      TeX: {
-        Macros: {
+        processEnvironments: true,
+        macros: {
           N: "\\mathbb{N}",
           R: "\\mathbb{R}",
           Z: "\\mathbb{Z}",
           Q: "\\mathbb{Q}",
-          R: "\\mathbb{R}",
           eR: "\\overline{\\mathbb{R}}",
           CC: "\\mathbb{C}",
           ee: "\\mathrm{e}",
@@ -53,60 +78,110 @@
           ceq: "\\mathrel{\\mathop:}=",
           veps: "\\varepsilon",
           sgn: "\\mathrm{sgn}",
+          spn: "\\mathrm{span}",
           dt: "\\mathrm{d}t",
           dx: "\\mathrm{d}x",
+          dy: "\\mathrm{d}y",
+          dz: "\\mathrm{d}z",
           lano: "o",
           lanO: "\\mathcal{O}",
+          hilb: "\\mathscr{H}",
+          ket: [ "\\vert #1 \\rangle", 1 ],
+          bra: [ "\\langle #1 \\vert", 1 ],
+          braket: [ "\\langle #1 \\vert #2 \\rangle", 2 ],
+          proj: ["\\operatorname{proj}"],
           mA: "\\mathbf{A}",
           mB: "\\mathbf{B}",
           mC: "\\mathbf{C}",
           mD: "\\mathbf{D}",
           mE: "\\mathbf{E}",
-          mP: "\\mathbf{P}",
-          mQ: "\\mathbf{Q}",
-          mX: "\\mathbf{X}",
-          mI: "\\mathbf{I}",
           mF: "\\mathbf{F}",
           mG: "\\mathbf{G}",
+          mH: "\\mathbf{H}",
+          mI: "\\mathbf{I}",
+          mJ: "\\mathbf{J}",
+          mK: "\\mathbf{K}",
+          mL: "\\mathbf{L}",
+          mM: "\\mathbf{M}",
+          mN: "\\mathbf{N}",
+          mO: "\\mathbf{O}",
+          mP: "\\mathbf{P}",
+          mQ: "\\mathbf{Q}",
           mR: "\\mathbf{R}",
           mS: "\\mathbf{S}",
           mSigma: "\\boldsymbol{\\Sigma}",
+          mT: "\\mathbf{T}",
           mU: "\\mathbf{U}",
           mV: "\\mathbf{V}",
-          mL: "\\mathbf{L}",
+          mW: "\\mathbf{W}",
+          mX: "\\mathbf{X}",
           mY: "\\mathbf{Y}",
-          vx: "\\mathbf{x}",
-          vy: "\\mathbf{y}",
-          vz: "\\mathbf{z}",
+          mZ: "\\mathbf{Z}",
           va: "\\mathbf{a}",
           vb: "\\mathbf{b}",
           vc: "\\mathbf{c}",
+          vd: "\\mathbf{d}",
           ve: "\\mathbf{e}",
-          vq: "\\mathbf{q}",
+          vf: "\\mathbf{f}",
+          vg: "\\mathbf{g}",
+          vh: "\\mathbf{h}",
+          vi: "\\mathbf{i}",
+          vj: "\\mathbf{j}",
+          vk: "\\mathbf{k}",
+          vl: "\\mathbf{l}",
           vell: "\\boldsymbol{\\ell}",
+          vm: "\\mathbf{m}",
+          vn: "\\mathbf{n}",
+          vo: "\\mathbf{o}",
+          vp: "\\mathbf{p}",
+          vq: "\\mathbf{q}",
+          vr: "\\mathbf{r}",
+          vs: "\\mathbf{s}",
+          vt: "\\mathbf{t}",
           vu: "\\mathbf{u}",
           vv: "\\mathbf{v}",
           vw: "\\mathbf{w}",
+          vx: "\\mathbf{x}",
+          vy: "\\mathbf{y}",
+          vz: "\\mathbf{z}",
+          AAA: "\\mathcal{A}",
+          BB: "\\mathcal{B}",
+          DD: "\\mathcal{D}",
+          EE: "\\mathcal{E}",
+          FF: "\\mathcal{F}",
+          GG: "\\mathcal{G}",
+          HH: "\\mathcal{H}",
+          II: "\\mathcal{I}",
+          JJ: "\\mathcal{J}",
+          KK: "\\mathcal{K}",
+          LL: "\\mathcal{L}",
+          MM: "\\mathcal{M}",
+          NN: "\\mathcal{N}",
+          OO: "\\mathcal{O}",
+          PP: "\\mathcal{P}",
+          QQ: "\\mathcal{Q}",
+          RR: "\\mathcal{R}",
+          SSS: "\\mathcal{S}",
+          TT: "\\mathcal{T}",
+          UU: "\\mathcal{U}",
+          VV: "\\mathcal{V}",
+          WW: "\\mathcal{W}",
           XX: "\\mathcal{X}",
           YY: "\\mathcal{Y}",
-          EE: "\\mathcal{E}",
-          PP: "\\mathcal{P}",
-          UU: "\\mathcal{U}",
-          lcm: "\\mathrm{lcm}",
+          ZZ: "\\mathcal{Z}",
           ssubset: "\\subset\\subset",
           fl: "\\mathrm{f \\kern 0.04em l}",
-          logi: "\\mkern4mu{\\Large\\shortmid}\\mkern-8mu\\raise{0.5pt}=\\mkern-8mu{\\Large\\shortmid}\\mkern4mu",
-          thus: "\\mkern4mu{\\Large\\shortmid}\\mkern-8mu\\raise{0.5pt}=\\mkern-8mu\\mkern8mu",
-          pmat: [ "\\left(\\!\\!\\begin{array}{#1}#2\\end{array}\\!\\!\\right)", 2 ],
-          clr: [ "\\color{#1}{#2}", 2 ],
+          lcm: "\\mathrm{lcm}",
+          logi: "\\mathrel{\\vert\\mkern-3mu{=}\\mkern-3mu\\vert}",
+          thus: "\\mathrel{\\vert\\mkern-3mu{=}}",
+          nothus: "\\not\\!\\mathrel{\\vert\\mkern-3mu{=}}",
+          pmat: [ "\\left(\\begin{array}{#1}#2\\end{array}\\right)", 2 ],
+          clr: [ "{\\color{#1} #2}", 2 ]
         }
-      },
-      CommonHTML: { linebreaks: { automatic: false } },
-      "HTML-CSS": { linebreaks: { automatic: false } },
-      SVG: { linebreaks: { automatic: false } }
-    });
+      }
+    };
   </script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+  <script type="text/javascript" src="js/mathjax/tex-chtml.js" id="MathJax-script">
   </script>
 
   <!-- Font Awesome -->
@@ -122,12 +197,12 @@
   <link href="css/custom.css" rel="stylesheet" />
 </head>
 <body>
-  <nav class="navbar navbar-expand sticky-top navbar-light bg-light mb-4">
+  <nav class="navbar navbar-expand-md bg-body-tertiary sticky-top mb-4">
   <div class="container-fluid">
-    <a class="navbar-brand" href="index.html">Fiksařka</a>
+    <a class="navbar-brand d-none d-md-block" href="index.html">Fiksařka</a>
     <ul class="navbar-nav">
       <ul class="nav-item">
-        <a class="nav-link" href="chap-intro.html">Úvod</a>
+        <a class="nav-link" href="chap-intro.html">1 Úvod</a>
       </ul>
     </ul>
     <a href="#" id="theme-switch-link" title="přepínání vzhledu"><span id="theme-switch-icon" class="fa fa-moon"></span></a>
@@ -161,7 +236,7 @@
 
         <p class="woowoo-paragraph" id="paragraph1626ad95867a999dfca9131693204b8c487085225">
 Vítej ve FIKSím průvodci světem teoretické informatiky. V&nbsp;tomto průvodci se
-budeme hodně odkazovat na&nbsp;<a href="http://pruvodce.ucw.cz/"><span class="fa fa-external-link-alt"></span> Průvodce labyrintem algoritmů</a> &nbsp;<a tabindex="0" role="button" data-bs-trigger="focus" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-html="true" data-bs-content='Mareš, M., &amp; Valla, T. (2022). <i>Průvodce labyrintem algoritmů</i>. CZ.NIC.'>(Mareš &amp; Valla, 2022)</a> jako zdroj
+budeme hodně odkazovat na&nbsp;<a href="http://pruvodce.ucw.cz/"><span class="fa fa-external-link-alt"></span> Průvodce labyrintem algoritmů</a>  <a tabindex="0" role="button" data-bs-trigger="focus" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-html="true" data-bs-content='Mareš, M., &amp; Valla, T. (2022). <i>Průvodce labyrintem algoritmů</i>. CZ.NIC.'>(Mareš &amp; Valla, 2022)</a> jako zdroj
 dalších informací o&nbsp;problémech, kterými se budeme zabývat.</p>
 <p class="woowoo-paragraph" id="paragraph247a00dcb04292456b16a963c4894f2f49a5b11a7">
 Tento průvodce je určen jak pro řešitele FIKSu, tak pro kohokoliv, kdo chce zjistit
@@ -180,10 +255,33 @@ něco o&nbsp;teoretické informatice.</p>
             </a>
           </h3>
         
-        <div class="section-navigation d-flex justify-content-between">
-                        <span></span>
-                                <small><a href="chap-geometrie.html" data-bs-toggle="tooltip" title="Geometrie">následující <span class="fa fa-arrow-right"></span></a></small>
-                </div>
+        <hr class="mt-5">
+        <div class="chapter-navigation container-fluid text-center mt-1">
+                      <div class="row">
+              <div class="col-4">
+              </div>
+              <div class="col-4">
+                podkapitola              </div>
+              <div class="col-4">
+                <a href="fiks.html" data-bs-toggle="tooltip" title="FIKS">
+                  <span class="d-block d-sm-none fa fa-angle-right"></span>
+                  <span class="d-none d-sm-block">následující <span class="fa fa-angle-right"></span></span>
+                </a>
+              </div>
+            </div>
+                                <div class="row">
+              <div class="col-4">
+                                              </div>
+              <div class="col-4">
+                kapitola              </div>
+              <div class="col-4">
+                                                  <a href="chap-geometrie.html" data-bs-toggle="tooltip" title="Geometrie">
+                    <span class="d-block d-sm-none fa fa-angle-double-right"></span>
+                    <span class="d-none d-sm-block">následující <span class="fa fa-angle-double-right"></span></span>
+                  </a>
+                              </div>
+            </div>
+                  </div>
       </div>
     </div>
   </div>
@@ -203,10 +301,10 @@ něco o&nbsp;teoretické informatice.</p>
   <small>
         <a href="mailto:fiks@fit.cvut.com"><span class="fa fa-envelope-o"> FIKS</span></a>      </small>
   <ul>
-    <li><small title="FIT HTML Template v0.2.3">WooWoo ver. 0.3.7</small></li>
-    <li><small title="okamžik vygenerování">2024-02-03 09:56:12 +0000</small></li>
+    <li><small title="FIT HTML Template v0.2.7">WooWoo ver. 0.4.3</small></li>
+    <li><small title="okamžik vygenerování">2024-02-08 22:03:18 +0000</small></li>
                 <li><small><a href="https://gitlab.fit.cvut.cz/havlialb/fiksarka">zdrojový kód a hlášení chyb</a></small></li>
-      </ul>
+          </ul>
 </div>
 </footer>
 </html>
