@@ -34,7 +34,6 @@ pages:
     - cp .fit-pages.yml public/
   dependencies:
     - html
-    - pdf
   artifacts:
     paths:
       - public/
