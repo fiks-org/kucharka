@@ -1,3 +1,0 @@
-<%# source citation %>
-<% document.bibliography.append_citation dump.strip %>
-<a tabindex="0" role="button" data-bs-trigger="focus" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-html="true" data-bs-content='<%= document.bibliography.render_reference(dump.strip).first %>'><%= document.bibliography.render_citation dump.strip %></a>

@@ -1,8 +1,0 @@
-<%# tabular row %>
-<tr>
-  <% content.first.content.each do |col| %>
-  <% if meta['head'] %><th><% else %><td><% end %>
-    <%=r col %>
-  <% if meta['head'] %></th><% else %></td><% end %>
-  <% end %>
-</tr>

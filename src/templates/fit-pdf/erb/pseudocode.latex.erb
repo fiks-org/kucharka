@@ -1,6 +1,0 @@
-<%# algorithmic pseudocode %>
-<%# linenumber (optional, default 1) %>
-\begin{algorithmic}[<% if meta?('linenumber') %><%= meta['linenumber'] %><% else %>1<% end %>]
-<%= strip_indent(dump).strip %>
-
-\end{algorithmic}

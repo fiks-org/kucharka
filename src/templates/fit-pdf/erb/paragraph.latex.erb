@@ -1,5 +1,0 @@
-<%# a paragraph %>
-<%# noindent: if set to true do not indent this paragraph! %>
-<% if content.last.meta?('noindent') || content.first.meta?('noindent') %>\noindent <% end %>
-<%=r content %>
-

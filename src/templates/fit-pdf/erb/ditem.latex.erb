@@ -1,5 +1,0 @@
-<%# an item with a custom bullet %>
-<%# bullet: custom bullet %>
-\item<% if meta['bullet'] %>[<%= r(parse_text_stub(meta['bullet']), glue: true) %>]<% end %>
-
-<%= r(content).lstrip %>
