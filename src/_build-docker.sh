@@ -4,10 +4,10 @@
 
 # move source
 mkdir -p /tmp/build
-rsync --recursive --no-links /tmp/project/src/* /tmp/build/
+rsync --recursive -L /tmp/project/src/* /tmp/build/
 
 # copy templates
-cp -r templates /tmp/build/
+# cp -r templates /tmp/build/
 
 # build html
 cd /tmp/build
