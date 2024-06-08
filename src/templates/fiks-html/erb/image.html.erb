@@ -1,7 +1,0 @@
-<%# include images, svgs only, copy it to build directory %>
-<%# options: alt (title) %>
-<% builder.register_job({
-  command: "cp #{File.join(builder.project_dir, builder.figures_dir, dump.strip + '.*')} #{builder.template_figures_dir}/"
-})
-%>
-<img class="woowoo-image figure-img img-fluid" src="<%= File.join(builder.figures_dir, dump.strip + '.svg') %>" alt="<%= meta['alt']%>"></img>

@@ -1,7 +1,0 @@
-<%# introduction of a new notion %>
-<%# index: optional index entry %>
-<%# label: optional label %>
-<% if meta?('index') %>
-<% document.index.register(meta['index'], self) %>
-<% end %>
-<strong id="<%= label %>"><%= r(content, glue: true) %></strong>

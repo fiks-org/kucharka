@@ -1,9 +1,0 @@
-<h4 class="anchored" id="<%= label %>">
-  <span><%= numeric_label %></span>
-  <span><%= r(parse_text_stub(title), glue: true) %></span>
-  <% if meta?('index') %>
-    <% spine.document.index.register(meta['index'], self) %>
-  <% end %>
-</h4>
-
-<%= r content %>

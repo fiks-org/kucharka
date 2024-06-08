@@ -1,7 +1,0 @@
-<%# enumeration %>
-<%# type: defaults to `1` (numeric), possibly `a` (alphabetical) %>
-<% if parent && parent.identifier == 'paragraph'%></p><% end %>
-<ol type="<%= meta?('type') && meta['type'] == 'a' ? 'a' : '1' %>">
-<%=r content.first.content %>
-</ol>
-<% if parent && parent.identifier == 'paragraph'%><p class="woowoo-paragraph-part"><% end %>

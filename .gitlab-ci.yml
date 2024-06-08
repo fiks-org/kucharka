@@ -10,7 +10,8 @@ html:
     - pdflatex -v              # print pdflatex version
     - pygmentize -V            # print pygmentize version
     - cd src
-    # - cp -r /opt/woowoo/templates ./
+    - git clone git@gitlab.fit.cvut.cz:havlialb/fiks-html.git /tmp/fiks-html
+    - cp -r /tmp/fiks-html/templates ./
     - woo list                 # check available templates, to be sure
     - rake fikshtml:assets fikshtml:build
     - tar -czvf build/tutorials-pages.tar.gz build/fiks-html
