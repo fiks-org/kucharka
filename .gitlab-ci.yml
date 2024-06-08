@@ -14,11 +14,11 @@ html:
     - woo list                 # check available templates, to be sure
     - rake fikshtml:assets fikshtml:build
     - tar -czvf build/tutorials-pages.tar.gz build/fiks-html
-    - mv build/tutorials-pages.tar.gz build/fit-html
+    - mv build/tutorials-pages.tar.gz build/fiks-html
   artifacts:
     expire_in: 2 hours
     paths:
-      - src/build/fit-html
+      - src/build/fiks-html
 
 
 # Deploy to FIT Pages
