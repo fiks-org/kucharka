@@ -1,0 +1,3 @@
+<%# full reference with pop up %>
+<% target = document.index.labels[pointer.to_s.strip] %>
+<a class="text-success" tabindex="0" role="button" data-bs-trigger="focus" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-html="true" data-bs-content='<%= r(target.content).gsub('{equation}', '{equation*}').gsub('{align}','{align*}').gsub(/\\label{[^{]+}/, '').gsub(/\\tag{[^{]+}/, '').gsub('</a>','').gsub(/data-bs-content='[^']*'/,'').gsub(/<a[^>]*>/,'') %>'><%=r content %></a>

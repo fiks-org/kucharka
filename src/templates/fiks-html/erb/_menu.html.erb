@@ -1,0 +1,19 @@
+<div class="list-group mb-3">
+  <% spine.top_sections.each do |chap| %>
+    <a class="list-group-item list-group-item-action<%= chap == self ? ' active' : '' %>" href="<%= chap.label %>.html">
+    <%= chap.numeric_label %> <%= chap.title %>
+    </a>
+
+    <% if chap.children.any? && (chap == self || chap.children.include?(self) ) %>
+      <% chap.children.each do |sec| %>
+      <a class="list-group-item list-group-item-secondary list-group-item-action<%= sec == self ? ' active' : '' %>" href="<%= sec.label %>.html">
+      <small><%= sec.numeric_label %> <%= sec.title %></small>
+      </a>
+      <% end %>
+    <% end %>
+  <% end %>
+  <a class="list-group-item list-group-item-action list-group-item-dark" href="index_page.html">Index</a>
+  <% if spine.document.bibliography.bibtex_file %>
+  <a class="list-group-item list-group-item-action list-group-item-dark" href="references.html">Literatura</a>
+  <% end %>
+</div>

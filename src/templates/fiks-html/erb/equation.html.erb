@@ -1,0 +1,23 @@
+<%# an equation %>
+<%# label: equation label %>
+<% if parent && parent.identifier == 'paragraph'%></p><% end %>
+<% if meta?('label') %>
+<div class="woowoo-equation" id="<%= meta['label'] %>">
+\begin{equation}\label{<%= meta['label'] %>}\tag{<%= numeric_label %>}
+<%= r(content.first.content).strip %>
+
+\end{equation}
+</div>
+<% else %>
+<div class="woowoo-equation">
+\begin{equation*}
+<% if content.is_a?(Array) %>
+<%= r(content.first.content).strip %>
+<% else %>
+<%= r(content).strip %>
+<% end %>
+
+\end{equation*}
+</div>
+<% end %>
+<% if parent && parent.identifier == 'paragraph'%><p class="woowoo-paragraph-part"><% end %>

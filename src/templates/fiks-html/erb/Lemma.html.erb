@@ -1,0 +1,23 @@
+<%# Lemma wobject %>
+<%# title: optional title %>
+<%# english: optional english title %>
+<%# label: optinal label %>
+<%# index: optinal index entry %>
+<% if meta?('index') %>
+<% document.index.register(meta['index'], self) %>
+<% end %>
+<div class="woowoo-lemma card mb-3" id="<%= label %>">
+  <h5 class="card-header bg-info text-white">
+    <div class="d-flex justify-content-between">
+      <span class="anchored" data-anchor-id="<%= label %>">Lemma <%= numeric_label %>
+    <% if meta?('title') && meta?('english') %>
+    (<%= r(parse_text_stub(meta['title']), glue: true) %> / <%= r(parse_text_stub(meta['english']), glue: true) %>)
+    <% elsif meta?('title') && !meta?('english') %>
+    (<%= r(parse_text_stub(meta['title']), glue: true) %>)
+    <% end %></span>
+    <span class="fa fa-rocket"></span>
+  </h3>
+  <div class="card-body">
+    <%= r content %>
+  </div>
+</div>
