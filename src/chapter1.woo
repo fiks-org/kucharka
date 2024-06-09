@@ -137,15 +137,74 @@ Pomocí těch, pak můžeme definovat asymptotickou těsnou mez.
   Pak se $\lanO(g(x))$ považuje za množinu všech funkcí, které jsou asymptoticky shora omezené $g$.
 
 
+Ukážeme si, jak tyto pojmy líp interpretovat na příkladech.
+
+
+.Example:
+  title: Linární vyhledávání
+  label: example-asymptotika-lin-search
+
+  Mějme pole $a$ o $n$ prvcích. Chceme v něm najít $x$. Nejjednodužší způsob jak ho najít je proiterovat
+  všechny prvky.
+
+  !pseudocode:
+
+    \PROCEDURE{LinSearch}{$a, n, x$}
+      \STATE found = FALSE
+      \FOR {$i = 0, \dots, n-1 $ }
+        \IF {$a_i == x$}
+          \STATE found = \TRUE
+        \ENDIF
+      \ENDFOR
+      \RETURN found
+    \ENDPROCEDURE
+
+  Tomuto se říká "lineární vyhledávání".notion.1. To naznačuje, že by algoritmus měl být lineární
+  neboli jeho časová složitost je $\lanO(n)$.
+    1:
+      index: vyhledávání!lineární
+
+
+  Jak jsme na to ale přišli? Podívejme se pořádně na kód.
+
+  .itemize:
+
+    .item:
+
+      Řádek 2 se provede jenom jednou, přiřazuje se konstanta, takže zatím máme $\lanO(1)$.
+
+    .item:
+
+      Následuje forloop, jehož obsah se provede $n$-krát.
+
+    .item:
+
+      Ve forloopu je jedno porovnání a jedno přiřazení, porovnání se provede vždy $\implies n*\lanO(1) = \lanO(n)$.
+      V nejhorším případě bude porovnání vždy pravdivé a přiřazení se provede také vždy. Proto opět $\lanO(n)$.
+
+    .item:
+
+      Pak je jenom return ($\lanO(1)$)
+
+  Výsledná časová složitost je součet všech těchto hodnot $\lanO(1) + \lanO(n) + \lanO(n) + \lanO(1) = \lanO(n)$
+  "Důkaz součtu ponecháme jako cvičení pro čtenáře".footnote
+
+
+
+.Section Množiny
+  lable: sec-množiny
+
+
 Když už se nakously množiny, tak si zavedeme nějaké pojmy o množinách.
 
 
 .Definition:
   label: def-mnozina
   title: Množina
+  index: množina
 
   Množina je matematický objekt neuspořádaných prvků. Můžete si ho představit třeba jako pytel s věcmi.
-  Každá množina obsahuje prvky nějakého univerza $\UU$
+  Každá množina obsahuje prvky nějakého univerza $\UU$.
 
   
   Množina může být zadána jako
