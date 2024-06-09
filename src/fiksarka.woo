@@ -9,8 +9,9 @@
 
 % Vítej ve FIKS kuchařce!
 
-.include chapter1.woo
+.include into.woo
 
+.include intro-to-algorithms.woo
 
 .include geometrie.woo
 
