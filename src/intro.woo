@@ -1,0 +1,40 @@
+.Chapter Úvod
+  label: chap-intro
+  index: uvod
+
+
+Vítej ve FIKSím průvodci světem teoretické informatiky. Cílem této kuchařky je přinést ti znalosti
+některých základních i pokročilých algoritmů a datových struktur. A to vše nějakou rozumnou formou
+vhodnou pro středoškoláky. Materiály se ti mohou hodit při mnohých úlohách FIKSu, ať už u Sfing,
+kde ti pomohou s algoritmem nebo u teoretických úloh, kde ti ukážou jakou formou si představujeme
+důkazy a můžeš se sem pak odkazovat. U většiny částí pak najdeš odkazy na další materiály, pokud by
+tě téma zajímalo víc. A pokud bys měl jakékoli otázky neboj se zeptat, třeba na "našem discordu"@1.
+  1:
+    link: https://www.discord.gg/Pc2w7hp
+
+
+Začneme hodně ze široka a od základů si zadefinujeme postupně všechny pojmy, které budeme používat.
+Pokud si myslíš, že už je umíš, super, jenom se koukni jestli si pod tím představuješ ten samý význam,
+jako bude používaný v těchto materiálech. Někdy se může stát, že si nějaký pojem zadefinujeme jako
+speciální případ toho, co už znáš, nebo naopak budeme víc obecní.
+
+
+% .Section FIKS
+%   label: fiks
+%
+%
+% Ale nejdřív nějaká selfpromotion. Co je to vlastně ten FIKS?
+
+
+% .Definition:
+%   label: def-fiks
+%   index: FIKS
+%   title: FIKS
+%
+%   FIKS neboli Fitácký Informatický Korespondenční Seminář je jak už název napovídá korespondeční
+%   seminář, organizovaný hlavně studenty z "FIT ČVUT"@1. Určený je hlavně pro středoškoláky, které si
+%   klade za cíl naučit nebo aspon seznámit s algoritmickými problémy a základy teoretické informatiky.
+%     1:
+%       link: https://fit.cvut.cz
+
+
