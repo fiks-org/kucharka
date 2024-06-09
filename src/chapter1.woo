@@ -1,45 +1,45 @@
-%
-% Základní tvorba osbahu
-%
-
-
 .Chapter Úvod
   label: chap-intro
   index: uvod
 
 
-Vítej ve FIKSím průvodci světem teoretické informatiky. V tomto průvodci se
-budeme hodně odkazovat na "Průvodce labyrintem algoritmů"@1 .cite:pruvodce jako zdroj
-dalších informací o problémech, kterými se budeme zabývat.
+Vítej ve FIKSím průvodci světem teoretické informatiky. Cílem této kuchařky je přinést ti znalosti
+některých základních i pokročilých algoritmů a datových struktur. A to vše nějakou rozumnou formou
+vhodnou pro středoškoláky. Materiály se ti mohou hodit při mnohých úlohách FIKSu, ať už u Sfing,
+kde ti pomohou s algoritmem nebo u teoretických úloh, kde ti ukážou jakou formou si představujeme
+důkazy a můžeš se sem pak odkazovat. U většiny částí pak najdeš odkazy na další materiály, pokud by
+tě téma zajímalo víc. A pokud bys měl jakékoli otázky neboj se zeptat, třeba na "našem discordu"@1.
   1:
-    link: http://pruvodce.ucw.cz/
+    link: https://www.discord.gg/Pc2w7hp
 
 
-Tento průvodce je určen jak pro řešitele FIKSu, tak pro kohokoliv, kdo chce zjistit
-něco o teoretické informatice.
+Začneme hodně ze široka a od základů si zadefinujeme postupně všechny pojmy, které budeme používat.
+Pokud si myslíš, že už je umíš, super, jenom se koukni jestli si pod tím představuješ ten samý význam,
+jako bude používaný v těchto materiálech. Někdy se může stát, že si nějaký pojem zadefinujeme jako
+speciální případ toho, co už znáš, nebo naopak budeme víc obecní.
 
 
-.Section FIKS
-  label: fiks
+% .Section FIKS
+%   label: fiks
+%
+%
+% Ale nejdřív nějaká selfpromotion. Co je to vlastně ten FIKS?
 
 
-Ale nejdřív nějaká selfpromotion. Co je to vlastně ten FIKS?
+% .Definition:
+%   label: def-fiks
+%   index: FIKS
+%   title: FIKS
+%
+%   FIKS neboli Fitácký Informatický Korespondenční Seminář je jak už název napovídá korespondeční
+%   seminář, organizovaný hlavně studenty z "FIT ČVUT"@1. Určený je hlavně pro středoškoláky, které si
+%   klade za cíl naučit nebo aspon seznámit s algoritmickými problémy a základy teoretické informatiky.
+%     1:
+%       link: https://fit.cvut.cz
 
 
-.Definition:
-  label: def-fiks
-  index: FIKS
-  title: FIKS
-
-  FIKS neboli Fitácký Informatický Korespondenční Seminář je jak už název napovídá korespondeční
-  seminář, organizovaný hlavně studenty z "FIT ČVUT"@1. Určený je hlavně pro středoškoláky, které si
-  klade za cíl naučit nebo aspon seznámit s algoritmickými problémy a základy teoretické informatiky.
-    1:
-      link: https://fit.cvut.cz
-
-
-.Section Úvod do algoritmů
-  label: sec-intro-algo
+.Chapter Úvod do algoritmů
+  label: chap-intro-algo
 
 
 Co je to vůbec algoritmus?
@@ -84,8 +84,9 @@ od algoritmu požadujeme.
         index: algoritmus!pamětová složitost
 
 
-V této publikaci budeme hojně využívat zavedených matematických pojmů, které si zadefinujeme postupně v průběhu.
-Ale na začátek si zadefinujeme aspon nějaké základní pojmy.
+
+.Section Časová složitost
+  label: sec-casova-slozitost
 
 
 Pamětová a časová složitost se běžně udávají jako $\lanO$, $\Omega$ nebo $\Theta$. Co to ale znamená?
@@ -151,7 +152,7 @@ Ukážeme si, jak tyto pojmy líp interpretovat na příkladech.
 
     \PROCEDURE{LinSearch}{$a, n, x$}
       \STATE found = FALSE
-      \FOR {$i = 0, \dots, n-1 $ }
+      \FOR {$i = 1, \dots, n $ }
         \IF {$a_i == x$}
           \STATE found = \TRUE
         \ENDIF
@@ -190,10 +191,82 @@ Ukážeme si, jak tyto pojmy líp interpretovat na příkladech.
   "Důkaz součtu ponecháme jako cvičení pro čtenáře".footnote
 
 
+.Exercise:
+  title: Linární vyhledávání 2
+  label: example-asymptotika-lin-search-2
 
-.Section Množiny
-  lable: sec-množiny
+  Máme stále stejný problém, ale trochu si upravíme algoritmus.
 
+  !pseudocode:
+
+    \PROCEDURE{LinSearch2}{$a, n, x$}
+      \FOR {$i = 1, \dots, n $ }
+        \IF {$a_i == x$}
+          \RETURN \TRUE
+        \ENDIF
+      \ENDFOR
+      \RETURN \FALSE
+    \ENDPROCEDURE
+
+  Jak se změní časová složitost tohoto algoritmu oproti předchozímu?
+
+
+.Solution:
+  title: Řešení cvičení .reference:example-asymptotika-lin-search-2
+  label: sol-asymptotika-lin-search-2
+
+  Nezmění se. V nejhorším případě ($x$ v poli $a$ není) se porovnání opět provede $n$-krát.
+  Takže časová složitost zůstane $\lanO(n)$.
+
+
+Všimněte si, že se v popisu složitosti vyskytuje $n$. Není to jen tak ledajaké $n$ má spojitost
+s naším problémem. V tomto případě se jedná o počet prvků v poli. Kdybychom této hodnotě říkali $l$,
+bude časová složitost lineárního vyhledávání $\lanO(l)$.
+
+
+Proč je důležité říkat, co ty písmenka znamenají si ukážeme na příkladu.
+
+
+.Example:
+  label: example-asymptotika-scitani
+  title: Sčítání
+
+  Mějme dvě $n$ ciferná čísla $a$ a $b$. Tyto čísla chceme sečíst, použijeme na to algorismus písemného
+  sčítání podsebe, který známe ze základní školy.
+
+  .align:
+    
+    a&\\
+    b&\\
+    \hline
+    c&
+
+  Řekněme si konrétní $a = 12345$ a $b = 00678$.
+
+  .align:
+
+    12345&\\
+    00678&\\
+    \hline
+    13023&
+
+  Museli jsme každou cifru $a$ sečíst s odpovídající cifrou v $b$ a ještě s carry (cifra co přetekla).
+  Řekněme, že sečíst dvě cifry je konstatní operace, pak složitost tohoto výpočtu je $\lanO(n)$.
+
+
+To je celkem pomalé sčítání. Zvládneme to rychleji? Samozřejmě, pokud nebudeme uvažovat délku čísel, ale jeho
+hodnotu, pak bude časová složitost sčítání jenom $\lanO(\log_{10}\max(a,b))$. To už vypadá líp. Ale algoritmus je to
+pořád stejný. Proto je důležité uvádět na základě čeho složitost uvažujeme.
+
+
+
+% Snad tohle jako přiblížení počítání složistosti pomohlo.
+
+
+.Chapter Množiny
+  label: chap-mnoziny
+
+% TODO 
 
 Když už se nakously množiny, tak si zavedeme nějaké pojmy o množinách.
 
@@ -217,4 +290,4 @@ Když už se nakously množiny, tak si zavedeme nějaké pojmy o množinách.
 
     .item:
 
-      prvky univerza \mathcal{U} splnující nějakou vlastnost $v$, např. $\{x \in \UU | v(x)\}$
+      prvky univerza $\mathcal{U}$ splnující nějakou vlastnost $v$, např. $\{x \in \UU | v(x)\}$
