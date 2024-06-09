@@ -9,7 +9,7 @@
 
 % Vítej ve FIKS kuchařce!
 
-.include into.woo
+.include intro.woo
 
 .include intro-to-algorithms.woo
 
