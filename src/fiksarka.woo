@@ -13,6 +13,10 @@
 
 .include intro-to-algorithms.woo
 
+.include vyhledavaci-algoritmy.woo
+
+.include mnoziny.woo
+
 .include geometrie.woo
 
 

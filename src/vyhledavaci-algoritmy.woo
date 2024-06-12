@@ -1,0 +1,12 @@
+.Chapter Řadící a vyhledávací algoritmy
+  label: chap-radici-vyhledavaci-algo
+
+
+Všichni máme zkušenosti ze života, kdy jsme něco hledali v nějaké tabulce, nebylo to seřazené
+a my jsme si přáli, aby byla seřazená a nemuseli jsme procházet všechno. Pročítače to mají podobně
+hodně algoritmů je mnohem efektivnějších, když mají vstup seřazený. Ale jak ho seřadíme?
+
+
+V této kapitole se podíváme na několik řaďících algoritmů a poté i na nějaké vyhledávací, ať už v seřazeném
+nebo neseřazeném vstupu. Také si znovu připomeneme počítání složitostí a ukážeme si jak se dokazují zbylé dvě
+vlastnosti algoritmů, korektnost a konečnost.

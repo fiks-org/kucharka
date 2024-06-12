@@ -21,9 +21,11 @@ od algoritmu požadujeme.
 
   .item:
 
-    "Správnost".notion.1 algoritmu - že opravdu vždy vrátí to, co od něj očekáváme.
+    "Správnost".notion.1 algoritmu - že opravdu vždy vrátí to, co od něj očekáváme. Někdy uslyšíte i "korektnost".notion.2
       1:
         index: algoritmus!správnost
+      2:
+        index: algoritmus!korektnost
 
   .item:
 
@@ -43,6 +45,33 @@ od algoritmu požadujeme.
       1:
         index: algoritmus!pamětová složitost
 
+
+S algoritmy většinou máme spojený ještě jeden pojem.
+
+
+.Definition:
+  title: Problém
+  label: def-problem
+  index: problém
+
+  "Problém".notion někdy "výpočetní problém".notion je pojem z teoretické informatiky. Označuje
+  formální úkol, z nějakého vstupu získat výstup. Odpověďět na nějakou otázku ohledně toho vstupu.
+
+
+.Definition:
+  title: Instance problému
+  label: def-problem-instance
+  index: problém!instance
+
+  "Instance problému".notion je jeden konkrétní vstup nějakého problému.
+
+
+A právě problémy jsou studovány, řešeny pomocí algoritmů nebo dokazováno, že jsou neřešitelné.
+Pro každý problém může existovat vícero algoritmů.
+
+
+Pokud jste někdy slyšli něco o těžkých problémech nebo o třídách problémů a chtěli byste se dozvědět více
+nezoufejte. Také jim nějakou kapitolu věnujeme, zatím jsme ale u základů.
 
 
 .Section Časová složitost
@@ -415,31 +444,3 @@ Ze znalosti jedné vlastnosti toho moc o druhé říci nemůžeme. Ale aspoň n�
 % Snad tohle jako přiblížení počítání složistosti pomohlo.
 
 
-.Chapter Množiny
-  label: chap-mnoziny
-
-% TODO 
-
-Když už se nakously množiny, tak si zavedeme nějaké pojmy o množinách.
-
-
-.Definition:
-  label: def-mnozina
-  title: Množina
-  index: množina
-
-  Množina je matematický objekt neuspořádaných prvků. Můžete si ho představit třeba jako pytel s věcmi.
-  Každá množina obsahuje prvky nějakého univerza $\UU$.
-
-  
-  Množina může být zadána jako
-
-  .itemize:
-
-    .item:
-
-      výčet prvků, např. $\{1, 2, 3, 4, 5\}$
-
-    .item:
-
-      prvky univerza $\mathcal{U}$ splnující nějakou vlastnost $v$, např. $\{x \in \UU | v(x)\}$
