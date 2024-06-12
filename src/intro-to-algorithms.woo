@@ -219,6 +219,198 @@ hodnotu, pak bude časová složitost sčítání jenom $\lanO(\log_{10}\max(a,b
 pořád stejný. Proto je důležité uvádět na základě čeho složitost uvažujeme.
 
 
+.Remark:
+  label: rem-asymptotika-porovnani
+  title: Porovnání horních mezí
+
+  Většinou chceme algoritmus co nejefektivnější (nejmenší časovou složitost). Ukážeme si
+  vybrané funkce a seřadíme je tak, že pro každou platí, že je "asymptoticky zhora omezená"#def-asymptoticka-horni-mez
+  všemi funkcemi napravo.
+
+  $1, \log n, \sqrt{n}, n, n\log n, n \sqrt{n}, n^2, n^3, 2^n, n!$
+
+  !!!TODO!!!
+
+  .table:
+    columns: l|rrrrrrrrr
+
+    .row:
+
+      $n =$
+
+      1
+
+      10
+
+      100
+
+      $10^4$
+
+      $10^5$
+
+      $10^6$
+
+      $10^7$
+
+      $10^9$
+
+      $10^12$
+
+    .row:
+
+      1
+
+      $\SI{150}{ns}$
+
+      $\SI{150}{ns}$
+
+      $\SI{150}{ns}$
+
+      $\SI{150}{ns}$
+
+      $\SI{150}{ns}$
+
+      $\SI{150}{ns}$
+
+      $\SI{150}{ns}$
+
+      $\SI{150}{ns}$
+
+      $\SI{150}{ns}$
+
+    .row:
+
+      $\log n $
+
+      $\SI{150}{ns}$
+
+      $\SI{500}{ns}$
+
+      $\SI{1}{µs}$
+
+      $\SI{2}{µs}$
+
+      $\SI{1}{ms}$
+
+      $\SI{1.2}{ms}$
+
+      $\SI{1.4}{ms}$
+
+      $\SI{1.8}{ms}$
+
+      $\SI{2.4}{ms}$
+
+    .row:
+
+      $\sqrt{n}$
+
+      $\SI{150}{ns}$
+
+      $\SI{190}{µs}$
+
+      $\SI{600}{µs}$
+
+      $\SI{6}{ms}$
+
+      $\SI{19}{ms}$
+
+      $\SI{150}{ns}$
+
+      $\SI{190}{ms}$
+
+      $\SI{1.9}{s}$
+
+      $\SI{1}{minuta}$
+
+    .row:
+
+      $n$
+
+      $\SI{150}{ns}$
+
+      $\SI{600}{µs}$
+
+      $\SI{6}{ms}$
+
+      $\SI{600}{ms}$
+
+      $\SI{6}{s}$
+
+      $\SI{1}{minuta}$
+
+      $\SI{10}{minut}$
+
+      $\SI{16.3}{hodin}$
+
+      $\SI{2}{roky}$
+
+    .row:
+
+      $n*\log n$
+
+      $\SI{150}{ns}$
+
+      $\SI{2}{ms}$
+
+      $\SI{40}{ms}$
+
+      todo!!!!
+
+
+.Section Paměťová složitost
+  label: sec-pametova-slozitost
+
+Do teď jsme se bavili o složitosti časové, ale na začátku kapitoly jsme zmiňovali i paměťovou složitost.
+Pojďme se na ní kouknout podrobněji.
+
+
+Stejně jako u složitosti časové nás většinou nezajímá kolik přesně paměti algoritmus zabere, ale spíše je
+pro nás důležité jaký vztah má využití paměti v závislosti na vstupu. To se opět vyjadřuje pomocí asymptotických mezí
+"$\lanO$"#def-asymptoticka-horni-mez, "$\Omega$"#def-asymptoticka-dolni-mez a "$\Theta$"#def-asymptoticka-tesna-mez.
+
+
+Stejně jako u časové složitosti vyjadřujeme paměťovou složitost jako závislost na vstupu. A opět záleží, co jako vstup použijeme.
+
+
+.Example:
+  label: example-pametova-slozitost-matice
+  title: Sčítání matic
+
+  Mějme na vstupu dvě matice velikosti $n×n$ $\mA$ a $\mB$. Tyto dvě matice chceme sečíst. "Pokud nevíte, co jsou matice
+  zatím si je můžete představit jako mřížky s čísly a jejich sčítání tak, že číslo na pozici $i,j$ v matici $\mA$ sečtu
+  s číslem na pozici $i,j$ v matici $\mB$. Nebo koukněte na "wikipedii".reference.1.".footnote
+    1:
+      link: https://cs.wikipedia.org/wiki/S%C4%8D%C3%ADt%C3%A1n%C3%AD_matic
+
+
+  Paměťová složitost jednoduchého součtu bude $\lanO(1)$. Protože využijeme jenom paměť na uložení výsledku.
+
+
+  Ale také by se dala uvézt jako $\lanO(n^2)$, což vypadá mnohem hůř, ale také je to správně. V tomto případě
+  totiž nevzahujeme využitou paměť k velikosti vstupu, ale k nějaké jeho vlastnosti. I při tomto přístupu se však
+  můžeme setkat s tím, že by byla paměťová složitost označena za $\lanO(1)$ a to proto, že se uvažuje pouze paměť
+  využitá navíc oproti velikosti vstupu a výstupu.
+
+
+Časová a paměťová složitost jsou tedy dvě vlastnosti algoritmu. A nastává logická otázka, mají spolu něco společného?
+Ze znalosti jedné vlastnosti toho moc o druhé říci nemůžeme. Ale aspoň nějakou spojitost mají.
+
+
+.Theorem:
+  title: Vztah časové a paměťové složitosti
+  label: thm-cas-vs-pamet-slozitost
+
+  Paměťová složitost algoritmu je shora omezená složitostí časovou.
+
+
+.Proof:
+  title: Důkaz věty .reference:thm-cas-vs-pamet-slozitost
+  label: proof-cas-vs-pamet-slozitost
+
+  Celkem přímočarý a intuitivní. Za čas $t$ nemohu použít víc jak $\lanO(t)$ paměťových buněk.
+
+
+
 
 % Snad tohle jako přiblížení počítání složistosti pomohlo.
 
