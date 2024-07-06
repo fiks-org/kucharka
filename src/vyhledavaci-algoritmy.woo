@@ -10,3 +10,18 @@ hodně algoritmů je mnohem efektivnějších, když mají vstup seřazený. Ale
 V této kapitole se podíváme na několik řaďících algoritmů a poté i na nějaké vyhledávací, ať už v seřazeném
 nebo neseřazeném vstupu. Také si znovu připomeneme počítání složitostí a ukážeme si jak se dokazují zbylé dvě
 vlastnosti algoritmů, korektnost a konečnost.
+
+
+.Section Řadící algoritmy
+  label: sec-radici-algo
+
+Pro řazení je důležité, aby pro prvky, které chceme seřadit existovalo nějaké "úplné uspořádání".reference.1,
+to je zjednodušeně operátor~<, kterým můžeme libovolné dva prvky porovnat.
+  1:
+    link: https://cs.wikipedia.org/wiki/Line%C3%A1rn%C3%AD_uspo%C5%99%C3%A1d%C3%A1n%C3%AD
+
+
+U řadících algoritmů nás navíc zajímá ještě jedna vlastnost a tou je "stabilita".notion.1. Mějme vstupní posloupnost
+$p_1, p_2, \dots, p_n$. Řadící algoritmus je stabilní, pokud pro každé dva prvky $p_i$ a $p_j$, které si jsou rovny platí,
+že jejich vzájemné pořadí na výstupu se je stejné jako jejich pořadí na vstupu.
+Jinými slovy, pokud $p_i = p_j$ a $i < j$, pak se $p_i$ na výstupu objeví před $p_j$.
