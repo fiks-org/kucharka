@@ -85,3 +85,19 @@ Jinými slovy, pokud $p_i = p_j$ a $i < j$, pak se $p_i$ na výstupu objeví př
   Na tuto otázku neexistuje jednoznačná odpověď, takže správná je "záleží".emphasize.
   Záleží na implementaci hledání minima, pseudokód v tomto textu je napsán tak, aby algoritmus stabilní byl,
   existuje však způsob nalezení minima, který stabilní nebude.
+
+
+.Procedure:
+  title: Buble sort
+  label: algo-buble-sort
+  index: sort!buble sort
+
+  Bublání je častá technika, tento algoritmus funguje podobně, jako když máte mísu s různě velkými kamínky
+  a zatřepete s ní a pomalu malé kamínky propadají do spod, zatímco ty větší zůstanou na vrchu.
+
+
+  Algoritmus začne prvním prvkem a postupuje přes všechny další prvky $p_i$ v pořadí a každý posune co nejvíc na začátek tak,
+  aby platilo, že $p_{i-1} < p_i \le p_{i+1}$ nebo $i = 1$.
+
+  
+  Výsledek bude seřazený,
