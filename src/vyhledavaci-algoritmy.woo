@@ -25,3 +25,63 @@ U řadících algoritmů nás navíc zajímá ještě jedna vlastnost a tou je "
 $p_1, p_2, \dots, p_n$. Řadící algoritmus je stabilní, pokud pro každé dva prvky $p_i$ a $p_j$, které si jsou rovny platí,
 že jejich vzájemné pořadí na výstupu se je stejné jako jejich pořadí na vstupu.
 Jinými slovy, pokud $p_i = p_j$ a $i < j$, pak se $p_i$ na výstupu objeví před $p_j$.
+
+
+.Procedure:
+  title: Select sort
+  label: algo-select-sort
+  index: sort!select sort
+
+  Jeden z nejjednodušších algoritmů na seřazení je select sort. Princip spočívá v tom, že z posloupnosti
+  vybírám ten nejmenší prvek a zařadím ho na konec seřazené části. Intuitivně to dává smysl, my si ukážeme,
+  jak dokázat, že výsledek bude opravdu seřazený formálně.
+
+
+  V každém kroku máme dvě, potenciálně prázdné, posloupnosti, vstupní $p$ a výstupní $s$. Jeden krok spočívá
+  ve vybrání minimálního prvku, říkejme mu $p_m$ z $p$ a vložení na konec $s$. $p_m$ bude určitě větší nebo roven
+  všem z $s$, protože všechny prvky $s$ byly někdy minimální v $p$, jinak se do $s$ dostat nemohli. Kdyby $p_m$ nebyl
+  všetší nebo roven všem prvkům z $s$, tak to znamená, že existuje $s_x$ z $s$ takový, že $p_m$ < $s_x$. Ale to je spor s tím,
+  že $s_x$ byl minimální v $p$. Takže $p_m$ je větší než všechny prvky v $s$ a patří na konec.
+
+
+  Dobře je zde i vidět, že algoritmus zkončí, každý krok zmenší posloupnost $p$ o jedna a protože je konečná,
+  tak bude někdy prázdná a všechny její prvky budou v $s$, což bude seřazený výstup.
+
+
+  Implementace by pak mohla vypadat v pseudokódu takhle, všimněte si, že se nepřesouvají prvky z jednoho pole
+  do druhého, ale řadí se inplace. Je to určité šetření časem a místem. Jako cvičení si zkuste navrhnout implementaci,
+  která by postupoval podle předchozího popisu a přesouvala prvky z jedné posloupnosti do druhé.
+
+  !pseudocode:
+
+    \PROCEDURE{SelectSort}{$p_1, p_2, \dots, p_n$}
+      \FOR {$i = 1, \dots, n $ }
+        \STATE {$m = i$}
+        \FOR {$j = i+1, \dots, n $ }
+          \IF {$p_j < p_m$}
+            \STATE $m = j$
+          \ENDIF
+        \ENDFOR
+        \STATE swap($p_i$, $p_m$)
+      \ENDFOR
+    \ENDPROCEDURE
+
+
+  S touto implementací se můžeme podívat více na složitosti. Navíc oproti vstupu zde používáme jednu proměnou pro držení minima
+  a další ve swapu, to znamená že poměťová složitost je $\lanO(1)$ navíc oproti vstupu. Časová složitost je trochu složitější výpočet,
+  vnější forloop se provede $n$-krát, ale vnitřní závisí na hodnotě $i$, která se každou iteraci mění. A provede se tedy $(n-i)$-krát.
+  Všechny operace (porovnání a swap) v loopu trvají konstatní dobu. Takže počet kroků můžeme napsat jako
+  $\sum_{i=1}^{n} n-i$. To je ale jednoduchá aritmetická řada, jejíž součet můžeme napsat jako
+  $\frac{n}{2}*(n-1) = \frac{n^2-n}{2}$, což je zhora omezeno $n^2$, takže časová složitost bude $\lanO(n^2)$.
+
+
+  Zůstává nám zodpovědět, jestli je algoritmus stabilní nebo ne. Zkuste si to nejdřív sami.
+
+
+.Solution:
+  title: Stabilita select sortu
+  lable: sol-select-sort-stability
+
+  Na tuto otázku neexistuje jednoznačná odpověď, takže správná je "záleží".emphasize.
+  Záleží na implementaci hledání minima, pseudokód v tomto textu je napsán tak, aby algoritmus stabilní byl,
+  existuje však způsob nalezení minima, který stabilní nebude.
