@@ -96,11 +96,12 @@ Jinými slovy, pokud $p_i = p_j$ a $i < j$, pak se $p_i$ na výstupu objeví př
   a zatřepete s ní a pomalu malé kamínky propadají do spod, zatímco ty větší zůstanou na vrchu.
 
 
-  Algoritmus opakovaně prochází celým polem a porovnává sousední dvojice prvků. Pokud pro dvojici $p_i$ a $p_{i+1}$ platí, $p_{i} > p_{i+1}$ tak
-  prvky prohodí. Tím se postupně větší prvky přesouvají dozadu a menší dopředu. Po dostatečně průchodech pak bude pole seřazené.
+  Algoritmus opakovaně prochází celým polem a porovnává sousední dvojice prvků. Pokud pro dvojici prvků $p_i$ a $p_{i+1}$ platí $p_{i} > p_{i+1}$, tak
+  se prvky prohodí. Tím se postupně větší prvky přesouvají doprava a menší doleva. Po dostatečně mnoha průchodech pak bude pole seřazené.
 
   
-  Bude tohle opravdu fungovat? Zkuste si sami dokázat korektnost bubble sortu a zkuste vymyslet i jakou bude mít časovou a paměťovou složitost.
+  Bude tohle opravdu fungovat? Zkuste si sami dokázat korektnost bubble sortu - tedy, že nakonci bude pole skutečně seřazené,
+  a zkuste vymyslet jakou bude mít náš algoritmus časovou a paměťovou složitost.
 
 
 .Solution:
