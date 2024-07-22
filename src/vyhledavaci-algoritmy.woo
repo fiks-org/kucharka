@@ -88,16 +88,48 @@ Jinými slovy, pokud $p_i = p_j$ a $i < j$, pak se $p_i$ na výstupu objeví př
 
 
 .Procedure:
-  title: Buble sort
-  label: algo-buble-sort
-  index: sort!buble sort
+  title: Bubble sort
+  label: algo-bubble-sort
+  index: sort!bubble sort
 
-  Bublání je častá technika, tento algoritmus funguje podobně, jako když máte mísu s různě velkými kamínky
+  Bublání je častá technika používaná v algoritmech, tento algoritmus funguje podobně, jako když máte mísu s různě velkými kamínky
   a zatřepete s ní a pomalu malé kamínky propadají do spod, zatímco ty větší zůstanou na vrchu.
 
 
-  Algoritmus začne prvním prvkem a postupuje přes všechny další prvky $p_i$ v pořadí a každý posune co nejvíc na začátek tak,
-  aby platilo, že $p_{i-1} < p_i \le p_{i+1}$ nebo $i = 1$.
+  Algoritmus opakovaně prochází celým polem a porovnává sousední dvojice prvků. Pokud pro dvojici $p_i$ a $p_{i+1}$ platí, $p_{i} > p_{i+1}$ tak
+  prvky prohodí. Tím se postupně větší prvky přesouvají dozadu a menší dopředu. Po dostatečně průchodech pak bude pole seřazené.
 
   
-  Výsledek bude seřazený,
+  Bude tohle opravdu fungovat? Zkuste si sami dokázat korektnost bubble sortu a zkuste vymyslet i jakou bude mít časovou a paměťovou složitost.
+
+
+.Solution:
+  title: Korektnost bubble sortu
+  lable: sol-bubble-sort-correctness
+
+  Je dobré si všimnout, že při každém průchodu se na konec posune největší prvek tak, že po $k$-tém průchodu je od konce na správných místech
+  aspoň $k$ největších prvků. Dojde k tomu, protože při každém průchodu se postupným porovnáváním nalezne největší prvek, který není správně umístěn.
+  A při prohazování se vždy posune víc nakonec a porovná se znova s dalším prvkem. Pokud je stále na špatném místě, tak se posune znovu, a takto "probublá".quoted
+  až na konec, kde bude správně, nebo narazí na větší prvek, který se začne přesouvat dozadu.
+
+
+  A takže pokud chceme, aby bylo seřazeno $n$ prvků, tak to bude trvat nanejvíš $n$ průchodů. Takže algoritmus skončí a jeho výsledkem bude seřazené pole.
+
+
+.Solution:
+  title: Časová složitost bubble sortu
+  lable: sol-bubble-sort-time-complexity
+
+  Už víme, že průchodů bude v nejhorším případě $n$. Takže nás zajímá, jak dlouho trvá jeden průchod. Při jednom prchůchodu se každý prvek porovná se
+  sousedem, takových porovnání bude $n-1$. Takže výsledná časová složitost je $\lanO(n^2)$. Protože víme, že $k$-tý průchod bude posledních $k$ prvků seřezených, tak můžeme
+  algoritmus trochu optimalizovat a porovnávat jenom prvních $n-k$ prvků. Takže pak máme $\sum_{k=0}^{n-1} n-k = \frac{n(n+1)}{2} = \lanO(n^2)$.
+
+
+.Solution:
+  title: Prostorová složitost bubble sortu
+  lable: sol-bubble-sort-space-complexity
+
+  Až na pár pomocných proměných (iterační nebo při prohazování) nepotřebuje algortmus žádnou paměť navíc, takže paměťová složitost je $\lanO(1)$.
+
+
+Jako u každého algoritmu nás zajímá jestli to jde rychleji. Jde to rychleji. Obecně jsou používané dva algoritmy.
