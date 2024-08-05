@@ -96,24 +96,24 @@ Jinými slovy, pokud $p_i = p_j$ a $i < j$, pak se $p_i$ na výstupu objeví př
   a zatřepete s ní a pomalu malé kamínky propadají do spod, zatímco ty větší zůstanou na vrchu.
 
 
-  Algoritmus opakovaně prochází celým polem a porovnává sousední dvojice prvků. Pokud pro dvojici $p_i$ a $p_{i+1}$ platí, $p_{i} > p_{i+1}$ tak
-  prvky prohodí. Tím se postupně větší prvky přesouvají dozadu a menší dopředu. Po dostatečně průchodech pak bude pole seřazené.
+  Algoritmus opakovaně prochází celým polem a porovnává sousední dvojice prvků. Pokud pro dvojici prvků $p_i$ a $p_{i+1}$ platí $p_{i} > p_{i+1}$, tak
+  se prvky prohodí. Tím se postupně větší prvky přesouvají doprava a menší doleva. Po dostatečně mnoha průchodech pak bude pole seřazené.
 
   
-  Bude tohle opravdu fungovat? Zkuste si sami dokázat korektnost bubble sortu a zkuste vymyslet i jakou bude mít časovou a paměťovou složitost.
+  Bude tohle opravdu fungovat? Zkuste si sami dokázat korektnost bubble sortu - tedy, že nakonci bude pole skutečně seřazené,
+  a zkuste vymyslet jakou bude mít náš algoritmus časovou a paměťovou složitost.
 
 
 .Solution:
   title: Korektnost bubble sortu
   lable: sol-bubble-sort-correctness
 
-  Je dobré si všimnout, že při každém průchodu se na konec posune největší prvek tak, že po $k$-tém průchodu je od konce na správných místech
-  aspoň $k$ největších prvků. Dojde k tomu, protože při každém průchodu se postupným porovnáváním nalezne největší prvek, který není správně umístěn.
-  A při prohazování se vždy posune víc nakonec a porovná se znova s dalším prvkem. Pokud je stále na špatném místě, tak se posune znovu, a takto "probublá".quoted
-  až na konec, kde bude správně, nebo narazí na větší prvek, který se začne přesouvat dozadu.
+  Všimněme si, že po prvním průchodu algoritmus posune největší prvek na konec pole, pokud na této pozici už nebyl. Po druhém průchodu posune druhý největší prvek
+  na předposlední místo v poli, pokud tam už nebyl. Takže obecně po $k$-tém průchodu je na konci pole správně seřazených alespoň $k$ největších prvků. Pokud pole má
+  $n$ prvků, pak po $n$ iteracích bude na konci pole správně seřazených alespoň $n$ největších prvků, jinak řečeno, pole bude seřazené.
 
-
-  A takže pokud chceme, aby bylo seřazeno $n$ prvků, tak to bude trvat nanejvíš $n$ průchodů. Takže algoritmus skončí a jeho výsledkem bude seřazené pole.
+  Tedy pokud chceme, aby bylo seřazeno $n$ prvků, tak to bude trvat nanejvíš $n$ průchodů polem - průchodů může být ale potřeba daleko méně, např. pokud začneme hned se správně
+  seřazeným polem (dokážete najít nějaké pole, které bude potřebovat všech $n$ průchodů?). Takže algoritmus skončí a jeho výsledkem bude seřazené pole.
 
 
 .Solution:
