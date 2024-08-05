@@ -108,8 +108,8 @@ Jinými slovy, pokud $p_i = p_j$ a $i < j$, pak se $p_i$ na výstupu objeví př
   title: Korektnost bubble sortu
   lable: sol-bubble-sort-correctness
 
-  Všimněme si, že po prvním průchodu algoritmus posune největší prvek na konec pole, pokud na této pozici už nebyl $\dots$ po druhém průchodu posune druhý největší prvek
-  na předposlední místo v poli, pokud tam už nebyl $\dots$ obecně po $k$-tém průchodu je na konci pole správně seřazených alespoň $k$ největších prvků. Pokud pole má
+  Všimněme si, že po prvním průchodu algoritmus posune největší prvek na konec pole, pokud na této pozici už nebyl. Po druhém průchodu posune druhý největší prvek
+  na předposlední místo v poli, pokud tam už nebyl. Takže obecně po $k$-tém průchodu je na konci pole správně seřazených alespoň $k$ největších prvků. Pokud pole má
   $n$ prvků, pak po $n$ iteracích bude na konci pole správně seřazených alespoň $n$ největších prvků, jinak řečeno, pole bude seřazené.
 
   Tedy pokud chceme, aby bylo seřazeno $n$ prvků, tak to bude trvat nanejvíš $n$ průchodů polem - průchodů může být ale potřeba daleko méně, např. pokud začneme hned se správně
