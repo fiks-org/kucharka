@@ -173,35 +173,36 @@ Zatím stačí vědět, že funguje na principu rozdělení problému na menší
 
   Pokud budeme pokaždé dělit pole na dvě části, tak budeme dělit $\log_2(n)$ krát.
 
-  !tikz:
-    filename: quicksort-figure
 
-      \node {n}
-        child {node {\frac{n}{2}}
-          child {node {\frac{n}{4}}
-            child {node {\frac{n}{8}}
-            }
-            child {node {\frac{n}{8}}
-            }
-          }
-          child {node {\frac{n}{4}}
-            child {node {\frac{n}{8}}
-            }
-            child {node {\frac{n}{8}}
-            }
-          }
-        }
-        child {node {\frac{n}{2}}
-          child {node {\frac{n}{4}}
-            child {node {\frac{n}{8}}
-            }
-            child {node {\frac{n}{8}}
-            }
-          }
-          child {node {\frac{n}{4}}
-            child {node {\frac{n}{8}}
-            }
-            child {node {\frac{n}{8}}
-            }
-          }
-        };
+% !tikz:
+%   filename: quicksort-figure
+%
+%     \node {n}
+%       child {node {\frac{n}{2}}
+%         child {node {\frac{n}{4}}
+%           child {node {\frac{n}{8}}
+%           }
+%           child {node {\frac{n}{8}}
+%           }
+%         }
+%         child {node {\frac{n}{4}}
+%           child {node {\frac{n}{8}}
+%           }
+%           child {node {\frac{n}{8}}
+%           }
+%         }
+%       }
+%       child {node {\frac{n}{2}}
+%         child {node {\frac{n}{4}}
+%           child {node {\frac{n}{8}}
+%           }
+%           child {node {\frac{n}{8}}
+%           }
+%         }
+%         child {node {\frac{n}{4}}
+%           child {node {\frac{n}{8}}
+%           }
+%           child {node {\frac{n}{8}}
+%           }
+%         }
+%       };
