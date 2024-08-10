@@ -1,0 +1,98 @@
+.Chapter Úvod do grafů
+  label: chap-uvod-do-grafu
+
+Ze střední školy jste už asi o grafech něco málo slyšeli. Určitě si vzpomenete na ty
+nepříjemné chvíle při testu, kdy se vám ruka klepala tak, že jste prostě nemohli trefit
+ty průsečíky osy x a y. Nebo jste tu konstantní funkci nenakreslili úplně rovně a hned
+vám šla známka dolů. Pokud takhle smýšlíte o těchto grafech, tak máme pro vás dobrou zprávu!
+Tato kapitola o takových grafech vůbec nebude!
+
+Že jste o žádných jiných grafech ještě neslyšeli? A slyšeli jste o "Facebookové síti"?
+Četli jste někdy o Minotaurovi a jeho tajemném bludišti? Nebo jste se třeba někdy podívali
+do mapy, abyste našli nejkratší cestu od Petřínské rozhledny do Nové budovy ČVUTu? Ikdyž
+vám to teď třeba ještě nepřijde, tak všechny tyto situace se dají popsat pomocí grafů.
+
+Každého zaregistrovaného člověka na Facebooku si můžeme představit jako bublinu a má-li
+nějakého kamaráda, můžeme obě bubliny spojit čárou, čímž nám vznikne síť mezi jednotlivými
+lidmi. Minotaurovo bludiště si můžeme představit jako síť cest a křižovatek. Pak každou
+křižovatku si můžeme představit jako puntík, a pokud mezi dvěma křižovatkami vede cesta,
+můžeme puntíky spojit čárou a dostat tak mapu celého labyrintu.
+
+Takže, co že to teda je ten "hezký" graf? Bublinám či puntíkům budeme říkat \textit{vrcholy}
+a spojnicím či čárám mezi nimi zase \textit{hrany}. A to je vlastně celé. Takže můžeme jít
+domů? No, kdyby to bylo všechno takhle jednoduché, určitě by o grafech nevznikla řada
+nejrůznějších knih a článků a matematici a teoretičtí informatici by měli o dost smutnější
+život.
+
+Předtím než se pustíme do té pravé \emph{teorie grafů}, rádi bychom čtenáře namotivovali
+užitečností grafů. Uvedeme proto několik faktů a problémů, které vznikly právě díky
+grafům.
+
+.enumerate
+ .item
+  Jak najít nejkratší cestu z místa A do místa B? Jak to udělat tak, abychom zaplatili
+  co nejméně peněz?
+ .item
+  Jak rozdělit děti na táboře do dvojic tak, aby dvojic bylo co nejvíce a žádné dvě
+  děti se ve dvojici vzájemně neměli rády?
+ .item
+  Ve skupině alespoň 6 lidí se vždy alespoň 3 lidé znají, nebo se 3 lidé nevznají vůbec.
+ .item
+  Obrázek jde nakreslit jedním tahem a skončit na začátku tahu právě tehdy, když
+  počet čar u každého puntíku je sudý.
+ .item
+  Obrázek jde nakreslit jedním tahem právě tehdy, když počet čar u každého puntíku až na dva
+  je sudý.
+ .item
+  Pokud má obvod více jak $3 \cdot \mathrm{počet spojů} - 6$, pak ho nikdy nenakreslíme
+  na integrovaný obvod bez křížení.
+
+Věříme, že nyní už je čtenář dostatečně udiven a uchvácen, aby se s námi pustil do
+prozkoumávání této krásné vědy, která dokázala vytvořit nejenom tvrzení uvedená dříve.
+Abychom se ale mohli do zkoumání pustit, musíme si nejdříve ustanovit nějaký slovník slov,
+abychom si mezi sebou rozuměli. Zavedeme si proto nejdříve pár definic.
+
+.Definition:
+  title: Neorientovaný graf
+  label: def-neorientovany-graf
+
+  \textbf{Neorientovaný graf} je uspořádaná dvojice $(V,E)$, kde
+
+  .enumerate
+    .item
+	 $V$ je neprázdná konečná množina \textbf{vrcholů},
+	.item
+	 $E$ je množina \textbf{hran}.
+
+  Hrana je dvouprvková podmnožina $V$, tj. každá hrana $e \in E$
+  je ve tvaru $\{u,v\}$, kde $u,v$ jsou vrcholy z $V$.
+
+.Definition
+  label: def-soused-incidence
+
+  Nechť $e = \{u,v\} je hrana v grafu $G$. Řekneme, že
+
+  .enumerate
+   .item
+    $u$ a $v$ jsou \textbf{koncové vrcholy} hrany $e$,
+   .item
+    $u$ je \textbf{sousedem} $v$ v $G$ (a naopak, tedy $v$ je sousedem $u$),
+   .item
+    $u$ i $v$ jsou \textbf{incidentní} s hranou $e$
+
+.Definition:
+  title: Orientovaný graf
+  label: def-orientovany-graf
+
+  \textbf{Orientovaný graf} je uspořádaná dvojice $(V,E)$, kde
+
+  .enumerate
+   .item
+    $V$ je neprázdná konečná množina \textbf{vrcholů},
+   .item
+    $E$ je množina \textbf{orientovaných hran}.
+
+  Orientovaná hrana je podmnožina kartézského součinu vrcholů $V \times V$, tj.
+  každá orientovaná hrana je ve tvaru $(u,v)$, kde $u,v$ jsou
+  vrcholy z $V$.
+
