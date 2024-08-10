@@ -132,4 +132,76 @@ Jinými slovy, pokud $p_i = p_j$ a $i < j$, pak se $p_i$ na výstupu objeví př
   Až na pár pomocných proměných (iterační nebo při prohazování) nepotřebuje algortmus žádnou paměť navíc, takže paměťová složitost je $\lanO(1)$.
 
 
-Jako u každého algoritmu nás zajímá jestli to jde rychleji. Jde to rychleji. Obecně jsou používané dva algoritmy.
+Jako u každého algoritmu nás zajímá jestli to jde rychleji. Jde to rychleji. Obecně jsou používané dva algoritmy. Než si o nich ale přečtete,
+zkuste vymyslet něco lepšího, pokud nic nevymyslíte nic se neděje aspoň nějaké myšlení tím procvičíte.
+
+
+Oba algoritmy používají metodu zvanou "rozděl a panuj".emphasize (anglicky "divide and conquer".emphasize). O této metodě se dozvíte více později.
+Zatím stačí vědět, že funguje na principu rozdělení problému na menší, které umíme vyřešít a následné spojení řešení.
+
+
+.Procedure:
+  title: Quick sort
+  index: sort!quick sort
+
+  Algoritmus vypadá jednoduše, rozdělím si pole na dvě stejně velké části. Kde všechny prvky v jedné budou větší než všechny prvky v druhé.
+  Tyto dvě části seřadím a slepím za sebe a mám hotovo.
+
+
+  Popis pěkný, ale o algoritmu nám to moc neřeklo. Jak seřadím ty dvě části? Jak pole rozdělím? Odpověď na první otázku je poměrně přímočará, pomocí quicksortu.
+  To však přináší další otázky. Skončí algoritmus, když se volá furt dokola? Bude opravdu seřazený? Všiměme si, že pole o jednom prvku je triviálně seřazeno, a pokud
+  budu dělit pole na celočíselné části, tak se někdy musím zastavit na polích o jednom prvku. Takže ano, algoritmus skončí a protože při dělení na dvě části
+  rozdělím pole tak, že v jedné části jsou všechny prvky větší než všechny prvky v té druhé, tak mi po jejich seřazení opravdu stačí je slepit za sebe. Nemůže se
+  totiž stát, že by jeden z prvků z menší části měl být někde mezi prvky z větší nebo naopak, to by byl spor se způsobem rozdělení.
+
+
+  Dokázali jsme konečnost a korektnost, teď se podrobněji podíváme na druhou položenou otázku. Jak pole rozdělím? Než si přečtete odpověď, zkuste se nad tím zamyslet.
+
+
+  Většinou se quicksort popisuje trochu jinak, a to tak, že se pole rozdělí na tři části. Vybere se jeden prvek (prostřední část) a všechny se stejnou hodnotou.
+  A pak se pole rozdělí na prvky menší než vybraný prvek a na prvky větší. Čímý vlastně máme náš původní popis, jenom při slepování vlepíme mezi části
+  ještě jednu s vybraným prvekem. Vybranému prvku se říká "pivot".emphasize.
+
+
+  Už víme, jak rozdělit pole na části. Teď jak vybrat pivota? Ideálně bychom chtěli aby to byl medián "prostřední prvek v seřazené posloupnosti".footnote. Tím by se povedlo rozdělit pole na dvě stejně velké části
+  jak bylo v původním popisu. Tak super, vybereme medián a máme vyhráno. Výpočet složitostí opět necháme na čtenáři i když v tomto případě by mohla být středoškolská
+  matematika nedostačující, věříme ve vaše schopnosti.
+
+
+.Solution:
+  title: Časová složitost quick sortu
+
+  Pokud budeme pokaždé dělit pole na dvě části, tak budeme dělit $\log_2(n)$ krát.
+
+  !tikz:
+    filename: quicksort-figure
+
+      \node {n}
+        child {node {\frac{n}{2}}
+          child {node {\frac{n}{4}}
+            child {node {\frac{n}{8}}
+            }
+            child {node {\frac{n}{8}}
+            }
+          }
+          child {node {\frac{n}{4}}
+            child {node {\frac{n}{8}}
+            }
+            child {node {\frac{n}{8}}
+            }
+          }
+        }
+        child {node {\frac{n}{2}}
+          child {node {\frac{n}{4}}
+            child {node {\frac{n}{8}}
+            }
+            child {node {\frac{n}{8}}
+            }
+          }
+          child {node {\frac{n}{4}}
+            child {node {\frac{n}{8}}
+            }
+            child {node {\frac{n}{8}}
+            }
+          }
+        };
