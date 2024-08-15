@@ -171,38 +171,44 @@ Zatím stačí vědět, že funguje na principu rozdělení problému na menší
 .Solution:
   title: Časová složitost quick sortu
 
-  Pokud budeme pokaždé dělit pole na dvě části, tak budeme dělit $\log_2(n)$ krát.
+  Pokud budeme pokaždé dělit pole na dvě části, tak budeme dělit $\log_2(n)$ krát než dojdeme k polím o jednom prvku. Každé takto rozdělené pole musíme
+  seřadit, takže rozdělit na části, to zvládneme za $\lanO(n)$ jedním průchodem pole a pak části slepit což může být taky až $\lanO(n)$, každý prvek překopírovat
+  do nového pole. Když teď víme kolik práce musíme udělat na každou rozdělenou část, tak nám stačí spočítat kolik částí bude a sečíst práci na každé provedenou.
 
 
-% !tikz:
-%   filename: quicksort-figure
-%
-%     \node {n}
-%       child {node {\frac{n}{2}}
-%         child {node {\frac{n}{4}}
-%           child {node {\frac{n}{8}}
-%           }
-%           child {node {\frac{n}{8}}
-%           }
-%         }
-%         child {node {\frac{n}{4}}
-%           child {node {\frac{n}{8}}
-%           }
-%           child {node {\frac{n}{8}}
-%           }
-%         }
-%       }
-%       child {node {\frac{n}{2}}
-%         child {node {\frac{n}{4}}
-%           child {node {\frac{n}{8}}
-%           }
-%           child {node {\frac{n}{8}}
-%           }
-%         }
-%         child {node {\frac{n}{4}}
-%           child {node {\frac{n}{8}}
-%           }
-%           child {node {\frac{n}{8}}
-%           }
-%         }
-%       };
+  !tikz:
+    filename: quicksort-figure
+
+      \node {n}
+        child {node {$\frac{n}{2}$}
+          child {node {$\frac{n}{4}$}
+            child {node {$\frac{n}{8}$}
+            }
+            child {node {$\frac{n}{8}$}
+            }
+          }
+          child {node {$\frac{n}{4}$}
+            child {node {$\frac{n}{8}$}
+            }
+            child {node {$\frac{n}{8}$}
+            }
+          }
+        }
+        child {node {$\frac{n}{2}$}
+          child {node {$\frac{n}{4}$}
+            child {node {$\frac{n}{8}$}
+            }
+            child {node {$\frac{n}{8}$}
+            }
+          }
+          child {node {$\frac{n}{4}$}
+            child {node {$\frac{n}{8}$}
+            }
+            child {node {$\frac{n}{8}$}
+            }
+          }
+        };
+
+  Na $k$-té vrstvě tohoto stromu se nachází $2^{k-1}$ částí. A pro každou z nich provedeme práci $\lanO(\frac{n}{2^{k-1}})$. Takže
+  na $k$-té vrstvě provedeme $2^{k-1} \cdot \lanO(\frac{n}{2^{k-1}})$ práce. To vychází na $\lanO(n)$ času ztráveného na jedné vrstvě.
+  Vrstev je jak už jsme si řekli $\log_2(n)$, takže výsledná časová složitost je $\lanO(n*\log(n))$.
