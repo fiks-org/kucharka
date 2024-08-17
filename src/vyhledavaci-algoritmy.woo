@@ -213,3 +213,20 @@ Zatím stačí vědět, že funguje na principu rozdělení problému na menší
   Na $k$-té vrstvě tohoto stromu se nachází $2^{k-1}$ částí. A pro každou z nich provedeme práci $\lanO(\frac{n}{2^{k-1}})$. Takže
   na $k$-té vrstvě provedeme $2^{k-1} \cdot \lanO(\frac{n}{2^{k-1}})$ práce. To vychází na $\lanO(n)$ času ztráveného na jedné vrstvě.
   Vrstev je jak už jsme si řekli $\log_2(n)$, takže výsledná časová složitost je $\lanO(n*\log(n))$.
+
+
+  Pozorní z vás už určitě křičí, že jsme nezapočítali výběr pivota. Jako pivot bychom rádi medián, ale na to musíme pole seřadit$\dots$
+  
+
+  Nejjednodužší výber pivota je vybrat náhodně nějaký prvek. Jenže to s sebou nese problémy, pokud je jako pivot vybrán největší prvek, tak se
+  pole nerozdělí na stejně velké části jako jsme počítali, ale na jednu o jedna menší a na druhou kterou nemusíme řadit. Nepotřebujeme však vybrat přesně medián,
+  můžeme využít skoromediánů. "Skoromediány".notion.1 jsou prvky, které se nachází ve druhé a třetí čtvrtině seřazeného pole. Pokud vybereme za pivot skoro medián,
+  tak se pole rozdělí na dvě části o $\frac{n}{4}$ a $\frac{3n}{4}$ prvcích. Se velikost pole co musíme seřadit bude na každé vrstvě zmenšovat
+  alespoň na $\frac34n$. Než se dostaneme k poli o jednom prvku, tak to bude trvat $\log_\frac43 n$ což je $\lanO(\log n)$. Na jedné vrstvě provedeme
+  $\lanO(n)$ operací, takže výsledek je stále $\lanO(n\log n)$. Jenže na výběr skoromediánu jako pivota máme jenom $50\%$ pravděpodobnost, takže v půlce případů,
+  vybereme špatného pivota. To ale neznamená nic jiného, než že bude strom rozdělování pole dvakrát tak velký, což pořád vede na $\lanO(n\log n)$ časovou složitost.
+  To nám bude stačit, pokud se chcete dovědět více, podívejte se na kapitolu 11 "Průvodce"@2
+    1:
+      index: skoromedián
+    2:
+      link: http://pruvodce.ucw.cz/
