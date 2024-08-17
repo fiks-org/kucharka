@@ -171,10 +171,11 @@ Zatím stačí vědět, že funguje na principu rozdělení problému na menší
 .Solution:
   title: Časová složitost quick sortu
 
-  Pokud budeme pokaždé dělit pole na dvě části, tak budeme dělit $\log_2(n)$ krát než dojdeme k polím o jednom prvku. Každé takto rozdělené pole musíme
-  seřadit, takže rozdělit na části, to zvládneme za $\lanO(n)$ jedním průchodem pole a pak části slepit což může být taky až $\lanO(n)$, každý prvek překopírovat
-  do nového pole. Když teď víme kolik práce musíme udělat na každou rozdělenou část, tak nám stačí spočítat kolik částí bude a sečíst práci na každé provedenou.
+  První krok je rozdělit pole na části. To jde zvládnout jedním průchodem, takže $\lanO(n)$. Slepení částí pak bude v nejhorším případě také $\lanO(n)$,
+  překopírování všech prvků do jednoho pole. Dvě části z těch na které jsme pole rozdělili musíme seřadit. Obě pole ale budou menší, v nejhorším případě
+  $\frac{n}{2}$. Pro tyto části musíme provést to samé.
 
+  Pokud budeme pokaždé dělit pole na dvě stejně velké části, tak budeme dělit $\log_2(n)$ krát než dojdeme k polím o jednom prvku.
 
   !tikz:
     filename: quicksort-figure
