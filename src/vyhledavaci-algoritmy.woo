@@ -171,9 +171,30 @@ Zatím stačí vědět, že funguje na principu rozdělení problému na menší
 .Solution:
   title: Časová složitost quick sortu
 
-  První krok je rozdělit pole na části. To jde zvládnout jedním průchodem, takže $\lanO(n)$. Slepení částí pak bude v nejhorším případě také $\lanO(n)$,
-  překopírování všech prvků do jednoho pole. Dvě části z těch na které jsme pole rozdělili musíme seřadit. Obě pole ale budou menší, v nejhorším případě
-  $\frac{n}{2}$. Pro tyto části musíme provést to samé.
+  Základní motivací pro quicksort jsou tato pozorování:
+  - pole o jednom prvku je seřazené
+  - pole o více než jednom prvku lze rozdělit na dvě části tak, že seřazením jednotlivě první a poté i druhé části
+  a jejich pouhým "slepením" za sebe, dostaneme seřazené pole
+
+  % První krok je rozdělit pole na dvě části. To jde zvládnout jedním průchodem, takže $\lanO(n)$. Slepení částí pak bude v nejhorším případě také $\lanO(n)$,
+  % překopírování všech prvků do jednoho pole. Dvě části z těch na které jsme pole rozdělili musíme seřadit. Obě pole ale budou menší, v nejhorším případě
+  % $\frac{n}{2}$. Pro tyto části musíme provést to samé.
+
+
+  Prvně si řekneme jak budeme pole dělit a poté slepovat za sebe. Předpokládejme, že máme pole $a$ délky $n$, jehož prvky jsou $a_1,a_2,\dots,a_n$. Mějme nějaký
+  prvek $a_i$ a dejme tomu, že jsme nějak rozdělili pole $a$ na dvě části $x$ a $y$. Pole $x$ a $y$ rekurzivně seřadíme a poté pouze přilepíme prvky z již seřazeného pole
+  $y$ za prvky ze seřazeného pole $x$. Tímto postupem bychom chtěli dostat seřazené pole $a$. Pokud chceme aby celkový výsledek byl opravdu seřazený, 
+  musí všechny prvky z $x$ být menší (nebo rovny) než všechny prvky z $y$. Jinak by samotná slepovací část nefungovala. Rozdělíme tedy pole $a$ podle
+  zvoleného prvku $a_i$ tak, že $\forall j \in \{1,\dots,n\} \colon a_j \in x \Rightleftarrow a_j < a_i$ a ostatní prvky, které nerovnost $a_j < a_i$ 
+  nesplňují zařadíme do $y$. Toto rozdělení zvládneme v čase $\lanO(n)$.
+
+
+  Algoritmus značně závisí na volbě prvku $a_i$. Pokud bychom například vždy volili nejmenší prvek pole $a$, pak pole $x$ bude mít vždy pouze jeden prvek, zato pole $y$
+  jich bude mít $\lanO(n)$. Seřadit pole o jednom prvku nám sice zabere konstantní čas, ale výběr minima z pole nás stojí $\lanO(n)$ času, rozdělení na části $x$ a $y$
+  také, ale tuto operaci budeme muset provést celkově $\lanO(n)$-krát, tedy celková složitost by byla $\lanO(n) \cdot \lanO(n) = \lanO(n^2)$. Ideální případ by byl, kdyby
+  se nám pole podařilo vždy rozdělit na dvě stejně velké části (otázka...jak bychom v takovém případě nazývali prvek $a_i$, pokud by dělil pole na dvě stejně velké části?
+  Můžete pro jednoduchost předpokládat, že prvky v poli jsou unikátní). V takovém případě bude náš algoritmus o dost rychlejší, jak vám ukáže následující analýza. O tom jak hledat
+  prvek $a_i$ si povíme poté.
 
   Pokud budeme pokaždé dělit pole na dvě stejně velké části, tak budeme dělit $\log_2(n)$ krát než dojdeme k polím o jednom prvku.
 
@@ -215,13 +236,15 @@ Zatím stačí vědět, že funguje na principu rozdělení problému na menší
   Vrstev je jak už jsme si řekli $\log_2(n)$, takže výsledná časová složitost je $\lanO(n*\log(n))$.
 
 
-  Pozorní z vás už určitě křičí, že jsme nezapočítali výběr pivota. Jako pivot bychom rádi medián, ale na to musíme pole seřadit$\dots$
+  Nyní si povíme o výběru prvku $a_i$. Tomuto prvku budeme říkat \textbf{pivot}. Byli bychom nejraději, kdyby pivot byl \textbf{medián}. 
+  Dle definice je medián prvek na prostřední pozici \textbf{seřazeného pole}. Má-li pole sudý počet prvků, pak si vybereme buď ten
+  trochu víc na pravo nebo trochu víc nalevo...\textbf{tohle se musí nutně přepsat, hnus}. Medián nám pole dle úvodu tohoto důkazu rozdělí pole přibližně na dvě stejně velké části.
   
 
-  Nejjednodužší výber pivota je vybrat náhodně nějaký prvek. Jenže to s sebou nese problémy, pokud je jako pivot vybrán největší prvek, tak se
-  pole nerozdělí na stejně velké části jako jsme počítali, ale na jednu o jedna menší a na druhou kterou nemusíme řadit. Nepotřebujeme však vybrat přesně medián,
-  můžeme využít skoromediánů. "Skoromediány".notion.1 jsou prvky, které se nachází ve druhé a třetí čtvrtině seřazeného pole. Pokud vybereme za pivot skoro medián,
-  tak se pole rozdělí na dvě části o $\frac{n}{4}$ a $\frac{3n}{4}$ prvcích. Se velikost pole co musíme seřadit bude na každé vrstvě zmenšovat
+  % Nejjednodužší výběr pivota je vybrat náhodně nějaký prvek. Nepotřebujeme však vybrat přesně medián,
+  Stačí tedy najít medián v neseřazeném poli a máme vyhráno. Bohužel pro nás, najít medián není výpočetně snadná operace. (Ví se že medián nelze najít rychleji než v čase
+  $\lanO(n\cdot\log(n))?). Místo toho můžeme využít takzvaných skoromediánů. "Skoromediány".notion.1 jsou prvky, které se nachází ve druhé a třetí čtvrtině seřazeného pole.
+  Pokud vybereme za pivot skoromedián, tak se pole rozdělí na dvě části o $\frac{n}{4}$ a $\frac{3n}{4}$ prvcích. Se velikost pole co musíme seřadit bude na každé vrstvě zmenšovat
   alespoň na $\frac34n$. Než se dostaneme k poli o jednom prvku, tak to bude trvat $\log_\frac43 n$ což je $\lanO(\log n)$. Na jedné vrstvě provedeme
   $\lanO(n)$ operací, takže výsledek je stále $\lanO(n\log n)$. Jenže na výběr skoromediánu jako pivota máme jenom $50\%$ pravděpodobnost, takže v půlce případů,
   vybereme špatného pivota. To ale neznamená nic jiného, než že bude strom rozdělování pole dvakrát tak velký, což pořád vede na $\lanO(n\log n)$ časovou složitost.
