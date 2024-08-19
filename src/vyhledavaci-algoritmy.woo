@@ -230,3 +230,9 @@ Zatím stačí vědět, že funguje na principu rozdělení problému na menší
       index: skoromedián
     2:
       link: http://pruvodce.ucw.cz/
+
+
+.Procedure:
+  title: Merge sort
+  lable: algo-merge-sort
+  index: sort!merge sort
