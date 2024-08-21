@@ -174,7 +174,7 @@ Zatím stačí vědět, že funguje na principu rozdělení problému na menší
   Základní motivací pro quicksort jsou tato pozorování:
   - pole o jednom prvku je seřazené
   - pole o více než jednom prvku lze rozdělit na dvě části tak, že seřazením jednotlivě první a poté i druhé části
-  a jejich pouhým "slepením" za sebe, dostaneme seřazené pole
+  a jejich pouhým "slepením".quoted za sebe, dostaneme seřazené pole
 
   % První krok je rozdělit pole na dvě části. To jde zvládnout jedním průchodem, takže $\lanO(n)$. Slepení částí pak bude v nejhorším případě také $\lanO(n)$,
   % překopírování všech prvků do jednoho pole. Dvě části z těch na které jsme pole rozdělili musíme seřadit. Obě pole ale budou menší, v nejhorším případě
@@ -236,14 +236,14 @@ Zatím stačí vědět, že funguje na principu rozdělení problému na menší
   Vrstev je jak už jsme si řekli $\log_2(n)$, takže výsledná časová složitost je $\lanO(n*\log(n))$.
 
 
-  Nyní si povíme o výběru prvku $a_i$. Tomuto prvku budeme říkat \textbf{pivot}. Byli bychom nejraději, kdyby pivot byl \textbf{medián}. 
-  Dle definice je medián prvek na prostřední pozici \textbf{seřazeného pole}. Má-li pole sudý počet prvků, pak si vybereme buď ten
-  trochu víc na pravo nebo trochu víc nalevo...\textbf{tohle se musí nutně přepsat, hnus}. Medián nám pole dle úvodu tohoto důkazu rozdělí pole přibližně na dvě stejně velké části.
-  
+  Nyní si povíme o výběru prvku $a_i$. Tomuto prvku budeme říkat "pivot".notion. Byli bychom nejraději, kdyby pivot byl "medián".notion. 
+  Dle definice je medián prvek na prostřední pozici "seřazeného pole".emphasize. Má-li pole sudý počet prvků, pak si vybereme buď ten
+  trochu víc na pravo nebo trochu víc nalevo..."tohle se musí nutně přepsat, hnus".notion. Medián nám pole dle úvodu tohoto důkazu rozdělí pole přibližně na dvě stejně velké části.
+ 
 
-  % Nejjednodužší výběr pivota je vybrat náhodně nějaký prvek. Nepotřebujeme však vybrat přesně medián,
+  Nejjednodužší výběr pivota je vybrat náhodně nějaký prvek. Nepotřebujeme však vybrat přesně medián,
   Stačí tedy najít medián v neseřazeném poli a máme vyhráno. Bohužel pro nás, najít medián není výpočetně snadná operace. (Ví se že medián nelze najít rychleji než v čase
-  $\lanO(n\cdot\log(n))?). Místo toho můžeme využít takzvaných skoromediánů. "Skoromediány".notion.1 jsou prvky, které se nachází ve druhé a třetí čtvrtině seřazeného pole.
+  $\lanO(n\cdot\log(n))$?). Místo toho můžeme využít takzvaných skoromediánů. "Skoromediány".notion.1 jsou prvky, které se nachází ve druhé a třetí čtvrtině seřazeného pole.
   Pokud vybereme za pivot skoromedián, tak se pole rozdělí na dvě části o $\frac{n}{4}$ a $\frac{3n}{4}$ prvcích. Se velikost pole co musíme seřadit bude na každé vrstvě zmenšovat
   alespoň na $\frac34n$. Než se dostaneme k poli o jednom prvku, tak to bude trvat $\log_\frac43 n$ což je $\lanO(\log n)$. Na jedné vrstvě provedeme
   $\lanO(n)$ operací, takže výsledek je stále $\lanO(n\log n)$. Jenže na výběr skoromediánu jako pivota máme jenom $50\%$ pravděpodobnost, takže v půlce případů,
@@ -253,3 +253,4 @@ Zatím stačí vědět, že funguje na principu rozdělení problému na menší
       index: skoromedián
     2:
       link: http://pruvodce.ucw.cz/
+
