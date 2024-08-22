@@ -138,82 +138,77 @@ Na tyto otázky obecně nejde moc dobře odpovědět, pokud neznáme vstupní da
 
 Odpověď na tuto otázku je pozitivní a v následující sekci vám představíme jeden známý algoritmus řazení pracující v (asymptoticky) rychlejším čase.
 Půjde o algoritmus pracující na bázi \textit{rozděl a panuj} (anglicky \textit{divide and conquer}), o které se obecně pobavíme později. Prozatím stačí vědět, že celý princip
-spočívá v rozdělení původního problému na menší celky, které umíme řešit, a následně pak jednotlivá řešení spojit dohromady. Předtím než algoritmus uvedeme, ukážeme si princip na méně
-známem řadícím algoritmu.
-
-
-.Procedure:
-  title: Marakuja sort
-  index: sort!marakuja sort
-
-  Princip Marakuja sortu je víceméně jednoduchý. Pokud má pole na vstupu nejvýše jeden prvek, pak takové pole rovnou vrať. Jinak pole rozděl na dvě části tak, že první část 
-  obsahuje minimum a druhá část obsahuje všechny ostatní prvky. Existuje-li více minimálních prvků se stejnou hodnotou, tak do první části dej libovolný z nich 
-  "pokud bychom chtěli, aby byl náš algoritmus stabilní, volili bychom místo libovolného prvku, prvek první".footnote. Na obě části postupně rekurzivně zavolej 
-  algoritmus znovu, a poté pouze "přilep" obě části za sebe a výsledné pole vrať.
-
-
-  Než se podívame na korektnost, tak nejprve ukážeme, že se algoritmus vůbec zastaví "jinak korektnost nemá moc smysl zkoumat. I kdyby algoritmus vracel seřazené pole, výsledku bychom
-  se nikdy nedočkali".footnote. Má-li pole na vstupu nejvýše jeden prvek, pak se algoritmus jistě zastaví, neboť takové pole rovnou vrátíme a žádnou další operaci již nevykonáváme. Má-li pole
-  prvků více, tak najdeme minimum, vložíme ho do první části, a do druhé části dáme zbytek prvků. Algoritmus zavolaný rekurzivně na první část jistě skončí, neboť první část obsahuje
-  pouze jeden prvek. Dále algoritmus voláme na druhou část, která má velikost o jedna menší než původní pole. Rekurzivně tak budeme postupně zmenšovat a zmenšovat druhou část, dokud i v 
-  ní nezbude pouze jeden prvek "předpokládáme, že vstupní pole je konečné délky".footnote. Jakmile se tak stane, dělení skončí, a my začneme postupně vylézat z rekurze ven. Pokaždé, co
-  vystoupáme o volání rekurze výš, provedeme akorát operaci přilepení obou částí, což je jistě operace konečná. Algoritmus je tedy konečný.
-  
-
-  To, že pole je na konci celého algoritmu správně seřazené, a tedy že je algoritmus korektní, dokážeme indukcí podle hloubky stromu "mimochodem základní poučka
-  platí, že tam, kde je rekurze, je i indukce, a naopak :)".footnote. Začneme od listů a induktivně budeme postupovat směrem ke kořeni. Protože pole o jendom prvku je
-  triviálně správně seřazené, máme základní krok dokázaný. V indukčním kroku předpokládejme, že obě části pole (oba synové ve stromu dělení) jsou již správně
-  seřazené. Náš algoritmus v tomto případě přilepí seřazenou první část za seřazenou druhou část a výsledné pole vrátí. To že je celé pole na konci skutečně seřazené plyne
-  z toho, jak jsme pole dělili, a dokážeme to pro ukázku sporem. Předpokládejme, že pole na konci seřazené není. Existují tedy dva prvky $a$ a $b$ takové, že $a > b$, ale
-  $a$ je v seřazeném poli dříve, než prvek $b$. Oba prvky se nemohly nacházet pouze v jedné části, protože jinak by nebyla správně seřazená ani ona samotná část, což je ve sporu
-  s indukčním předpokladem. Nutně se tedy muselo $a$ nacházet v části první a $b$ v části druhé. To je ale spor s tím, jak jsme pole na části dělili, protože $b < a$ a $a$ se nachází
-  v první části.
-
-
-  Konečnost a korektnost máme hotovou, nyní by nás zajímalo, jak rychle samotný algoritmus vůbec poběží. Pozorný čtenář už si jistě všiml jisté podobnosti s jiným, již uvedeným,
-  řadícím algoritmem. Skutečně, tento algoritmus je pouze rekurzivní verzí Select sortu, a běží v nejhorším případě v čase $\lanO(n^2)$.
-
-
-  Proč je algoritmus tak pomalý? Nemohli bychom ho zrychlit? Problém je v tom, jak pole dělíme. Tím, že do jedné části vkládáme vždy pouze jeden prvek, je hloubka stromu
-  dělení % TO CHCE ŘÍCT NĚJAK JINAK
-  přímo úměrná počtu prvků v původním poli, tj. $\lanO(n)$.
-
-  !tikz:
-    filename: marakuja-sort-figure
-
-      \node {n}
-        child {node {1}}
-        child {node {$n - 1$}
-          child {node {1}}
-          child {node {$n - 2$}
-            child {node {1}}
-            child {node {$n - 3$}
-              child {node {1}}
-              child {node {$\dots$}
-                child {node {1}}
-                child {node {$n - (n - 1)$}}
-              }
-            }
-          }
-        };
-
-  
-  Nezapomeňte, že v každém kroku rekurze hledáme minimum, kroků rekurze máme $\lanO(n)$ a součet aritmetické posloupnosti $n$ prvků je $\lanO(n^2)$. Kdyby se nám podařilo zmenšit hloubku
-  stromu dělení, značně bychom si pomohli. Časová složitost našeho algoritmu v nejhorším případě je totiž rovna $\O(n \cdot h) "rozmyslete!".footnote, kde $h$ je hloubka stromu dělení
-  (nezapomeňte, že hloubka je také závislá na počtu prvků $n$!). Předtím než si přečtete následující "a mnohem známější".footnote algoritmus, zkuste se zamyslet, jak bychom museli pole dělit,
-  abychom snížili celkovou hloubku stromu dělení.
+spočívá v rozdělení původního problému na menší celky, které umíme řešit, a následně pak jednotlivá řešení spojit dohromady.
 
 
 .Procedure:
   title: Quick sort
   index: sort!quick sort
 
-  Quicksort je značně podobný Marakuja sortu. Vlastně jediným rozdílem mezi oběma algoritmy je způsob dělení. V quicksortu (nějak) vybereme jeden prvek $a_i$ a pole rozdělíme
-  na dvě části tak, že v první části budou všechny prvky menší než $a_i$ a do druhé části dáme zbytek. Zbytek algoritmu je stejný. Základní motivací pro quicksort je co nejvíce
-  zmenšit hloubku stromu. Ideálně bychom chtěli pole rozdělit vždy na cca stejně velké části. Tím hloubku (binárního) stromu snížíme na $\Theta(log n)$ a časová složitost bude pak
-  \textbf{v průměrném případě} $\lanO(n \log n)$ (v nejhorším případě si bohužel nepomůžeme, jak uvidíte v následující analýze algoritmu).
+  Princip quicksortu je víceméně jednoduchý. Má-li pole nejvýše jeden prvek, pole rovnou
+  vrátíme. Jinak vybereme z pole prvek $a_i$ (tzv. \textbf{pivota}) a rozdělíme pole
+  na levou $L$, prostřední $S$ a pravou část $P$ tak, že všechny prvky $L$ jsou menší než $a_i$,
+  všechny prvky stejné hodnoty $a_i$ zařadíme do $S$ a zbytek prvků do $P$.
+  Rekurzivně seřadíme levou $L$ a pravou $P$ část a nakonec pouze "slepíme" části
+  $L$, $S$ a $P$ za sebe a výsledné pole vrátíme.
 
+
+  Nejprve si ukážeme konečnost algoritmu (bez ní nemá smysl korektnost vůbec zkoumat)
+  "rozmyslete!".footnote. Tu dokážeme indukcí "pravidlo říká, že kde je rekurze, 
+  tam je indukce, a naopak :)".footnote podle velikosti pole. Má-li pole nejvýše jeden
+  prvek, tak algoritmus jistě skončí, protože takové pole pouze vrátíme a žádnou další
+  operaci už neprovádíme. Tím máme dokázan základní krok. V indukčním kroku předpokládejme,
+  že máme pole velikosti $n > 1$ a že algoritmus je konečný pro všechny pole menší
+  velikosti. Protože má pole víc než jeden prvek, tak dle algoritmu pole rozdělíme
+  na tři části $L$, $S$ a $P$, a na části $L$ a $P$ algoritmus rekurznivně spustíme znovu.
+  Protože
+  obě části mají velikost menší než $n$ "rozmyslete!".footnote, algoritmus spuštěný na
+  obou částech $L$ i $P$ skončí. Po seřazení obou částí algoritmus pouze slepí všechny
+  tři části za sebe, což je jistě konečná operace. Tím máme dokázan indukční krok,
+  a spolu se základním krokem je tedy algoritmus konečný.
+
+
+  Důkaz korektnosti by vypadal obdobně. V základním kroku využijeme pozorování, že pole
+  o nejvýše jednom prvku je triviálně seřazeno. V indukčním kroku zase fakt, že slepení
+  všech tří již seřazených částí za sebe nemůže rozbít celkové seřazení vstupního pole
+  "laskavý čtenář si to dokáže precizně, např. sporem".footnote.
   
+
+  Předtím než se pustíme na časovou složitost quicksortu, si zavedeme
+  tzv. \textit{strom rekurzivních volání} (SRV), což je zakořeněný strom, kde vrcholy
+  odpovídají jednotlivým rekurzivním voláním (specificky kořen stromu 
+  odpovídá prvnímu zavolání funkce) a vrcholy $s_1,\dots,s_k$ jsou synové vrcholu
+  $x$ právě tehdy, když odpovídají jednotlivým rekurzivním voláním v průběhu
+  vyhodnocování vrcholu $x$.
+
+
+  Pokud si u každého vrcholu poznamenáme velikost vstupního pole, může SRV vypadat
+  např. následovně:
+
+  !tikz:
+  filename: marakuja-sort-figure
+    \node {n}
+      child {node {1}}
+      child {node {$n - 1$}
+        child {node {1}}
+        child {node {$n - 2$}
+          child {node {1}}
+          child {node {$n - 3$}
+            child {node {1}}
+            child {node {$\dots$}
+              child {node {1}}
+              child {node {$n - (n - 1)$}}
+            }
+          }
+        }
+      };
+
+  Leví synové odpovídají části $L$ a praví synové odpovídají části $P$.
+  
+.Solution:
+  title: Časová složitost quicksortu
+
+ 
   !tikz:
     filename: quicksort-figure
 
@@ -246,9 +241,6 @@ známem řadícím algoritmu.
             }
           }
         };
-
-.Solution:
-  title: Časová složitost quicksortu
 
   Začneme časovou složitostí v nejhorším případě. Pokud bychom za $a_i$ volili vždy druhý nejmenší prvek, pak by časová složitost v nejhorším případě byla stejná jako
   u Marakuja sortu, tedy $\lanO(n^2)$.
