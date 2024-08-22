@@ -172,6 +172,14 @@ spočívá v rozdělení původního problému na menší celky, které umíme �
   o nejvýše jednom prvku je triviálně seřazeno. V indukčním kroku zase fakt, že slepení
   všech tří již seřazených částí za sebe nemůže rozbít celkové seřazení vstupního pole
   "laskavý čtenář si to dokáže precizně, např. sporem".footnote.
+
+
+  Pozorný čtenář si jistě všiml, že pouze takový důkaz korektnosti by neprošel,
+  neboť jsme si stále neřekli nic o tom, jak hledat pivota. Způsobů je mnoho, můžeme
+  ho vybírat náhodně, deterministicky jako vždy první prvek pole, nebo jako minimum
+  či medián hodnot v poli. Ať už ho budeme vybírat jakkoli, důkaz korektnosti i
+  konečnosti bude fungovat vždy stejně "rozmyslete".footnote (ale některé
+  způsoby nemusí být úplně nejvhodnější, jak se dozvíte u analýzy časové složitosti).
   
 
   Předtím než se pustíme na časovou složitost quicksortu, si zavedeme
@@ -208,7 +216,12 @@ spočívá v rozdělení původního problému na menší celky, které umíme �
 .Solution:
   title: Časová složitost quicksortu
 
- 
+
+  Začneme složitostí v nejhorším případě. 
+
+
+  Pokud budeme pokaždé dělit pole na dvě stejně velké části, tak budeme dělit $\log_2(n)$ krát než dojdeme k polím o jednom prvku.
+
   !tikz:
     filename: quicksort-figure
 
@@ -242,10 +255,6 @@ spočívá v rozdělení původního problému na menší celky, které umíme �
           }
         };
 
-  Začneme časovou složitostí v nejhorším případě. Pokud bychom za $a_i$ volili vždy druhý nejmenší prvek, pak by časová složitost v nejhorším případě byla stejná jako
-  u Marakuja sortu, tedy $\lanO(n^2)$.
-
-  Pokud budeme pokaždé dělit pole na dvě stejně velké části, tak budeme dělit $\log_2(n)$ krát než dojdeme k polím o jednom prvku.
 
   Na $k$-té vrstvě tohoto stromu se nachází $2^{k-1}$ částí. A pro každou z nich provedeme práci $\lanO(\frac{n}{2^{k-1}})$. Takže
   na $k$-té vrstvě provedeme $2^{k-1} \cdot \lanO(\frac{n}{2^{k-1}})$ práce. To vychází na $\lanO(n)$ času ztráveného na jedné vrstvě.
