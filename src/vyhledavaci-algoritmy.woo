@@ -232,7 +232,53 @@ Zatím stačí vědět, že funguje na principu rozdělení problému na menší
       link: http://pruvodce.ucw.cz/
 
 
+
 .Procedure:
   title: Merge sort
   lable: algo-merge-sort
   index: sort!merge sort
+
+  Podobně jako quick sort, i tento algoritmus rozdělí pole na dvě části, ty seřadí, a následně spojí. Liší se však ve způsobu rozdělování a spojování.
+  Zatímco quicksort složitě rozděluje a jednoduše spojuje. Mergesort to dělá naopak, pole rozdělí na stejně velké části, ať už rozseknutím v půlce, nebo 
+  prvky na liché pozici do jedné části a na sudé pozici do druhé. Tyto dvě části rekurzivně seřadí opět mergesortem. Spojení seřazených polí do jednoho
+  si pak můžeme představit jako dvě hromádky karet, které chceme spojit do jedné seřazené. Vezmeme vždy tu menší kartu z vrhchu obou hromádek. A zařadíme na konec
+  nového spojeného balíčku.
+
+
+.Figure:
+  label: merge-sort-diagram
+
+  !dot:
+    filename: mergesort-diagram
+
+      digraph G{
+        bgcolor="transparent";
+        124[label="1, 2, 4"]
+        12[label="1, 2"]
+        "6, 3, 5, 1, 2, 4" -> "6, 3, 5"
+        "6, 3, 5, 1, 2, 4" -> "1, 2, 4"
+        "6, 3, 5" -> "6, 3"
+        "6, 3, 5" -> "5"
+        "6, 3" -> "6"
+        "6, 3" -> "3"
+        "1, 2, 4" -> "1, 2"
+        "1, 2, 4" -> "4"
+        "1, 2" -> "1"
+        "1, 2" -> "2"
+        "6" -> "3, 6"
+        "3" -> "3, 6"
+        "3, 6" -> "3, 5, 6"
+        "5" -> "3, 5, 6"
+        "1" -> 12
+        "2" -> 12
+        12 -> 124
+        "4" -> 124
+        "3, 5, 6" -> "1, 2, 3, 4, 5, 6"
+        124 -> "1, 2, 3, 4, 5, 6"
+      }
+
+
+  .caption:
+
+    Vizualizace rozdělování a slučování polí v algoritmu merge sort.
+
