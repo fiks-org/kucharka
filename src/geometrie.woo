@@ -149,7 +149,7 @@ A když máme definovaný všechny tyhle věci, tak bychom chtěli vědět něja
 
     .item:
 
-      $\braket\vx\vx \gt 0 \land \braket\vx\vx = 0 \iff \vx = \theta$ pro $\forall \vx \in \R^n$
+      $\braket\vx\vx > 0 \land \braket\vx\vx = 0 \iff \vx = \theta$ pro $\forall \vx \in \R^n$
 
 
 To je ale hodně obecná definice. S tím toho moc nespočítáme, pro různé aplikace se mohou hodit různé přesné definice.
