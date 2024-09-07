@@ -242,7 +242,10 @@ Zatím stačí vědět, že funguje na principu rozdělení problému na menší
   Zatímco quicksort složitě rozděluje a jednoduše spojuje. Mergesort to dělá naopak, pole rozdělí na stejně velké části, ať už rozseknutím v půlce, nebo 
   prvky na liché pozici do jedné části a na sudé pozici do druhé. Tyto dvě části rekurzivně seřadí opět mergesortem. Spojení seřazených polí do jednoho
   si pak můžeme představit jako dvě hromádky karet, které chceme spojit do jedné seřazené. Vezmeme vždy tu menší kartu z vrhchu obou hromádek. A zařadíme na konec
-  nového spojeného balíčku.
+  nového spojeného balíčku. Rekurze se opět zastaví u pole s jedním prvkem, to už není jak dál dělit. Na náznak jak mergsort pracuje se můžete podívat na obrázek
+  .reference:merge-sort-diagram
+
+  Zkuste si dokázat korektnost i složitosti sami.
 
 
 .Figure:
@@ -282,3 +285,36 @@ Zatím stačí vědět, že funguje na principu rozdělení problému na menší
 
     Vizualizace rozdělování a slučování polí v algoritmu merge sort.
 
+
+.Solution:
+  label: sol-merge-sort-korektnost
+  title: Korektnost merge sortu
+
+  Co se týče konečnosti, tak ta je podobná jako u quick sortu. Dělit můžeme pole délky $n$ na půlky jenom $\log_2(n)$-krát. Takže se rekurze určitě zastaví,
+  a~spojovat taky nemůžeme do nekonečna.
+
+  
+  Řazení v merge sortu stojí na spojování jednotlivých částí. Máme dvě seřazená pole a chceme je spojit do jednoho. Na konec nového pole vždy vložíme
+  první prvek z jednoho z polí. Tento prvek je menší z obou prvních prvků. Označme tento prvek $p_1$. Další vložený prvek bude buď další prvek v poli,
+  ze kterého jsme vzali $p_1$. Protože pole jsou seřazené, tak tento prvek bude větší nebo roven $p_1$. Nebo bude z druhého pole, a také bude větší nebo
+  roven, protože $p_1$ byl menší. Takto se vloží všechny prvky do nového pole, kde pro všechny platí $p_i \le p_{i+1}$.
+
+  
+  Protože v merge sortu rozdělíme pole až na jednotlivé prvky, kde pole o jednom prvku jsou triviálně seřazeny. A následně je pak slučujeme, tak je vždy
+  zajištěno, že obě dvě spojovaná pole budou seřazena a výsledkem bude seřazené pole.
+
+
+.Solution:
+  label: sol-merge-sort-time
+  title: Korektnost merge sortu
+  
+  Již jsme naznačili kolik dělení je potřeba. Jedno dělení lze provézt v konstatním čase (jedno pole budu odteď považovat za dvě, s tím, že první končí
+  v původní půlce a druhé tam začíná). Nejvíc dělení bude provedeno, pokud je $n$ mocina dvou. Uvažujme tedy tento případ. Při každém dělení $m$ polí délky $k$
+  vznikne $2m$ polí délky $\frac{k}{2}$. Součet všech dělení bude $2^{\log_2{n}}-1$ "rozmyslete".footnote. Což je jenom jinak napsané $n-1$. Za dělení tutíž zatím
+  máme $\lanO(n)$.
+
+
+  Slučování dvou polí velikosti $m$ a $n$ vyžaduje vzít každý prvek z obou polí a vložit ho do nového pole. Můžeme předpokládat, že všechny tyto operace lze provézt
+  za konstatní čas "opět rozmyslete".footnote. Takže sloučení bude $\lanO(m+n)$. Sloučení bude stejně jako dělení. Ale protože závisí i na velikosti polí, musíme
+  spočítat každou vrstvu polí o stejné velikosti zvlášť. Nejdřív bude sloučeno $n$ polí velikosti $1$ pomocí $\frac{n}{2}$ sloučení. Pak $\frac{n}{2}$ polí velikosti
+  $2$ pomocí $\frac{n}{4}$ sloučení.
