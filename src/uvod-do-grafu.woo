@@ -186,3 +186,63 @@ nejkratší cestu městem.
 
 Nyní, když máme základní definice za sebou, se podíváme na nejzákladnější, ale
 opravdu velmi užitečný, grafový algoritmus BFS.
+
+
+.Section BFS
+  label: sec-graph-bfs
+
+
+.Section DFS
+  label: sec-graph-dfs
+
+
+.Section Základní pojmy z teorie grafů
+  label: sec-graph-basic-knowledge
+
+
+.Section Stromy
+  label: sec-graph-trees
+
+
+.Section Topsort
+  label: sec-graph-topsort
+
+
+.Section Ukládání grafů
+  label: sec-graph-storage
+
+
+.Section Kostry grafu
+  label: sec-graph-spanning-tree
+
+
+.Section Nejkratší cesty v grafech
+  label: sec-graph-shortest-path
+
+
+.Section Jednotažky a eulerovské grafy
+  label: sec-graph-euler
+
+
+.Section SSC
+  label: sec-graph-ssc
+
+
+.Section Párování
+  label: sec-graph-matching
+
+
+.Section Souvislost grafu
+  label: sec-graph-connectivity
+
+
+.Section Rovinné grafy
+  label: sec-graph-planar
+
+
+.Section Vrcholové barvení
+  label: sec-graph-coloring
+
+
+.Section Toky
+  label: sec-graph-flow
