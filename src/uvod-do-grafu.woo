@@ -192,6 +192,58 @@ opravdu velmi užitečný, grafový algoritmus BFS.
   label: sec-graph-bfs
 
 
+Motivace pro Breadth First Search (BFS) je přímočará. Máte mapu a chcete najít nejkratší
+cestu mezi zadanými body. O tom jak najít nejrychlejší cestu (nejkratší totiž není
+vždycky nejrychlejší) se pobavíme později. Algoritmus BFS nám tedy poskytne odpověď
+na otázky jako $\dots$ kolik nejméně křižovatek musím navšívit, než se dostanu ze Strahova
+do Dejvic?; zvládnu utéct Minotaurovi, když se oba, já i Minotaurus, pohybujeme
+v bludišti stejně rychle?; přes kolik nejméně dodavatelů musí můj dopis projít, než se
+dostane z Finska do Česka? Dokáže zodpovědět ale i mnoho dalších, ikdyž to na první pohled
+třeba nevypadá $\dots$ Zvládne známý "farmář"@1 řevézt přes řeku vlka, kozu i zelí?; Jaké
+je číslo s nejmenším počtem cifer 0, 1 a 2, které je dělitelné zadaným číslem $K$ (např.
+pro $K$ = 4 je odpověď 20)?
+  1:
+    link: https://cs.wikipedia.org/wiki/Vlk,_koza_a_zel%C3%AD
+
+
+.Procedure
+  title: Breadth First Search (BFS)
+  label: algo-bfs
+
+
+  BFS dostane na vstupu neorientovaný graf $G$ a počáteční vrchol $s$. Výstupem
+  je pak pole hodnot $D$, kde buňka $D$[$v$] obsahuje"což si samozřejmě musíme
+  ještě dokázat".footnote číslo $d(s,v)$, tj. nejkratší vzdálenost vrcholu $v$
+  od vrcholu $s$, nebo je ponecháno "undefined", tedy že mezi vrcholy $v$
+  a $s$ žádná cesta neexistuje.
+
+  
+  BFS začne procházat graf od zadaného počátečního vrcholu $s$. Objeví
+  všechny sousedy $s$"porovnejte s DFS až si o něm v další kapitole přečtete".footnote
+  a přidá je do fronty $Q$. Poté zvolí první z přidaných vrcholů a algoritmus na něm
+  spustí odznovu. Do fronty už ale budeme přidávat jenom sousedy vrcholu, které jsme
+  ještě předtím neobjevili"rozmyslete si, že bychom se jinak
+  velice rychle zacyklili".footnote.
+
+  !pseudocode
+
+  \PROCEDURE{BFS}(\text neorientovaný graf $G$, vrchol $s$)
+    \STATE Pro každý vrchol $v \in V(G)\colon$
+      \STATE state[$v$] := undefined
+      \STATE $D$[$v$] := undefined
+    \STATE $Q$ := fronta obsahující jediný vrchol $s$
+    \STATE state[$s$] := open
+    \STATE $D$[$s$] := 0
+    \STATE Dokud není fronta $Q$ prázdná:
+      \STATE Odeber z $Q$ první vrchol, označ ho $v$
+      \STATE Pro všechny vrcholy $w \in N(v)$:
+        \STATE Pokud state[$w$] = undefined:
+          \STATE $D$[$w$] := $D$[$v$] + 1
+          \STATE Přidej $w$ na konec fronty $Q$
+      \STATE state[$v$] := closed
+    \STATE Vrať pole $D$.
+
+
 .Section DFS
   label: sec-graph-dfs
 
