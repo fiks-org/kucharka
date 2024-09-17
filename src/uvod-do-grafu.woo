@@ -5,14 +5,15 @@
 Ze střední školy jste už asi o grafech něco málo slyšeli. Určitě si vzpomenete na ty
 nepříjemné chvíle při testu, kdy se vám ruka klepala tak, že jste prostě nemohli trefit
 ty průsečíky osy x a y. Nebo jste tu konstantní funkci nenakreslili úplně rovně a hned
-vám šla známka dolů. Pokud takhle smýšlíte o těchto grafech, tak máme pro vás dobrou zprávu!
+vám šla známka dolů. Pokud takhle smýšlíte o grafech, tak máme pro vás dobrou zprávu!
 Tato kapitola o takových grafech vůbec nebude!
 
 
 Že jste o žádných jiných grafech ještě neslyšeli? A slyšeli jste o "Facebookové síti".quoted?
 Četli jste někdy o Minotaurovi a jeho tajemném bludišti? Nebo jste se třeba někdy podívali
 do mapy, abyste našli nejkratší cestu od Petřínské rozhledny do Nové budovy ČVUTu? Ikdyž
-vám to teď třeba ještě nepřijde, tak všechny tyto situace se dají popsat pomocí grafů.
+vám to teď třeba ještě nepřijde, tak všechny tyto situace se dají popsat 
+a modelovat pomocí grafů.
 
 
 Každého zaregistrovaného člověka na Facebooku si můžeme představit jako bublinu a má-li
@@ -22,24 +23,18 @@ křižovatku si můžeme představit jako puntík, a pokud mezi dvěma křižova
 můžeme puntíky spojit čárou a dostat tak mapu celého labyrintu.
 
 
-Takže, co že to teda je ten "hezký".quoted graf? Bublinám či puntíkům budeme říkat "vrcholy".emphasize
-a spojnicím či čárám mezi nimi zase "hrany".emphasize. A to je vlastně celé. Takže můžeme jít
-domů? No, kdyby to bylo všechno takhle jednoduché, určitě by o grafech nevznikla řada
-nejrůznějších knih a článků a matematici a teoretičtí informatici by měli o dost smutnější
-život.
-
-
-Předtím než se pustíme do té pravé "teorie grafů".emphasize, rádi bychom čtenáře namotivovali
-užitečností grafů. Uvedeme proto několik faktů a problémů, které vznikly právě díky
-grafům.
+Takže, co že to teda je ten náš "hezký".quoted graf? Bublinám či puntíkům budeme říkat
+"vrcholy".emphasize a spojnicím či čárám mezi nimi zase "hrany".emphasize.
+Rádi bychom nyní čtenáře namotivovali ukázkami zajímavostí a problémů, které
+vznikly právě díky "teorii grafů".quoted.
 
 
 .enumerate:
 
   .item:
 
-    Jak najít nejkratší cestu z místa A do místa B? Jak to udělat tak, abychom zaplatili
-    co nejméně peněz?
+    Jak najít nejkratší cestu z místa A do místa B? Jak to udělat tak, abychom za
+    použitou dopravu zaplatili co nejméně peněz?
 
   .item:
 
@@ -52,24 +47,26 @@ grafům.
 
   .item:
 
-    Obrázek jde nakreslit jedním tahem a skončit na začátku tahu právě tehdy, když
-    počet čar u každého puntíku je sudý.
+    V libovolné verzi známe hry "one-stroke puzzle"@1, kde úkolem je nakreslit zadaný
+    obrázek jedním tahem, mají všechny tečky sudý počet sousedících čar až na případné
+    dvě, které mají počet sousedících čar lichý. Kdybychom dostali obrázek, který tuto
+    podmínku nesplňuje, level s daným obrázkem by nešel dohrát! Pokud bychom navíc chtěli
+    skončit v puntíku, ve kterém jsme náš tah započali, musí mít dokonce všechny
+    puntíky počet sousedících čar sudý.
+      1:
+        link: https://www.crazygames.com/game/single-stroke-line-draw
 
   .item:
 
-    Obrázek jde nakreslit jedním tahem právě tehdy, když počet čar u každého puntíku až na dva
-    je sudý.
-
-  .item:
-
-    Pokud má obvod více jak $3 \cdot \mathrm{počet spojů} - 6$, pak ho nikdy nenakreslíme
+    Pokud má obvod více jak $3 \cdot \textrm{počet spojů} - 6$, pak ho nikdy nenakreslíme
     na integrovaný obvod bez křížení.
 
 
 Věříme, že nyní už je čtenář dostatečně udiven a uchvácen, aby se s námi pustil do
 prozkoumávání této krásné vědy, která dokázala vytvořit nejenom tvrzení uvedená dříve.
-Abychom se ale mohli do zkoumání pustit, musíme si nejdříve ustanovit nějaký slovník slov,
-abychom si mezi sebou rozuměli. Zavedeme si proto nejdříve pár definic.
+Nejdříve si ale musíme ustanovit nějaký společný slovník, abychom si mezi sebou
+vzájemně rozuměli. Nejprve si zavedeme samotný \textit{graf}, který jsme motivovali na
+začátku této kapitoly.
 
 
 .Definition:
@@ -90,7 +87,16 @@ abychom si mezi sebou rozuměli. Zavedeme si proto nejdříve pár definic.
       $E$ je množina "hran".notion.
 
   Hrana je dvouprvková podmnožina $V$, tj. každá hrana $e \in E$
-  je ve tvaru $\{u,v\}$, kde $u,v$ jsou vrcholy z $V$.
+  je ve tvaru $\{u,v\}$, kde $u,v$ jsou vrcholy z $V$. Neorientovanému
+  grafu také často říkáme pro jednoduchost pouze "graf".notion.
+
+
+Grafy často reprezentují relaci (vazby) mezi jednotlivými objekty. V příkladu
+s Facebookem bychom rádi byli schopni říct, kdo je koho kamarád (v grafovém
+modelu jsou kamarádi dva vrcholy mezi nimiž existuje hrana). Stejně tak bychom
+rádi řekli, že mezi nějakými dvěma křižovatky vede ulice. Abychom sjednotili
+tento (skoro až intimní vztah) vrcholů sdílející společnou hranu, zavádíme
+následující definici "souseda".notion.
 
 
 .Definition:
@@ -113,7 +119,16 @@ abychom si mezi sebou rozuměli. Zavedeme si proto nejdříve pár definic.
 
       $u$ i $v$ jsou "incidentní".notion s hranou $e$
 
+  Množinou $N(v)$ značíme všechny sousedy vrcholu $v$ a nazýváme jí
+  "otevřeným okolím".notion vrcholu $v$. Množinu $N[v]$ definujeme jako
+  $N[v] = N(v) \cup \{v\}$ a říkáme jí "uzavřené okolí" vrcholu $v$.
 
+
+Ne všechny vztahy jsou ale oboustranné. Některé ulice můžou být jednosměrky,
+pokud někomu vyznáte lásku, vaše city nemusí být opětovány. Nebo chcete jen
+říct, že FC Barceloan vyhrál nad Liverpoolem v NFL. Všechny tyto situace opět
+můžeme popsat pomocí grafů, jen na to potřebujeme trošku jinačí strukturu,
+kterou popisuje následující definice.
 
 .Definition:
   title: Orientovaný graf
@@ -136,3 +151,31 @@ abychom si mezi sebou rozuměli. Zavedeme si proto nejdříve pár definic.
   každá orientovaná hrana je ve tvaru $(u,v)$, kde $u,v$ jsou
   vrcholy z $V$.
 
+Předtím než se pustíme do první velké kapitoly z algoritmické části teorie grafů,
+si ještě zavedeme poslední dva pojmy, které nám budou užitečné, hledáme-li např.
+nejkratší cestu městem.
+
+.Definition:
+  title: Sled a cesta
+  label: def-sled-cesta
+
+  .enumerate:
+
+    .item:
+
+      "Sled délky".notion $k$ "v grafu".notion $G$ je sekvence vrcholů a hran
+      $v_0,e_1,v_1,e_2,\dots,e_k,v_k$ taková, že $e_i = \{v_{i - 1}, v_i\} \in E(G)$
+      pro všechna $i \in \{1,\dots,k\}$
+
+    .item
+
+      "Cesta v grafu".notion $G$ je sled, ve kterém se neopakují vrcholy
+
+    Označíme-li koncové vrcholy cesty $P$ v grafu $G$ jako $s = v_0$ a $t = v_k$,
+    pak o $P$ mluvíme také jako o "cestě z".notion $s$ "do".notion $t$ nebo
+    jako o $s$-$t$-"cestě".notion. "Délka" $s$-$t$ cesty $d(s,t)$ je počet hran
+    v této cestě (připustím i cestu nulové délky, pokud $s = t$).
+    
+
+Nyní, když máme základní definice za sebou, se podíváme na nejzákladnější, ale
+opravdu velmi užitečný, grafový algoritmus BFS.
