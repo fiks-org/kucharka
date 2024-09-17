@@ -121,7 +121,7 @@ následující definici "souseda".notion.
 
   Množinou $N(v)$ značíme všechny sousedy vrcholu $v$ a nazýváme jí
   "otevřeným okolím".notion vrcholu $v$. Množinu $N[v]$ definujeme jako
-  $N[v] = N(v) \cup \{v\}$ a říkáme jí "uzavřené okolí" vrcholu $v$.
+  $N[v] = N(v) \cup \{v\}$ a říkáme jí "uzavřené okolí".quoted vrcholu $v$.
 
 
 Ne všechny vztahy jsou ale oboustranné. Některé ulice můžou být jednosměrky,
@@ -129,6 +129,7 @@ pokud někomu vyznáte lásku, vaše city nemusí být opětovány. Nebo chcete 
 říct, že FC Barceloan vyhrál nad Liverpoolem v NFL. Všechny tyto situace opět
 můžeme popsat pomocí grafů, jen na to potřebujeme trošku jinačí strukturu,
 kterou popisuje následující definice.
+
 
 .Definition:
   title: Orientovaný graf
@@ -151,9 +152,11 @@ kterou popisuje následující definice.
   každá orientovaná hrana je ve tvaru $(u,v)$, kde $u,v$ jsou
   vrcholy z $V$.
 
+
 Předtím než se pustíme do první velké kapitoly z algoritmické části teorie grafů,
 si ještě zavedeme poslední dva pojmy, které nám budou užitečné, hledáme-li např.
 nejkratší cestu městem.
+
 
 .Definition:
   title: Sled a cesta
@@ -163,19 +166,23 @@ nejkratší cestu městem.
 
     .item:
 
-      "Sled délky".notion $k$ "v grafu".notion $G$ je sekvence vrcholů a hran
+      "Sled".notion.1 délky $k$ "v grafu".notion $G$ je sekvence vrcholů a hran
       $v_0,e_1,v_1,e_2,\dots,e_k,v_k$ taková, že $e_i = \{v_{i - 1}, v_i\} \in E(G)$
       pro všechna $i \in \{1,\dots,k\}$
+        1:
+          index: sled
 
     .item
 
-      "Cesta v grafu".notion $G$ je sled, ve kterém se neopakují vrcholy
+      "Cesta v grafu".notion.1 $G$ je sled, ve kterém se neopakují vrcholy
+        1:
+          index: cesta
 
     Označíme-li koncové vrcholy cesty $P$ v grafu $G$ jako $s = v_0$ a $t = v_k$,
     pak o $P$ mluvíme také jako o "cestě z".notion $s$ "do".notion $t$ nebo
-    jako o $s$-$t$-"cestě".notion. "Délka" $s$-$t$ cesty $d(s,t)$ je počet hran
+    jako o $s$-$t$-"cestě".notion. "Délka".quoted $s$-$t$ cesty $d(s,t)$ je počet hran
     v této cestě (připustím i cestu nulové délky, pokud $s = t$).
-    
+
 
 Nyní, když máme základní definice za sebou, se podíváme na nejzákladnější, ale
 opravdu velmi užitečný, grafový algoritmus BFS.
