@@ -178,10 +178,10 @@ nejkratší cestu městem.
         1:
           index: cesta
 
-    Označíme-li koncové vrcholy cesty $P$ v grafu $G$ jako $s = v_0$ a $t = v_k$,
-    pak o $P$ mluvíme také jako o "cestě z".notion $s$ "do".notion $t$ nebo
-    jako o $s$-$t$-"cestě".notion. "Délka".quoted $s$-$t$ cesty $d(s,t)$ je počet hran
-    v této cestě (připustím i cestu nulové délky, pokud $s = t$).
+  Označíme-li koncové vrcholy cesty $P$ v grafu $G$ jako $s = v_0$ a $t = v_k$,
+  pak o $P$ mluvíme také jako o "cestě z".notion $s$ "do".notion $t$ nebo
+  jako o $s$-$t$-"cestě".notion. "Délka".quoted $s$-$t$ cesty $d(s,t)$ je počet hran
+  v této cestě (připustím i cestu nulové délky, pokud $s = t$).
 
 
 Nyní, když máme základní definice za sebou, se podíváme na nejzákladnější, ale
