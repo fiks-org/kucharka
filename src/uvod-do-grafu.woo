@@ -172,7 +172,7 @@ nejkratší cestu městem.
         1:
           index: sled
 
-    .item
+    .item:
 
       "Cesta v grafu".notion.1 $G$ je sled, ve kterém se neopakují vrcholy
         1:
