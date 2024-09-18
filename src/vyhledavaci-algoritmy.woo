@@ -376,3 +376,13 @@ spočívá v rozdělení původního problému na menší celky, které umíme �
   za konstatní čas "opět rozmyslete".footnote. Takže sloučení bude $\lanO(m+n)$. Sloučení bude stejně jako dělení. Ale protože závisí i na velikosti polí, musíme
   spočítat každou vrstvu polí o stejné velikosti zvlášť. Nejdřív bude sloučeno $n$ polí velikosti $1$ pomocí $\frac{n}{2}$ sloučení. Pak $\frac{n}{2}$ polí velikosti
   $2$ pomocí $\frac{n}{4}$ sloučení.
+
+
+.Section Vyhledávací algoritmy
+  label: sec-vyhledavaci-algo
+
+
+V předchozí kapitole jsme již viděli "lineární vyhledávání"#example-asymptotika-lin-search. Které je "dobré".quoted pro vyhledávání v neseřazeném poli.
+Někdy nám může pomoci pole seřadit. Nebo třeba nehledáme konkrétní prvek ale například medián nebo maximum nějaké funkce.
+
+
