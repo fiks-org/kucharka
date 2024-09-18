@@ -186,3 +186,146 @@ nejkratší cestu městem.
 
 Nyní, když máme základní definice za sebou, se podíváme na nejzákladnější, ale
 opravdu velmi užitečný, grafový algoritmus BFS.
+
+
+.Section BFS
+  label: sec-graph-bfs
+
+
+Motivace pro Breadth First Search (BFS) je přímočará. Máte mapu a chcete najít nejkratší
+cestu mezi zadanými body. O tom jak najít nejrychlejší cestu (nejkratší totiž není
+vždycky nejrychlejší) se pobavíme později. Algoritmus BFS nám tedy poskytne odpověď
+na otázky jako $\dots$ kolik nejméně křižovatek musím navšívit, než se dostanu ze Strahova
+do Dejvic?; zvládnu utéct Minotaurovi, když se oba, já i Minotaurus, pohybujeme
+v bludišti stejně rychle?; přes kolik nejméně dodavatelů musí můj dopis projít, než se
+dostane z Finska do Česka? Dokáže zodpovědět ale i mnoho dalších, ikdyž to na první pohled
+třeba nevypadá $\dots$ Zvládne známý "farmář"@1 převézt přes řeku vlka, kozu i zelí?; Jaké
+je číslo s nejmenším počtem cifer 0, 1 a 2, které je dělitelné zadaným číslem $K$? Např.
+pro $K$ = 4 je odpověď 20.
+  1:
+    link: https://cs.wikipedia.org/wiki/Vlk,_koza_a_zel%C3%AD
+
+
+.Procedure:
+  title: Breadth First Search (BFS)
+  label: algo-bfs
+
+  BFS dostane na vstupu neorientovaný graf $G$ a počáteční vrchol $s$. Výstupem
+  je pak pole hodnot $D$, kde buňka $D$[$v$] obsahuje"což si samozřejmě musíme
+  ještě dokázat".footnote číslo $d(s,v)$, tj. vzdálenost nejkratší cesty z vrcholu $s$
+  od vrcholu $v$, nebo je ponecháno "undefined".quoted, tedy že mezi vrcholy $v$
+  a $s$ žádná cesta neexistuje.
+
+
+  BFS začne procházat graf od zadaného počátečního vrcholu $s$. Objeví
+  všechny sousedy $s$"porovnejte s DFS až si o něm v další kapitole přečtete".footnote
+  a přidá je do fronty $Q$. Poté zvolí první z přidaných vrcholů a algoritmus na něm
+  spustí odznovu. Do fronty už ale budeme přidávat jenom vrcholy, které jsme
+  ještě předtím neobjevili"rozmyslete si, že bychom se jinak
+  velice rychle zacyklili".footnote. Vždy, když objevíme vrchol $w$, který jsme ještě
+  neobjevili, uložíme do buňky $D$[$w$] číslo $D\[v\] + 1$, kde $v$ je vrchol, který
+  vrchol $w$ objevil. Algoritmus shrneme v následujícím pseudokódu.
+
+
+  !pseudocode:
+
+    \PROCEDURE{BFS}(\text neorientovaný graf $G$, vrchol $s$)
+      \STATE Pro každý vrchol $v \in V(G)\colon$
+        \STATE state[$v$] := undefined
+        \STATE $D$[$v$] := undefined
+      \STATE $Q$ := fronta obsahující jediný vrchol $s$
+      \STATE state[$s$] := open
+      \STATE $D$[$s$] := 0
+      \STATE Dokud není fronta $Q$ prázdná:
+        \STATE Odeber z $Q$ první vrchol, označ ho $v$
+        \STATE Pro všechny vrcholy $w \in N(v)$:
+          \STATE Pokud state[$w$] = undefined:
+            \STATE state[$w$] := open
+            \STATE $D$[$w$] := $D$[$v$] + 1
+            \STATE Přidej $w$ na konec fronty $Q$
+        \STATE state[$v$] := closed
+      \STATE Vrať pole vzdáleností $D$.
+
+
+Předtím než se pustíme do důkazu, že BFS skutečně dělá to, co chceme (řekli bychom, že algoritmus BFS je korektní),
+dokážeme si jeho konečnost. Na to budeme potřebovat již zmíněný fakt, který uvedeme v pozorování.
+
+
+.Observation:
+
+  Každý vrchol $v$ bude do fronty $Q$ přidán nejvýše jednou.
+
+
+.Proof:
+
+  Pokud jsme vrchol $v$ někdy přidali do fronty, změnili jsme jeho stav $\textrm{state}[v]$ na $\textrm{open}$.
+  Má-li vrchol stav $\textrm{open}$, může už svůj stav změnit pouze na $\textrm{close}$, nikdy ne zpátky
+  na $\textrm{undefined}$. V cyklu ale do fronty $Q$ přidáme vrchol $v$ pouze pokud splnil podmínku
+  $\textrm{state}[v] = \textrm{undefined}$, což už jednou otevřený vrchol nikdy splnit nemůže.
+
+
+.Proof:
+  title: Konečnost BFS
+
+  Protože uvažujeme grafy vždy s konečnou množinou vrcholů (vzpomeňte na definici neorientovaného grafu),
+  je prvních 6 řádků algoritmu jistě konečných. Cyklus probíhá dokud je fronta $Q$ neprázdná. V každém cyklu
+  z fronty odebereme jeden vrchol a dle předchozího pozorování každý vrchol do fronty přidáme nejvýše jednou.
+  Kdyby se fronta ani jednou v průběhu algoritmu celá nevyprázdnila, pak by buď musela množina vrcholů být nekonečná,
+  nebo bychom museli nějaký vrchol přidat do fronty alespoň 2x. Oboje je ale ve sporu s našimi předpoklady,
+  a tedy fronta bude v nějakém okamžiku prázdná a algoritmus skončí.
+
+
+.Section DFS
+  label: sec-graph-dfs
+
+
+.Section Základní pojmy z teorie grafů
+  label: sec-graph-basic-knowledge
+
+
+.Section Stromy
+  label: sec-graph-trees
+
+
+.Section Topsort
+  label: sec-graph-topsort
+
+
+.Section Ukládání grafů
+  label: sec-graph-storage
+
+
+.Section Kostry grafu
+  label: sec-graph-spanning-tree
+
+
+.Section Nejkratší cesty v grafech
+  label: sec-graph-shortest-path
+
+
+.Section Jednotažky a eulerovské grafy
+  label: sec-graph-euler
+
+
+.Section SSC
+  label: sec-graph-ssc
+
+
+.Section Párování
+  label: sec-graph-matching
+
+
+.Section Souvislost grafu
+  label: sec-graph-connectivity
+
+
+.Section Rovinné grafy
+  label: sec-graph-planar
+
+
+.Section Vrcholové barvení
+  label: sec-graph-coloring
+
+
+.Section Toky
+  label: sec-graph-flow
