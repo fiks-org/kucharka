@@ -137,7 +137,7 @@ Na tyto otázky obecně nejde moc dobře odpovědět, pokud neznáme vstupní da
 
 
 Odpověď na tuto otázku je pozitivní a v následující sekci vám představíme jeden známý algoritmus řazení pracující v (asymptoticky) rychlejším čase.
-Půjde o algoritmus pracující na bázi \textit{rozděl a panuj} (anglicky \textit{divide and conquer}), o které se obecně pobavíme později. Prozatím stačí vědět, že celý princip
+Půjde o algoritmus pracující na bázi "rozděl a panuj".emphasize (anglicky "divide and conquer".emphasize), o které se obecně pobavíme později. Prozatím stačí vědět, že celý princip
 spočívá v rozdělení původního problému na menší celky, které umíme řešit, a následně pak jednotlivá řešení spojit dohromady.
 
 
@@ -146,10 +146,10 @@ spočívá v rozdělení původního problému na menší celky, které umíme �
   index: sort!quick sort
 
   Princip quicksortu je víceméně jednoduchý. Má-li pole nejvýše jeden prvek, pole rovnou
-  vrátíme. Jinak vybereme z pole prvek $a_i$ (tzv. \textbf{pivota}) a rozdělíme pole
+  vrátíme. Jinak vybereme z pole prvek $a_i$ (tzv. "pivota".notion) a rozdělíme pole
   na levou $L$, prostřední $S$ a pravou část $P$ tak, že všechny prvky $L$ jsou menší než $a_i$,
   všechny prvky stejné hodnoty $a_i$ zařadíme do $S$ a zbytek prvků do $P$.
-  Rekurzivně seřadíme levou $L$ a pravou $P$ část a nakonec pouze "slepíme" části
+  Rekurzivně seřadíme levou $L$ a pravou $P$ část a nakonec pouze "slepíme".quoted části
   $L$, $S$ a $P$ za sebe a výsledné pole vrátíme.
 
 
@@ -183,39 +183,43 @@ spočívá v rozdělení původního problému na menší celky, které umíme �
   
 
   Předtím než se pustíme na časovou složitost quicksortu, si zavedeme
-  tzv. \textit{strom rekurzivních volání} (SRV), což je zakořeněný strom, kde vrcholy
+  tzv. "strom rekurzivních volání".notion.1 (SRV), což je zakořeněný strom, kde vrcholy
   odpovídají jednotlivým rekurzivním voláním (specificky kořen stromu 
   odpovídá prvnímu zavolání funkce) a vrcholy $s_1,\dots,s_k$ jsou synové vrcholu
   $x$ právě tehdy, když odpovídají jednotlivým rekurzivním voláním v průběhu
   vyhodnocování vrcholu $x$.
+    1:
+      index: strom rekurzivních volání
 
 
   Pokud si u každého vrcholu poznamenáme velikost vstupního pole, může SRV vypadat
   např. následovně:
 
   !tikz:
-  filename: marakuja-sort-figure
-    \node {n}
-      child {node {1}}
-      child {node {$n - 1$}
+    filename: marakuja-sort-figure
+
+      \node {n}
         child {node {1}}
-        child {node {$n - 2$}
+        child {node {$n - 1$}
           child {node {1}}
-          child {node {$n - 3$}
+          child {node {$n - 2$}
             child {node {1}}
-            child {node {$\dots$}
+            child {node {$n - 3$}
               child {node {1}}
-              child {node {$n - (n - 1)$}}
+              child {node {$\dots$}
+                child {node {1}}
+                child {node {$n - (n - 1)$}}
+              }
             }
           }
-        }
-      };
+        };
 
   Leví synové odpovídají části $L$ a praví synové odpovídají části $P$.
-  
+ 
+
 .Solution:
   title: Časová složitost quicksortu
-
+  lable: sol-quicksort-time-comlexity
 
   Začneme složitostí v nejhorším případě. 
 
@@ -261,13 +265,13 @@ spočívá v rozdělení původního problému na menší celky, které umíme �
   Vrstev je jak už jsme si řekli $\log_2(n)$, takže výsledná časová složitost je $\lanO(n*\log(n))$.
 
 
-  Nyní si povíme o výběru prvku $a_i$. Tomuto prvku budeme říkat \textbf{pivot}. Byli bychom nejraději, kdyby pivot byl \textbf{medián}. 
-  Dle definice je medián prvek na prostřední pozici \textbf{seřazeného pole}. Má-li pole sudý počet prvků, pak si vybereme buď ten
-  trochu víc na pravo nebo trochu víc nalevo...\textbf{tohle se musí nutně přepsat, hnus}. Medián nám pole dle úvodu tohoto důkazu rozdělí pole přibližně na dvě stejně velké části.
+  Nyní si povíme o výběru prvku $a_i$. Tomuto prvku budeme říkat "pivot".notion. Byli bychom nejraději, kdyby pivot byl "medián".notion. 
+  Dle definice je medián prvek na prostřední pozici "seřazeného pole".emphasize. Má-li pole sudý počet prvků, pak střed tvoří dva prvky
+  a vybereme jeden z nich. Medián nám pole dle úvodu tohoto důkazu rozdělí pole přibližně na dvě stejně velké části.
   
 
   Stačí tedy najít medián v neseřazeném poli a máme vyhráno. Bohužel pro nás, najít medián není výpočetně snadná operace. (Ví se že medián nelze najít rychleji než v čase
-  $\lanO(n\cdot\log(n))?). Místo toho můžeme využít takzvaných skoromediánů. "Skoromediány".notion.1 jsou prvky, které se nachází ve druhé a třetí čtvrtině seřazeného pole.
+  $\lanO(n\cdot\log(n))?)$. Místo toho můžeme využít takzvaných skoromediánů. "Skoromediány".notion.1 jsou prvky, které se nachází ve druhé a třetí čtvrtině seřazeného pole.
   Pokud vybereme za pivot skoromedián, tak se pole rozdělí na dvě části o $\frac{n}{4}$ a $\frac{3n}{4}$ prvcích. Se velikost pole co musíme seřadit bude na každé vrstvě zmenšovat
   alespoň na $\frac34n$. Než se dostaneme k poli o jednom prvku, tak to bude trvat $\log_\frac43 n$ což je $\lanO(\log n)$. Na jedné vrstvě provedeme
   $\lanO(n)$ operací, takže výsledek je stále $\lanO(n\log n)$. Jenže na výběr skoromediánu jako pivota máme jenom $50\%$ pravděpodobnost, takže v půlce případů,
@@ -278,7 +282,8 @@ spočívá v rozdělení původního problému na menší celky, které umíme �
     2:
       link: http://pruvodce.ucw.cz/
 
-.Remark
+
+.Remark:
   title: Další popisy quicksortu
 
   V jiné literatuře můžete narazit i na jiné popisy quicksortu. Jedním z nich je např. ten, kdy pole místo dvou částí, rozdělíme na tři. (Nějak) zvolíme jeden prvek $a_i$
