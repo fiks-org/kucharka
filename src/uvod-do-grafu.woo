@@ -247,6 +247,21 @@ pro $K$ = 4 je odpověď 20.
     \STATE Vrať pole vzdáleností $D$.
 
 
+Předtím než se pustíme do důkazu, že BFS skutečně dělá to, co chceme (řekli bychom, že algoritmus BFS je korektní),
+dokážeme si jeho konečnost. Na to budeme potřebovat již zmíněný fakt, který uvedeme v pozorování.
+
+
+.Observation:
+  Každý vrchol $v$ bude do fronty $Q$ přidán nejvýše jednou.
+
+
+.Proof
+  Pokud jsme vrchol $v$ někdy přidali do fronty, změnili jsme jeho stav $\textrm{state}[v]$ na $\textrm{open}$.
+  Má-li vrchol stav $\textrm{open}$, může už svůj stav změnit pouze na $\textrm{close}$, nikdy ne zpátky
+  na $\textrm{undefined}$. V cyklu ale do fronty $Q$ přidáme vrchol $v$ pouze pokud splnil podmínku
+  $\textrm{state}[v] = \textrm{undefined}$, což už jednou otevřený vrchol nikdy splnit nemůže.
+
+
 .Section DFS
   label: sec-graph-dfs
 
