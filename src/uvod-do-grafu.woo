@@ -240,6 +240,7 @@ pro $K$ = 4 je odpověď 20.
       \STATE Odeber z $Q$ první vrchol, označ ho $v$
       \STATE Pro všechny vrcholy $w \in N(v)$:
         \STATE Pokud state[$w$] = undefined:
+          \STATE state[$w$] := open
           \STATE $D$[$w$] := $D$[$v$] + 1
           \STATE Přidej $w$ na konec fronty $Q$
       \STATE state[$v$] := closed
