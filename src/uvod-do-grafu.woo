@@ -262,6 +262,17 @@ dokážeme si jeho konečnost. Na to budeme potřebovat již zmíněný fakt, kt
   $\textrm{state}[v] = \textrm{undefined}$, což už jednou otevřený vrchol nikdy splnit nemůže.
 
 
+.Proof:
+  title: Konečnost BFS
+
+  Protože uvažujeme grafy vždy s konečnou množinou vrcholů (vzpomeňte na definici neorientovaného grafu),
+  je prvních 6 řádků algoritmu jistě konečných. Cyklus probíhá dokud je fronta $Q$ neprázdná. V každém cyklu
+  z fronty odebereme jeden vrchol a dle předchozího pozorování každý vrchol do fronty přidáme nejvýše jednou.
+  Kdyby se fronta ani jednou v průběhu algoritmu celá nevyprázdnila, pak by buď musela množina vrcholů být nekonečná,
+  nebo bychom museli nějaký vrchol přidat do fronty alespoň 2x. Oboje je ale ve sporu s našimi předpoklady,
+  a tedy fronta bude v nějakém okamžiku prázdná a algoritmus skončí.
+
+
 .Section DFS
   label: sec-graph-dfs
 
