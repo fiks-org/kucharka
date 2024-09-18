@@ -211,7 +211,7 @@ pro $K$ = 4 je odpověď 20.
   label: algo-bfs
 
   BFS dostane na vstupu neorientovaný graf $G$ a počáteční vrchol $s$. Výstupem
-  je pak pole hodnot $D$, kde buňka $D$[$v$] obsahuje"což si samozřejmě musíme
+  je pak pole hodnot $D$, kde buňka $D[v]$ obsahuje"což si samozřejmě musíme
   ještě dokázat".footnote číslo $d(s,v)$, tj. vzdálenost nejkratší cesty z vrcholu $s$
   od vrcholu $v$, nebo je ponecháno "undefined".quoted, tedy že mezi vrcholy $v$
   a $s$ žádná cesta neexistuje.
@@ -223,28 +223,33 @@ pro $K$ = 4 je odpověď 20.
   spustí odznovu. Do fronty už ale budeme přidávat jenom vrcholy, které jsme
   ještě předtím neobjevili"rozmyslete si, že bychom se jinak
   velice rychle zacyklili".footnote. Vždy, když objevíme vrchol $w$, který jsme ještě
-  neobjevili, uložíme do buňky $D$[$w$] číslo $D\[v\] + 1$, kde $v$ je vrchol, který
+  neobjevili, uložíme do buňky $D[w]$ číslo $D[v] + 1$, kde $v$ je vrchol, který
   vrchol $w$ objevil. Algoritmus shrneme v následujícím pseudokódu.
 
 
   !pseudocode:
 
-    \PROCEDURE{BFS}(\text neorientovaný graf $G$, vrchol $s$)
-      \STATE Pro každý vrchol $v \in V(G)\colon$
+    \PROCEDURE{BFS}{neorientovaný graf $G$, vrchol $s$}
+      \FOR {každý vrchol $v \in V(G)$}
         \STATE state[$v$] := undefined
         \STATE $D$[$v$] := undefined
+      \ENDFOR
       \STATE $Q$ := fronta obsahující jediný vrchol $s$
       \STATE state[$s$] := open
       \STATE $D$[$s$] := 0
-      \STATE Dokud není fronta $Q$ prázdná:
+      \WHILE {není fronta $Q$ prázdná}
         \STATE Odeber z $Q$ první vrchol, označ ho $v$
-        \STATE Pro všechny vrcholy $w \in N(v)$:
-          \STATE Pokud state[$w$] = undefined:
+        \FOR {všechny vrcholy $w \in N(v)$}
+          \IF {state[$w$] = undefined}
             \STATE state[$w$] := open
-            \STATE $D$[$w$] := $D$[$v$] + 1
+            \STATE $D[w]$ := $D[v]$ + 1
             \STATE Přidej $w$ na konec fronty $Q$
+          \ENDIF
+        \ENDFOR
         \STATE state[$v$] := closed
+      \ENDWHILE
       \STATE Vrať pole vzdáleností $D$.
+    \ENDPROCEDURE
 
 
 Předtím než se pustíme do důkazu, že BFS skutečně dělá to, co chceme (řekli bychom, že algoritmus BFS je korektní),
