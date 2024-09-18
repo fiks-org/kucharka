@@ -206,45 +206,45 @@ pro $K$ = 4 je odpověď 20.
     link: https://cs.wikipedia.org/wiki/Vlk,_koza_a_zel%C3%AD
 
 
-.Procedure
+.Procedure:
   title: Breadth First Search (BFS)
   label: algo-bfs
-
 
   BFS dostane na vstupu neorientovaný graf $G$ a počáteční vrchol $s$. Výstupem
   je pak pole hodnot $D$, kde buňka $D$[$v$] obsahuje"což si samozřejmě musíme
   ještě dokázat".footnote číslo $d(s,v)$, tj. vzdálenost nejkratší cesty z vrcholu $s$
-  od vrcholu $v$, nebo je ponecháno "undefined", tedy že mezi vrcholy $v$
+  od vrcholu $v$, nebo je ponecháno "undefined".quoted, tedy že mezi vrcholy $v$
   a $s$ žádná cesta neexistuje.
 
-  
+
   BFS začne procházat graf od zadaného počátečního vrcholu $s$. Objeví
   všechny sousedy $s$"porovnejte s DFS až si o něm v další kapitole přečtete".footnote
   a přidá je do fronty $Q$. Poté zvolí první z přidaných vrcholů a algoritmus na něm
   spustí odznovu. Do fronty už ale budeme přidávat jenom vrcholy, které jsme
   ještě předtím neobjevili"rozmyslete si, že bychom se jinak
   velice rychle zacyklili".footnote. Vždy, když objevíme vrchol $w$, který jsme ještě
-  neobjevili, uložíme do buňky $D$[$w$] číslo $D[$v$] + 1, kde $v$ je vrchol, který
+  neobjevili, uložíme do buňky $D$[$w$] číslo $D\[v\] + 1$, kde $v$ je vrchol, který
   vrchol $w$ objevil. Algoritmus shrneme v následujícím pseudokódu.
 
-  !pseudocode
 
-  \PROCEDURE{BFS}(\text neorientovaný graf $G$, vrchol $s$)
-    \STATE Pro každý vrchol $v \in V(G)\colon$
-      \STATE state[$v$] := undefined
-      \STATE $D$[$v$] := undefined
-    \STATE $Q$ := fronta obsahující jediný vrchol $s$
-    \STATE state[$s$] := open
-    \STATE $D$[$s$] := 0
-    \STATE Dokud není fronta $Q$ prázdná:
-      \STATE Odeber z $Q$ první vrchol, označ ho $v$
-      \STATE Pro všechny vrcholy $w \in N(v)$:
-        \STATE Pokud state[$w$] = undefined:
-          \STATE state[$w$] := open
-          \STATE $D$[$w$] := $D$[$v$] + 1
-          \STATE Přidej $w$ na konec fronty $Q$
-      \STATE state[$v$] := closed
-    \STATE Vrať pole vzdáleností $D$.
+  !pseudocode:
+
+    \PROCEDURE{BFS}(\text neorientovaný graf $G$, vrchol $s$)
+      \STATE Pro každý vrchol $v \in V(G)\colon$
+        \STATE state[$v$] := undefined
+        \STATE $D$[$v$] := undefined
+      \STATE $Q$ := fronta obsahující jediný vrchol $s$
+      \STATE state[$s$] := open
+      \STATE $D$[$s$] := 0
+      \STATE Dokud není fronta $Q$ prázdná:
+        \STATE Odeber z $Q$ první vrchol, označ ho $v$
+        \STATE Pro všechny vrcholy $w \in N(v)$:
+          \STATE Pokud state[$w$] = undefined:
+            \STATE state[$w$] := open
+            \STATE $D$[$w$] := $D$[$v$] + 1
+            \STATE Přidej $w$ na konec fronty $Q$
+        \STATE state[$v$] := closed
+      \STATE Vrať pole vzdáleností $D$.
 
 
 Předtím než se pustíme do důkazu, že BFS skutečně dělá to, co chceme (řekli bychom, že algoritmus BFS je korektní),
@@ -252,10 +252,12 @@ dokážeme si jeho konečnost. Na to budeme potřebovat již zmíněný fakt, kt
 
 
 .Observation:
+
   Každý vrchol $v$ bude do fronty $Q$ přidán nejvýše jednou.
 
 
 .Proof:
+
   Pokud jsme vrchol $v$ někdy přidali do fronty, změnili jsme jeho stav $\textrm{state}[v]$ na $\textrm{open}$.
   Má-li vrchol stav $\textrm{open}$, může už svůj stav změnit pouze na $\textrm{close}$, nikdy ne zpátky
   na $\textrm{undefined}$. V cyklu ale do fronty $Q$ přidáme vrchol $v$ pouze pokud splnil podmínku
