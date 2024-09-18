@@ -199,9 +199,9 @@ na otázky jako $\dots$ kolik nejméně křižovatek musím navšívit, než se 
 do Dejvic?; zvládnu utéct Minotaurovi, když se oba, já i Minotaurus, pohybujeme
 v bludišti stejně rychle?; přes kolik nejméně dodavatelů musí můj dopis projít, než se
 dostane z Finska do Česka? Dokáže zodpovědět ale i mnoho dalších, ikdyž to na první pohled
-třeba nevypadá $\dots$ Zvládne známý "farmář"@1 řevézt přes řeku vlka, kozu i zelí?; Jaké
-je číslo s nejmenším počtem cifer 0, 1 a 2, které je dělitelné zadaným číslem $K$ (např.
-pro $K$ = 4 je odpověď 20)?
+třeba nevypadá $\dots$ Zvládne známý "farmář"@1 převézt přes řeku vlka, kozu i zelí?; Jaké
+je číslo s nejmenším počtem cifer 0, 1 a 2, které je dělitelné zadaným číslem $K$? Např.
+pro $K$ = 4 je odpověď 20.
   1:
     link: https://cs.wikipedia.org/wiki/Vlk,_koza_a_zel%C3%AD
 
@@ -213,18 +213,18 @@ pro $K$ = 4 je odpověď 20)?
 
   BFS dostane na vstupu neorientovaný graf $G$ a počáteční vrchol $s$. Výstupem
   je pak pole hodnot $D$, kde buňka $D$[$v$] obsahuje"což si samozřejmě musíme
-  ještě dokázat".footnote číslo $d(s,v)$, tj. nejkratší vzdálenost vrcholu $v$
-  od vrcholu $s$, nebo je ponecháno "undefined", tedy že mezi vrcholy $v$
+  ještě dokázat".footnote číslo $d(s,v)$, tj. vzdálenost nejkratší cesty z vrcholu $s$
+  od vrcholu $v$, nebo je ponecháno "undefined", tedy že mezi vrcholy $v$
   a $s$ žádná cesta neexistuje.
 
   
   BFS začne procházat graf od zadaného počátečního vrcholu $s$. Objeví
   všechny sousedy $s$"porovnejte s DFS až si o něm v další kapitole přečtete".footnote
   a přidá je do fronty $Q$. Poté zvolí první z přidaných vrcholů a algoritmus na něm
-  spustí odznovu. Do fronty už ale budeme přidávat jenom sousedy vrcholu, které jsme
+  spustí odznovu. Do fronty už ale budeme přidávat jenom vrcholy, které jsme
   ještě předtím neobjevili"rozmyslete si, že bychom se jinak
   velice rychle zacyklili".footnote. Vždy, když objevíme vrchol $w$, který jsme ještě
-  neviděli, uložíme do buňky $D$[$w$] číslo $D[$v$] + 1, kde $v$ je vrchol, který
+  neobjevili, uložíme do buňky $D$[$w$] číslo $D[$v$] + 1, kde $v$ je vrchol, který
   vrchol $w$ objevil. Algoritmus shrneme v následujícím pseudokódu.
 
   !pseudocode
