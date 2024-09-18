@@ -44,7 +44,7 @@ Jinými slovy, pokud $p_i = p_j$ a $i < j$, pak se $p_i$ na výstupu objeví př
   že $s_x$ byl minimální v $p$. Takže $p_m$ je větší než všechny prvky v $s$ a patří na konec.
 
 
-  Dobře je zde i vidět, že algoritmus zkončí, každý krok zmenší posloupnost $p$ o jedna a protože je konečná,
+  Dobře je zde i vidět, že algoritmus skončí, každý krok zmenší posloupnost $p$ o jedna a protože je konečná,
   tak bude někdy prázdná a všechny její prvky budou v $s$, což bude seřazený výstup.
 
 
@@ -132,48 +132,97 @@ Jinými slovy, pokud $p_i = p_j$ a $i < j$, pak se $p_i$ na výstupu objeví př
   Až na pár pomocných proměných (iterační nebo při prohazování) nepotřebuje algortmus žádnou paměť navíc, takže paměťová složitost je $\lanO(1)$.
 
 
-Jako u každého algoritmu nás zajímá jestli to jde rychleji. Jde to rychleji. Obecně jsou používané dva algoritmy. Než si o nich ale přečtete,
-zkuste vymyslet něco lepšího, pokud nic nevymyslíte nic se neděje aspoň nějaké myšlení tím procvičíte.
+Hurá! Nyní už víme jak řadit a dokonce známe rovnou dva algoritmy řazení. Oba algoritmy běží v nejhorším případě v čase $\lanO(n^2)$. Je to dobré? Je to špatné?
+Na tyto otázky obecně nejde moc dobře odpovědět, pokud neznáme vstupní data. Správně bychom si měli spíš položit otázku: Existují i reychlejší algoritmy?
 
 
-Oba algoritmy používají metodu zvanou "rozděl a panuj".emphasize (anglicky "divide and conquer".emphasize). O této metodě se dozvíte více později.
-Zatím stačí vědět, že funguje na principu rozdělení problému na menší, které umíme vyřešít a následné spojení řešení.
+Odpověď na tuto otázku je pozitivní a v následující sekci vám představíme jeden známý algoritmus řazení pracující v (asymptoticky) rychlejším čase.
+Půjde o algoritmus pracující na bázi "rozděl a panuj".emphasize (anglicky "divide and conquer".emphasize), o které se obecně pobavíme později. Prozatím stačí vědět, že celý princip
+spočívá v rozdělení původního problému na menší celky, které umíme řešit, a následně pak jednotlivá řešení spojit dohromady.
 
 
 .Procedure:
   title: Quick sort
   index: sort!quick sort
 
-  Algoritmus vypadá jednoduše, rozdělím si pole na dvě stejně velké části. Kde všechny prvky v jedné budou větší než všechny prvky v druhé.
-  Tyto dvě části seřadím a slepím za sebe a mám hotovo.
+  Princip quicksortu je víceméně jednoduchý. Má-li pole nejvýše jeden prvek, pole rovnou
+  vrátíme. Jinak vybereme z pole prvek $a_i$ (tzv. "pivota".notion) a rozdělíme pole
+  na levou $L$, prostřední $S$ a pravou část $P$ tak, že všechny prvky $L$ jsou menší než $a_i$,
+  všechny prvky stejné hodnoty $a_i$ zařadíme do $S$ a zbytek prvků do $P$.
+  Rekurzivně seřadíme levou $L$ a pravou $P$ část a nakonec pouze "slepíme".quoted části
+  $L$, $S$ a $P$ za sebe a výsledné pole vrátíme.
 
 
-  Popis pěkný, ale o algoritmu nám to moc neřeklo. Jak seřadím ty dvě části? Jak pole rozdělím? Odpověď na první otázku je poměrně přímočará, pomocí quicksortu.
-  To však přináší další otázky. Skončí algoritmus, když se volá furt dokola? Bude opravdu seřazený? Všiměme si, že pole o jednom prvku je triviálně seřazeno, a pokud
-  budu dělit pole na celočíselné části, tak se někdy musím zastavit na polích o jednom prvku. Takže ano, algoritmus skončí a protože při dělení na dvě části
-  rozdělím pole tak, že v jedné části jsou všechny prvky větší než všechny prvky v té druhé, tak mi po jejich seřazení opravdu stačí je slepit za sebe. Nemůže se
-  totiž stát, že by jeden z prvků z menší části měl být někde mezi prvky z větší nebo naopak, to by byl spor se způsobem rozdělení.
+  Nejprve si ukážeme konečnost algoritmu (bez ní nemá smysl korektnost vůbec zkoumat)
+  "rozmyslete!".footnote. Tu dokážeme indukcí "pravidlo říká, že kde je rekurze, 
+  tam je indukce, a naopak :)".footnote podle velikosti pole. Má-li pole nejvýše jeden
+  prvek, tak algoritmus jistě skončí, protože takové pole pouze vrátíme a žádnou další
+  operaci už neprovádíme. Tím máme dokázan základní krok. V indukčním kroku předpokládejme,
+  že máme pole velikosti $n > 1$ a že algoritmus je konečný pro všechny pole menší
+  velikosti. Protože má pole víc než jeden prvek, tak dle algoritmu pole rozdělíme
+  na tři části $L$, $S$ a $P$, a na části $L$ a $P$ algoritmus rekurznivně spustíme znovu.
+  Protože
+  obě části mají velikost menší než $n$ "rozmyslete!".footnote, algoritmus spuštěný na
+  obou částech $L$ i $P$ skončí. Po seřazení obou částí algoritmus pouze slepí všechny
+  tři části za sebe, což je jistě konečná operace. Tím máme dokázan indukční krok,
+  a spolu se základním krokem je tedy algoritmus konečný.
 
 
-  Dokázali jsme konečnost a korektnost, teď se podrobněji podíváme na druhou položenou otázku. Jak pole rozdělím? Než si přečtete odpověď, zkuste se nad tím zamyslet.
+  Důkaz korektnosti by vypadal obdobně. V základním kroku využijeme pozorování, že pole
+  o nejvýše jednom prvku je triviálně seřazeno. V indukčním kroku zase fakt, že slepení
+  všech tří již seřazených částí za sebe nemůže rozbít celkové seřazení vstupního pole
+  "laskavý čtenář si to dokáže precizně, např. sporem".footnote.
 
 
-  Většinou se quicksort popisuje trochu jinak, a to tak, že se pole rozdělí na tři části. Vybere se jeden prvek (prostřední část) a všechny se stejnou hodnotou.
-  A pak se pole rozdělí na prvky menší než vybraný prvek a na prvky větší. Čímý vlastně máme náš původní popis, jenom při slepování vlepíme mezi části
-  ještě jednu s vybraným prvekem. Vybranému prvku se říká "pivot".emphasize.
+  Pozorný čtenář si jistě všiml, že pouze takový důkaz korektnosti by neprošel,
+  neboť jsme si stále neřekli nic o tom, jak hledat pivota. Způsobů je mnoho, můžeme
+  ho vybírat náhodně, deterministicky jako vždy první prvek pole, nebo jako minimum
+  či medián hodnot v poli. Ať už ho budeme vybírat jakkoli, důkaz korektnosti i
+  konečnosti bude fungovat vždy stejně "rozmyslete".footnote (ale některé
+  způsoby nemusí být úplně nejvhodnější, jak se dozvíte u analýzy časové složitosti).
+  
+
+  Předtím než se pustíme na časovou složitost quicksortu, si zavedeme
+  tzv. "strom rekurzivních volání".notion.1 (SRV), což je zakořeněný strom, kde vrcholy
+  odpovídají jednotlivým rekurzivním voláním (specificky kořen stromu 
+  odpovídá prvnímu zavolání funkce) a vrcholy $s_1,\dots,s_k$ jsou synové vrcholu
+  $x$ právě tehdy, když odpovídají jednotlivým rekurzivním voláním v průběhu
+  vyhodnocování vrcholu $x$.
+    1:
+      index: strom rekurzivních volání
 
 
-  Už víme, jak rozdělit pole na části. Teď jak vybrat pivota? Ideálně bychom chtěli aby to byl medián "prostřední prvek v seřazené posloupnosti".footnote. Tím by se povedlo rozdělit pole na dvě stejně velké části
-  jak bylo v původním popisu. Tak super, vybereme medián a máme vyhráno. Výpočet složitostí opět necháme na čtenáři i když v tomto případě by mohla být středoškolská
-  matematika nedostačující, věříme ve vaše schopnosti.
+  Pokud si u každého vrcholu poznamenáme velikost vstupního pole, může SRV vypadat
+  např. následovně:
 
+  !tikz:
+    filename: marakuja-sort-figure
+
+      \node {n}
+        child {node {1}}
+        child {node {$n - 1$}
+          child {node {1}}
+          child {node {$n - 2$}
+            child {node {1}}
+            child {node {$n - 3$}
+              child {node {1}}
+              child {node {$\dots$}
+                child {node {1}}
+                child {node {$n - (n - 1)$}}
+              }
+            }
+          }
+        };
+
+  Leví synové odpovídají části $L$ a praví synové odpovídají části $P$.
+ 
 
 .Solution:
-  title: Časová složitost quick sortu
+  title: Časová složitost quicksortu
+  lable: sol-quicksort-time-comlexity
 
-  První krok je rozdělit pole na části. To jde zvládnout jedním průchodem, takže $\lanO(n)$. Slepení částí pak bude v nejhorším případě také $\lanO(n)$,
-  překopírování všech prvků do jednoho pole. Dvě části z těch na které jsme pole rozdělili musíme seřadit. Obě pole ale budou menší, v nejhorším případě
-  $\frac{n}{2}$. Pro tyto části musíme provést to samé.
+  Začneme složitostí v nejhorším případě. 
+
 
   Pokud budeme pokaždé dělit pole na dvě stejně velké části, tak budeme dělit $\log_2(n)$ krát než dojdeme k polím o jednom prvku.
 
@@ -210,18 +259,20 @@ Zatím stačí vědět, že funguje na principu rozdělení problému na menší
           }
         };
 
+
   Na $k$-té vrstvě tohoto stromu se nachází $2^{k-1}$ částí. A pro každou z nich provedeme práci $\lanO(\frac{n}{2^{k-1}})$. Takže
   na $k$-té vrstvě provedeme $2^{k-1} \cdot \lanO(\frac{n}{2^{k-1}})$ práce. To vychází na $\lanO(n)$ času ztráveného na jedné vrstvě.
   Vrstev je jak už jsme si řekli $\log_2(n)$, takže výsledná časová složitost je $\lanO(n*\log(n))$.
 
 
-  Pozorní z vás už určitě křičí, že jsme nezapočítali výběr pivota. Jako pivot bychom rádi medián, ale na to musíme pole seřadit$\dots$
+  Nyní si povíme o výběru prvku $a_i$. Tomuto prvku budeme říkat "pivot".notion. Byli bychom nejraději, kdyby pivot byl "medián".notion. 
+  Dle definice je medián prvek na prostřední pozici "seřazeného pole".emphasize. Má-li pole sudý počet prvků, pak střed tvoří dva prvky
+  a vybereme jeden z nich. Medián nám pole dle úvodu tohoto důkazu rozdělí pole přibližně na dvě stejně velké části.
   
 
-  Nejjednodužší výber pivota je vybrat náhodně nějaký prvek. Jenže to s sebou nese problémy, pokud je jako pivot vybrán největší prvek, tak se
-  pole nerozdělí na stejně velké části jako jsme počítali, ale na jednu o jedna menší a na druhou kterou nemusíme řadit. Nepotřebujeme však vybrat přesně medián,
-  můžeme využít skoromediánů. "Skoromediány".notion.1 jsou prvky, které se nachází ve druhé a třetí čtvrtině seřazeného pole. Pokud vybereme za pivot skoro medián,
-  tak se pole rozdělí na dvě části o $\frac{n}{4}$ a $\frac{3n}{4}$ prvcích. Se velikost pole co musíme seřadit bude na každé vrstvě zmenšovat
+  Stačí tedy najít medián v neseřazeném poli a máme vyhráno. Bohužel pro nás, najít medián není výpočetně snadná operace. (Ví se že medián nelze najít rychleji než v čase
+  $\lanO(n\cdot\log(n))?)$. Místo toho můžeme využít takzvaných skoromediánů. "Skoromediány".notion.1 jsou prvky, které se nachází ve druhé a třetí čtvrtině seřazeného pole.
+  Pokud vybereme za pivot skoromedián, tak se pole rozdělí na dvě části o $\frac{n}{4}$ a $\frac{3n}{4}$ prvcích. Se velikost pole co musíme seřadit bude na každé vrstvě zmenšovat
   alespoň na $\frac34n$. Než se dostaneme k poli o jednom prvku, tak to bude trvat $\log_\frac43 n$ což je $\lanO(\log n)$. Na jedné vrstvě provedeme
   $\lanO(n)$ operací, takže výsledek je stále $\lanO(n\log n)$. Jenže na výběr skoromediánu jako pivota máme jenom $50\%$ pravděpodobnost, takže v půlce případů,
   vybereme špatného pivota. To ale neznamená nic jiného, než že bude strom rozdělování pole dvakrát tak velký, což pořád vede na $\lanO(n\log n)$ časovou složitost.
@@ -231,6 +282,13 @@ Zatím stačí vědět, že funguje na principu rozdělení problému na menší
     2:
       link: http://pruvodce.ucw.cz/
 
+
+.Remark:
+  title: Další popisy quicksortu
+
+  V jiné literatuře můžete narazit i na jiné popisy quicksortu. Jedním z nich je např. ten, kdy pole místo dvou částí, rozdělíme na tři. (Nějak) zvolíme jeden prvek $a_i$
+  a pole rozdělíme na část s prvky menší než $a_i$, část s prvky rovnými $a_i$ a na část s prvky většími než $a_i$. Rekurzivně řadíme pouze první a poslední část, neboť prostřední
+  část je již triviálně seřazená. V operaci slepování pak pouze slepíme první, prostřední a poslední část za sebe. Prvek $a_i$ nazýváme \textbf{pivot}.
 
 
 .Procedure:
