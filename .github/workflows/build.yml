@@ -49,11 +49,12 @@ jobs:
         id: pages
         uses: actions/configure-pages@v5
 
-      - name: Add SSH key for fiks-html template
-        run: ssh-add - <<< '${{ secrets.CI_FIKS_HTML_SSH_KEY }}'
-
       - name: Clone template
-        run: git clone git@github.com:fiks-org/fiks-html.git ../fiks-html
+        uses: actions/checkout@v4
+        with:
+          repository: 'fiks-org/fiks-html'
+          ssh-key: ${{ secrets.CI_FIKS_HTML_SSH_KEY }}
+          path: '../fiks-html'
 
       - name: Build HTML
         run: ./build-html.sh
