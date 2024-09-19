@@ -390,6 +390,7 @@ Někdy nám může pomoci pole seřadit. Nebo třeba nehledáme konkrétní prve
 .Procedure:
   title: Binární vyhledávání
   label: algo-bin-search
+  index: vyhledávání!binární
 
   Tento algoritmus opět využívá dělení problému na menší, aby byl rychlejší. V tomto případě
   potřebuje na vstupu seřazené pole. Podívá se do prostřed a pokud našel hledaný prvek tak má vyhráno
@@ -401,6 +402,7 @@ Někdy nám může pomoci pole seřadit. Nebo třeba nehledáme konkrétní prve
 .Procedure:
   title: Quickselect
   label: algo-quick-select
+  index: quickselect
 
   Při přečtení názvu tohoto algoritmu vás jistě napadne, jestli nemá něco společného s "quicksortem"#algo-quick-sort.
   A překvapivě má! Tento algoritmus umí rychle najít $k$-tý nejmenší(největší) prvek v neseřazeném poli.
@@ -409,3 +411,11 @@ Někdy nám může pomoci pole seřadit. Nebo třeba nehledáme konkrétní prve
   Stejně jako quicksort vybere pivota a rozdělí pole na dvě části. Dále ale pokračuje pouze na jedné. $k$-tý nejmenší prvek
   se určitě nemůže nacházet v obou polích zároveň. Takže se zaměří dále jen na část, kde se nacházet bude "rozmyslete která část to bude".footnote.
   Takhle se pole na kterém pracuje pořád zmenšuje než skončí s polem o jednom prvku, který je ten $k$-tý nejmenší.
+
+
+% .Procedure:
+%   title: Ternární vyhledávání
+%   label: algo-ternary-search
+%   index: vyhledávání!ternární
+%
+%
