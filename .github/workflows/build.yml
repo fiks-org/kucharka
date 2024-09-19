@@ -33,6 +33,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        path: kucharka
 
       - name: Tree
         run: tree -L 4
@@ -57,15 +58,15 @@ jobs:
         with:
           repository: 'fiks-org/fiks-html'
           ssh-key: ${{ secrets.CI_FIKS_HTML_SSH_KEY }}
-          path: '../fiks-html'
+          path: 'fiks-html'
 
       - name: Build HTML
-        run: ./build-html.sh
+        run: ./kucharka/build-html.sh
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./build/fiks-html 
+          path: ./kucharka/build/fiks-html 
 
   # Deployment job
   deploy:
