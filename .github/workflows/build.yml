@@ -61,8 +61,14 @@ jobs:
           ssh-key: ${{ secrets.CI_FIKS_HTML_SSH_KEY }}
           path: 'fiks-html'
 
+      - name: Tree 2
+        run: tree -L 4
+
       - name: Build HTML
         run: ./kucharka/build-html.sh
+
+      - name: Tree 3
+        run: tree -L 4
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
