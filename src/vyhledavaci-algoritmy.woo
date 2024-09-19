@@ -144,6 +144,7 @@ spočívá v rozdělení původního problému na menší celky, které umíme �
 .Procedure:
   title: Quick sort
   index: sort!quick sort
+  label: algo-quick-sort
 
   Princip quicksortu je víceméně jednoduchý. Má-li pole nejvýše jeden prvek, pole rovnou
   vrátíme. Jinak vybereme z pole prvek $a_i$ (tzv. "pivota".notion) a rozdělíme pole
@@ -386,3 +387,25 @@ V předchozí kapitole jsme již viděli "lineární vyhledávání"#example-asy
 Někdy nám může pomoci pole seřadit. Nebo třeba nehledáme konkrétní prvek ale například medián nebo maximum nějaké funkce.
 
 
+.Procedure:
+  title: Binární vyhledávání
+  label: algo-bin-search
+
+  Tento algoritmus opět využívá dělení problému na menší, aby byl rychlejší. V tomto případě
+  potřebuje na vstupu seřazené pole. Podívá se do prostřed a pokud našel hledaný prvek tak má vyhráno
+  a vrátí pozici prvku. Pokud tam však není, tak porovná hledaný prvek s nalezeným. Pokud je hledaný prvek menší
+  tak znovu provede binární vyhledávání na "levé".quoted půlce pole. Pokud je větší tak na "pravé".quoted.
+  Takhle pokračuje dokud prvek nenalezne, nebo pokud v poli není, tak se zastaví na poli o jednom prvku.
+
+
+.Procedure:
+  title: Quickselect
+  label: algo-quick-select
+
+  Při přečtení názvu tohoto algoritmu vás jistě napadne, jestli nemá něco společného s "quicksortem"#algo-quick-sort.
+  A překvapivě má! Tento algoritmus umí rychle najít $k$-tý nejmenší(největší) prvek v neseřazeném poli.
+
+
+  Stejně jako quicksort vybere pivota a rozdělí pole na dvě části. Dále ale pokračuje pouze na jedné. $k$-tý nejmenší prvek
+  se určitě nemůže nacházet v obou polích zároveň. Takže se zaměří dále jen na část, kde se nacházet bude "rozmyslete která část to bude".footnote.
+  Takhle se pole na kterém pracuje pořád zmenšuje než skončí s polem o jednom prvku, který je ten $k$-tý nejmenší.
