@@ -12,8 +12,8 @@ rsync --recursive -L /tmp/project/src/* /tmp/build/
 # build html
 cd /tmp/build
 
-rake fitpdf:build fitpdf:pdf
+rake fikspdf:build fikspdf:pdf
 
 # copy build
 mkdir -p /tmp/project/build
-cp -r build/fit-pdf /tmp/project/build/
+cp -r build/fiks-pdf /tmp/project/build/

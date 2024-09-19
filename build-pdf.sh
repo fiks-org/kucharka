@@ -4,7 +4,7 @@ cd $(dirname $0)
 
 cp -r ../fiks-pdf/templates src/templates
 
-docker run -it --rm -v $(pwd):/tmp/project \
+docker run --rm -v $(pwd):/tmp/project \
   gitlab.fit.cvut.cz:5050/woowoo/woowoo:latest /bin/bash -c "/tmp/project/src/_build-pdf.sh"
 
 rm -r src/templates
