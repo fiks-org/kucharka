@@ -35,7 +35,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Tree
-        run: tree -L4
+        run: tree -L=4
 
       - name: Log in to FitLab Container Registry
         env:
