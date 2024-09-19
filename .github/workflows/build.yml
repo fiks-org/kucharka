@@ -36,9 +36,6 @@ jobs:
         with:
           path: kucharka
 
-      - name: Tree
-        run: tree -L 4
-
       - name: Log in to FitLab Container Registry
         env:
           CI_REGISTRY_PASSWORD: ${{ secrets.CI_REGISTRY_PASSWORD }}
@@ -61,14 +58,8 @@ jobs:
           ssh-key: ${{ secrets.CI_FIKS_HTML_SSH_KEY }}
           path: 'fiks-html'
 
-      - name: Tree 2
-        run: tree -L 4
-
       - name: Build HTML
         run: ./kucharka/build-html.sh
-
-      - name: Tree 3
-        run: tree -L 4
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
