@@ -1,0 +1,37 @@
+.Chapter Datové struktury
+  label: datastructures
+
+
+.Section Lineární datové struktury
+  label: sec-linear-datastructures
+
+
+Pole, nafukovací pole, spoják, stack, fronta, kruhový buffer, deque
+
+
+.Section Hashování v datových strukturách
+  label: sec-hash-in-datastractures
+
+
+Hashtable, hashmap, dobré hashovací funkce
+
+
+.Section Stromové struktury
+  label: sec-tree-structures
+
+
+BST, AVL, Redblack, Binary heap, AB-strom
+
+
+.Section Kombinované struktury
+  label: sec-combined-structures
+
+
+priority queue
+
+
+.Section Pokročilé datové struktury
+  label: sec-advanced-datastructures
+
+
+Segtree, Fenwic tree, Trie, Union-Find, 

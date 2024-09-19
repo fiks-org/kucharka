@@ -17,6 +17,8 @@
 
 .include uvod-do-grafu.woo
 
+.include datastructures.woo
+
 .include mnoziny.woo
 
 .include geometrie.woo
