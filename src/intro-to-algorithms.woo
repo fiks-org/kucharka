@@ -258,8 +258,6 @@ pořád stejný. Proto je důležité uvádět na základě čeho složitost uva
 
   $1, \log n, \sqrt{n}, n, n\log n, n \sqrt{n}, n^2, n^3, 2^n, n!$
 
-  !!!TODO!!!
-
   .table:
     columns: l|rrrrrrrrr
 
@@ -267,11 +265,11 @@ pořád stejný. Proto je důležité uvádět na základě čeho složitost uva
 
       $n =$
 
-      1
+      $1$
 
-      10
+      $10$
 
-      100
+      $100$
 
       $10^4$
 
@@ -283,11 +281,11 @@ pořád stejný. Proto je důležité uvádět na základě čeho složitost uva
 
       $10^9$
 
-      $10^12$
+      $10^{12}$
 
     .row:
 
-      1
+      $\lanO(1)$
 
       $\SI{150}{ns}$
 
@@ -309,81 +307,204 @@ pořád stejný. Proto je důležité uvádět na základě čeho složitost uva
 
     .row:
 
-      $\log n $
+      $\lanO(\log n)$
 
       $\SI{150}{ns}$
 
-      $\SI{500}{ns}$
+      $\SI{648.29}{ns}$
 
-      $\SI{1}{µs}$
+      $\SI{1.15}{μs}$
 
-      $\SI{2}{µs}$
+      $\SI{2.14}{μs}$
 
-      $\SI{1}{ms}$
+      $\SI{2.64}{μs}$
 
-      $\SI{1.2}{ms}$
+      $\SI{3.14}{μs}$
 
-      $\SI{1.4}{ms}$
+      $\SI{3.64}{μs}$
 
-      $\SI{1.8}{ms}$
+      $\SI{4.63}{μs}$
 
-      $\SI{2.4}{ms}$
+      $\SI{6.13}{μs}$
 
     .row:
 
-      $\sqrt{n}$
+      $\lanO(\sqrt{n})$
 
       $\SI{150}{ns}$
 
-      $\SI{190}{µs}$
+      $\SI{474.34}{ns}$
 
-      $\SI{600}{µs}$
+      $\SI{1.50}{μs}$
 
-      $\SI{6}{ms}$
+      $\SI{15}{μs}$
 
-      $\SI{19}{ms}$
+      $\SI{47.43}{μs}$
 
-      $\SI{150}{ns}$
+      $\SI{150}{μs}$
 
-      $\SI{190}{ms}$
+      $\SI{474.34}{μs}$
 
-      $\SI{1.9}{s}$
+      $\SI{4.74}{ms}$
 
-      $\SI{1}{minuta}$
+      $\SI{150}{ms}$
 
     .row:
 
-      $n$
+      $\lanO(n)$
 
       $\SI{150}{ns}$
 
-      $\SI{600}{µs}$
+      $\SI{1.50}{μs}$
 
-      $\SI{6}{ms}$
+      $\SI{15}{μs}$
 
-      $\SI{600}{ms}$
+      $\SI{1.50}{ms}$
 
-      $\SI{6}{s}$
+      $\SI{15}{ms}$
 
-      $\SI{1}{minuta}$
+      $\SI{150}{ms}$
 
-      $\SI{10}{minut}$
+      $\SI{1.50}{s}$
 
-      $\SI{16.3}{hodin}$
+      $\SI{2.50}{min}$
 
-      $\SI{2}{roky}$
+      $\SI{1.74}{d}$
 
     .row:
 
-      $n*\log n$
+      $\lanO(n \log n)$
 
       $\SI{150}{ns}$
 
-      $\SI{2}{ms}$
+      $\SI{6.48}{μs}$
 
-      $\SI{40}{ms}$
+      $\SI{114.66}{μs}$
 
-      todo!!!!
+      $\SI{21.43}{ms}$
+
+      $\SI{264.14}{ms}$
+
+      $\SI{3.14}{s}$
+
+      $\SI{36.38}{s}$
+
+      $\SI{1.29}{h}$
+
+      $\SI{70.94}{d}$
+
+    .row:
+
+      $\lanO(n \sqrt{n})$
+
+      $\SI{150}{ns}$
+
+      $\SI{4.74}{μs}$
+
+      $\SI{150}{μs}$
+
+      $\SI{150}{ms}$
+
+      $\SI{4.74}{s}$
+
+      $\SI{2.50}{min}$
+
+      $\SI{1.32}{h}$
+
+      $\SI{54.90}{d}$
+
+      $\SI{4.76}{ky}$
+
+    .row:
+
+      $\lanO(n^2)$
+
+      $\SI{150}{ns}$
+
+      $\SI{15}{μs}$
+
+      $\SI{1.50}{ms}$
+
+      $\SI{15}{s}$
+
+      $\SI{25}{min}$
+
+      $\SI{1.74}{d}$
+
+      $\SI{173.61}{d}$
+
+      $\SI{4.76}{ky}$
+
+      $\SI{4.76}{Gy}$
+
+    .row:
+
+      $\lanO(n^3)$
+
+      $\SI{150}{ns}$
+
+      $\SI{150}{μs}$
+
+      $\SI{150}{ms}$
+
+      $\SI{1.74}{d}$
+
+      $\SI{4.76}{y}$
+
+      $\SI{4.76}{ky}$
+
+      $\SI{4.76}{My}$
+
+      $\SI{1.05}{VZ}$
+
+      $\SI{345009160.96}{VV}$
+
+    .row:
+
+      $\lanO(2^n)$
+
+      $\SI{300}{ns}$
+
+      $\SI{153.60}{μs}$
+
+      $\SI{437.35}{VV}$
+
+      $\SI{6.88E2982}{VV}$
+
+      moc
+
+      moc
+
+      moc
+
+      moc
+
+      moc
+
+    .row:
+
+      $\lanO(n!)$
+
+      $\SI{150}{ns}$
+
+      $\SI{544.32}{ms}$
+
+      $\SI{3.22E130}{VV}$
+
+      $\SI{9.82E35631}{VV}$
+
+      moc
+
+      moc
+
+      moc
+
+      moc
+
+      moc
+
+  "VZ".emphasize a "VV".emphasize znamená věk země respektive vesmíru. A "moc".quoted, že můj počítač odmítal to číslo spočítat.
+  A ano "ky".emphasize, "My".emphasize a "Gy".emphasize jsou kilo-, mega-, a gigaroky.
 
 
 .Section Paměťová složitost
