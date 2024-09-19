@@ -18,15 +18,21 @@ template:
 document:
   title: Fiksařka
   authors:
+    - name: Albert Havliček
+      email: albert.havlicek@fit.cvut.cz
+      institution: FIKS
+    - name: Matěǰ Kříž
+      email: krizmat4@fit.cvut.cz
+      institution: FIKS
     - name: FIKS
       email: fiks@fit.cvut.com
-      institution: FIKS
+      institution: Fakulta informačních technologií ČVUT
   meta:
     # semester: Zimní semestr 2020/2021
     keywords: 'fiks, tutorial'
     subject: 'fiks'
     draft: false
-    repository: https://gitlab.fit.cvut.cz/havlialb/fiksarka
+    repository: https://github.com/fiks-org/kucharka
     language: czech
     disable_line_breaks_in_mathjax: true
     hyphenation:
