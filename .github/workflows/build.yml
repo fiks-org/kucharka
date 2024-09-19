@@ -42,10 +42,10 @@ jobs:
           CI_REGISTRY: ${{ secrets.CI_REGISTRY }}
         run: echo "${CI_REGISTRY_PASSWORD}" | docker login $CI_REGISTRY -u woowoo --password-stdin
 
-      - name: Pull Docker image from GitLab
-        env:
-          CI_IMAGE: ${{ secrets.CI_IMAGE }}
-        run: docker pull $CI_IMAGE
+      # - name: Pull Docker image from GitLab
+      #   env:
+      #     CI_IMAGE: ${{ secrets.CI_IMAGE }}
+      #   run: docker pull $CI_IMAGE
 
       - name: Setup Pages
         id: pages
