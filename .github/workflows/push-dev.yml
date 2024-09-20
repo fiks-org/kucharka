@@ -36,8 +36,8 @@ jobs:
         run: git remote add fit git@gitlab.fit.cvut.cz:havlialb/fiksarka.git
       - name: Git fetch
         run: git fetch fit
-      - name: Git pull
-        run: git pull fit dev --rebase
+      # - name: Git pull
+      #   run: git pull fit dev --rebase
       - name: Git push
         run: git push fit
 
