@@ -321,6 +321,18 @@ dokážeme si jeho konečnost. Na to budeme potřebovat již zmíněný fakt, kt
   label: sec-graph-dfs
 
 
+.Procedure:
+  title: Depth First Search (DFS)
+
+  TODO
+
+
+.Definition:
+  title: Dopředná, zpětná a příčná hrana
+
+  TODO
+
+
 .Section Základní pojmy z teorie grafů
   label: sec-graph-basic-knowledge
 
@@ -445,7 +457,7 @@ touto kapitolou.
 .Definition:
   title: Souvislá komponenta
 
-  \textbf{Indukovaný} podgraf $H$ grafu $G$ je souvislou komponentou, pokud
+  "Indukovaný".notion podgraf $H$ grafu $G$ je souvislou komponentou, pokud
 
   .itemize:
 
@@ -464,22 +476,82 @@ touto kapitolou.
   Graf je souvislý právě tehdy, když obsahuje právě jednu souvislou komponentu.
 
 
+.Definition:
+  title: Silná a slabá souvislost
+
+  TODO
+
+
+.Definition:
+  title: Isomorfismus
+
+  TODO
+
+
 .Section Stromy
   label: sec-graph-trees
 
 
 .Definition:
-  .title: Strom
+  title: Strom
 
   Graf $G$ nazveme stromem, pokud je souvislý a neobsahuje žádnou kružnici.
+
+
+.Definition:
+  title: Les
+
+  TODO
+
+
+.Definition:
+  title: List
+
+  TODO
+
+
+.Theorem:
+  title: O ekvivalentních definicích stromu
+
+  TODO
 
 
 .Section Topsort
   label: sec-graph-topsort
 
 
+.Definition:
+  title: Topologické uspořádání (Topsort)
+
+  TODO
+
+
+.Definition:
+  title: Zdroj a stok
+
+  TODO
+
+
+.Procedure:
+  title: Topsort
+
+  TODO
+
+
 .Section Ukládání grafů
   label: sec-graph-storage
+
+
+.Definition:
+  title: Matice sousednosti
+
+  TODO
+
+
+.Definition:
+  title: Seznam sousedů
+
+  TODO
 
 
 .Section Kostry grafu
@@ -498,36 +570,202 @@ touto kapitolou.
   Každý souvislý graf má kostru.
 
 
+.Definition:
+  title: Minimální kostra
+
+  TODO
+
+
+.Definition:
+  title: Řezy v grafu
+
+  TODO
+
+
+.Procedure:
+  title: Borůvkův algoritmus
+  label: algo-x
+
+  TODO
+
+
+.Procedure:
+  title: Kruskalův algoritmus
+
+  TODO
+
+
 .Section Nejkratší cesty v grafech
   label: sec-graph-shortest-path
+
+
+.Procedure:
+  title: Dijkstrův algoritmus
+
+  TODO
+
+
+.Procedure:
+  title: Relaxace
+
+  TODO
+
+
+.Procedure:
+  title: Bellman-Fordův algoritmus
+
+  TODO
+
+
+.Procedure:
+  title: Floyd-Warshallův algoritmus
+
+  TODO
 
 
 .Section Jednotažky a eulerovské grafy
   label: sec-graph-euler
 
 
+.Definition:
+  title: Eulerovský graf
+
+  TODO
+
+
 .Section SCC
   label: sec-graph-scc
 
 
-.Section Párování
-  label: sec-graph-matching
+.Definition:
+  title: Kondenzace
+
+  TODO
+
+
+.Procedure:
+  title: Kosarajův algoritmus
+
+  TODO
+
+
+.Procedure:
+  title: Tarjanův algoritmus
+
+  TODO
 
 
 .Section Souvislost grafu
   label: sec-graph-connectivity
 
 
+.Definition:
+  title: Artikulace a most
+
+  TODO
+
+
+.Definition:
+  title: Vrcholová a hranová 2-souvislost
+
+  TODO
+
+
 .Section Rovinné grafy
   label: sec-graph-planar
+
+
+.Definition:
+  title: Rovinný graf
+
+  TODO
+
+
+.Theorem:
+  title: Eulerova formule
+
+  TODO
+
+
+.Theorem:
+  title: Kuratowského věta
+
+  TODO
+
+
+.Definition:
+  title: Duál nakreslení
+
+  TODO
 
 
 .Section Vrcholové barvení
   label: sec-graph-coloring
 
 
+.Definition:
+  title: Vrcholové obarvení
+
+  TODO
+
+
+.Procedure:
+  title: First Fist algoritmus
+
+  TODO
+  
+
 .Section Toky
   label: sec-graph-flow
 
 
-Placeholder
+.Definition:
+  title: Síť
+
+  TODO
+
+
+.Definition:
+  title: Tok
+
+  TODO
+
+
+.Procedure:
+  title: Ford-Fulkersonův algoritmus
+
+  TODO
+
+
+.Definition:
+  title: Vrcholová a hranová k-souvislost
+
+  TODO
+
+
+.Section Párování
+  label: sec-graph-matching
+
+
+.Definition:
+  title: Párování
+
+  TODO
+
+
+.Definition:
+  title: Systém různých reprezentantů
+
+  TODO
+
+
+.Definition:
+  title: Hallova věta
+
+  TODO
+
+
+.Procedure:
+  title: Blossom algorithm
+
+  TODO
