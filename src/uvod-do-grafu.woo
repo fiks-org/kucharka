@@ -153,6 +153,23 @@ kterou popisuje následující definice.
   vrcholy z $V$.
 
 
+V orientovaném grafu nemá tolik smysl mluvit o pouhých sousedech, protože
+orientované hrany vyjadřují trochu jiný vztah. Vhodněji zde budeme mluvit
+o předchůdcích a následnících. Také si všimněte, že zatímco v neorientovaném grafu
+nemůžeme vést hranu z jednoho vrcholu do toho samého"Skutečně, to definice nepovoluje,
+protože hrany musí být dvouprvkové podmnožiny vrcholů. Množina $\{v,v\}$ je
+totiž ekvivalentní jednoprvkové množině $\{v\}$.".footnote, v orientovaném grafu
+můžeme"V orientované množině záleží na pořadí vrcholů, proto dvouprvková množina $(v,v)$
+a jednoprvková množina $(v)$ znamenají něco úplně jiného".footnote.
+
+
+.Definition:
+  title: Předchůdce, následník a smyčka.
+
+  Mějme hranu $(x,y) \in E(G)$ v orientovaném grafu $G$. O vrcholu $x$ řekneme, že
+  to je předchůdce $y$ a opačně o vrcholu $y$ řekneme, že to je následník $x$.
+  Pokud navíc $x = y$, pak o takové hraně mluvíme jako o tzv. smyčce.
+
 Předtím než se pustíme do první velké kapitoly z algoritmické části teorie grafů,
 si ještě zavedeme poslední dva pojmy, které nám budou užitečné, hledáme-li např.
 nejkratší cestu městem.
@@ -286,6 +303,105 @@ dokážeme si jeho konečnost. Na to budeme potřebovat již zmíněný fakt, kt
 
 .Section Základní pojmy z teorie grafů
   label: sec-graph-basic-knowledge
+
+
+.Definition:
+  title: Úplný graf (Klika)
+
+  Úplný graf na $n \geq 1$ vrcholech $K_n$ je graf $(V, \binom{V}{2})$, kde $|V| = n$
+  a $\binom{V}{2} = \{\{x,y\} \mid x, y \in V \colon x \neq y \}$.
+
+
+.Definition:
+  title: Úplný bipartitní graf
+
+  Úplný bipartitní graf $K_{n_1,n_2}$ pro $n_1,n_2 \geq 1$ tvořený dvěma
+  partitami (disjunktními množinami) $A$, resp. $B$, o $n_1$, resp. $n_2$, vrcholech,
+  je graf $(A \cup B, \{\{x,y\} \mid x \in A, y \in B\})$.
+
+
+.Definition:
+  title: Cesta
+
+  Cesta $P_m$ (s $m$ hranami) pro $m \geq 0$ je graf
+  $(\{0,\dots,m\}, \{\{i, i + 1\} \mid i \in \{0,\dots, m - 1\}\})$.
+
+
+.Definition:
+  title: Kružnice
+
+  Kružnice $C_n$ (s $n$ hranami) je graf
+  $(\{1,\dots,n\}, \{\{i, i + 1\} \mid i \in \{1,\dots, n - 1\}\} \cup \{\{n, 1\}\})$.
+
+
+.Definition:
+  title: Doplněk
+
+  Doplněk $\overline G$ grafu $G = (V, E)$ je graf $\overline G = (V, \binom{V}{2} \setminus E)$.
+
+
+.Definition:
+  title: Stupeň vrcholu
+
+  Stupeň vrcholu $v \in V(G)$ je počet jeho sousedů a značíme ho $\deg_G(v)$. Je-li
+  z kontextu jasné, o jakém grafu mluvíme, píšeme jednodušeji $\deg(v)$.
+
+
+.Remark:
+
+  Stupeň vrcholu bychom mohli také definovat jako počet hran, kterého obsahuje,
+  tj. pro vrchol $v \in V(G)$ je $\deg_G(v) = |\{e \in E(G) \mid v \in e\}|$.
+
+
+.Definition:
+  title: Izolovaný vrchol
+
+  Vrchol $v$ nazveme izolovaný, pokud $\deg(v) = 0$.
+
+
+.Definition:
+  title: Regulární graf
+
+  Graf $G$ nazveme $r$-regulární, pokud mají všechny jeho vrcholy stupeň $r$.
+  Graf $G$ nazveme regulární, pokud je $r$-regulární pro libovolné $r$.
+
+
+.Theorem:
+  title: Handshaking lemma (Princip sudosti)
+
+  Pro každý graf $G = (V, E)$ platí $$\sum_{v \in V} \deg(v) = 2 |E|$$
+
+
+.Proof:
+
+  Důkaz vynecháváme.
+
+
+.Corollary:
+
+  V každém grafu je počet vrcholů lichého stupně sudý.
+
+
+.Definition:
+  title: Podgraf, Indukovaný podgraf
+
+  .itemize:
+
+    .item:
+
+      Graf $H$ nazveme podgrafem grafu $G$, pokud $V(H) \subseteq V(G)$
+      a $E(H) \subseteq E(G) \cap \binom{V(H)}{2}$.
+
+    .item:
+
+      Graf $H$ nazveme indukovaný podgrafem grafu $G$, pokud $V(H) \subseteq V(G)$
+      a $E(H) = E(G) \cap \binom{V(H)}{2}$
+
+
+.Definition:
+  title: Bipartitní graf
+  
+  Graf nazveme bipartitní, je-li indukovaným podgrafem úplného bipartitního grafu.
 
 
 .Section Stromy
