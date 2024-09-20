@@ -28,8 +28,8 @@ jobs:
           
         # run: eval $(ssh-agent -s)
 
-      # - name: Add ssh key
-      #   run: ssh-add - <<< '${secrets.FITLAB_SSH_KEY}'
+      - name: Add ssh key
+        run: ssh-add - <<< '${secrets.FITLAB_SSH_KEY}'
       - name: Add remote
         run: git remote add fit git@gitlab.fit.cvut.cz:havlialb/fiksarka.git
       - name: Git push
