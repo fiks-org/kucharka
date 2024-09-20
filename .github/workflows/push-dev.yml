@@ -21,6 +21,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Git branch sanity check
+        run: git branch
       - run: mkdir ~/.ssh
       - run: touch ~/.ssh/config
       - name: Edit ssh config
