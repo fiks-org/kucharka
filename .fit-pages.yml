@@ -7,6 +7,10 @@ access:
     /:
       allow:
         - AUTHENTICATED
+  dev:
+    /:
+      allow:
+        - AUTHENTICATED
   "*":
     /:
       allow:
