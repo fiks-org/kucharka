@@ -21,6 +21,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Edit ssh config
+        run: echo "Host *" >> ~/.ssh/config
+      - run: echo "  StrictHostKeyChecking no" >> ~/.ssh/config
       - name: Print ssh config
         run: cat ~/.ssh/config
       - name: Prime ssh-agent
