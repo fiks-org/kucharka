@@ -35,3 +35,4 @@ Výsledek najdeš v `./build/{fiks-html,fiks-pdf}`.
 * Teorie čísel
 * DP
 * Geometrie
+* FIKS tips'n'tricks
