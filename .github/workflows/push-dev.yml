@@ -22,7 +22,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Prime ssh-agent
-        run: eval $(ssh-agent -c)
+        run: eval $(ssh-agent)
       - name: Add ssh key
         run: ssh-add - <<< '${secrets.FITLAB_SSH_KEY}'
       - name: Add remote
