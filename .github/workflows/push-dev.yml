@@ -39,5 +39,5 @@ jobs:
       # - name: Git pull
       #   run: git pull fit dev --rebase
       - name: Git push
-        run: git push fit
+        run: git push fit dev
 
