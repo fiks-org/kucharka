@@ -22,9 +22,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Prime ssh-agent
-        run: eval $(ssh-agent)
-      - name: Add ssh key
-        run: ssh-add - <<< '${secrets.FITLAB_SSH_KEY}'
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.FITLAB_SSH_KEY }}
+          
+        # run: eval $(ssh-agent -s)
+
+      # - name: Add ssh key
+      #   run: ssh-add - <<< '${secrets.FITLAB_SSH_KEY}'
       - name: Add remote
         run: git remote add fit git@gitlab.fit.cvut.cz:havlialb/fiksarka.git
       - name: Git push
