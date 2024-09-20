@@ -124,6 +124,25 @@ následující definici "souseda".notion.
   $N[v] = N(v) \cup \{v\}$ a říkáme jí "uzavřené okolí".quoted vrcholu $v$.
 
 
+.Definition:
+  title: Stupeň vrcholu
+
+  Stupeň vrcholu $v \in V(G)$ je počet jeho sousedů a značíme ho $\deg_G(v)$. Je-li
+  z kontextu jasné, o jakém grafu mluvíme, píšeme jednodušeji $\deg(v)$.
+
+
+.Remark:
+
+  Stupeň vrcholu bychom mohli také definovat jako počet hran, kterého obsahuje,
+  tj. pro vrchol $v \in V(G)$ je $\deg_G(v) = |\{e \in E(G) \mid v \in e\}|$.
+
+
+.Definition:
+  title: Izolovaný vrchol
+
+  Vrchol $v$ nazveme izolovaný, pokud $\deg(v) = 0$.
+
+
 Ne všechny vztahy jsou ale oboustranné. Některé ulice můžou být jednosměrky,
 pokud někomu vyznáte lásku, vaše city nemusí být opětovány. Nebo chcete jen
 říct, že FC Barceloan vyhrál nad Liverpoolem v NFL. Všechny tyto situace opět
@@ -169,6 +188,7 @@ a jednoprvková množina $(v)$ znamenají něco úplně jiného".footnote.
   Mějme hranu $(x,y) \in E(G)$ v orientovaném grafu $G$. O vrcholu $x$ řekneme, že
   to je předchůdce $y$ a opačně o vrcholu $y$ řekneme, že to je následník $x$.
   Pokud navíc $x = y$, pak o takové hraně mluvíme jako o tzv. smyčce.
+
 
 Předtím než se pustíme do první velké kapitoly z algoritmické části teorie grafů,
 si ještě zavedeme poslední dva pojmy, které nám budou užitečné, hledáme-li např.
@@ -305,11 +325,31 @@ dokážeme si jeho konečnost. Na to budeme potřebovat již zmíněný fakt, kt
   label: sec-graph-basic-knowledge
 
 
+V této sekci si představíme několik základních pojmů z teorie grafů. Začneme výčtem
+základních grafových tříd. Grafová třída je množina grafů s nějakou specifickou vlastností.
+Takových vlastností pak můžeme využívat k hledání efektivnějších algoritmů.
+
+
+Situace, kde se zná každý s každým, nebo kde má obecněji každý ke každému nějaký vztah,
+lze namodelovat úplným grafem.
+
+
 .Definition:
   title: Úplný graf (Klika)
 
   Úplný graf na $n \geq 1$ vrcholech $K_n$ je graf $(V, \binom{V}{2})$, kde $|V| = n$
   a $\binom{V}{2} = \{\{x,y\} \mid x, y \in V \colon x \neq y \}$.
+
+
+Pokud jsme schopni rozdělit vrcholy na dvě disjunktní množiny - slečny a páni v tanečním
+sále; servery a uživatelé, kteří na tyto servery přistupují; vrcholky hor a přilehlá údolí.
+Takové případy můžeme modelovat bipartitním grafem.
+
+
+Úplný bipartitní graf je speciálním typem bipartitního grafu,
+kdy každý prvek jedné množiny má vztah ke všem prvkům množiny druhé (např.
+v tanečních při pánské volence si můžou všichni páni vybrat libovolnou partnerku
+a je-li partnerka vyzvána, nesmí odmítnout).
 
 
 .Definition:
@@ -318,6 +358,10 @@ dokážeme si jeho konečnost. Na to budeme potřebovat již zmíněný fakt, kt
   Úplný bipartitní graf $K_{n_1,n_2}$ pro $n_1,n_2 \geq 1$ tvořený dvěma
   partitami (disjunktními množinami) $A$, resp. $B$, o $n_1$, resp. $n_2$, vrcholech,
   je graf $(A \cup B, \{\{x,y\} \mid x \in A, y \in B\})$.
+
+
+Cestu známe už z předchozích kapitol. Zde ji pro úplnost ještě zavedeme jako
+grafovou třídu.
 
 
 .Definition:
@@ -334,42 +378,29 @@ dokážeme si jeho konečnost. Na to budeme potřebovat již zmíněný fakt, kt
   $(\{1,\dots,n\}, \{\{i, i + 1\} \mid i \in \{1,\dots, n - 1\}\} \cup \{\{n, 1\}\})$.
 
 
+Představte si, že náš graf modeluje situaci sociální sítě, tj. vrcholy jsou jednotliví
+lidé a hrana existuje mezi dvěma vrcholy, když se dané osoby navzájem znají. Nyní bychom
+chtěli rychle vědět, kteří lidé k sobě nemají žádný vztah, neznají se. V našem grafu
+to jsou takoví lidé, mezi kterými nevede hrana. Abychom tuto situaci správně
+namodelovali, stačí nám pouze smazat původní hrany a přidat hrany, které jsme v
+původním grafu neměli. To je přesně to, co dělá doplněk!
+
+
 .Definition:
   title: Doplněk
 
   Doplněk $\overline G$ grafu $G = (V, E)$ je graf $\overline G = (V, \binom{V}{2} \setminus E)$.
 
 
-.Definition:
-  title: Stupeň vrcholu
-
-  Stupeň vrcholu $v \in V(G)$ je počet jeho sousedů a značíme ho $\deg_G(v)$. Je-li
-  z kontextu jasné, o jakém grafu mluvíme, píšeme jednodušeji $\deg(v)$.
-
-
-.Remark:
-
-  Stupeň vrcholu bychom mohli také definovat jako počet hran, kterého obsahuje,
-  tj. pro vrchol $v \in V(G)$ je $\deg_G(v) = |\{e \in E(G) \mid v \in e\}|$.
-
-
-.Definition:
-  title: Izolovaný vrchol
-
-  Vrchol $v$ nazveme izolovaný, pokud $\deg(v) = 0$.
-
-
-.Definition:
-  title: Regulární graf
-
-  Graf $G$ nazveme $r$-regulární, pokud mají všechny jeho vrcholy stupeň $r$.
-  Graf $G$ nazveme regulární, pokud je $r$-regulární pro libovolné $r$.
+Následující věta je jednou z prvních vět, se kterou se čtenář v teorii grafů setká.
+Užitečnost této věty nelze pořádně vystihnout a uvidíme ji několikrát napříč celou
+touto kapitolou.
 
 
 .Theorem:
   title: Handshaking lemma (Princip sudosti)
 
-  Pro každý graf $G = (V, E)$ platí $$\sum_{v \in V} \deg(v) = 2 |E|$$
+  Pro každý graf $G = (V, E)$ platí $\sum_{v \in V} \deg(v) = 2 |E|$
 
 
 .Proof:
@@ -404,8 +435,43 @@ dokážeme si jeho konečnost. Na to budeme potřebovat již zmíněný fakt, kt
   Graf nazveme bipartitní, je-li indukovaným podgrafem úplného bipartitního grafu.
 
 
+.Definition:
+  title: Souvislý graf
+
+  O grafu $G$ řekneme, že je souvislý, pokud pro každé jeho dva vrcholy $u,v \in V(G)$
+  existuje nějaká $u-v$ cesta. V jiném případě řekneme, že je $G$ nesouvislý.
+
+
+.Definition:
+  title: Souvislá komponenta
+
+  \textbf{Indukovaný} podgraf $H$ grafu $G$ je souvislou komponentou, pokud
+
+  .itemize:
+
+    .item:
+
+      $H$ je souvislý,
+
+    .item:
+
+      neexistuje žádný souvislý podgraf $F \neq H$ grafu $G$ takový, že $H$
+      by byl jeho podgrafem.
+
+
+.Observation:
+
+  Graf je souvislý právě tehdy, když obsahuje právě jednu souvislou komponentu.
+
+
 .Section Stromy
   label: sec-graph-trees
+
+
+.Definition:
+  .title: Strom
+
+  Graf $G$ nazveme stromem, pokud je souvislý a neobsahuje žádnou kružnici.
 
 
 .Section Topsort
@@ -420,6 +486,18 @@ dokážeme si jeho konečnost. Na to budeme potřebovat již zmíněný fakt, kt
   label: sec-graph-spanning-tree
 
 
+.Definition:
+  title: Kostra grafu
+
+  Mějme souvislý graf $G$. Kostrou grafu $G$ máme na mysli jeho podgraf $H$ takový,
+  že $V(H) = V(G)$ a $H$ je strom.
+
+
+.Observation:
+
+  Každý souvislý graf má kostru.
+
+
 .Section Nejkratší cesty v grafech
   label: sec-graph-shortest-path
 
@@ -428,8 +506,8 @@ dokážeme si jeho konečnost. Na to budeme potřebovat již zmíněný fakt, kt
   label: sec-graph-euler
 
 
-.Section SSC
-  label: sec-graph-ssc
+.Section SCC
+  label: sec-graph-scc
 
 
 .Section Párování
