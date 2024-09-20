@@ -1,0 +1,32 @@
+name: Push fiksařka to Fitlab
+
+on:
+  # Runs on pushes targeting the default branch
+  push:
+    branches: ["dev"]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  id-token: write
+
+
+jobs:
+  # Build job
+  push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Prime ssh-agent
+        run: eval $(ssh-agent -s)
+      - name: Add ssh key
+        run: ssh-add '${secrets.FITLAB_SSH_KEY}'
+      - name: Add remote
+        run: git remote add fit git@gitlab.fit.cvut.cz:havlialb/fiksarka.git
+      - name: Git push
+        run: git push fit
+
