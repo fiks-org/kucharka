@@ -34,6 +34,10 @@ jobs:
         run: ssh-add - <<< '${{ secrets.FITLAB_SSH_KEY }}'
       - name: Add remote
         run: git remote add fit git@gitlab.fit.cvut.cz:havlialb/fiksarka.git
+      - name: Git fetch
+        run: git fetch fit
+      - name: Git pull
+        run: git pull fit
       - name: Git push
         run: git push fit
 
