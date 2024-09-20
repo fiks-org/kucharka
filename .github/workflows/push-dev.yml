@@ -22,7 +22,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Ping fitlab
-        run: ping gitlab.fit.cvut.cz
+        run: ping gitlab.fit.cvut.cz -c 4
       - name: Prime ssh-agent
         uses: webfactory/ssh-agent@v0.9.0
         with:
