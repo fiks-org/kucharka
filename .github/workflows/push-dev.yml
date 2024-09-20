@@ -22,9 +22,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Ping Google
-        run: ping 142.250.74.142 -c 4
+        run: curl google.com
       - name: Ping fitlab
-        run: ping gitlab.fit.cvut.cz -c 4
+        run: curl gitlab.fit.cvut.cz
       - name: Prime ssh-agent
         uses: webfactory/ssh-agent@v0.9.0
         with:
