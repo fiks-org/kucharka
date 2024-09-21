@@ -542,6 +542,12 @@ touto kapitolou.
   label: sec-graph-storage
 
 
+Abychom mohli využít nabité teoretické informace z předchozích kapitol v praxi"v programovací úloze".footnote, musíme si nejprve
+říct, jak vůbec graf uložíme v paměti počítače (jak ho v paměti budeme reprezentovat). Věříme, že
+čtenář, který již někdy řešil grafovou úlohu"úlohu modeloval grafem a pak spustil nějaký grafový algoritmus".footnote,
+se již s následujícími pojmy někdy setkal. My je uvedeme pro ty, kteří se s nimi ještě nesetkali.
+
+
 .Definition:
   title: Matice sousednosti
 
