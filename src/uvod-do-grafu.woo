@@ -545,7 +545,14 @@ touto kapitolou.
 .Definition:
   title: Matice sousednosti
 
-  TODO
+  Mějme graf $G = (V, E)$ a nechť $V = \{v_1,\dots,v_n\}$. Matice sousednosti
+  $A(G)$ grafu $G$ je tabulka"matematicky správněji matice".footnote velikosti
+  $|V| \times |V|$, kde buňka $A(G)_{ij}$ na $i$-tém řádku $j$-tého sloupce
+  je definována:
+
+  .equation:
+
+    A(G)_{ij} = \begin{cases} 1 & \textrm{pokud} \{v_i, v_j\} \in E(G), \\ 0 & \textrm{jinak}. \end{cases}
 
 
 .Definition:
