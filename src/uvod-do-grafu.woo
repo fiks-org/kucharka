@@ -558,7 +558,8 @@ touto kapitolou.
 .Definition:
   title: Seznam sousedů
 
-  TODO
+  Mějme graf $G = (V, E)$. Nechť $V = \{v_1,\dots,v_n\}$. Graf uložíme jako seznam
+  $S \colon \{1,\dots,n\} \to \mathcal{P}(\{1,\dots,n\})$ a definujeme ho jako $S(i) = N(v_i)$.
 
 
 .Section Kostry grafu
