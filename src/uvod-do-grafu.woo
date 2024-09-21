@@ -568,6 +568,17 @@ se již s následujícími pojmy někdy setkal. My je uvedeme pro ty, kteří se
   $S \colon \{1,\dots,n\} \to \mathcal{P}(\{1,\dots,n\})$ a definujeme ho jako $S(i) = N(v_i)$.
 
 
+.Question:
+  solution: Matice sousednosti zabere $\mathcal{O}(|V|^2)$ paměti. Seznam sousedů zabere $\mathcal{O}(|V| + |E|)$ paměti"rozmyslete!".footnote.
+
+  Jaký je rozdíl mezi oběma reprezentacemi z hlediska paměti (asymptoticky)?
+
+
+.Question:
+  solution: V matici sousednosti $O(1)$, v seznamu sousedů až $O(|V|)$.
+
+  Jak dlouho trvá zjistit, zda hrana $\{v_i, v_j\}$ v grafu existuje, když je graf uložen seznamem sousedů, resp. maticí sousednosti (asymptoticky v nejhorším případě)?
+
 .Section Kostry grafu
   label: sec-graph-spanning-tree
 
