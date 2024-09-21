@@ -538,7 +538,7 @@ touto kapitolou.
   TODO
 
 
-.Section Ukládání grafů
+.Section Reprezentace grafu
   label: sec-graph-storage
 
 
