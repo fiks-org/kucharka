@@ -2,8 +2,82 @@
   label: datastructures
 
 
+Určitě jste při programování na věci jako list, vector, queue, dict, map. To jsou datové typy, které v sobě
+uchovávají další data, ke kterým můžeme přistupovat, případně přidávat, modifikovat, odebírat. Jsou to implementace "datových
+struktur".notion.1, to jsou také implementace tentokrát více teoretické. Datové stuktury implementují
+"abstraktní datové typy (ADT)".notion.2, matematické objekty umožňující uchovávání dat,
+které mají přidružené různé funkce umožnující práci s daty uchovanými v nich. Tyto funkce mají určité matematické vlastnosti, jako
+časovou a paměťovou složitost. Datová strukura pak přesně popisuje jak musí být data uložena a algoritmy funkcí, aby dosáhly
+požadovaných vlastností. Datová stukruta pak je již založena na nějakém výpočetním modelu.
+  1:
+    index: datová struktura
+  2:
+    index: abstraktní datový typ
+
+
+.Example:
+  label: example-datastructures
+  title: Příklad ADT, datové struktury a její implementace
+
+  Ukážeme si na příkladu abstraktního datového typu $X$ udržujícího čísla, ten bude mít přidružené tři funkce. Funkci "vytvoř".emphasize,
+  která vytvoří instanci s požadovanou kapacitou. Další "vlož".emphasize vloží prvek, a třetí "vezmi".emphasize bude prvky vyndavat v opačném pořadí než byly vloženy.
+  Takže vlastně "FILO".quoted"first in last out".footnote fronta neboli stack.
+
+
+  Datová struktura implemetující $X$ v RAM modelu pak ve funkci vytvoř naalokuje paměťové buňky na zapamatování si
+  pozice prvního volného místa a nastaví ho na první buňku a pro uložení potřebného počtu prvků.
+  Funkce "vlož".emphasize se podívá na buňku, kde je uloženo první volné místo,
+  a na takovou pozici vloží prvek a inkrementuje pozici prvního volného místa o jedna.
+  "vezmi".emphasize pak udělá opak "vlož".emphasize, decrementuje pozici prvního volného místa a vrátí prvek na této pozici.
+
+
+  Implementace v C by pak vypadala nějak takto.
+
+
+  !codeblock:
+    language: c
+
+    struct FILO {
+        int prvni_volna;
+        int * bunky;
+    };
+    struct FILO vytvor(int n){
+        return {0, malloc(n*sizeof(int))}
+    }
+    void vloz(struct FILO * f, int p){
+        f->bunky[f->prvni_volna++] = p;
+    }
+    int vezmi(struct FILO * f){
+        return f->bunky[--f->prvni_volna];
+    }
+
+
+V této kapitole se budeme věnovat hlavně datovým strukturám v RAM modelu. Takže stále matematickým popisům, při diskusi výhod a nevýhod bude někdy
+nutné podívat se na možnosti implementace na reálných počítačích, protože ač může vypadat nějaká datová struktura dobře svými vlastnostmi,
+např. nejlepší časová složitost, hardwarová implementace dnešních počítačů je lepší pro matematicky méně optimální funkce.
+
+
 .Section Lineární datové struktury
   label: sec-linear-datastructures
+
+
+.Definition:
+  title: Pole
+  label: def-pole
+  index: pole
+
+  Není pole jako pole. Na tomto se rostliny nepěstují ani po něm traktor nejezdí. Je to nejjednodužžší
+  datová struktura. Řada buňek za sebou. Do kterých můžeme přistupovat a modifikovat jejich obsah.
+
+  
+  Přístup i modifikaci prvků máme za $\lanO(1)$ jak v čase tak paměti. Přistupovat však můžeme pouze na index,
+  pokud bychom potřebovali určitý prvek, tak budeme nuceni použít nějaký algoritmus z sekce .reference:sec-vyhledavaci-algo.
+
+
+  Jeho implementace najdete v C jako "int[]".code, v Rustu "[u32; n]".code nebo Array v Csharp.
+
+
+Pole je dobrý kamarád dokud víme předem, kolik prvků bude potřeba, když to ale nevíme tak potřebujeme něco lepšího.
 
 
 Pole, nafukovací pole, spoják, stack, fronta, kruhový buffer, deque
@@ -23,11 +97,11 @@ Hashtable, hashmap, dobré hashovací funkce
 BST, AVL, Redblack, Binary heap, AB-strom
 
 
-.Section Kombinované struktury
-  label: sec-combined-structures
-
-
-priority queue
+% .Section Kombinované struktury
+%   label: sec-combined-structures
+%
+%
+% priority queue
 
 
 .Section Pokročilé datové struktury
