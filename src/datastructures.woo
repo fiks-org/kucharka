@@ -1,5 +1,5 @@
 .Chapter Datové struktury
-  label: datastructures
+  label: chap-datastructures
 
 
 Určitě jste při programování na věci jako list, vector, queue, dict, map. To jsou datové typy, které v sobě
