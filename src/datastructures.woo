@@ -80,6 +80,18 @@ např. nejlepší časová složitost, hardwarová implementace dnešních poč�
 Pole je dobrý kamarád dokud víme předem, kolik prvků bude potřeba, když to ale nevíme tak potřebujeme něco lepšího.
 
 
+.Definition:
+  title: Nafukovací pole
+  label: def-nafukovaci-pole
+  index: nafukovací pole
+
+  "Nafukovací pole".notion je pole, do kterého můžeme přistupovat na index za konstantní čas. Narozdíl od klasického pole však,
+  nemusíme předem specifikovat velikost a můžeme do pole přidávat prvky.
+
+
+  Je to "list".code co znáte z Pythonu nebo vektory z C++ a Rustu.
+
+
 Pole, nafukovací pole, spoják, stack, fronta, kruhový buffer, deque
 
 
