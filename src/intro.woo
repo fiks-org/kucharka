@@ -22,6 +22,12 @@ speciální případ toho, co už znáš, nebo naopak budeme víc obecní.
 Pokud narazíš na nějaký pojem, co neznáš koukni se do indexu, kde najdeš odkaz na jeho definici.
 
 
+.Remark:
+  label: rem-not-a-book
+
+  I přesto, že se tato kuchařka může tvářit jako kniha, která by měla být čtena postupně, není tomu tak.
+  Nebude vadit, když některé části přeskočíš či otevřeš jenom kapitolu co tě zajímá. Obsah je seskupen tématicky
+  a někdy se můžete setkat s pojmem dříve než je definován.
 % .Section FIKS
 %   label: fiks
 %
