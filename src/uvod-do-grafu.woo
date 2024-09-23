@@ -579,6 +579,13 @@ se již s následujícími pojmy někdy setkal. My je uvedeme pro ty, kteří se
 
   Jak dlouho trvá zjistit, zda hrana $\{v_i, v_j\}$ v grafu existuje, když je graf uložen seznamem sousedů, resp. maticí sousednosti (asymptoticky v nejhorším případě)?
 
+
+.Question:
+  solution: V obou případech $\mathcal{O}(|V|)$ (při vhodné implementaci $\mathcal{O}(1)$"ke každému vrcholu si poznamenám počet sousedů".footnote).
+
+  Jak dlouho trvá zjistit počet sousedů zadaného vrcholu v grafu, když je graf uložen seznamem sousedů, resp. maticí sousednosti (asymptoticky)?
+
+
 .Section Kostry grafu
   label: sec-graph-spanning-tree
 
