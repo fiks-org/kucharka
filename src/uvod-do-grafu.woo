@@ -575,7 +575,7 @@ se již s následujícími pojmy někdy setkal. My je uvedeme pro ty, kteří se
 
 
 .Question:
-  solution: V matici sousednosti $O(1)$, v seznamu sousedů až $O(|V|)$.
+  solution: V matici sousednosti $\mathcal{O}(1)$, v seznamu sousedů až $\mathcal{O}(|V|)$.
 
   Jak dlouho trvá zjistit, zda hrana $\{v_i, v_j\}$ v grafu existuje, když je graf uložen seznamem sousedů, resp. maticí sousednosti (asymptoticky v nejhorším případě)?
 
