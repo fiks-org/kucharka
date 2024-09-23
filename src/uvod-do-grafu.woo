@@ -91,6 +91,14 @@ začátku této kapitoly.
   grafu také často říkáme pro jednoduchost pouze "graf".notion.
 
 
+.Warning:
+
+  V neorientovaném grafu nepovolujeme tzv. smyčky, tj. hrany vedoucí z jednoho vrcholu
+  do toho samého. Důvodem je to, že množiny neobsahují duplikáty, tedy např. $\{v,v\}$
+  není dvouprvková, nýbrž jednoprvková množina $\{v\}$, což dle definice není skutečná
+  hrana.
+
+
 Grafy často reprezentují relaci (vazby) mezi jednotlivými objekty. V příkladu
 s Facebookem bychom rádi byli schopni říct, kdo je koho kamarád (v grafovém
 modelu jsou kamarádi dva vrcholy mezi nimiž existuje hrana). Stejně tak bychom
