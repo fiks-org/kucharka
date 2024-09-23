@@ -151,6 +151,16 @@ následující definici "souseda".notion.
   Vrchol $v$ nazveme izolovaný, pokud $\deg(v) = 0$.
 
 
+.Question:
+  solution: Izolované vrcholy by byly například státy ostrovní, tj. např. Malta, Taiwan,
+  Japonsko, Madagaskar. Vrchol Česka by měl stupeň 4, neboť Česko sousedí s 4 dalšími státy.
+
+  Představte si situaci, kde modelujete státy světa a jejich hranice grafem, tj.
+  vrcholy jsou jednotlivé státy a hrana mezi dvěma vrcholy existuje, právě když
+  spolu státy sousedí (mají společnou hranici). Kterým státům světa by odpovídaly
+  izolované vrcholy? Jaký stupeň by měl vrchol reprezentující Českou republiku?
+
+
 Ne všechny vztahy jsou ale oboustranné. Některé ulice můžou být jednosměrky,
 pokud někomu vyznáte lásku, vaše city nemusí být opětovány. Nebo chcete jen
 říct, že FC Barceloan vyhrál nad Liverpoolem v NFL. Všechny tyto situace opět
