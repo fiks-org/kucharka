@@ -96,15 +96,16 @@ začátku této kapitoly.
   V neorientovaném grafu nepovolujeme tzv. smyčky, tj. hrany vedoucí z jednoho vrcholu
   do toho samého. Důvodem je to, že množiny neobsahují duplikáty, tedy např. $\{v,v\}$
   není dvouprvková, nýbrž jednoprvková množina $\{v\}$, což dle definice není skutečná
-  hrana.
+  hrana. V některých případech toto nemusí být žádoucí, pak bychom ale při popisu měli
+  upravit definici grafu tak, aby s touto možností počítala.
 
 
 Grafy často reprezentují relaci (vazby) mezi jednotlivými objekty. V příkladu
-s Facebookem bychom rádi byli schopni říct, kdo je koho kamarád (v grafovém
-modelu jsou kamarádi dva vrcholy mezi nimiž existuje hrana). Stejně tak bychom
-rádi řekli, že mezi nějakými dvěma křižovatky vede ulice. Abychom sjednotili
-tento (skoro až intimní vztah) vrcholů sdílející společnou hranu, zavádíme
-následující definici "souseda".notion.
+s Facebookem bychom rádi byli schopni říct, kdo je koho kamarád (v grafu reprezentující
+sociální síť jsou kamarádi ti, jejichž odpovídající vrcholy tvoří společnou hranu).
+Stejně tak bychom rádi řekli, že mezi nějakými dvěma křižovatky vede ulice. Abychom sjednotili
+tento (skoro až intimní vztah) vrcholů sdílející společnou hranu, zavádíme následující
+definici "souseda".notion.
 
 
 .Definition:
@@ -208,6 +209,41 @@ a jednoprvková množina $(v)$ znamenají něco úplně jiného".footnote.
   Pokud navíc $x = y$, pak o takové hraně mluvíme jako o tzv. smyčce.
 
 
+.Remark:
+
+  Neorientované grafy jsou podmnožinou těch orientovaných. To znamená, že
+  by nám stačila pouze definice orientovaného grafu a neorientovaný bychom
+  definovali jako specifikaci orientovaného. Např. takto: neorientovaný graf $G = (V, E)$ je
+  orientovaný graf, kde neexistujou smyčky a pokud existuje hrana $(u,v) \in E(G)$,
+  pak existuje i hrana $(v,u) \in E(G)$.
+
+
+Často nás jednosměrnost vztahů nemusí zajímat. Např. máme typickou situaci sítě křižovatek
+a jednosměrek (vrcholy reprezentují křižovatky a hrana $(u,v)$ říká, že se lze z křižovatky
+$u$ dostat do $v$). Dejme tomu, že nás nyní starosta"či primátor".footnote požádal o zrušení
+všech jednosměrek"bez ohledu na jaký zmatek by to vyvolalo".footnote. V našem grafu bychom
+toto provedli nahrazením všech orientovaných šipek za neorientované. Této úpravě říkáme
+"symetrizace grafu".notion. Můžeme postupovat i naopak, tedy že v naší situaci byly všechny
+ulice průjezdné obousměrně a nyní se starosta rozhodl, že každá ulice bude jednosměrka. Tomu
+říkáme "orientace grafu".notion.
+
+
+.Definition:
+  title: Symetrizace grafu
+
+  Pro orientovaný graf $G = (V, E)$ definujeme neorientovaný graf $\textrm{sym}(G)$, který nazveme
+  "symetrizací grafu $G$".notion, a definujeme ho jako
+  $\textrm{sym}(G) = (V, \{\{u,v\} \mid (u,v) \in E(G) \lor (v,u) \in E(G)\})$
+
+
+.Definition:
+  title: Orientace grafu
+
+  Pro neorientovaný graf $G = (V, E)$ a funkci $f: E \to V \times V$ přiřazující každé hraně její orientaci
+  definujeme orientovaný graf $H$, který nazveme "orientací grafu $G$".notion, a definujeme ho jako
+  $H = (V, f(E))$.
+
+
 Předtím než se pustíme do první velké kapitoly z algoritmické části teorie grafů,
 si ještě zavedeme poslední dva pojmy, které nám budou užitečné, hledáme-li např.
 nejkratší cestu městem.
@@ -307,8 +343,9 @@ pro $K$ = 4 je odpověď 20.
     \ENDPROCEDURE
 
 
-Předtím než se pustíme do důkazu, že BFS skutečně dělá to, co chceme (řekli bychom, že algoritmus BFS je korektní),
-dokážeme si jeho konečnost. Na to budeme potřebovat již zmíněný fakt, který uvedeme v pozorování.
+Předtím než se pustíme do důkazu, že BFS skutečně dělá to, co chceme (řekli bychom,
+že algoritmus BFS je korektní), dokážeme si jeho konečnost. Na to budeme potřebovat
+již zmíněný fakt, který uvedeme v pozorování.
 
 
 .Observation:
@@ -324,7 +361,28 @@ dokážeme si jeho konečnost. Na to budeme potřebovat již zmíněný fakt, kt
   $\textrm{state}[v] = \textrm{undefined}$, což už jednou otevřený vrchol nikdy splnit nemůže.
 
 
-.Proof:
+.Observation:
+
+  Je-li vrchol na konci algoritmu uzavřený, musel být někdy v průběhu algoritmu otevřený.
+
+
+.Observation:
+
+  Pokud byl vrchol někdy v průběhu algoritmu otevřený, pak byl ve frontě $Q$ alespoň jednou.
+
+
+.Corollary:
+
+  Vrchol je na konci algoritmu uzavřený právě tehdy, když byl (právě jednou) ve frontě $Q$.
+
+
+.Question:
+
+  Co dalšího můžete říct o vrcholech, které budou na konci algoritmu uzavřeny? Ukažte,
+  že vrchol $v$ bude uzavřen právě tehdy, když existuje $s-v$ cesta.
+
+
+Proof:
   title: Konečnost BFS
 
   Protože uvažujeme grafy vždy s konečnou množinou vrcholů (vzpomeňte na definici neorientovaného grafu),
@@ -333,6 +391,28 @@ dokážeme si jeho konečnost. Na to budeme potřebovat již zmíněný fakt, kt
   Kdyby se fronta ani jednou v průběhu algoritmu celá nevyprázdnila, pak by buď musela množina vrcholů být nekonečná,
   nebo bychom museli nějaký vrchol přidat do fronty alespoň 2x. Oboje je ale ve sporu s našimi předpoklady,
   a tedy fronta bude v nějakém okamžiku prázdná a algoritmus skončí.
+
+
+.Proof:
+  title: Korektnost BFS
+
+  Korektnost BFS znamená, že na konci algoritmu platí, že buňky pole $D$ jsou vyplněné "správně".quoted, tedy že
+  pro všechny "uzavřené".notion vrcholy $v$ platí $D[v] = d(s,v)$. Takovéto rovnosti často
+  dokazujeme kombinací dvou nerovností. Nejprve ukážeme, že $D[v] \geq d(s,v)$ a poté i že
+  $D[v] \leq d(s,v)$. Z těchto nerovností nám vypadne výsledná rovnost.
+
+
+  První nerovnost je ta jednodušší. Již víme, že pro každý uzavřený vrchol $v$ existuje
+  "nějaká".notion $s-v$ cesta $P$.
+  
+
+.Question:
+
+  Jak byste upravili námi představený algoritmus BFS, abychom zároveň s polem vzdáleností $D$
+  dostali i pole předchůdců"nepleťte si s předchůdcem v orientovaných grafech. Přestože podstata
+  je podobná, pojem předchůdce jsme v neorientovaných grafech nezávděli".footnote $P$, kde pro
+  všechny uzavřené vrcholy $v$ platí, že $P[v] = w$ je vrchol na nejkratší $s-v$ cestě a
+  $\{w,v\} \in E(G)$ (tj. vrchol $w$ je "předchůdce".quoted $v$ na cestě z $s$ do $v$)?
 
 
 .Section DFS
