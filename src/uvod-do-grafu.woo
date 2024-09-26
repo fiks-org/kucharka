@@ -153,8 +153,7 @@ definici "souseda".notion.
 
 
 .Question:
-  solution: Izolované vrcholy by byly například státy ostrovní, tj. např. Malta, Taiwan,
-  Japonsko, Madagaskar. Vrchol Česka by měl stupeň 4, neboť Česko sousedí s 4 dalšími státy.
+  solution: Izolované vrcholy by byly například státy ostrovní, tj. např. Malta, Taiwan, Japonsko, Madagaskar. Vrchol Česka by měl stupeň 4, neboť Česko sousedí s 4 dalšími státy.
 
   Představte si situaci, kde modelujete státy světa a jejich hranice grafem, tj.
   vrcholy jsou jednotlivé státy a hrana mezi dvěma vrcholy existuje, právě když
@@ -412,7 +411,9 @@ Proof:
   dostali i pole předchůdců"nepleťte si s předchůdcem v orientovaných grafech. Přestože podstata
   je podobná, pojem předchůdce jsme v neorientovaných grafech nezávděli".footnote $P$, kde pro
   všechny uzavřené vrcholy $v$ platí, že $P[v] = w$ je vrchol na nejkratší $s-v$ cestě a
-  $\{w,v\} \in E(G)$ (tj. vrchol $w$ je "předchůdce".quoted $v$ na cestě z $s$ do $v$)?
+  $\{w,v\} \in E(G)$ (tj. vrchol $w$ je "předchůdce".quoted $v$ na cestě z $s$ do $v$)? Změnil
+  se důkaz konečnost Vašeho algoritmu oproti našemu? Změnila se nějak korektnost?
+  Co musíte dokázat, aby Váš nový algoritmus byl korektní?
 
 
 .Section DFS
@@ -577,13 +578,27 @@ touto kapitolou.
 .Definition:
   title: Silná a slabá souvislost
 
-  TODO
+  O orientovaném grafu $G$ řekneme, že $G$ je "slabě souvislý".notion, pokud jeho symetrizace
+  je souvislá. Řekneme, že $G$ je "silně souvislý".notion, pokud pro každou dvojici vrcholů
+  $x,y \in V(G)$ platí, že existuje $x-y$ cesta i $y-x$ cesta.
 
 
 .Definition:
   title: Isomorfismus
 
-  TODO
+  Mějme grafy $G$ a $H$. O funkci $f : V(G) \to V(H)$ řekneme, že to je "isomorfismus".notion
+  z grafu $G$ do $H$, pokud $f$ je bijekce a navíc pro každou dvojici vrcholů
+  $u,v \in V(G)$ platí $\{u,v\} \in E(G) \Leftrightarrow \{f(u), f(v)\} \in E(H)$.
+
+  
+  Řekneme, že graf $G$ je "isomorfní".notion grafu $H$, pokud existuje isomorfismus
+  z $G$ do $H$.
+
+
+.Remark:
+
+  Je-li $G$ isomorfní grafu $H$, pak i $H$ je isomorfní grafu $G$"isomorfismus
+  je tzv. symetrická relace, ba dokonce je to relace ekvivalence".footnote
 
 
 .Section Stromy
@@ -599,13 +614,13 @@ touto kapitolou.
 .Definition:
   title: Les
 
-  TODO
+  Graf $G$ nazveme "lesem".notion, je-li disjunktním sjednocením stromů.
 
 
 .Definition:
   title: List
 
-  TODO
+  Vrchol $v$ nazveme "listem".notion, pokud $\deg(v) = 1$.
 
 
 .Theorem:
