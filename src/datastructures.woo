@@ -77,6 +77,9 @@ např. nejlepší časová složitost, hardwarová implementace dnešních poč�
   Jeho implementace najdete v C jako "int[]".code, v Rustu "[u32; n]".code nebo Array v Csharp.
 
 
+% TODO vymyslet jak psát C#
+
+
 Pole je dobrý kamarád dokud víme předem, kolik prvků bude potřeba, když to ale nevíme tak potřebujeme něco lepšího.
 
 
@@ -86,20 +89,97 @@ Pole je dobrý kamarád dokud víme předem, kolik prvků bude potřeba, když t
   index: nafukovací pole
 
   "Nafukovací pole".notion je pole, do kterého můžeme přistupovat na index za konstantní čas. Narozdíl od klasického pole však,
-  nemusíme předem specifikovat velikost a můžeme do pole přidávat prvky.
+  nemusíme předem specifikovat velikost a můžeme do pole přidávat prvky. Prvky na konec vkládáme za amortizovaně konstantní čas.
+  Kamkoli jinam za $\lanO(n)$
 
 
   Je to "list".code co znáte z Pythonu nebo vektory z C++ a Rustu.
 
 
-Pole, nafukovací pole, spoják, stack, fronta, kruhový buffer, deque
+.Definition:
+  title: Spojový seznam
+  english: Linked list
+  index:
+    - spojový seznam
+    - linked list
+  label: def-spojovy-seznam
+
+  Spojový seznam umožňuje vkládání kamkoli za $\lanO(1)$. Ale přístup na index je za $\lanO(n)$
+
+
+  V Rustu "std::collections::LinkedList".code a "std::list".code v C++.
+
+
+.Definition:
+  title: Zásobník
+  english: Stack
+  index:
+    - zásobník
+    - stack
+  label: def-stack
+
+  Zásobník neboli stack je jednoduchá struktura, umožňuje vložit prvek za $\lanO(1)$ a vyzvednout prvek, opět za $\lanO(1)$.
+  Prvky se vyzvedávají v opačném pořadí od vložení.
+
+
+.Definition:
+  title: Fronta
+  english: Queue
+  index:
+    - fronta
+    - queue
+  label: def-queue
+
+  Fronta se chová podobně jako zásobník, také umožňuje vložit a vyzvednout prvek za $\lanO(1)$, ovšem prvky
+  se vyzvedávají v pořadí v jakém se do fronty dostaly.
+
+% Pole, nafukovací pole, spoják, stack, fronta, kruhový buffer, deque
 
 
 .Section Hashování v datových strukturách
   label: sec-hash-in-datastractures
 
 
-Hashtable, hashmap, dobré hashovací funkce
+S pojmem hashování jste se spíše setkali v kontextu bezpečnosti, použít se však dá i v datových strukturách. Hashování je způsob
+jak objekty, které nejsou jednoduše porovnatelné mezi sebou uspořádat tak, aby se dali rychle najít.
+
+
+.Definition:
+  title: Hashovací funkce
+  index: hashovací funkce
+  label: def-hash-fun
+
+  Obecná hashovací funkce je $f\colon \UU \to \PP$ přiřadí každému objektu v univezu $\UU$ nějakou přihrádku v $\PP$.
+
+  
+  Prakticky to bude spíše $f\colon \UU \to \N$, kde se každému objektu přiřadí nějaké přirozené číslo a další funkce (třeba modulo počet přihrádek)
+  z čísla zjistí přihrádku.
+
+
+
+.Definition:
+  title: Hash set
+  index: hash!set
+  label: def-hash-set
+
+  Hash set je datová struktura reprezentující množinu, která zvládne vložit a odebrat prvek za $\lanO^*(1)$.
+  Také umí odpovědět, zda se prvek v množině nachází za $\lanO^*(1)$.
+
+
+  Naleznete ho jako "std::unoredered_set".code v C++, "std::collections::HashSet".code v Rustu nebo "set".code v Pythonu.
+
+
+.Definition:
+  title: Hash map
+  index: hash!map
+  label: def-hash-map
+
+  Hash map je datová struktura, která ukládá dvojice $(\text{klíč}, \text{hodnota})$. Vložit je potřeba klíč s hodnotou za $\lanO^*(1)$.
+  Na hodnotu se pak můžeme zeptat pouze za pomoci klíče opět za $\lanO^*(1)$. Hodnotu ke klíči můžeme změnit také za $\lanO^*(1)$.
+
+  Naleznete ho jako "std::unoredered_map".code v C++, "std::collections::HashMap".code v Rustu nebo "dict".code v Pythonu.
+
+% Hashtable, hashmap, dobré hashovací funkce
 
 
 .Section Stromové struktury
