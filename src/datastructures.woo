@@ -144,6 +144,9 @@ S pojmem hashování jste se spíše setkali v kontextu bezpečnosti, použít s
 jak objekty, které nejsou jednoduše porovnatelné mezi sebou uspořádat tak, aby se dali rychle najít.
 
 
+Aby se v datech dala data dobře najít, tak si je ukládáme do tabulky. Pomocí hashovací funkce pak zjistíme, kam objekt strčit nebo kde ho hledat.
+
+
 .Definition:
   title: Hashovací funkce
   index: hashovací funkce
@@ -155,6 +158,10 @@ jak objekty, které nejsou jednoduše porovnatelné mezi sebou uspořádat tak, 
   Prakticky to bude spíše $f\colon \UU \to \N$, kde se každému objektu přiřadí nějaké přirozené číslo a další funkce (třeba modulo počet přihrádek)
   z čísla zjistí přihrádku.
 
+
+Celkem pěkný materiál, zatímco je Fiksařka ve vývinu je "tady".reference.1
+  1:
+    link: https://www.algoritmy.net/article/32077/Hashovaci-tabulka
 
 
 .Definition:
@@ -184,6 +191,15 @@ jak objekty, které nejsou jednoduše porovnatelné mezi sebou uspořádat tak, 
 
 .Section Stromové struktury
   label: sec-tree-structures
+
+
+
+.Definition:
+  title: Vyhledávací strom
+  english: Search tree
+  label: def-search-tree
+
+  Vyhledávací strom, je zakořeněný strom.
 
 
 BST, AVL, Redblack, Binary heap, AB-strom
