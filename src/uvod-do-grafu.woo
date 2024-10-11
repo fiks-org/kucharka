@@ -91,12 +91,21 @@ začátku této kapitoly.
   grafu také často říkáme pro jednoduchost pouze "graf".notion.
 
 
+.Warning:
+
+  V neorientovaném grafu nepovolujeme tzv. smyčky, tj. hrany vedoucí z jednoho vrcholu
+  do toho samého. Důvodem je to, že množiny neobsahují duplikáty, tedy např. $\{v,v\}$
+  není dvouprvková, nýbrž jednoprvková množina $\{v\}$, což dle definice není skutečná
+  hrana. V některých případech toto nemusí být žádoucí, pak bychom ale při popisu měli
+  upravit definici grafu tak, aby s touto možností počítala.
+
+
 Grafy často reprezentují relaci (vazby) mezi jednotlivými objekty. V příkladu
-s Facebookem bychom rádi byli schopni říct, kdo je koho kamarád (v grafovém
-modelu jsou kamarádi dva vrcholy mezi nimiž existuje hrana). Stejně tak bychom
-rádi řekli, že mezi nějakými dvěma křižovatky vede ulice. Abychom sjednotili
-tento (skoro až intimní vztah) vrcholů sdílející společnou hranu, zavádíme
-následující definici "souseda".notion.
+s Facebookem bychom rádi byli schopni říct, kdo je koho kamarád (v grafu reprezentující
+sociální síť jsou kamarádi ti, jejichž odpovídající vrcholy tvoří společnou hranu).
+Stejně tak bychom rádi řekli, že mezi nějakými dvěma křižovatky vede ulice. Abychom sjednotili
+tento (skoro až intimní vztah) vrcholů sdílející společnou hranu, zavádíme následující
+definici "souseda".notion.
 
 
 .Definition:
@@ -122,6 +131,34 @@ následující definici "souseda".notion.
   Množinou $N(v)$ značíme všechny sousedy vrcholu $v$ a nazýváme jí
   "otevřeným okolím".notion vrcholu $v$. Množinu $N[v]$ definujeme jako
   $N[v] = N(v) \cup \{v\}$ a říkáme jí "uzavřené okolí".quoted vrcholu $v$.
+
+
+.Definition:
+  title: Stupeň vrcholu
+
+  Stupeň vrcholu $v \in V(G)$ je počet jeho sousedů a značíme ho $\deg_G(v)$. Je-li
+  z kontextu jasné, o jakém grafu mluvíme, píšeme jednodušeji $\deg(v)$.
+
+
+.Remark:
+
+  Stupeň vrcholu bychom mohli také definovat jako počet hran, kterého obsahuje,
+  tj. pro vrchol $v \in V(G)$ je $\deg_G(v) = |\{e \in E(G) \mid v \in e\}|$.
+
+
+.Definition:
+  title: Izolovaný vrchol
+
+  Vrchol $v$ nazveme izolovaný, pokud $\deg(v) = 0$.
+
+
+.Question:
+  solution: Izolované vrcholy by byly například státy ostrovní, tj. např. Malta, Taiwan, Japonsko, Madagaskar. Vrchol Česka by měl stupeň 4, neboť Česko sousedí s 4 dalšími státy.
+
+  Představte si situaci, kde modelujete státy světa a jejich hranice grafem, tj.
+  vrcholy jsou jednotlivé státy a hrana mezi dvěma vrcholy existuje, právě když
+  spolu státy sousedí (mají společnou hranici). Kterým státům světa by odpovídaly
+  izolované vrcholy? Jaký stupeň by měl vrchol reprezentující Českou republiku?
 
 
 Ne všechny vztahy jsou ale oboustranné. Některé ulice můžou být jednosměrky,
@@ -151,6 +188,59 @@ kterou popisuje následující definice.
   Orientovaná hrana je podmnožina kartézského součinu vrcholů $V \times V$, tj.
   každá orientovaná hrana je ve tvaru $(u,v)$, kde $u,v$ jsou
   vrcholy z $V$.
+
+
+V orientovaném grafu nemá tolik smysl mluvit o pouhých sousedech, protože
+orientované hrany vyjadřují trochu jiný vztah. Vhodněji zde budeme mluvit
+o předchůdcích a následnících. Také si všimněte, že zatímco v neorientovaném grafu
+nemůžeme vést hranu z jednoho vrcholu do toho samého"Skutečně, to definice nepovoluje,
+protože hrany musí být dvouprvkové podmnožiny vrcholů. Množina $\{v,v\}$ je
+totiž ekvivalentní jednoprvkové množině $\{v\}$.".footnote, v orientovaném grafu
+můžeme"V orientované množině záleží na pořadí vrcholů, proto dvouprvková množina $(v,v)$
+a jednoprvková množina $(v)$ znamenají něco úplně jiného".footnote.
+
+
+.Definition:
+  title: Předchůdce, následník a smyčka.
+
+  Mějme hranu $(x,y) \in E(G)$ v orientovaném grafu $G$. O vrcholu $x$ řekneme, že
+  to je předchůdce $y$ a opačně o vrcholu $y$ řekneme, že to je následník $x$.
+  Pokud navíc $x = y$, pak o takové hraně mluvíme jako o tzv. smyčce.
+
+
+.Remark:
+
+  Neorientované grafy jsou podmnožinou těch orientovaných. To znamená, že
+  by nám stačila pouze definice orientovaného grafu a neorientovaný bychom
+  definovali jako specifikaci orientovaného. Např. takto: neorientovaný graf $G = (V, E)$ je
+  orientovaný graf, kde neexistujou smyčky a pokud existuje hrana $(u,v) \in E(G)$,
+  pak existuje i hrana $(v,u) \in E(G)$.
+
+
+Často nás jednosměrnost vztahů nemusí zajímat. Např. máme typickou situaci sítě křižovatek
+a jednosměrek (vrcholy reprezentují křižovatky a hrana $(u,v)$ říká, že se lze z křižovatky
+$u$ dostat do $v$). Dejme tomu, že nás nyní starosta"či primátor".footnote požádal o zrušení
+všech jednosměrek"bez ohledu na jaký zmatek by to vyvolalo".footnote. V našem grafu bychom
+toto provedli nahrazením všech orientovaných šipek za neorientované. Této úpravě říkáme
+"symetrizace grafu".notion. Můžeme postupovat i naopak, tedy že v naší situaci byly všechny
+ulice průjezdné obousměrně a nyní se starosta rozhodl, že každá ulice bude jednosměrka. Tomu
+říkáme "orientace grafu".notion.
+
+
+.Definition:
+  title: Symetrizace grafu
+
+  Pro orientovaný graf $G = (V, E)$ definujeme neorientovaný graf $\textrm{sym}(G)$, který nazveme
+  "symetrizací grafu $G$".notion, a definujeme ho jako
+  $\textrm{sym}(G) = (V, \{\{u,v\} \mid (u,v) \in E(G) \lor (v,u) \in E(G)\})$
+
+
+.Definition:
+  title: Orientace grafu
+
+  Pro neorientovaný graf $G = (V, E)$ a funkci $f: E \to V \times V$ přiřazující každé hraně její orientaci
+  definujeme orientovaný graf $H$, který nazveme "orientací grafu $G$".notion, a definujeme ho jako
+  $H = (V, f(E))$.
 
 
 Předtím než se pustíme do první velké kapitoly z algoritmické části teorie grafů,
@@ -252,8 +342,9 @@ pro $K$ = 4 je odpověď 20.
     \ENDPROCEDURE
 
 
-Předtím než se pustíme do důkazu, že BFS skutečně dělá to, co chceme (řekli bychom, že algoritmus BFS je korektní),
-dokážeme si jeho konečnost. Na to budeme potřebovat již zmíněný fakt, který uvedeme v pozorování.
+Předtím než se pustíme do důkazu, že BFS skutečně dělá to, co chceme (řekli bychom,
+že algoritmus BFS je korektní), dokážeme si jeho konečnost. Na to budeme potřebovat
+již zmíněný fakt, který uvedeme v pozorování.
 
 
 .Observation:
@@ -269,7 +360,28 @@ dokážeme si jeho konečnost. Na to budeme potřebovat již zmíněný fakt, kt
   $\textrm{state}[v] = \textrm{undefined}$, což už jednou otevřený vrchol nikdy splnit nemůže.
 
 
-.Proof:
+.Observation:
+
+  Je-li vrchol na konci algoritmu uzavřený, musel být někdy v průběhu algoritmu otevřený.
+
+
+.Observation:
+
+  Pokud byl vrchol někdy v průběhu algoritmu otevřený, pak byl ve frontě $Q$ alespoň jednou.
+
+
+.Corollary:
+
+  Vrchol je na konci algoritmu uzavřený právě tehdy, když byl (právě jednou) ve frontě $Q$.
+
+
+.Question:
+
+  Co dalšího můžete říct o vrcholech, které budou na konci algoritmu uzavřeny? Ukažte,
+  že vrchol $v$ bude uzavřen právě tehdy, když existuje $s-v$ cesta.
+
+
+Proof:
   title: Konečnost BFS
 
   Protože uvažujeme grafy vždy s konečnou množinou vrcholů (vzpomeňte na definici neorientovaného grafu),
@@ -280,60 +392,525 @@ dokážeme si jeho konečnost. Na to budeme potřebovat již zmíněný fakt, kt
   a tedy fronta bude v nějakém okamžiku prázdná a algoritmus skončí.
 
 
+.Proof:
+  title: Korektnost BFS
+
+  Korektnost BFS znamená, že na konci algoritmu platí, že buňky pole $D$ jsou vyplněné "správně".quoted, tedy že
+  pro všechny "uzavřené".notion vrcholy $v$ platí $D[v] = d(s,v)$. Takovéto rovnosti často
+  dokazujeme kombinací dvou nerovností. Nejprve ukážeme, že $D[v] \geq d(s,v)$ a poté i že
+  $D[v] \leq d(s,v)$. Z těchto nerovností nám vypadne výsledná rovnost.
+
+
+  První nerovnost je ta jednodušší. Již víme, že pro každý uzavřený vrchol $v$ existuje
+  "nějaká".notion $s-v$ cesta $P$.
+  
+
+.Question:
+
+  Jak byste upravili námi představený algoritmus BFS, abychom zároveň s polem vzdáleností $D$
+  dostali i pole předchůdců"nepleťte si s předchůdcem v orientovaných grafech. Přestože podstata
+  je podobná, pojem předchůdce jsme v neorientovaných grafech nezávděli".footnote $P$, kde pro
+  všechny uzavřené vrcholy $v$ platí, že $P[v] = w$ je vrchol na nejkratší $s-v$ cestě a
+  $\{w,v\} \in E(G)$ (tj. vrchol $w$ je "předchůdce".quoted $v$ na cestě z $s$ do $v$)? Změnil
+  se důkaz konečnost Vašeho algoritmu oproti našemu? Změnila se nějak korektnost?
+  Co musíte dokázat, aby Váš nový algoritmus byl korektní?
+
+
 .Section DFS
   label: sec-graph-dfs
+
+
+.Procedure:
+  title: Depth First Search (DFS)
+
+  TODO
+
+
+.Definition:
+  title: Dopředná, zpětná a příčná hrana
+
+  TODO
 
 
 .Section Základní pojmy z teorie grafů
   label: sec-graph-basic-knowledge
 
 
+V této sekci si představíme několik základních pojmů z teorie grafů. Začneme výčtem
+základních grafových tříd. Grafová třída je množina grafů s nějakou specifickou vlastností.
+Takových vlastností pak můžeme využívat k hledání efektivnějších algoritmů.
+
+
+Situace, kde se zná každý s každým, nebo kde má obecněji každý ke každému nějaký vztah,
+lze namodelovat úplným grafem.
+
+
+.Definition:
+  title: Úplný graf (Klika)
+
+  Úplný graf na $n \geq 1$ vrcholech $K_n$ je graf $(V, \binom{V}{2})$, kde $|V| = n$
+  a $\binom{V}{2} = \{\{x,y\} \mid x, y \in V \colon x \neq y \}$.
+
+
+Pokud jsme schopni rozdělit vrcholy na dvě disjunktní množiny - slečny a páni v tanečním
+sále; servery a uživatelé, kteří na tyto servery přistupují; vrcholky hor a přilehlá údolí.
+Takové případy můžeme modelovat bipartitním grafem.
+
+
+Úplný bipartitní graf je speciálním typem bipartitního grafu,
+kdy každý prvek jedné množiny má vztah ke všem prvkům množiny druhé (např.
+v tanečních při pánské volence si můžou všichni páni vybrat libovolnou partnerku
+a je-li partnerka vyzvána, nesmí odmítnout).
+
+
+.Definition:
+  title: Úplný bipartitní graf
+
+  Úplný bipartitní graf $K_{n_1,n_2}$ pro $n_1,n_2 \geq 1$ tvořený dvěma
+  partitami (disjunktními množinami) $A$, resp. $B$, o $n_1$, resp. $n_2$, vrcholech,
+  je graf $(A \cup B, \{\{x,y\} \mid x \in A, y \in B\})$.
+
+
+Cestu známe už z předchozích kapitol. Zde ji pro úplnost ještě zavedeme jako
+grafovou třídu.
+
+
+.Definition:
+  title: Cesta
+
+  Cesta $P_m$ (s $m$ hranami) pro $m \geq 0$ je graf
+  $(\{0,\dots,m\}, \{\{i, i + 1\} \mid i \in \{0,\dots, m - 1\}\})$.
+
+
+.Definition:
+  title: Kružnice
+
+  Kružnice $C_n$ (s $n$ hranami) je graf
+  $(\{1,\dots,n\}, \{\{i, i + 1\} \mid i \in \{1,\dots, n - 1\}\} \cup \{\{n, 1\}\})$.
+
+
+Představte si, že náš graf modeluje situaci sociální sítě, tj. vrcholy jsou jednotliví
+lidé a hrana existuje mezi dvěma vrcholy, když se dané osoby navzájem znají. Nyní bychom
+chtěli rychle vědět, kteří lidé k sobě nemají žádný vztah, neznají se. V našem grafu
+to jsou takoví lidé, mezi kterými nevede hrana. Abychom tuto situaci správně
+namodelovali, stačí nám pouze smazat původní hrany a přidat hrany, které jsme v
+původním grafu neměli. To je přesně to, co dělá doplněk!
+
+
+.Definition:
+  title: Doplněk
+
+  Doplněk $\overline G$ grafu $G = (V, E)$ je graf $\overline G = (V, \binom{V}{2} \setminus E)$.
+
+
+Následující věta je jednou z prvních vět, se kterou se čtenář v teorii grafů setká.
+Užitečnost této věty nelze pořádně vystihnout a uvidíme ji několikrát napříč celou
+touto kapitolou.
+
+
+.Theorem:
+  title: Handshaking lemma (Princip sudosti)
+
+  Pro každý graf $G = (V, E)$ platí $\sum_{v \in V} \deg(v) = 2 |E|$
+
+
+.Proof:
+
+  Důkaz vynecháváme.
+
+
+.Corollary:
+
+  V každém grafu je počet vrcholů lichého stupně sudý.
+
+
+.Definition:
+  title: Podgraf, Indukovaný podgraf
+
+  .itemize:
+
+    .item:
+
+      Graf $H$ nazveme podgrafem grafu $G$, pokud $V(H) \subseteq V(G)$
+      a $E(H) \subseteq E(G) \cap \binom{V(H)}{2}$.
+
+    .item:
+
+      Graf $H$ nazveme indukovaný podgrafem grafu $G$, pokud $V(H) \subseteq V(G)$
+      a $E(H) = E(G) \cap \binom{V(H)}{2}$
+
+
+.Definition:
+  title: Bipartitní graf
+  
+  Graf nazveme bipartitní, je-li indukovaným podgrafem úplného bipartitního grafu.
+
+
+.Definition:
+  title: Souvislý graf
+
+  O grafu $G$ řekneme, že je souvislý, pokud pro každé jeho dva vrcholy $u,v \in V(G)$
+  existuje nějaká $u-v$ cesta. V jiném případě řekneme, že je $G$ nesouvislý.
+
+
+.Definition:
+  title: Souvislá komponenta
+
+  "Indukovaný".notion podgraf $H$ grafu $G$ je souvislou komponentou, pokud
+
+  .itemize:
+
+    .item:
+
+      $H$ je souvislý,
+
+    .item:
+
+      neexistuje žádný souvislý podgraf $F \neq H$ grafu $G$ takový, že $H$
+      by byl jeho podgrafem.
+
+
+.Observation:
+
+  Graf je souvislý právě tehdy, když obsahuje právě jednu souvislou komponentu.
+
+
+.Definition:
+  title: Silná a slabá souvislost
+
+  O orientovaném grafu $G$ řekneme, že $G$ je "slabě souvislý".notion, pokud jeho symetrizace
+  je souvislá. Řekneme, že $G$ je "silně souvislý".notion, pokud pro každou dvojici vrcholů
+  $x,y \in V(G)$ platí, že existuje $x-y$ cesta i $y-x$ cesta.
+
+
+.Definition:
+  title: Isomorfismus
+
+  Mějme grafy $G$ a $H$. O funkci $f : V(G) \to V(H)$ řekneme, že to je "isomorfismus".notion
+  z grafu $G$ do $H$, pokud $f$ je bijekce a navíc pro každou dvojici vrcholů
+  $u,v \in V(G)$ platí $\{u,v\} \in E(G) \Leftrightarrow \{f(u), f(v)\} \in E(H)$.
+
+  
+  Řekneme, že graf $G$ je "isomorfní".notion grafu $H$, pokud existuje isomorfismus
+  z $G$ do $H$.
+
+
+.Remark:
+
+  Je-li $G$ isomorfní grafu $H$, pak i $H$ je isomorfní grafu $G$"isomorfismus
+  je tzv. symetrická relace, ba dokonce je to relace ekvivalence".footnote
+
+
 .Section Stromy
   label: sec-graph-trees
+
+
+.Definition:
+  title: Strom
+
+  Graf $G$ nazveme stromem, pokud je souvislý a neobsahuje žádnou kružnici.
+
+
+.Definition:
+  title: Les
+
+  Graf $G$ nazveme "lesem".notion, je-li disjunktním sjednocením stromů.
+
+
+.Definition:
+  title: List
+
+  Vrchol $v$ nazveme "listem".notion, pokud $\deg(v) = 1$.
+
+
+.Theorem:
+  title: O ekvivalentních definicích stromu
+
+  TODO
 
 
 .Section Topsort
   label: sec-graph-topsort
 
 
-.Section Ukládání grafů
+.Definition:
+  title: Topologické uspořádání (Topsort)
+
+  TODO
+
+
+.Definition:
+  title: Zdroj a stok
+
+  TODO
+
+
+.Procedure:
+  title: Topsort
+
+  TODO
+
+
+.Section Reprezentace grafu
   label: sec-graph-storage
+
+
+Abychom mohli využít nabité teoretické informace z předchozích kapitol v praxi"v programovací úloze".footnote, musíme si nejprve
+říct, jak vůbec graf uložíme v paměti počítače (jak ho v paměti budeme reprezentovat). Věříme, že
+čtenář, který již někdy řešil grafovou úlohu"úlohu modeloval grafem a pak spustil nějaký grafový algoritmus".footnote,
+se již s následujícími pojmy někdy setkal. My je uvedeme pro ty, kteří se s nimi ještě nesetkali.
+
+
+.Definition:
+  title: Matice sousednosti
+
+  Mějme graf $G = (V, E)$ a nechť $V = \{v_1,\dots,v_n\}$. Matice sousednosti
+  $A(G)$ grafu $G$ je tabulka"matematicky správněji matice".footnote velikosti
+  $|V| \times |V|$, kde buňka $A(G)_{ij}$ na $i$-tém řádku $j$-tého sloupce
+  je definována:
+
+  .equation:
+
+    A(G)_{ij} = \begin{cases} 1 & \textrm{pokud} \{v_i, v_j\} \in E(G), \\ 0 & \textrm{jinak}. \end{cases}
+
+
+.Definition:
+  title: Seznam sousedů
+
+  Mějme graf $G = (V, E)$. Nechť $V = \{v_1,\dots,v_n\}$. Graf uložíme jako seznam
+  $S \colon \{1,\dots,n\} \to \mathcal{P}(\{1,\dots,n\})$ a definujeme ho jako $S(i) = N(v_i)$.
+
+
+.Question:
+  solution: Matice sousednosti zabere $\mathcal{O}(|V|^2)$ paměti. Seznam sousedů zabere $\mathcal{O}(|V| + |E|)$ paměti"rozmyslete!".footnote.
+
+  Jaký je rozdíl mezi oběma reprezentacemi z hlediska paměti (asymptoticky)?
+
+
+.Question:
+  solution: V matici sousednosti $\mathcal{O}(1)$, v seznamu sousedů až $\mathcal{O}(|V|)$.
+
+  Jak dlouho trvá zjistit, zda hrana $\{v_i, v_j\}$ v grafu existuje, když je graf uložen seznamem sousedů, resp. maticí sousednosti (asymptoticky v nejhorším případě)?
+
+
+.Question:
+  solution: V obou případech $\mathcal{O}(|V|)$ (při vhodné implementaci $\mathcal{O}(1)$"ke každému vrcholu si poznamenám počet sousedů".footnote).
+
+  Jak dlouho trvá zjistit počet sousedů zadaného vrcholu v grafu, když je graf uložen seznamem sousedů, resp. maticí sousednosti (asymptoticky)?
 
 
 .Section Kostry grafu
   label: sec-graph-spanning-tree
 
 
+.Definition:
+  title: Kostra grafu
+
+  Mějme souvislý graf $G$. Kostrou grafu $G$ máme na mysli jeho podgraf $H$ takový,
+  že $V(H) = V(G)$ a $H$ je strom.
+
+
+.Observation:
+
+  Každý souvislý graf má kostru.
+
+
+.Definition:
+  title: Minimální kostra
+
+  TODO
+
+
+.Definition:
+  title: Řezy v grafu
+
+  TODO
+
+
+.Procedure:
+  title: Borůvkův algoritmus
+  label: algo-x
+
+  TODO
+
+
+.Procedure:
+  title: Kruskalův algoritmus
+
+  TODO
+
+
 .Section Nejkratší cesty v grafech
   label: sec-graph-shortest-path
+
+
+.Procedure:
+  title: Dijkstrův algoritmus
+
+  TODO
+
+
+.Procedure:
+  title: Relaxace
+
+  TODO
+
+
+.Procedure:
+  title: Bellman-Fordův algoritmus
+
+  TODO
+
+
+.Procedure:
+  title: Floyd-Warshallův algoritmus
+
+  TODO
 
 
 .Section Jednotažky a eulerovské grafy
   label: sec-graph-euler
 
 
-.Section SSC
-  label: sec-graph-ssc
+.Definition:
+  title: Eulerovský graf
+
+  TODO
 
 
-.Section Párování
-  label: sec-graph-matching
+.Section SCC
+  label: sec-graph-scc
+
+
+.Definition:
+  title: Kondenzace
+
+  TODO
+
+
+.Procedure:
+  title: Kosarajův algoritmus
+
+  TODO
+
+
+.Procedure:
+  title: Tarjanův algoritmus
+
+  TODO
 
 
 .Section Souvislost grafu
   label: sec-graph-connectivity
 
 
+.Definition:
+  title: Artikulace a most
+
+  TODO
+
+
+.Definition:
+  title: Vrcholová a hranová 2-souvislost
+
+  TODO
+
+
 .Section Rovinné grafy
   label: sec-graph-planar
+
+
+.Definition:
+  title: Rovinný graf
+
+  TODO
+
+
+.Theorem:
+  title: Eulerova formule
+
+  TODO
+
+
+.Theorem:
+  title: Kuratowského věta
+
+  TODO
+
+
+.Definition:
+  title: Duál nakreslení
+
+  TODO
 
 
 .Section Vrcholové barvení
   label: sec-graph-coloring
 
 
+.Definition:
+  title: Vrcholové obarvení
+
+  TODO
+
+
+.Procedure:
+  title: First Fist algoritmus
+
+  TODO
+  
+
 .Section Toky
   label: sec-graph-flow
 
 
-Placeholder
+.Definition:
+  title: Síť
+
+  TODO
+
+
+.Definition:
+  title: Tok
+
+  TODO
+
+
+.Procedure:
+  title: Ford-Fulkersonův algoritmus
+
+  TODO
+
+
+.Definition:
+  title: Vrcholová a hranová k-souvislost
+
+  TODO
+
+
+.Section Párování
+  label: sec-graph-matching
+
+
+.Definition:
+  title: Párování
+
+  TODO
+
+
+.Definition:
+  title: Systém různých reprezentantů
+
+  TODO
+
+
+.Definition:
+  title: Hallova věta
+
+  TODO
+
+
+.Procedure:
+  title: Blossom algorithm
+
+  TODO
