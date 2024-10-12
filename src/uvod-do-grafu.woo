@@ -118,23 +118,35 @@ definici "souseda".notion.
 
     .item:
 
-      $u$ a $v$ jsou "koncové vrcholy".notion hrany $e$,
+      $u$ a $v$ jsou "koncové vrcholy".notion.1 hrany $e$,
+        1:
+          index: vrchol!koncové
 
     .item:
 
-      $u$ je "sousedem".notion $v$ v $G$ (a naopak, tedy $v$ je sousedem $u$),
+      $u$ je "sousedem".notion.1 $v$ v $G$ (a naopak, tedy $v$ je sousedem $u$),
+        1:
+          index: vrchol!soused
 
     .item:
 
-      $u$ i $v$ jsou "incidentní".notion s hranou $e$
+      $u$ i $v$ jsou "incidentní".notion.1 s hranou $e$
+        1:
+          index: vrchol!incidentní
 
   Množinou $N(v)$ značíme všechny sousedy vrcholu $v$ a nazýváme jí
-  "otevřeným okolím".notion vrcholu $v$. Množinu $N[v]$ definujeme jako
-  $N[v] = N(v) \cup \{v\}$ a říkáme jí "uzavřené okolí".quoted vrcholu $v$.
+  "otevřeným okolím".notion.1 vrcholu $v$. Množinu $N[v]$ definujeme jako
+  $N[v] = N(v) \cup \{v\}$ a říkáme jí "uzavřené okolí".notion.2 vrcholu $v$.
+    1:
+      index: okolí!otevřené
+    2:
+      index: okolí!uzavřené
 
 
 .Definition:
   title: Stupeň vrcholu
+  index: vrchol!stupeň
+  label: def-stupen-vrchol
 
   Stupeň vrcholu $v \in V(G)$ je počet jeho sousedů a značíme ho $\deg_G(v)$. Je-li
   z kontextu jasné, o jakém grafu mluvíme, píšeme jednodušeji $\deg(v)$.
@@ -148,6 +160,8 @@ definici "souseda".notion.
 
 .Definition:
   title: Izolovaný vrchol
+  index: vrchol!izolovany
+  label: def-izolovany-vrchol
 
   Vrchol $v$ nazveme izolovaný, pokud $\deg(v) = 0$.
 
@@ -204,8 +218,14 @@ a jednoprvková množina $(v)$ znamenají něco úplně jiného".footnote.
   title: Předchůdce, následník a smyčka.
 
   Mějme hranu $(x,y) \in E(G)$ v orientovaném grafu $G$. O vrcholu $x$ řekneme, že
-  to je předchůdce $y$ a opačně o vrcholu $y$ řekneme, že to je následník $x$.
-  Pokud navíc $x = y$, pak o takové hraně mluvíme jako o tzv. smyčce.
+  to je "předchůdce".notion.1 $y$ a opačně o vrcholu $y$ řekneme, že to je "následník".notion.2 $x$.
+  Pokud navíc $x = y$, pak o takové hraně mluvíme jako o tzv. "smyčce".notion.3.
+    1:
+      index: vrchol!předchůdce
+    2:
+      index: vrchol!následník
+    3:
+      index: hrana!smyčka
 
 
 .Remark:
@@ -229,6 +249,8 @@ ulice průjezdné obousměrně a nyní se starosta rozhodl, že každá ulice bu
 
 .Definition:
   title: Symetrizace grafu
+  index: graf!symetrizace
+  label: def-symetrizace-graf
 
   Pro orientovaný graf $G = (V, E)$ definujeme neorientovaný graf $\textrm{sym}(G)$, který nazveme
   "symetrizací grafu $G$".notion, a definujeme ho jako
@@ -237,6 +259,8 @@ ulice průjezdné obousměrně a nyní se starosta rozhodl, že každá ulice bu
 
 .Definition:
   title: Orientace grafu
+  label: def-orientace-graf
+  index: graf!orientace
 
   Pro neorientovaný graf $G = (V, E)$ a funkci $f: E \to V \times V$ přiřazující každé hraně její orientaci
   definujeme orientovaný graf $H$, který nazveme "orientací grafu $G$".notion, a definujeme ho jako
@@ -447,6 +471,11 @@ lze namodelovat úplným grafem.
 
 .Definition:
   title: Úplný graf (Klika)
+  english: Clique
+  label: def-uplny-graf
+  index:
+    - graf!uplný
+    - graf!klika
 
   Úplný graf na $n \geq 1$ vrcholech $K_n$ je graf $(V, \binom{V}{2})$, kde $|V| = n$
   a $\binom{V}{2} = \{\{x,y\} \mid x, y \in V \colon x \neq y \}$.
@@ -465,6 +494,8 @@ a je-li partnerka vyzvána, nesmí odmítnout).
 
 .Definition:
   title: Úplný bipartitní graf
+  label: def-uplny-bibartitni-graf
+  index: graf!úplný bipartitní
 
   Úplný bipartitní graf $K_{n_1,n_2}$ pro $n_1,n_2 \geq 1$ tvořený dvěma
   partitami (disjunktními množinami) $A$, resp. $B$, o $n_1$, resp. $n_2$, vrcholech,
@@ -477,6 +508,8 @@ grafovou třídu.
 
 .Definition:
   title: Cesta
+  label: def-graf-cesta
+  index: graf!cesta
 
   Cesta $P_m$ (s $m$ hranami) pro $m \geq 0$ je graf
   $(\{0,\dots,m\}, \{\{i, i + 1\} \mid i \in \{0,\dots, m - 1\}\})$.
@@ -484,6 +517,8 @@ grafovou třídu.
 
 .Definition:
   title: Kružnice
+  label: def-kruznice-graf
+  index: graf!kružnice
 
   Kružnice $C_n$ (s $n$ hranami) je graf
   $(\{1,\dots,n\}, \{\{i, i + 1\} \mid i \in \{1,\dots, n - 1\}\} \cup \{\{n, 1\}\})$.
@@ -498,7 +533,9 @@ původním grafu neměli. To je přesně to, co dělá doplněk!
 
 
 .Definition:
-  title: Doplněk
+  title: Doplněk grafu
+  label: def-doplnek-graf
+  index: graf!doplňek
 
   Doplněk $\overline G$ grafu $G = (V, E)$ je graf $\overline G = (V, \binom{V}{2} \setminus E)$.
 
@@ -531,23 +568,31 @@ touto kapitolou.
 
     .item:
 
-      Graf $H$ nazveme podgrafem grafu $G$, pokud $V(H) \subseteq V(G)$
+      Graf $H$ nazveme "podgrafem".notion.1 grafu $G$, pokud $V(H) \subseteq V(G)$
       a $E(H) \subseteq E(G) \cap \binom{V(H)}{2}$.
+        1:
+          index: graf!podgraf
 
     .item:
 
-      Graf $H$ nazveme indukovaný podgrafem grafu $G$, pokud $V(H) \subseteq V(G)$
+      Graf $H$ nazveme "indukovaným podgrafem".notion.1 grafu $G$, pokud $V(H) \subseteq V(G)$
       a $E(H) = E(G) \cap \binom{V(H)}{2}$
+        1:
+          index: graf!indukovaný podgraf
 
 
 .Definition:
   title: Bipartitní graf
+  label: def-bipartitni-graf
+  index: graf!bipartitní
   
   Graf nazveme bipartitní, je-li indukovaným podgrafem úplného bipartitního grafu.
 
 
 .Definition:
   title: Souvislý graf
+  label: def-souvisly-graf
+  index: graf!souvislý
 
   O grafu $G$ řekneme, že je souvislý, pokud pro každé jeho dva vrcholy $u,v \in V(G)$
   existuje nějaká $u-v$ cesta. V jiném případě řekneme, že je $G$ nesouvislý.
@@ -555,6 +600,8 @@ touto kapitolou.
 
 .Definition:
   title: Souvislá komponenta
+  index: graf!souvislá komponenta
+  label: def-souvisla-komponenta
 
   "Indukovaný".notion podgraf $H$ grafu $G$ je souvislou komponentou, pokud
 
@@ -577,14 +624,28 @@ touto kapitolou.
 
 .Definition:
   title: Silná a slabá souvislost
+  label: def-souvislost
+  index:
+    - souvislost
+    - graf!souvislost
 
-  O orientovaném grafu $G$ řekneme, že $G$ je "slabě souvislý".notion, pokud jeho symetrizace
-  je souvislá. Řekneme, že $G$ je "silně souvislý".notion, pokud pro každou dvojici vrcholů
+  O orientovaném grafu $G$ řekneme, že $G$ je "slabě souvislý".notion.1, pokud jeho symetrizace
+  je souvislá. Řekneme, že $G$ je "silně souvislý".notion.2, pokud pro každou dvojici vrcholů
   $x,y \in V(G)$ platí, že existuje $x-y$ cesta i $y-x$ cesta.
+    1:
+      index:
+        - souvislost!slabá
+        - graf!slabá souvislost
+    2:
+      index:
+        - souvislost!silná
+        - graf!silná souvislost
 
 
 .Definition:
   title: Isomorfismus
+  label: def-isomorfismus
+  index: isomorfismus
 
   Mějme grafy $G$ a $H$. O funkci $f : V(G) \to V(H)$ řekneme, že to je "isomorfismus".notion
   z grafu $G$ do $H$, pokud $f$ je bijekce a navíc pro každou dvojici vrcholů
@@ -607,18 +668,24 @@ touto kapitolou.
 
 .Definition:
   title: Strom
+  index: graf!strom
+  label: def-strom-graf
 
   Graf $G$ nazveme stromem, pokud je souvislý a neobsahuje žádnou kružnici.
 
 
 .Definition:
   title: Les
+  index: graf!les
+  label: def-les-graf
 
   Graf $G$ nazveme "lesem".notion, je-li disjunktním sjednocením stromů.
 
 
 .Definition:
   title: List
+  index: graf!list
+  label: def-list-graf
 
   Vrchol $v$ nazveme "listem".notion, pokud $\deg(v) = 1$.
 
@@ -663,6 +730,8 @@ se již s následujícími pojmy někdy setkal. My je uvedeme pro ty, kteří se
 
 .Definition:
   title: Matice sousednosti
+  index: graf!matice sousednosti
+  label: def-matice-sousednosti-graf
 
   Mějme graf $G = (V, E)$ a nechť $V = \{v_1,\dots,v_n\}$. Matice sousednosti
   $A(G)$ grafu $G$ je tabulka"matematicky správněji matice".footnote velikosti
@@ -676,6 +745,8 @@ se již s následujícími pojmy někdy setkal. My je uvedeme pro ty, kteří se
 
 .Definition:
   title: Seznam sousedů
+  index: graf!seznam sousedů
+  label: def-seznam-sousedu-graf
 
   Mějme graf $G = (V, E)$. Nechť $V = \{v_1,\dots,v_n\}$. Graf uložíme jako seznam
   $S \colon \{1,\dots,n\} \to \mathcal{P}(\{1,\dots,n\})$ a definujeme ho jako $S(i) = N(v_i)$.
@@ -705,6 +776,10 @@ se již s následujícími pojmy někdy setkal. My je uvedeme pro ty, kteří se
 
 .Definition:
   title: Kostra grafu
+  index:
+    - graf!kostra
+    - kostra
+  label: def-kostra-graf
 
   Mějme souvislý graf $G$. Kostrou grafu $G$ máme na mysli jeho podgraf $H$ takový,
   že $V(H) = V(G)$ a $H$ je strom.
@@ -717,19 +792,25 @@ se již s následujícími pojmy někdy setkal. My je uvedeme pro ty, kteří se
 
 .Definition:
   title: Minimální kostra
+  label: def-minimalni-kostra-graf
+  index:
+    - graf!minimální kostra
+    - kostra!minimální
 
   TODO
 
 
 .Definition:
   title: Řezy v grafu
+  label: def-rez-graf
+  index: graf!řez
 
   TODO
 
 
 .Procedure:
   title: Borůvkův algoritmus
-  label: algo-x
+  label: algo-boruvka
 
   TODO
 
