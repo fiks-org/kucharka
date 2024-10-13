@@ -472,7 +472,7 @@ svědčícího keře.
   language: cpp
 
   class DSU {
-    vector<Element> parent; // nafukovací pole, které pro každý prvek drží jeho otce v množině
+    map<Element, Element> parent; // tabulka, kde hodnotou je otec klíče
   public:
     void makeSet(Element v);
     void unionSets(Element v, Element u);
@@ -484,7 +484,7 @@ svědčícího keře.
   label: subsec-dsu-makeset
 
 Operace "makeSet".code vytvoří novou množinu o jediném prvku předaným argumentem
-a tento prvek vloží jako reprezentanta do nafukovacího pole "parent".code.
+a tento prvek vloží jako reprezentanta do tabulky "parent".code.
 
 
 !codeblock:
