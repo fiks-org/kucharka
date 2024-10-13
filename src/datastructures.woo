@@ -400,9 +400,12 @@ TODO složitost + nevýhoda nevyváženého
 %
 % priority queue
 
+.Section Disjoint Set Union
+  label: sec-dsu
+
 
 .Section Pokročilé datové struktury
   label: sec-advanced-datastructures
 
 
-Segtree, Fenwic tree, Trie, Union-Find, 
+Segtree, Fenwic tree, Trie
