@@ -404,6 +404,44 @@ TODO složitost + nevýhoda nevyváženého
   label: sec-dsu
 
 
+Strukturu Disjoint Set Union (zkráceně DSU) si představíme v následujícím problému:
+
+
+.Question:
+
+  V pražské ZOO najdeme velké množství zvířat. Od papoušků, přes pakoně, až po exotické lední
+  medvědy či kiwi. Všechna zvířata jsou zavřená v pavilonech, kde se na ně můžou
+  dívat zvědavé děti s rodičemi. Vedení pražské ZOO chce turistům usnadnit pohyb v zoo, proto
+  semtam přistaví mezi některými pavilony cestu (po které se lze pohybovat tam i zpět).
+
+
+  Přestože zvířata vypadají přes den celkem poklidně, jakmile se odpoledne zavřou vrata
+  za poslední rodinou, vypukne chaos. Zvířátka jsou totiž celkem chytrá, takže si dokážou
+  své pavilony zevnitř samozřejmě otevřít.
+
+
+  Večer zvířáta pořádají turnaje v tom, kdo je nejsilnější.
+  Turnajů se může za jeden konat víc, protože ne všechna zvířata můžou mezi sebou soutěžit.
+  Řekneme, že zvířata z pavilonů X a Y mezi sebou můžou soutěžit, pokud pavilony X a Y jsou
+  spojeny cestou, nebo pokud existuje pavilon Z takový, že pavilony X a Z jsou spojeny
+  cestou a zvířata Z a Y mezi sebou můžou
+  soutěžit"všimněte si, že toto je rekurzivní definice".footnote. Pro každý turnaj nás zajímá
+  jeho výherce, tedy nejsilnější zvíře mezi zvířaty, které v daném turnaji mohli soutěžit.
+
+
+  Vaším úkolem je vymyslet datovou strukturu, která bude podporovat následující operace:
+
+
+  !codeblock:
+    language: cpp
+
+    struct VašeStruktura {
+      void přidejCestu(Pavilon X, Pavilon Y); // vytvoří cestu mezi pavilony X a Y
+      void přidejPavilon(Pavilon P, Zvíře Z); // vytvoří nový pavilon P a přidá do něj zvíře Z
+      void vypišVýherce(); // vypíše výherce ze všech turnajů
+    };
+
+
 .Section Pokročilé datové struktury
   label: sec-advanced-datastructures
 
