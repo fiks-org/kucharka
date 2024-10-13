@@ -516,10 +516,10 @@ vyskytuje.
 .Subsection Operace unionSets
   label: subsec-dsu-unionsets
 
-Operace "unionSets".code najde pro zadané prvky reprezentanty množin, ve kterých se
-nacházejí. Pokud se reprezentanti shodují, pak leží oba prvky ve stejné množině, a tedy
-není co sjednocovat. Jinak jednomu z reprezentantů nastaví v poli "parent".notion
-jako předchůdce druhého z reprezentantů.
+Operace "unionSets".code najde pro zadané prvky reprezentanty množin, ve kterých se respektive
+nacházejí. Pokud oba prvky mají stejného reprezentanta, pak leží ve stejné množině, a tedy
+není co sjednocovat. Jinak jednomu z reprezentantů nastaví v poli "parent".code
+jako otce druhého z reprezentantů.
 
 
 !codeblock:
