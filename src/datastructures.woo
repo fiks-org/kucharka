@@ -475,8 +475,8 @@ který ukazuje sám na sebe. Hloubku keře $K$ označíme $h(K)$.
     map<Element, Element> parent; // tabulka, kde hodnotou je otec klíče
   public:
     void makeSet(Element v);
-    void unionSets(Element v, Element u);
-    Element findSet(Element v);
+    void simpleUnionSets(Element v, Element u);
+    Element simpleFindSet(Element v);
   };
 
 
@@ -496,16 +496,16 @@ a tento prvek vloží jako reprezentanta do tabulky "parent".code.
 
 
 .Subsection Operace findSet
-  label: subsec-dsu-findset
+  label: subsec-dsu-simple-findset
 
-Operace "findSet".code pro zadaný prvek najde reprezentanta množiny, ve které se prvek
+Operace "simpleFindSet".code pro zadaný prvek najde reprezentanta množiny, ve které se prvek
 vyskytuje.
 
 
 !codeblock:
   language: cpp
 
-  Element findSet(Element v) {
+  Element simpleFindSet(Element v) {
     while (parent[v] != v) {
       v = parent[v];
     }
@@ -514,9 +514,9 @@ vyskytuje.
 
 
 .Subsection Operace unionSets
-  label: subsec-dsu-unionsets
+  label: subsec-dsu-simple-unionsets
 
-Operace "unionSets".code najde pro zadané prvky reprezentanty množin, ve kterých se respektive
+Operace "simpleUnionSets".code najde pro zadané prvky reprezentanty množin, ve kterých se respektive
 nacházejí. Pokud oba prvky mají stejného reprezentanta, pak leží ve stejné množině, a tedy
 není co sjednocovat. Jinak jednomu z reprezentantů nastaví v poli "parent".code
 jako otce druhého z reprezentantů.
@@ -525,7 +525,7 @@ jako otce druhého z reprezentantů.
 !codeblock:
   language: cpp
 
-  void unionSets(Element v, Element u) {
+  void simpleUnionSets(Element v, Element u) {
     Element represent_v = findSet(v);
     Element represent_u = findSet(u);
     if (represent_v == represent_u) return;
