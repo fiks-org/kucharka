@@ -404,7 +404,7 @@ TODO složitost + nevýhoda nevyváženého
   label: sec-dsu
 
 
-Strukturu Disjoint Set Union (zkráceně DSU) si představíme v následujícím problému:
+Strukturu Disjoint Set Union (zkráceně "DSU".notion) si představíme v následujícím problému:
 
 
 .Question:
