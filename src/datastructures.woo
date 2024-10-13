@@ -462,16 +462,17 @@ Strukturu Disjoint Set Union (zkráceně "DSU".notion) si představíme v násle
 .Subsection Reprezentace DSU
   label: subsec-reprezentace-dsu
 
-Každou množinu si reprezentujeme jako tzv. "keř".notion, což je stromová struktura, kde
-každý prvek ukazuje na další prvek dané množiny, až na "reprezentanta množiny".notion,
-který na nikoho dalšího neukazuje. Toto zohledníme v nafukovacím poli "parent".code.
+Každou množinu si reprezentujeme jako tzv. "keř".notion, což je strom orientovaný směrem
+do kořene. Každý prvek v keři odkazuje na svého (jediného) otce, až na vrchol keře,
+který ukazuje sám na sebe. "Reprezentantem množiny".notion pak chápeme prvek ve vrcholu
+svědčícího keře.
 
 
 !codeblock:
   language: cpp
 
   class DSU {
-    vector<Element> parent; // nafukovací pole, které pro každý prvek drží jeho předchůdce v množině
+    vector<Element> parent; // nafukovací pole, které pro každý prvek drží jeho otce v množině
   public:
     void makeSet(Element v);
     void unionSets(Element v, Element u);
