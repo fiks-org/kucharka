@@ -464,8 +464,8 @@ Strukturu Disjoint Set Union (zkráceně "DSU".notion) si představíme v násle
 
 Každou množinu si reprezentujeme jako tzv. "keř".notion, což je strom orientovaný směrem
 do kořene. Každý prvek v keři odkazuje na svého (jediného) otce, až na vrchol keře,
-který ukazuje sám na sebe. "Reprezentantem množiny".notion pak chápeme prvek ve vrcholu
-svědčícího keře.
+který ukazuje sám na sebe. Hloubku keře $K$ označíme $h(K)$.
+"Reprezentantem množiny".notion pak chápeme prvek ve vrcholu svědčícího keře.
 
 
 !codeblock:
