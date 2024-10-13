@@ -442,6 +442,74 @@ Strukturu Disjoint Set Union (zkráceně DSU) si představíme v následujícím
     };
 
 
+.Definition:
+  title: DSU
+  label: def-dsu
+  index: dsu
+
+  DSU je datová struktura s následujícím rozhraním:
+
+
+  !codeblock:
+    language: cpp
+
+    class DSU {
+      vector<Element> parent; // nafukovací pole prvků DSU s odkazy na předky
+    public:
+      void makeSet(Element v); // vytvoří novou množinu s jediním prvkem `v`
+      void unionSets(Element v, Element u); // sjednotí množiny obsahující prvek `v`, resp. prvek `u`
+      Element findSet(Element v); // najde reprezenta množiny, do které prvek `v` patří
+    };
+
+
+  DSU každou množinu reprezentuje jako tzv. "keř".notion, což je stromová struktura, kde
+  každý prvek ukazuje na další prvek dané množiny, až na "reprezentanta množiny".notion,
+  který na nikoho dalšího neukazuje.
+
+
+  Operace "makeSet".notion vytvoří novou množinu o jediném prvku předaným argumentem
+  a tento prvek vloží jako reprezentanta do nafukovacího pole "parent".notion.
+
+
+  !codeblock:
+    language: cpp
+
+    void DSU::makeSet(Element v) {
+      parent[v] = v;
+    }
+
+  
+  Operace "findSet".notion pro zadaný prvek najde reprezentanta množiny, ve které se zrovna
+  vyskytuje.
+
+
+  !codeblock:
+    language: cpp
+
+    Element findSet(Element v) {
+      while (parent[v] != v) {
+        v = parent[v];
+      }
+      return v;
+    }
+
+  Operace "unionSets".notion najde pro zadané prvky reprezentanty množin, ve kterých se
+  nacházejí. Pokud se reprezentanti shodují, pak leží oba prvky ve stejné množině, a tedy
+  není co sjednocovat. Jinak jednomu z reprezentantů nastaví v poli "parent".notion
+  jako předchůdce druhého z reprezentantů.
+
+
+  !codeblock:
+    language: cpp
+
+    void unionSets(Element v, Element u) {
+      Element represent_v = findSet(v);
+      Element represent_u = findSet(u);
+      if (represent_v == represent_u) return;
+      parent[represent_v] = represent_u;
+    }
+
+
 .Section Pokročilé datové struktury
   label: sec-advanced-datastructures
 
