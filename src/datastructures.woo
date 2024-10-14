@@ -540,6 +540,22 @@ jako otce druhého z reprezentantů.
   Po každé provedené operaci pro keř $K$ platí, že $h(K) = \Theta(|K|)$.
 
 
+.Proof:
+
+  Operace "simpleFindSet".code DSU neupravuje, vztah hloubky tedy bude zachován.
+  "makeSet".code vytvoří nový keř, pro který tvrzení platí.
+
+
+  Pro důkaz dolního odhadu"tedy že $h(K) = \Omega(|K|)$".footnote uvažme $|K|$ jednoprvkových
+  keřů, které vznikly postupným voláním operace "makeSet".code. Označme první keř $K$ a postupně
+  k němu přidávejme další keře voláním "simpleUnionSets(K,_)".code. Vrchol keře $K$ se postupně
+  zapojí za všechny jednoprvkové vrcholy ostatních keřů, a tedy $h(K) = |K| = \Omega(|K|)$.
+
+
+  Horní odhad je triviální, neboť keř dosahuje největší hloubky právě tehdy, když je cestou"rozmyslete!".footnote,
+  a tedy $h(K) = \lanO(|K|)$.
+
+
 .Theorem:
   title: O hloubce DSU s operací "unionSets".code
   label: lemma-dsu-depth
