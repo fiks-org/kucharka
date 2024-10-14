@@ -537,14 +537,14 @@ jako otce druhého z reprezentantů.
   title: O hloubce DSU s operací "simpleUnionSets".code
   label: lemma-dsu-simple-depth
 
-  Po každé provedené operaci platí, že má-li keř $K$ v DSU $n$ prvků, pak $h(K) \in O(n)$.
+  Po každé provedené operaci pro keř $K$ platí, že $h(K) = \Theta(|K|)$.
 
 
 .Theorem:
   title: O hloubce DSU s operací "unionSets".code
   label: lemma-dsu-depth
 
-  Po každé provedené operaci platí, že má-li keř $K$ v DSU $n$ prvků, pak $h(K) \in O(\log(n))$.
+  Po každé provedené operaci platí, že má-li keř $K$ v DSU $n$ prvků, pak $h(K) = O(\log(n))$.
 
 
 .Theorem:
@@ -552,7 +552,7 @@ jako otce druhého z reprezentantů.
   label: lemma-dsu-path-compression-depth
 
   Po každé provedené operaci platí, že má-li keř $K$ v DSU $n$ prvkú, pak v průměrném případě
-  $h(K) \in O(\alpha(n))$, kde $\alpha(n)$ je Ackermannova funkce.
+  $h(K) = O(\alpha(n))$, kde $\alpha(n)$ je Ackermannova funkce.
 
 
 .Section Pokročilé datové struktury
