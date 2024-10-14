@@ -358,7 +358,7 @@ TODO složitost + nevýhoda nevyváženého
   Tyto dvě operace nám pomohou zbavit se nevyváženosti. V každém vrcholu je hodnota $\delta$ určující rozdíl hloubky levého
   a pravého podstromu. Pokud je $|\delta| < 2$ pak vrchol splňuje podmínku hloubkové vyváženosti. Pokud $|\delta| = 2$
   "všiměte si, že jiná situace nemůže nastat".footnote, tak je potřeba strom vyvážit. Nejjednodušší situace je, když je "přetížen".quoted
-  doleva nebo doprava, tedy že $\sign(\delta(x)) = \sign(\delta(s))$, kde $s$ je kořen hlubšího podstromu.
+  doleva nebo doprava, tedy že $\textrm{sign}(\delta(x)) = \textrm{sign}(\delta(s))$, kde $s$ je kořen hlubšího podstromu.
   Pak se provede pravá rotace, pokud je levý podstrom hlubší, levá v opačném případě.
 
 
@@ -475,66 +475,69 @@ který ukazuje sám na sebe. Hloubku keře $K$ označíme $h(K)$ a počet prvků
     map<Element, Element> parent; // tabulka, kde hodnotou je otec klíče
   public:
     void makeSet(Element v);
-    void simpleUnionSets(Element v, Element u);
-    Element simpleFindSet(Element v);
+    void unionSets(Element v, Element u);
+    Element findSet(Element v);
   };
 
 
-.Subsection Operace "makeSet".code
-  label: subsec-dsu-makeset
+.Procedure:
+  title: Implementace operace "makeSet".code
+  label: algo-dsu-makeset
 
-Operace "makeSet".code vytvoří novou množinu o jediném prvku předaným argumentem
-a tento prvek vloží jako reprezentanta do tabulky "parent".code.
-
-
-!codeblock:
-  language: cpp
-
-  void DSU::makeSet(Element v) {
-    parent[v] = v;
-  }
+  Operace "makeSet".code vytvoří novou množinu o jediném prvku předaným argumentem
+  a tento prvek vloží jako reprezentanta do tabulky "parent".code.
 
 
-.Subsection Operace "simpleFindSet".code
-  label: subsec-dsu-simple-findset
+  !codeblock:
+    language: cpp
 
-Operace "simpleFindSet".code pro zadaný prvek najde reprezentanta množiny, ve které se prvek
-vyskytuje.
-
-
-!codeblock:
-  language: cpp
-
-  Element simpleFindSet(Element v) {
-    while (parent[v] != v) {
-      v = parent[v];
+    void DSU::makeSet(Element v) {
+      parent[v] = v;
     }
-    return v;
-  }
 
 
-.Subsection Operace "simpleUnionSets".code
-  label: subsec-dsu-simple-unionsets
+.Procedure:
+  title: Implementace operace "findSet".code
+  label: algo-dsu-simple-findset
 
-Operace "simpleUnionSets".code najde pro zadané prvky reprezentanty množin, ve kterých se respektive
-nacházejí. Pokud oba prvky mají stejného reprezentanta, pak leží ve stejné množině, a tedy
-není co sjednocovat. Jinak jednomu z reprezentantů nastaví v poli "parent".code
-jako otce druhého z reprezentantů.
+  Operace "findSet".code pro zadaný prvek najde reprezentanta množiny, ve které se prvek
+  vyskytuje.
 
 
-!codeblock:
-  language: cpp
+  !codeblock:
+    language: cpp
 
-  void simpleUnionSets(Element v, Element u) {
-    Element represent_v = findSet(v);
-    Element represent_u = findSet(u);
-    if (represent_v == represent_u) return;
-    parent[represent_v] = represent_u;
-  }
+    Element DSU::findSet(Element v) {
+      while (parent[v] != v) {
+        v = parent[v];
+      }
+      return v;
+    }
+
+
+.Procedure:
+  title: Implementace operace "unionSets".code
+  label: algo-dsu-simple-unionsets
+
+  Operace "unionSets".code najde pro zadané prvky reprezentanty množin, ve kterých se respektive
+  nacházejí. Pokud oba prvky mají stejného reprezentanta, pak leží ve stejné množině, a tedy
+  není co sjednocovat. Jinak jednomu z reprezentantů nastaví v poli "parent".code
+  jako otce druhého z reprezentantů.
+
+
+  !codeblock:
+    language: cpp
+
+    void DSU::unionSets(Element v, Element u) {
+      Element represent_v = findSet(v);
+      Element represent_u = findSet(u);
+      if (represent_v == represent_u) return;
+      parent[represent_v] = represent_u;
+    }
 
 
 .Lemma:
-  title: O hloubce DSU s operací "simpleUnionSets".code
+  title: O hloubce DSU
   label: lemma-dsu-simple-depth
 
   Po každé provedené operaci pro keř $K$ platí, že $h(K) = \Theta(|K|)$.
@@ -542,13 +545,13 @@ jako otce druhého z reprezentantů.
 
 .Proof:
 
-  Operace "simpleFindSet".code DSU neupravuje, vztah hloubky tedy bude zachován.
+  Operace "findSet".code DSU neupravuje, vztah hloubky tedy bude zachován.
   "makeSet".code vytvoří nový keř, pro který tvrzení platí.
 
 
   Pro důkaz dolního odhadu"tedy že $h(K) = \Omega(|K|)$".footnote uvažme $|K|$ jednoprvkových
   keřů, které vznikly postupným voláním operace "makeSet".code. Označme první keř $K$ a postupně
-  k němu přidávejme další keře voláním "simpleUnionSets(K,_)".code. Vrchol keře $K$ se postupně
+  k němu přidávejme další keře voláním "unionSets(K,_)".code. Vrchol keře $K$ se postupně
   zapojí za všechny jednoprvkové vrcholy ostatních keřů, a tedy $h(K) = |K| = \Omega(|K|)$.
 
 
@@ -556,80 +559,95 @@ jako otce druhého z reprezentantů.
   a tedy $h(K) = \lanO(|K|)$.
 
 
-.Subsection Operace "unionSets".code
-  label: subsec-dsu-unionsets
+.Procedure:
+  title: Efektivní implementace operace "unionSets".code
+  label: algo-dsu-unionsets
 
-Lineární hloubka keře vůči počtu prvků není zrovna nejlepší. Problémem je
-operace "simpleUnionSets".code"jak z předchozího důkazu víme".footnote. Konkrétně, že můžeme zapojovat keře s větší hloubkou za keře s menší hloubkou.
-Může nás napadnout, že když budeme chtít spojit dvě množiny, porovnáme nejrpve hloubku obou keřů
-a poté zapojíme ten s menší hloubkou za ten s větší.
+  Lineární hloubka keře vůči počtu prvků není zrovna nejlepší. Problémem je
+  operace "unionSets".code"jak z předchozího důkazu víme".footnote. Konkrétně, že můžeme zapojovat keře s větší hloubkou za keře s menší hloubkou.
+  Může nás napadnout, že když budeme chtít spojit dvě množiny, porovnáme nejrpve hloubku obou keřů
+  a poté zapojíme ten s menší hloubkou za ten s větší.
 
 
-!codeblock:
-  language: cpp
+  !codeblock:
+    language: cpp
 
-  void unionSets(Element v, Element u) {
-    Element represent_v = findSet(v);
-    Element represent_u = findSet(u);
-    if (represent_v == represent_u) return;
-    if (rank(u) == rank(v)) {
-      parent[represent_v] = represent_u; // když jsou hloubky stejné, zapoj vrcholy keřů arbitrárně
+    void DSu::unionSets(Element v, Element u) {
+      Element represent_v = findSet(v);
+      Element represent_u = findSet(u);
+      if (represent_v == represent_u) return;
+      if (rank(u) == rank(v)) {
+        parent[represent_v] = represent_u; // když jsou hloubky stejné, zapoj vrcholy keřů arbitrárně
+      }
+      if (rank(u) < rank(v)) swap(u, v);
+      parent[represent_v] = represent_u;
+      rank[represent_u] = rank[reprsent_u] + 1;
     }
-    if (rank(u) < rank(v)) swap(u, v);
-    parent[represent_v] = represent_u;
-    rank[represent_u] = rank[reprsent_u] + 1;
-  }
 
 
 Jak moc se hloubka keře zlepší, když si toto v kódu ohlídáme? Ukáže se, že značně.
 
 
 .Theorem:
-  title: O hloubce DSU s operací "unionSets".code
-  label: lemma-dsu-depth
+  title: O hloubce DSU s efektivní implementací operací "unionSets".code
+  label: theorem-dsu-depth-unionsets
 
   Po každé provedené operaci platí, že má-li keř $K$ v DSU $n$ prvků, pak $h(K) = O(\log(n))$.
 
 
-.Subsection Operace "findSet".code
+.Proof:
+
+  TODO
+
+
+.Procedure:
+  title: Efektivní implementace operace "findSet".code
   label: subsec-dsu-findset
 
-Další optimalizací může být lehká uprava operace "simpleFindSet".code. Vždy, když hledáme reprezentanta
-množiny, můžeme vzít všechny prvky, které se nacházejí na cestě mezi reprezentantem a zadaným prvkem,
-tyto prvky odpojit a zapojit je přímo pod vrchol keře. Této optimalizaci se říká "path compression".notion.
+  Další optimalizací může být lehká uprava operace "findSet".code. Vždy, když hledáme reprezentanta
+  procházíme všechny prvky na cestě mezi zadaným prvkem a vrcholem keře. Tyto prvky můžeme postupně přepojit
+  všechny za vrchol keře, a tím teoreticky snížit hloubku keře. Této optimalizaci se říká "path compression".notion
+  a protože hloubku nikdy nezvětšíme, platí předchozí věta i s touto operací.
 
 
-!codeblock:
-  language: cpp
+  !codeblock:
+    language: cpp
 
-  Element findSet(Element v) {
-    if (v == parent[v]) return v;
-    return parent[v] = findSet(parent[v]); // poslední volání je stejná operace => tail rekurze
-  }
+    Element DSU::findSet(Element v) {
+      if (v == parent[v]) return v;
+      return parent[v] = findSet(parent[v]); // poslední volání je stejná operace => tail rekurze
+    }
 
 
-.Remark:
+.Corollary:
+  title: O hloubce DSU s efektivní implementací operací "unionSets".code a "findSet".code
+  label: corollary-dsu-depth-unionsets-and-findset
 
-  Přestožee rekurzivní funkce jsou často paměťově neefektivní kvůli velkému
-  počtu stackframů, tento případ se neaplikuje na operaci "findSet".code. Důvodem je to,
-  že rekurzivní call je poslendím voláním této funkce. Tomuto způsobu rekurze se říká "tail rekurze".notion"dále máme např. lineární nebo značně neefektivní stromovou rekurzi".footnote
-  a kompilátor nad ní může provést značně podstatnou optimalizaci, protože si nemusí pamatovat stackframe,
-  ze kterého byl rekurznivní call proveden. Více se můžete dočíst například "zde"@1.
-    1:
-      link: 'https://en.wikipedia.org/wiki/Tail_call'
+  Po každé provedé operaci platí, že má-li keř $K$ v DSU $n$ prvků, pak $h(K) = O(\log(n))$.
 
 
 .Theorem:
-  title: O průměrné hloubce DSU s operací "unionSets".code a "findSet".code
+  title: O průměrné hloubce DSU s efektivní implementací operací "unionSets".code a "findSet".code
   label: lemma-dsu-path-compression-depth
 
-  Po každé provedené operaci platí, že má-li keř $K$ v DSU $n$ prvkú, pak v průměrném případě
+  Po každé provedené operaci platí, že má-li keř $K$ v DSU $n$ prvků, pak v průměrném případě
   $h(K) = O(\alpha(n))$, kde $\alpha(n)$ je Ackermannova funkce.
 
 
 .Proof:
 
   Vynecháváme.
+
+
+.Remark:
+
+  Přestože rekurzivní funkce jsou často paměťově neefektivní kvůli velkému
+  počtu stackframů, tento případ se neaplikuje na operaci "findSet".code. Důvodem je to,
+  že rekurzivní call je poslendím voláním této funkce. Tomuto způsobu rekurze se říká "tail rekurze".notion"dále máme např. lineární nebo značně neefektivní stromovou rekurzi".footnote
+  a kompilátor nad ní může provést značně podstatnou optimalizaci, protože si nemusí pamatovat stackframe,
+  ze kterého byl rekurznivní call proveden. Více se můžete dočíst například "zde"@1.
+    1:
+      link: 'https://en.wikipedia.org/wiki/Tail_call'
 
 
 .Section Pokročilé datové struktury
