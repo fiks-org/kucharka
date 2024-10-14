@@ -627,6 +627,11 @@ tyto prvky odpojit a zapojit je přímo pod vrchol keře. Této optimalizaci se 
   $h(K) = O(\alpha(n))$, kde $\alpha(n)$ je Ackermannova funkce.
 
 
+.Proof:
+
+  Vynecháváme.
+
+
 .Section Pokročilé datové struktury
   label: sec-advanced-datastructures
 
