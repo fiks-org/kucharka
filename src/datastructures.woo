@@ -535,18 +535,21 @@ jako otce druhého z reprezentantů.
 
 .Lemma:
   title: O hloubce DSU s operací "simpleUnionSets".code
+  label: lemma-dsu-simple-depth
 
   Po každé provedené operaci platí, že má-li keř $K$ v DSU $n$ prvků, pak $h(K) \in O(n)$.
 
 
 .Theorem:
   title: O hloubce DSU s operací "unionSets".code
+  label: lemma-dsu-depth
 
   Po každé provedené operaci platí, že má-li keř $K$ v DSU $n$ prvků, pak $h(K) \in O(\log(n))$.
 
 
 .Theorem:
   title: O průměrné hloubce DSU s operací "unionSets".code a "findSet".code
+  label: lemma-dsu-path-compression-depth
 
   Po každé provedené operaci platí, že má-li keř $K$ v DSU $n$ prvkú, pak v průměrném případě
   $h(K) \in O(\alpha(n))$, kde $\alpha(n)$ je Ackermannova funkce.
