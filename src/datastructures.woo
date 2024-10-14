@@ -591,6 +591,23 @@ Jak moc se hloubka keře zlepší, když si toto v kódu ohlídáme? Ukáže se,
   Po každé provedené operaci platí, že má-li keř $K$ v DSU $n$ prvků, pak $h(K) = O(\log(n))$.
 
 
+.Subsection Operace "findSet".code
+  label: subsec-dsu-findset
+
+Další optimalizací může být lehká uprava operace "simpleFindSet".code. Vždy, když hledáme reprezentanta
+množiny, můžeme vzít všechny prvky, které se nacházejí na cestě mezi reprezentantem a zadaným prvkem,
+tyto prvky odpojit a zapojit je přímo pod vrchol keře. Této optimalizaci se říká "path compression".notion.
+
+
+!codeblock:
+  language: cpp
+
+  Element findSet(Element v) {
+    if (v == parent[v]) return v;
+    return parent[v] = findSet(parent[v]); // poslední volání je stejná operace => tail rekurze
+  }
+
+
 .Theorem:
   title: O průměrné hloubce DSU s operací "unionSets".code a "findSet".code
   label: lemma-dsu-path-compression-depth
