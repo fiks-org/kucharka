@@ -556,6 +556,34 @@ jako otce druhého z reprezentantů.
   a tedy $h(K) = \lanO(|K|)$.
 
 
+.Subsection Operace "unionSets".code
+  label: subsec-dsu-unionsets
+
+Lineární hloubka keře vůči počtu prvků není zrovna nejlepší. Problémem je
+operace "simpleUnionSets".code"jak z předchozího důkazu víme".footnote. Konkrétně, že můžeme zapojovat keře s větší hloubkou za keře s menší hloubkou.
+Může nás napadnout, že když budeme chtít spojit dvě množiny, porovnáme nejrpve hloubku obou keřů
+a poté zapojíme ten s menší hloubkou za ten s větší.
+
+
+!codeblock:
+  language: cpp
+
+  void unionSets(Element v, Element u) {
+    Element represent_v = findSet(v);
+    Element represent_u = findSet(u);
+    if (represent_v == represent_u) return;
+    if (rank(u) == rank(v)) {
+      parent[represent_v] = represent_u; // když jsou hloubky stejné, zapoj vrcholy keřů arbitrárně
+    }
+    if (rank(u) < rank(v)) swap(u, v);
+    parent[represent_v] = represent_u;
+    rank[represent_u] = rank[reprsent_u] + 1;
+  }
+
+
+Jak moc se hloubka keře zlepší, když si toto v kódu ohlídáme? Ukáže se, že značně.
+
+
 .Theorem:
   title: O hloubce DSU s operací "unionSets".code
   label: lemma-dsu-depth
