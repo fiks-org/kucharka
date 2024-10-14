@@ -608,6 +608,17 @@ tyto prvky odpojit a zapojit je přímo pod vrchol keře. Této optimalizaci se 
   }
 
 
+.Remark:
+
+  Přestožee rekurzivní funkce jsou často paměťově neefektivní kvůli velkému
+  počtu stackframů, tento případ se neaplikuje na operaci "findSet".code. Důvodem je to,
+  že rekurzivní call je poslendím voláním této funkce. Tomuto způsobu rekurze se říká "tail rekurze".notion"dále máme např. lineární nebo značně neefektivní stromovou rekurzi".footnote
+  a kompilátor nad ní může provést značně podstatnou optimalizaci, protože si nemusí pamatovat stackframe,
+  ze kterého byl rekurznivní call proveden. Více se můžete dočíst například "zde"@1.
+    1:
+      link: 'https://en.wikipedia.org/wiki/Tail_call'
+
+
 .Theorem:
   title: O průměrné hloubce DSU s operací "unionSets".code a "findSet".code
   label: lemma-dsu-path-compression-depth
