@@ -480,7 +480,7 @@ který ukazuje sám na sebe. Hloubku keře $K$ označíme $h(K)$ a počet prvků
   };
 
 
-.Subsection Operace makeSet
+.Subsection Operace "makeSet".code
   label: subsec-dsu-makeset
 
 Operace "makeSet".code vytvoří novou množinu o jediném prvku předaným argumentem
@@ -495,7 +495,7 @@ a tento prvek vloží jako reprezentanta do tabulky "parent".code.
   }
 
 
-.Subsection Operace findSet
+.Subsection Operace "simpleFindSet".code
   label: subsec-dsu-simple-findset
 
 Operace "simpleFindSet".code pro zadaný prvek najde reprezentanta množiny, ve které se prvek
@@ -513,7 +513,7 @@ vyskytuje.
   }
 
 
-.Subsection Operace unionSets
+.Subsection Operace "simpleUnionSets".code
   label: subsec-dsu-simple-unionsets
 
 Operace "simpleUnionSets".code najde pro zadané prvky reprezentanty množin, ve kterých se respektive
