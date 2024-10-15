@@ -117,6 +117,30 @@ s pojmy jako:
 věříme, že může tuto sekci přeskočit a navázat na další sekci .reference:sec-casova-slozitost.
 
 
+.Subsection Výroková a predikátová logika
+  label: subsec-math-vyrokova-a-predikatova-logika
+
+
+.Subsection Důkaz přímý a důkaz nepřímý
+  label: subsec-math-dukaz-primy-a-neprimy
+
+
+.Subsection Důkaz sporem
+  label: subsec-math-dukaz-sporem
+
+
+.Subsection Důkaz indukcí
+  label: subsec-math-dukaz-indukci
+
+
+.Subsection Množiny a množinové operace
+  label: subsec-math-mnoziny
+
+
+.Subsection Zobrazení a funkce
+  label: subsec-math-zobrazeni
+
+
 .Section Časová složitost
   label: sec-casova-slozitost
 
