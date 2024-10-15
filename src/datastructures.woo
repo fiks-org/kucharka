@@ -616,12 +616,47 @@ Jak moc se hloubka keře zlepší, když si toto v kódu ohlídáme? Ukáže se,
   title: O hloubce DSU s efektivní implementací operací "unionSets".code
   label: theorem-dsu-depth-unionsets
 
-  Po každé provedené operaci platí, že má-li keř $K$ v DSU $n$ prvků, pak $h(K) = O(\log(n))$.
+  Po každé provedené operaci platí, že má-li keř $K$ v DSU $n$ prvků, pak $h(K) \leq \log(n) + 1 = O(\log(n))$.
 
 
 .Proof:
 
-  TODO
+  Stejně jako předtím, operace "findSet".code DSU neupravuje, vztah hloubky tedy bude zachován.
+  "makeSet".code vytvoří nový keř s hloubkou 1, pro který tvrzení platí.
+
+
+  Uvažme libovolný stav DSU. Indukcí podle počtu vrcholů ukážeme,
+  že pro každý keř $K$ v DSU platí $h(K) \leq \log(|K|) + 1$. Základní krok pro $|K| = 1$
+  platí triviálně. Dále předpokládejme, že tvrzení platí pro všechny keře o $1,\dots,n$
+  prvcích ($n > 1$) a tvrzení dokážeme i pro keř $K$ o $|K| = n + 1$ prvcích.
+
+
+  Jak mohl vzniknout keř hloubky $n + 1$? Musela být zavolána operace "unionSets".code,
+  která "slila".quoted dva keře $L,M$ dohromady tak, že $|L| + |M| = n + 1$. Nutně
+  $|L|,|M| \leq n$ a bez újmy na obecnosti lze předpokládat, že
+  $1 \leq h(L) \leq h(M)$. Pro keře $L$ a $M$ tedy platí indukční tvrzení.
+
+  .itemize:
+
+    .item:
+
+      Pokud $h(L) = h(M)$, pak $|L| = |M|$"rozmyslete!".footnote, a je tedy jedno jestli zavoláme "unionSets(L,M)".code nebo
+      "unionSets(M,L)".code. Platí:
+
+      .equation:
+
+        h(K) = h(L) + 1 \overset{\textrm{IP}}{\leq} \log(|L|) + 2 \overset{!}{\leq} \log(|K|) + 1
+
+      kde poslední nerovnost necháváme čtenáři na rozmyšlenou.
+
+    .item:
+
+      Jinak $h(L) < h(M)$, a tedy:
+
+      .equation:
+
+        h(K) = h(M) \overset{\textrm{IP}}{\leq} \log(|M|) + 1 \leq \log(|L| + |M|) + 1 = \log(|K|) + 1.
+
 
 
 .Procedure:
