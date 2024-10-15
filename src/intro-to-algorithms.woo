@@ -258,6 +258,68 @@ a výrokových spojek.
 .Subsection Zobrazení a funkce
   label: subsec-math-zobrazeni
 
+.Definition:
+  title: Zobrazení / funkce
+
+  Mějme $A, B$ libovolné neprázdné množiny. Podmnožinu kartézského součinu $f \subseteq A \times B$
+  takovou, že pro každé $a \in A$ existuje nejvýš jedno $b \in B$ tak, že $(a,b) \in f$
+  nazveme "zobrazením z $A$ do $B$".notion (nebo také "funkce".notion).
+  Fakt $(a,b) \in f$ zapisujeme $f(a) = b$ a $f \subseteq A \times B$ obdobně $f \colon A \to B$
+
+
+  Pro $f \colon A \to B$ dále definujeme:
+
+  .itemize:
+
+    .item:
+
+      "Definiční obor".notion $D_f$ zobrazení $f$:
+
+      .equation:
+
+        D_f := \{a \in A \mid (\exists b \in B)(f(a) =b)\} \subseteq A
+
+    .item:
+
+      "Obor hodnot".notion $H_f$ zobrazení $f$:
+
+      .equation:
+
+        H_f := \{b \in B \mid (\exists a \in A)(f(a) = b)\} \subseteq B
+
+
+  V našem textu budeme uvažovat jenom tzv. "totální zobrazení".notion
+  $f \colon A \to B$ splňující $A = D_f$.
+
+
+.Definition:
+  title: Injektivní, surjektivní a bijektivní zobrazení
+
+  Zobrazení $f \colon A \to B$ nazveme "injektivní".notion (nebo také "prosté".notion),
+  pokud $(\forall x,y \in A)(f(x) = f(y) \Rightarrow x = y)$.
+
+
+  Zobrazení $f \colon A \to B$ nazveme "surjektivní".notion (nebo také "na".notion),
+  pokud $(\forall y \in B)(\exists x \in A)(f(x) = y)$.
+
+
+  Zobrazení $f \colon A \to B$ nazveme "bijektivní".notion (nebo také "bijekce".notion),
+  pokud je zároveň surjektivní a injektivní.
+
+
+.Question:
+  solution: $f$ je zobrazení, protože každý člověk má právě jedno"a tedy nejvýše
+  jedno".footnote rodné číslo. Zobrazení je injektivní, protože neexistují dva lidé,
+  kteří by měli stejné rodné číslo"zde si představme nereálný svět, ve skutečnosti
+  se již párkrát stalo, že dva lidé měli rodné číslo stejné".footnote. O tom jestli
+  je zobrazení surjektivní nemají autoři tohoto textu zdání (pokud by bylo, neměli
+  by nově narozené děti možnost dostat nové unikátní rodné číslo). V závislosti na
+  tom, jestli je zobrazení surjektivní, resp. není, je zobrazení i bijekcí, resp. není.
+
+  Definujme zobrazení $f$, které každému člověku narozenému v České republice přiřadí rodné číslo.
+  Je $f$ skutečně zobrazení? Pokud ano, určete definiční obor, obor hodnot a uveďte
+  jestli je zobrazení injektivní, surjektivní nebo bijektivní.
+
 
 .Section Časová složitost
   label: sec-casova-slozitost
