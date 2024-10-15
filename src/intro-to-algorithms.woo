@@ -74,6 +74,49 @@ Pokud jste někdy slyšli něco o těžkých problémech nebo o třídách probl
 nezoufejte. Také jim nějakou kapitolu věnujeme, zatím jsme ale u základů.
 
 
+.Section Matematická notace
+  label: sec-math-notation
+
+Předtím než se pustíme do prohledávání všech možných zákoutí algoritmů, datových struktur,
+analýzy časových a paměťových složitostí a mnohé dalšího, rádi bychom čtenáře obeznámili
+se základní matematikou, kterou v textu budeme používat.
+
+
+.Subsection Matematika není jenom o počítání
+  label: subsec-math-is-not-counting
+
+Na základní a střední škole se studenti seznamují s matematikou jako s předmětem,
+ve kterém se pouze počítá podle vzorečků, které paní učitelka napsala na tabuli,
+a které vymysleli nějací chytří lidé, a jejichž správnost nás vůbec nemusí zajímat.
+Byť toto může být obecné přesvědčení mnoha lidí, schopnost počítat a upravovat výrazy
+je jenom malou částí matematiky. V našem textu samozřejmě semtam těchto úprav využijeme,
+více se ale budeme zaměřovat na důkazy správnosti našich tvrzení. K tomu si potřebujeme
+představit několik konceptů a notace, které budeme využívat. Je-li čtenář již obeznámen
+s pojmy jako:
+
+
+.itemize:
+
+  .item:
+
+    důkaz přímý, důkaz sporem a důkaz indukcí,
+
+  .item:
+
+    výrokové spojky $\land, \lor, \Rightarrow, \Leftrightarrow$ a kvantifikátory $\forall, \exists$,
+
+  .item:
+
+    množiny, uspořádané množiny a množinové operace $\cap, \cup, \oplus, \setminus$,
+
+  .item:
+
+    zobrazení a funkce
+
+
+věříme, že může tuto sekci přeskočit a navázat na další sekci .reference:sec-casova-slozitost.
+
+
 .Section Časová složitost
   label: sec-casova-slozitost
 
