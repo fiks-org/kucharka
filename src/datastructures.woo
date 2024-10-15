@@ -572,16 +572,15 @@ který ukazuje sám na sebe. Hloubku keře $K$ označíme $h(K)$ a počet prvků
   !codeblock:
     language: cpp
 
-    void DSu::unionSets(Element v, Element u) {
+    void DSU::unionSets(Element v, Element u) {
       Element represent_v = findSet(v);
       Element represent_u = findSet(u);
       if (represent_v == represent_u) return;
-      if (rank(u) == rank(v)) {
-        parent[represent_v] = represent_u; // když jsou hloubky stejné, zapoj vrcholy keřů arbitrárně
-      }
-      if (rank(u) < rank(v)) swap(u, v);
+      if (rank[u] < rank[v]) swap(u, v);
       parent[represent_v] = represent_u;
-      rank[represent_u] = rank[reprsent_u] + 1;
+      if (rank[u] == rank[v]) { // hodnota rank[v] drží hloubku podstromu s vrcholem v
+        rank[represent_u] = rank[reprsent_u] + 1; // prohlub keř
+      }
     }
 
 
