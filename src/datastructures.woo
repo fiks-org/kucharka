@@ -709,16 +709,19 @@ Jak moc se hloubka keře zlepší, když si toto v kódu ohlídáme? Ukáže se,
 
 
 .Theorem:
-  title: O průměrné hloubce DSU s efektivní implementací operací "unionSets".code a "findSet".code
+  title: O časové složitosti operace "findSet".code
   label: lemma-dsu-path-compression-depth
 
-  Po každé provedené operaci platí, že má-li keř $K$ v DSU $n$ prvků, pak v průměrném případě
-  $h(K) = O(\alpha(n))$, kde $\alpha(n)$ je Ackermannova funkce.
+  Operace "findSet".code má časovou složitost v nejhorším případě $O(\log(n))$. Amortizovaná
+  složitost této operace je $O(\alpha(n))$, kde $\alpha$ je inverzní Ackermannova funkce.
 
 
 .Proof:
 
-  Vynecháváme.
+  První část tvrzení platí jak pro efektivní, tak i pro neefektivní implementaci operace "findSet".code,
+  a plyne z předchozích vět. Druhou část vynecháváme, ale odkážeme čtenáře na "tento článek"@1.
+    1:
+      link: 'https://codeforces.com/blog/entry/98275'
 
 
 .Remark:
