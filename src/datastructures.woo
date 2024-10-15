@@ -658,6 +658,29 @@ Jak moc se hloubka keře zlepší, když si toto v kódu ohlídáme? Ukáže se,
         h(K) = h(M) \overset{\textrm{IP}}{\leq} \log(|M|) + 1 \leq \log(|L| + |M|) + 1 = \log(|K|) + 1.
 
 
+.Remark:
+
+  V literatuře často najdete i jiný způsob vyvažování keřů než hloubkově, jako jsme představili my. Lze
+  vyvažovat také podle počtu prvků v keři, tedy při operaci "unionSets".code vrchol prvního keře zapojíme
+  za druhý, pokud druhý má více prvků než ten první. Operaci náležitě v kódu upravíme:
+
+  !codeblock:
+    language: cpp
+
+    void DSU::unionSets(Element v, Element u) {
+      Element represent_v = findSet(v);
+      Element represent_u = findSet(u);
+      if (represent_v == represent_u) return;
+      if (rank[u] < rank[v]) swap(u, v);
+      parent[represent_v] = represent_u;
+      if (rank[u] == rank[v]) {
+        rank[represent_u] = rank[reprsent_u] + rank[represent_v]; // jediný tento řádek se změnil
+      }
+    }
+
+  Lze dokázat, že i tato implementace zachovává invariant, že hloubka každého keře $K$ je nejvýše $O(\log(|K|))$.
+  Laskavému čtenáři doporučujeme si rozmyslet a zkusit dokázat.
+
 
 .Procedure:
   title: Efektivní implementace operace "findSet".code
