@@ -121,6 +121,95 @@ případě doporučujeme alespoň rychle prolítnout touto sekcí, abyste se obe
 .Subsection Výroková a predikátová logika
   label: subsec-math-vyrokova-a-predikatova-logika
 
+Často chceme nějaké tvrzení či výrok o realitě zkoumat více do podrobna. Rádi bychom je nějak kvantifikovali
+a představili si aparát, jak s výroky pracovat. Je-li např. náš výrok "pokud bude pršet, vezmu si deštník".quoted,
+můžeme tvrzení rozdělit na výrok $A$ "bude pršet".quoted a na výrok $B$ "vezmu si deštník".quoted a původní tvrzení
+získat jejich spojením "pokud platí $A$, tak platí $B$".quoted. Možnost s výroky pracovat v obecnější míře a možnost
+výroky spojovat pomocí "výrokových spojek".notion nám umožňuje "výroková logika".notion. Nebudeme se zde pouštět do
+technických definic"zaprvé si myslíme, že pro studenta střední školy by to bylo kontraproduktivní, za druhé bychom
+tím mohli zabít i klidně jeden celý akademický rok".footnote, uvedeme si zde proto pouze definici "výrokové formule".notion
+a výrokových spojek.
+
+
+.Definition:
+  title: Výroková formule
+
+  Výroková formule (zkráceně také jenom "výrok".notion) je matematický objekt vzniklý
+  následujícími 3 pravidly:
+
+  .enumerate:
+
+    .item:
+
+      Jednoduchá oznamovací věta, o které "lze rozhodnout zda-li je či není pravdivá".notion
+      a kterou zapisujeme symboly $A,B,\dots$, je výroková formule.
+
+    .item:
+
+      Jsou-li $A$ a $B$ výrokové formule, pak $\neg A, (A \land B), (A \lor B), (A \Rightarrow B), (A \Leftrightarrow B)$
+      jsou výrokové formule.
+
+    .item:
+
+      Každý řetězec symbolů vzniknuvší podle prvních dvou pravidel je výroková formule.
+
+
+.Definition:
+  title: Pravdivostní hodnoty výrokových formulí
+
+  Uvažme dvě výrokové formule $A$ a $B$.
+
+  .enumerate:
+
+    .item:
+
+      Výroková formule $\neg A$ (čteme "není pravda, že $A$".quoted) je pravdivá
+      právě tehdy, když $A$ není pravdivé.
+
+    .item:
+
+      Výroková formule $A \land B$ (čteme "$A$ a zároveň $B$".quoted nebo jen "$A$ a $B$".quoted) je pravdivá
+      právě tehdy, když výroky $A$ a $B$ jsou pravdivé.
+
+    .item:
+
+      Výroková formule $A \lor B$ (čteme "$A$ nebo $B$".quoted) je pravdivá
+      právě tehdy, když alespoň jeden z výroků $A,B$ je pravdivý.
+
+    .item:
+
+      Výroková formule $A \Rightarrow B$ (čteme "$A$ implikuje $B$".quoted nebo
+      častěji "pokud $A$, pak $B$".quoted) je pravdivá právě tehdy, když
+      je pravdivé $B$, nebo když $A$ není pravdivé.
+
+    .item:
+
+      Výroková formule $A \Leftrightarrow B$ (čteme "$A$ právě tehdy, když $B$".quoted)
+      je pravdivá právě tehdy, když $A$ a zároveň $B$ je pravdivé, nebo když $A$ a zároveň
+      $B$ je nepravdivé.
+
+
+.Question:
+  solution: $A \land B = $ "jedu metrem a jedu vlakem".quoted, $A \lor B = $ "jedu metrem nebo jedu vlakem".quoted, $A \Rightarrow B = $ "pokud jedu metrem, pak jedu vlakem".quoted, $A \Leftrightarrow B =$ "jedu metrem právě tehdy, když jedu vlakem".quoted.
+
+  Pro výroky $A =$ "jedu metrem".quoted a $B =$ "jedu vlakem".quoted řekněte slovně význam $A \land B,
+  A \lor B, A \Rightarrow B, A \Leftrightarrow B$.
+
+
+.Definition:
+  title: Pravdivostní tabulka výrokových formulí
+
+  Další možností pro zjištění, kdy je formule pravdivá, je možné použít "pravdivostní tabulku".notion
+
+    \begin{array}{c|c||c|c|c|c|c}
+    A & B & \neg A & A \land B & A \lor B & A \Rightarrow B & A \Leftrightarrow B \\
+    \hline
+    1 & 1 & 0 & 1 & 1 & 1 & 1 \\
+    1 & 0 & 0 & 0 & 1 & 0 & 0 \\
+    0 & 1 & 1 & 0 & 1 & 1 & 0 \\
+    0 & 0 & 1 & 0 & 0 & 1 & 1
+    \end{array}
+
 
 .Subsection Důkaz přímý a důkaz nepřímý
   label: subsec-math-dukaz-primy-a-neprimy
