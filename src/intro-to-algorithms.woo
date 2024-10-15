@@ -227,6 +227,34 @@ a výrokových spojek.
   label: subsec-math-mnoziny
 
 
+.Definition:
+  title: Množina
+
+  Množina $M$ je neuspořádaný soubor objektů, zadaný:
+
+  .itemize:
+
+    .item:
+
+      výčtem prvků (např. $M = \{1,2,3,4,5\}$),
+
+    .item:
+
+      charakterizující vlastností, která z univerza $\mathcal{U}$ všech prvků vybere
+      jen ty, splňující zadanou vlastnost $p(x)$, zapisujeme:
+
+      .equation:
+
+        M = \{x \in \mathcal{U} \mid p(x)\} = \{x \mid x \in \mathcal{U} \land p(x)\}
+
+      (např. $M = \{x \in \{1,2,3,4,5,6,7,8\} \mid (\exists k \in \{1,2,3,4\})(x = 2 \cdot k)\}$
+
+
+  Vlastnost, že prvek "$x$ leží v množině $M$".notion zapisujeme $x \in M$, v opačném případě
+  píšeme $x \notin M$. "Prázdnou množinu".notion, tj. množinu neobsahující žádné prvky
+  zapisujeme $\{\}$ nebo také $\emptyset$.
+
+
 .Subsection Zobrazení a funkce
   label: subsec-math-zobrazeni
 
