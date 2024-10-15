@@ -564,7 +564,7 @@ který ukazuje sám na sebe. Hloubku keře $K$ označíme $h(K)$ a počet prvků
   label: algo-dsu-unionsets
 
   Lineární hloubka keře vůči počtu prvků není zrovna nejlepší. Problémem je
-  operace "unionSets".code"jak z předchozího důkazu víme".footnote. Konkrétně, že můžeme zapojovat keře s větší hloubkou za keře s menší hloubkou.
+  operace "unionSets".code"jak víme z předchozího důkazu".footnote. Konkrétně, že můžeme zapojovat keře s větší hloubkou za keře s menší hloubkou.
   Může nás napadnout, že když budeme chtít spojit dvě množiny, porovnáme nejrpve hloubku obou keřů
   a poté zapojíme ten s menší hloubkou za ten s větší.
 
