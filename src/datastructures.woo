@@ -640,14 +640,16 @@ Jak moc se hloubka keře zlepší, když si toto v kódu ohlídáme? Ukáže se,
 
     .item:
 
-      Pokud $h(L) = h(M)$, pak $|L| = |M|$"rozmyslete!".footnote, a je tedy jedno jestli zavoláme "unionSets(L,M)".code nebo
-      "unionSets(M,L)".code. Platí:
+      Pokud $h(L) = h(M)$, tak musíme rozlišit způsoby volání "unionSets(M,L)".code a "unionSets(L,M)".code.
+      Pro první případ platí, že po provedené operaci je $h(K) = h(L) + 1$ a platí:
 
       .equation:
 
         h(K) = h(L) + 1 \overset{\textrm{IP}}{\leq} \log(|L|) + 2 \overset{!}{\leq} \log(|K|) + 1
 
       kde poslední nerovnost necháváme čtenáři na rozmyšlenou.
+      V případě, že jsme zavolali "unionSets(L,M)".code a po provedení platí $h(K) = h(M) + 1$ pouze využijeme rovnosti $h(M) = h(L)$
+      a předchozích nerovností.
 
     .item:
 
