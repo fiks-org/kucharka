@@ -583,6 +583,31 @@ který ukazuje sám na sebe. Hloubku keře $K$ označíme $h(K)$ a počet prvků
       }
     }
 
+  Abychom ale mohli rozhodovat, který z keřů je hlubší, musíme si pořídit nové pole (respektive tabulku), které
+  bude uchovávat hloubku podstromů s vrcholy jako indexy. Upravíme tedy náležitě naši reprezentaci DSU:
+
+  !codeblock:
+    language: cpp
+
+    class DSU {
+      map<Element, Element> parent; // tabulka, kde hodnotou je otec klíče
+      map<Element, int> rank; // tabulka, kde hodnotou je hloubka podstromu s klíčem jako vrchol
+    public:
+      void makeSet(Element v);
+      void unionSets(Element v, Element u);
+      Element findSet(Element v);
+    };
+
+  Nakonec upravíme operaci "makeSet".code, aby inicializovala hloubku nového podstromu na jedničku:
+
+  !codeblock:
+    language: cpp
+
+    void DSU::makeSet(Element v) {
+      parent[v] = v;
+      rank[v] = 1; // nastavíme hloubku stromu na 1
+    }
+
 
 Jak moc se hloubka keře zlepší, když si toto v kódu ohlídáme? Ukáže se, že značně.
 
