@@ -308,13 +308,14 @@ a výrokových spojek.
 
 
 .Question:
-  solution: $f$ je zobrazení, protože každý člověk má právě jedno"a tedy nejvýše
-  jedno".footnote rodné číslo. Zobrazení je injektivní, protože neexistují dva lidé,
-  kteří by měli stejné rodné číslo"zde si představme nereálný svět, ve skutečnosti
-  se již párkrát stalo, že dva lidé měli rodné číslo stejné".footnote. O tom jestli
-  je zobrazení surjektivní nemají autoři tohoto textu zdání (pokud by bylo, neměli
-  by nově narozené děti možnost dostat nové unikátní rodné číslo). V závislosti na
-  tom, jestli je zobrazení surjektivní, resp. není, je zobrazení i bijekcí, resp. není.
+  solution: >
+    $f$ je zobrazení, protože každý člověk má právě jedno"a tedy nejvýše
+    jedno".footnote rodné číslo. Zobrazení je injektivní, protože neexistují dva lidé,
+    kteří by měli stejné rodné číslo"zde si představme nereálný svět, ve skutečnosti
+    se již párkrát stalo, že dva lidé měli rodné číslo stejné".footnote. O tom jestli
+    je zobrazení surjektivní nemají autoři tohoto textu zdání (pokud by bylo, neměli
+    by nově narozené děti možnost dostat nové unikátní rodné číslo). V závislosti na
+    tom, jestli je zobrazení surjektivní, resp. není, je zobrazení i bijekcí, resp. není.
 
   Definujme zobrazení $f$, které každému člověku narozenému v České republice přiřadí rodné číslo.
   Je $f$ skutečně zobrazení? Pokud ano, určete definiční obor, obor hodnot a uveďte
