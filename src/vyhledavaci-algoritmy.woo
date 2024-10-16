@@ -302,13 +302,14 @@ spočívá v rozdělení původního problému na menší celky, které umíme �
   prvky na liché pozici do jedné části a na sudé pozici do druhé. Tyto dvě části rekurzivně seřadí opět mergesortem. Spojení seřazených polí do jednoho
   si pak můžeme představit jako dvě hromádky karet, které chceme spojit do jedné seřazené. Vezmeme vždy tu menší kartu z vrhchu obou hromádek. A zařadíme na konec
   nového spojeného balíčku. Rekurze se opět zastaví u pole s jedním prvkem, to už není jak dál dělit. Na náznak jak mergsort pracuje se můžete podívat na obrázek
-  .reference:merge-sort-diagram
+  .reference:fig-merge-sort-diagram
+
 
   Zkuste si dokázat korektnost i složitosti sami.
 
 
 .Figure:
-  label: merge-sort-diagram
+  label: fig-merge-sort-diagram
 
   !dot:
     filename: mergesort-diagram
@@ -343,6 +344,20 @@ spočívá v rozdělení původního problému na menší celky, které umíme �
   .caption:
 
     Vizualizace rozdělování a slučování polí v algoritmu merge sort.
+
+
+.Figure:
+  label: fig-merge-sort-anim
+  
+  !image:
+    extension: .gif
+
+    MergeSort
+
+
+  .caption:
+    
+    Animace průběhu mergesortu
 
 
 .Solution:
