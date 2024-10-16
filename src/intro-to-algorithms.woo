@@ -212,26 +212,46 @@ a výrokových spojek.
     \end{array}
 
 
+.Subsection Důkazy
+  label: subsec-math-dukazy
+
 Mít možnost zapsat formálně nějakou myšlenku, tak aby byla jednoznačně pochopitelná pro někoho jiného je hezké.
 Ale jenom říct $A \Rightarrow B$ nestačí. Na otázku "Proč?".quoted pak nebudete dlouho čekat. Proto je důležité
 umět svá tvrzení dokázat pomocí jiných výroků, o jejichž platnosti vědí i ostatní. Které výroky to jsou záleží na publiku.
 
 
-.Subsection Důkaz přímý a důkaz nepřímý
-  label: subsec-math-dukaz-primy-a-neprimy
+.Definition:
+  title: Přímý důkaz
+  label: subsec-math-dukaz-primy
 
-Mezi nejjednodužší důkazy patří "důkaz přímý".notion. Kde pokud chceme dokázat $A \Rightarrow B$ využijeme
-konečného řetězce implikací $(A \Rightarrow A_1) \land (A_1 \Rightarrow A_2) \land \dots (A_n \Rightarrow B)$, pokud
-je tento řetězec pravdivý, pak je pravdivé i tvrzení $A \Rightarrow B$
-
-
-Dalším jednoduchým důkazem je takzvaný "nepřímý důkaz".notion.
-Ten využívá ekvivalence tvrzení $A \Rightarrow B$ a $\neg B \Rightarrow \neg A$. Tato "obměněná".notion implikace se pak
-také musí dokázat, ať už přímo nebo nějakou z dalších forem důkazů.
+  Mezi nejjednodužší důkazy patří "důkaz přímý".notion. Kde pokud chceme dokázat $A \Rightarrow B$ využijeme
+  konečného řetězce implikací $(A \Rightarrow A_1) \land (A_1 \Rightarrow A_2) \land \dots (A_n \Rightarrow B)$, pokud
+  je tento řetězec pravdivý, pak je pravdivé i tvrzení $A \Rightarrow B$
 
 
-.Subsection Důkaz sporem
+.Definition:
+  title: Nepřímý důkaz
+  label: subsec-math-dukaz-neprimy
+
+  Dalším jednoduchým důkazem je takzvaný "nepřímý důkaz".notion.
+  Ten využívá ekvivalence tvrzení $A \Rightarrow B$ a $\neg B \Rightarrow \neg A$. Tato "obměněná".notion implikace se pak
+  také musí dokázat, ať už přímo nebo nějakou z dalších forem důkazů.
+
+
+.Definition:
+  title: Důkaz sporem
   label: subsec-math-dukaz-sporem
+
+  Důkaz výroku $A \Rightarrow B$ sporem vychází z pravdivosti této ekvivalence:
+
+  !align:
+  
+    ((A \land \neg B) \Rightarrow \bot) & \Leftrightarrow (\neg(A \land \neg B) \lor \bot) \\
+    & \Leftrightarrow (\neg(A \land \neg B)) \\
+    & \Leftrightarrow (\neg A \lor B) \\
+    & \Leftrightarrow (A \Rightarrow B) \\
+
+  Předpokládáme tedy $A \land \neg B$ a dokážeme, že tento výrok neplatí. To pak ale znamená, že platí $A \Rightarrow B$
 
 
 .Subsection Důkaz indukcí
