@@ -1,5 +1,3 @@
-.PHONY: html pdf all
-
 all: html pdf
 
 html: build/fiks-html/index.html
