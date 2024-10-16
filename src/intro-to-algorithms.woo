@@ -254,9 +254,15 @@ umět svá tvrzení dokázat pomocí jiných výroků, o jejichž platnosti věd
   Předpokládáme tedy $A \land \neg B$ a dokážeme, že tento výrok neplatí. To pak ale znamená, že platí $A \Rightarrow B$
 
 
-.Subsection Důkaz indukcí
+Někdy nám ale tyto možnosti stačit nebudou. Ale například chceme ukázat, že $\forall x \in \UU \colon p(x)$ ukázat, že pokud platí pro nějaký jíný prvek $y \in \UU$,
+pak platí i pro $z$.
+
+
+.Definition:
+  title: Důkaz indukcí
   label: subsec-math-dukaz-indukci
 
+  
 
 .Subsection Množiny a množinové operace
   label: subsec-math-mnoziny
