@@ -121,8 +121,9 @@ případě doporučujeme alespoň rychle prolítnout touto sekcí, abyste se obe
 .Subsection Výroková a predikátová logika
   label: subsec-math-vyrokova-a-predikatova-logika
 
-Často chceme nějaké tvrzení či výrok o realitě zkoumat více do podrobna. Rádi bychom je nějak kvantifikovali
-a představili si aparát, jak s výroky pracovat. Je-li např. náš výrok "pokud bude pršet, vezmu si deštník".quoted,
+Často chceme nějaké tvrzení či výrok o realitě zkoumat více do podrobna nebo si chceme být jistí, že je jednoznačně pochopitelný.
+V matematice se ustálilo formulování myšlenek pomocí výrokové a predikátové logiky
+To je silný aparát, který nám umožnujě s výroky pracovat. Je-li např. náš výrok "pokud bude pršet, vezmu si deštník".quoted,
 můžeme tvrzení rozdělit na výrok $A$ "bude pršet".quoted a na výrok $B$ "vezmu si deštník".quoted a původní tvrzení
 získat jejich spojením "pokud platí $A$, tak platí $B$".quoted. Možnost s výroky pracovat v obecnější míře a možnost
 výroky spojovat pomocí "výrokových spojek".notion nám umožňuje "výroková logika".notion. Nebudeme se zde pouštět do
@@ -211,8 +212,22 @@ a výrokových spojek.
     \end{array}
 
 
+Mít možnost zapsat formálně nějakou myšlenku, tak aby byla jednoznačně pochopitelná pro někoho jiného je hezké.
+Ale jenom říct $A \Rightarrow B$ nestačí. Na otázku "Proč?".quoted pak nebudete dlouho čekat. Proto je důležité
+umět svá tvrzení dokázat pomocí jiných výroků, o jejichž platnosti vědí i ostatní. Které výroky to jsou záleží na publiku.
+
+
 .Subsection Důkaz přímý a důkaz nepřímý
   label: subsec-math-dukaz-primy-a-neprimy
+
+Mezi nejjednodužší důkazy patří "důkaz přímý".notion. Kde pokud chceme dokázat $A \Rightarrow B$ využijeme
+konečného řetězce implikací $(A \Rightarrow A_1) \land (A_1 \Rightarrow A_2) \land \dots (A_n \Rightarrow B)$, pokud
+je tento řetězec pravdivý, pak je pravdivé i tvrzení $A \Rightarrow B$
+
+
+Dalším jednoduchým důkazem je takzvaný "nepřímý důkaz".notion.
+Ten využívá ekvivalence tvrzení $A \Rightarrow B$ a $\neg B \Rightarrow \neg A$. Tato "obměněná".notion implikace se pak
+také musí dokázat, ať už přímo nebo nějakou z dalších forem důkazů.
 
 
 .Subsection Důkaz sporem
