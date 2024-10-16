@@ -13,10 +13,10 @@ rsync --recursive -L /tmp/project/src/* /tmp/build/
 cd /tmp/build
 rake fikshtml:assets fikshtml:build
 
-res=echo $?
+res=$?
 
 # copy build
 mkdir -p /tmp/project/build
 cp -r build/fiks-html /tmp/project/build/
 
-exit res
+exit $res

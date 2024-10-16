@@ -14,10 +14,10 @@ cd /tmp/build
 
 rake fikspdf:build fikspdf:pdf
 
-res=echo $?
+res=$?
 
 # copy build
 mkdir -p /tmp/project/build
 cp -r build/fiks-pdf /tmp/project/build/
 
-exit res
+exit $res
