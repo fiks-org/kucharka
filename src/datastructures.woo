@@ -464,6 +464,48 @@ Binární haldu si představíme v následujícím problému:
   algoirtmu BFS spuštěného z kořene $r$.
 
 
+.Definition:
+  title: Binární minimová halda / Binary minimum heap
+
+  "Binární minimová halda".notion je datová struktura tvaru "binárního stromu".notion,
+  v jehož každém vrcholu $x$ je uložen "jeden".emphasize "klíč".notion $k(x)$ a která
+  splňuje:
+
+  .itemize:
+
+    .item:
+
+      "Tvar haldy".notion, tj. strom má všechny hladiny krom poslední plně zaplněné
+      a poslední hladina je zaplněna od levého okraje směrem k pravému,
+
+    .item:
+
+      "haldové uspořádání".notion, tj. pro každý vrchol $x$ a jeho syna
+      $s$ platí $k(x) \leq k(s)$.
+
+  "Binární maximová halda".notion se definuje analogicky s jediným rozdílem
+  haldového uspořádání $k(x) \geq k(s)$. Počet prvků v haldě označíme $|B|$, počet
+  hladin definujeme jako hloubku binárního stromu a značíme $h(B)$.
+
+
+  Binární minimová (maximová analogicky až na "heapFindMin".code, místo které bychom měli
+  "heapFindMax".code) halda dále umožňuje následující rozhraní:
+
+
+  !codeblock:
+    language: cpp
+
+    struct MinHeap {
+      void HeapInsert(Element x, Key k); // přidá prvek x s klíčem k do haldy
+      Element HeapFindMin(); // vrátí minimální prvek v haldě
+      Element HeapExtractMin(); // vrátí minimální prvek a smaže ho z haldy
+    };
+
+
+  Binární minimové haldě budeme říkat také jenom "halda".notion, půjde-li z kontextu
+  poznat, o který typ haldy se jedná.
+
+
 .Section Disjoint Set Union
   label: sec-dsu
 
