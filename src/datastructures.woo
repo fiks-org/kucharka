@@ -513,6 +513,17 @@ Binární haldu si představíme v následujícím problému:
   že instance "Key".code jsou porovnatelné, kdežto instance "Element".code být nemusí.
 
 
+Protože binární halda je implementovaná pomocí binárního stromu, můžeme operace binární
+haldy implementovat pomocí binárního stromu, a teprve poté si říct, jak vůbec budeme
+reprezentovat binární strom v paměti. Předtím si ale ukažme nějaké vlastnoti hald.
+
+
+.Lemma:
+  title: O počtu hladin binární haldy
+
+  Binární halda $B$ má $\lceil \log(|B| + 1) \rceil$ hladin.
+
+
 .Section Disjoint Set Union
   label: sec-dsu
 
