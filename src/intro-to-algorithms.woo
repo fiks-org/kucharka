@@ -446,6 +446,14 @@ Této nové množině pak budeme říkat "podmnožina".notion.
   jestli je zobrazení injektivní, surjektivní nebo bijektivní.
 
 
+.Remark:
+  label: rem-odkaz-na-pkm
+
+  Pokud by Vám tento úvod nestačil, nezoufejte můžete se kouknout na "materiály přípravného kurzu matematiky"@1 na FIT ČVUT.
+    1:
+      link: https://courses.fit.cvut.cz/BI-PKM/materialy.html#studijni_text
+
+
 .Section Časová složitost
   label: sec-casova-slozitost
 
