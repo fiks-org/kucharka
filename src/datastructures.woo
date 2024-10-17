@@ -524,6 +524,32 @@ reprezentovat binární strom v paměti. Předtím si ale ukažme nějaké vlast
   Binární halda $B$ má $\lceil \log(|B| + 1) \rceil$ hladin.
 
 
+.Proof:
+
+  Mějme binární strom $B$ s $h \geq 1$ úplnými hladinami. $B$ má na svých
+  úplných hladinách $x = 2^0 + 2^1 + 2^2 + \dots + 2^{h - 1} = \sum_{i = 0} 2^i = 2^h - 1$
+  vrcholů. $B$ může mít navíc maximálně jednu další nezaplněnou hladinu (jinak by byla
+  porušena podmínka "tvar haldy".notion). Proto $2^h - 1 \leq |B| \mathbin{\color{red}<} 2^{h + 1} - 1$
+  "rozmyslete proč platí $\mathbin{\color{red}<}$!".footnote
+
+
+  Dále rozlišíme případy podle toho, zda-li je poslední hladina zaplněná nebo ne:
+
+  .itemize:
+
+    .item:
+
+      Pokud strom už neobsahuje žádné další hladiny, pak $h(B) = h$ a navíc $|B| = x$,
+      a tedy $x = 2^h - 1 \Rightarrow h(B) = \log(|B| + 1) = \lceil\log(|B| + 1)\rceil$
+      "rozmyslete poslední rovnítko!".footnote.
+
+    .item:
+
+      Pokud strom obsahuje ještě jednu další, nezaplněnou hladinu, tak skutečný počet hladin $B$
+      je $h(B) = h + 1$ a číslo $h < \log(|B|+1) < h + 1$"rozmyslete!".footnote je desetinné.
+      Zaokrouhlením nahoru docílíme $\lceil\log(|B|+1)\rceil = h + 1 = h(B)$.
+
+
 .Section Disjoint Set Union
   label: sec-dsu
 
