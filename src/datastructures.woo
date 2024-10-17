@@ -434,6 +434,36 @@ Binární haldu si představíme v následujícím problému:
   Dbejte na to, že královský čas je drahý, takže byste rádi řešení našli co nejrychleji.
 
 
+.Definition:
+  title: Binární strom
+
+  Strom $T$ nazveme "zakořeněný".notion, pokud je jeden z jeho vrcholů označen jako "kořen".notion.
+  Vrchol $x$ nazveme "předkem".notion vrcholu $y$, resp. vrchol $y$ "potomkem".notion vrcholu
+  $x$, pokud vrchol $x$ leží na cestě z $y$ do $r$. Pokud navíc $\{x,y\} \in E(T)$, pak
+  $x$ je "otcem".notion vrcholu $y$, resp. vrchol $y$ "synem".notion vrcholu $x$.
+
+
+  Strom $T$ nazveme "binární".notion, pokud:
+
+  .itemize:
+
+    .item:
+
+      Je zakořeněný,
+
+    .item:
+
+      každý vrchol má nejvýše 2 syny,
+
+    .item:
+
+      u každého syna jsme schopni rozhodnout, zda-li je "pravý".notion nebo "levý".notion.
+
+
+  "Hloubkou binárního stromu".notion máme na mysli počet jeho hladin ve smyslu definice hladin u
+  algoirtmu BFS spuštěného z kořene $r$.
+
+
 .Section Disjoint Set Union
   label: sec-dsu
 
