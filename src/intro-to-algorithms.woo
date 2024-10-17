@@ -134,6 +134,8 @@ a výrokových spojek.
 
 .Definition:
   title: Výroková formule
+  index: výroková formule
+  label: def-vyrokova-formule
 
   Výroková formule (zkráceně také jenom "výrok".notion) je matematický objekt vzniklý
   následujícími 3 pravidly:
@@ -157,6 +159,8 @@ a výrokových spojek.
 
 .Definition:
   title: Pravdivostní hodnoty výrokových formulí
+  index: výroková formule!pravdivostní hodnoty
+  label: def-vyrokova-formule-hodnoty
 
   Uvažme dvě výrokové formule $A$ a $B$.
 
@@ -164,30 +168,40 @@ a výrokových spojek.
 
     .item:
 
-      Výroková formule $\neg A$ (čteme "není pravda, že $A$".quoted) je pravdivá
+      Výroková formule $\neg A$ (čteme "není pravda, že $A$".quoted.1) je pravdivá
       právě tehdy, když $A$ není pravdivé.
+        1:
+          index: logické!negace
 
     .item:
 
-      Výroková formule $A \land B$ (čteme "$A$ a zároveň $B$".quoted nebo jen "$A$ a $B$".quoted) je pravdivá
+      Výroková formule $A \land B$ (čteme "$A$ a zároveň $B$".quoted.1 nebo jen "$A$ a $B$".quoted) je pravdivá
       právě tehdy, když výroky $A$ a $B$ jsou pravdivé.
+        1:
+          index: logické!a
 
     .item:
 
-      Výroková formule $A \lor B$ (čteme "$A$ nebo $B$".quoted) je pravdivá
+      Výroková formule $A \lor B$ (čteme "$A$ nebo $B$".quoted.1) je pravdivá
       právě tehdy, když alespoň jeden z výroků $A,B$ je pravdivý.
+        1:
+          index: logické!nebo
 
     .item:
 
-      Výroková formule $A \Rightarrow B$ (čteme "$A$ implikuje $B$".quoted nebo
+      Výroková formule $A \Rightarrow B$ (čteme "$A$ implikuje $B$".quoted.1 nebo
       častěji "pokud $A$, pak $B$".quoted) je pravdivá právě tehdy, když
       je pravdivé $B$, nebo když $A$ není pravdivé.
+        1:
+          index: logické!implikace
 
     .item:
 
-      Výroková formule $A \Leftrightarrow B$ (čteme "$A$ právě tehdy, když $B$".quoted)
+      Výroková formule $A \Leftrightarrow B$ (čteme "$A$ právě tehdy, když $B$".quoted.1)
       je pravdivá právě tehdy, když $A$ a zároveň $B$ je pravdivé, nebo když $A$ a zároveň
       $B$ je nepravdivé.
+        1:
+          index: logické!ekvivalence
 
 
 .Question:
@@ -199,6 +213,8 @@ a výrokových spojek.
 
 .Definition:
   title: Pravdivostní tabulka výrokových formulí
+  index: výroková formule!pravdivostní tabulka
+  labe: def-vyrokova-formule-tabulka
 
   Další možností pro zjištění, kdy je formule pravdivá, je možné použít "pravdivostní tabulku".notion
 
@@ -222,7 +238,8 @@ umět svá tvrzení dokázat pomocí jiných výroků, o jejichž platnosti věd
 
 .Definition:
   title: Přímý důkaz
-  label: subsec-math-dukaz-primy
+  label: def-math-dukaz-primy
+  index: důkaz!přímý
 
   Mezi nejjednodužší důkazy patří "důkaz přímý".notion. Kde pokud chceme dokázat $A \Rightarrow B$ využijeme
   konečného řetězce implikací $(A \Rightarrow A_1) \land (A_1 \Rightarrow A_2) \land \dots (A_n \Rightarrow B)$, pokud
@@ -231,7 +248,8 @@ umět svá tvrzení dokázat pomocí jiných výroků, o jejichž platnosti věd
 
 .Definition:
   title: Nepřímý důkaz
-  label: subsec-math-dukaz-neprimy
+  label: def-math-dukaz-neprimy
+  index: důkaz!nepřímý
 
   Dalším jednoduchým důkazem je takzvaný "nepřímý důkaz".notion.
   Ten využívá ekvivalence tvrzení $A \Rightarrow B$ a $\neg B \Rightarrow \neg A$. Tato "obměněná".notion implikace se pak
@@ -240,7 +258,8 @@ umět svá tvrzení dokázat pomocí jiných výroků, o jejichž platnosti věd
 
 .Definition:
   title: Důkaz sporem
-  label: subsec-math-dukaz-sporem
+  label: def-math-dukaz-sporem
+  index: důkaz!sporem
 
   Důkaz výroku $A \Rightarrow B$ sporem vychází z pravdivosti této ekvivalence:
 
@@ -260,7 +279,9 @@ Někdy nám ale tyto možnosti stačit nebudou. Ale například chceme ukázat $
 
 .Definition:
   title: Důkaz indukcí
-  label: subsec-math-dukaz-indukci
+  label: def-math-dukaz-indukci
+  index:
+    - důkaz!indukcí
   
   Matematická "indukce".notion je forma důkazu, která využívá možnosti transformace všech.
   Já na to nemám energii teď.
@@ -273,6 +294,7 @@ Někdy nám ale tyto možnosti stačit nebudou. Ale například chceme ukázat $
 
 .Definition:
   title: Množina
+  index: množina
 
   Množina $M$ je neuspořádaný soubor objektů, zadaný:
 
@@ -294,9 +316,13 @@ Někdy nám ale tyto možnosti stačit nebudou. Ale například chceme ukázat $
       (např. $M = \{x \in \{1,2,3,4,5,6,7,8\} \mid (\exists k \in \{1,2,3,4\})(x = 2 \cdot k)\}$
 
 
-  Vlastnost, že prvek "$x$ leží v množině $M$".notion zapisujeme $x \in M$, v opačném případě
-  píšeme $x \notin M$. "Prázdnou množinu".notion, tj. množinu neobsahující žádné prvky
+  Vlastnost, že prvek "$x$ leží v množině $M$".notion.1 zapisujeme $x \in M$, v opačném případě
+  píšeme $x \notin M$. "Prázdnou množinu".notion.2, tj. množinu neobsahující žádné prvky
   zapisujeme $\{\}$ nebo také $\emptyset$.
+    1:
+      index: množina!prvek
+    2:
+      index: množina!prázdná
 
 
 S množinami ale chceme pracovat, nějak je upravovat, porovnávat.
@@ -308,6 +334,7 @@ Této nové množině pak budeme říkat "podmnožina".notion.
   title: Podmnožina
   english: Subset
   label: def-podmnozina
+  index: množina!podmnožina
 
   Buďte $M$, $N$ množiny. $N$ je podmnožinou $M$ právě tehdy, když $\forall x \in N \colon x \in M$.
   Značíme $N \subseteq M$.
@@ -316,12 +343,15 @@ Této nové množině pak budeme říkat "podmnožina".notion.
   $N$ je "vlastní podmnožinou".notion $M$ pokud $\exists x \in M \colon x \notin N$, značeno $N \subsetneq M$.
 
 
-  $M$ nazýváme nadmnožinou $N$, značeno $M \supseteq M$.
+  $M$ nazýváme "nadmnožinou".notion.1 $N$, značeno $M \supseteq M$.
+    1:
+      index: množina!nadmnožina
 
 
 .Definition:
   title: Rovnost množin
   label: def-mnoziny-rovnost
+  index: množina!rovnost
 
   Buďte $M$, $N$ množiny. $M$ je rovna $N$ právě tehdy, když $M \subseteq N \land N \subseteq M$. 
 
@@ -330,6 +360,7 @@ Této nové množině pak budeme říkat "podmnožina".notion.
   title: Sjednocení množin
   english: Union
   label: def-mnoziny-sjednoceni
+  index: množina!sjednocení
 
   Buďte $M$, $N$, $O$ množiny. $O$ je "sjednocením".notion $M$ a $N$ právě tehdy, když $\forall x \in O \colon x \in M \lor x \in N$.
   Značíme $O = M \cup N$.
@@ -339,6 +370,7 @@ Této nové množině pak budeme říkat "podmnožina".notion.
   title: Průnik množin
   english: Intersection
   label: def-mnoziny-prunik
+  index: množina!průnik
 
   Buďte $M$, $N$, $O$ množiny. $O$ je "průnikem".notion $M$ a $N$ právě tehdy, když $\forall x \in O \colon x \in M \land x \in N$.
   Značíme $O = M \cap N$.
@@ -347,17 +379,21 @@ Této nové množině pak budeme říkat "podmnožina".notion.
 .Definition:
   title: Rozdíl množin 
   label: def-mnoziny-rozdil
+  index: množina!průnik
 
   Buďte $M$, $N$ množiny. Jejich "rozdíl".notion $O = M \setminus N$, je množina pro kterou platí $\forall x \in O \colon x \in M \land x \notin N$.
 
 
-  "Symetrická diference".notion je jiný druh rozdílu. $O$ je symetrickou diferencí $M$ a $N$ právě tehdy, když $O = (M \cap N) \setminus (M \cup N)$.
+  "Symetrická diference".notion.1 je jiný druh rozdílu. $O$ je symetrickou diferencí $M$ a $N$ právě tehdy, když $O = (M \cap N) \setminus (M \cup N)$.
   Značíme $O = M \oplus N$.
+    1:
+      index: množina!symetrická diference
 
 
 .Definition:
   title: Kartézský součin
   label: def-mnoziny-kartezsky
+  index: množina!kartézský součin
 
   Buďte $M$, $N$ množiny. Jejich "kartézský součin".notion $O = M \times N$, je množina dvojic $\{(x, y)| x \in M \land y \in N\}$.
 
@@ -366,6 +402,7 @@ Této nové množině pak budeme říkat "podmnožina".notion.
   title: Doplňek množiny
   english: Complement
   label: def-mnoziny-doplnek
+  index: množina!doplněk
 
   Buď $M$ množina v univerzu $\UU$. Pak její doplněk $\overline{M}$ je podmnožinou $\UU$ a
   $\overline{M} = \{x | x \in \UU \land x \notin M \}$.
@@ -374,6 +411,7 @@ Této nové množině pak budeme říkat "podmnožina".notion.
 .Definition:
   title: Potenční množina
   label: def-mnoziny-potencni
+  index: množina!potenční
 
   Buď $M$ množina, její potenční množinou $\PP(M)$ rozumíme možnu $\{x | x \subseteq M\}$.
   Neboli se jedná o množinu všech podmnožin $M$.
@@ -384,6 +422,9 @@ Této nové množině pak budeme říkat "podmnožina".notion.
 
 .Definition:
   title: Zobrazení / funkce
+  index:
+    - zobrazení
+    - matematická funkce
 
   Mějme $A, B$ libovolné neprázdné množiny. Podmnožinu kartézského součinu $f \subseteq A \times B$
   takovou, že pro každé $a \in A$ existuje nejvýš jedno $b \in B$ tak, že $(a,b) \in f$
@@ -397,7 +438,9 @@ Této nové množině pak budeme říkat "podmnožina".notion.
 
     .item:
 
-      "Definiční obor".notion $D_f$ zobrazení $f$:
+      "Definiční obor".notion.1 $D_f$ zobrazení $f$:
+        1:
+          index: zobrazení!definiční obor
 
       .equation:
 
@@ -405,30 +448,47 @@ Této nové množině pak budeme říkat "podmnožina".notion.
 
     .item:
 
-      "Obor hodnot".notion $H_f$ zobrazení $f$:
+      "Obor hodnot".notion.1 $H_f$ zobrazení $f$:
+        1:
+          index: zobrazení!obor hodnot
 
       .equation:
 
         H_f := \{b \in B \mid (\exists a \in A)(f(a) = b)\} \subseteq B
 
 
-  V našem textu budeme uvažovat jenom tzv. "totální zobrazení".notion
+  V našem textu budeme uvažovat jenom tzv. "totální zobrazení".notion.1
   $f \colon A \to B$ splňující $A = D_f$.
+    1:
+      index: zobrazení!totální
+
 
 
 .Definition:
   title: Injektivní, surjektivní a bijektivní zobrazení
 
-  Zobrazení $f \colon A \to B$ nazveme "injektivní".notion (nebo také "prosté".notion),
+  Zobrazení $f \colon A \to B$ nazveme "injektivní".notion.1 (nebo také "prosté".notion.2),
   pokud $(\forall x,y \in A)(f(x) = f(y) \Rightarrow x = y)$.
+    1:
+      index: zobrazení!injektivní
+    2:
+      index: zobrazení!prosté
 
 
-  Zobrazení $f \colon A \to B$ nazveme "surjektivní".notion (nebo také "na".notion),
+  Zobrazení $f \colon A \to B$ nazveme "surjektivní".notion.1 (nebo také "na".notion.2),
   pokud $(\forall y \in B)(\exists x \in A)(f(x) = y)$.
+    1:
+      index: zobrazení!surjektivní
+    2:
+      index: zobrazení!na
 
 
-  Zobrazení $f \colon A \to B$ nazveme "bijektivní".notion (nebo také "bijekce".notion),
+  Zobrazení $f \colon A \to B$ nazveme "bijektivní".notion.1 (nebo také "bijekcí".notion.2),
   pokud je zároveň surjektivní a injektivní.
+    1:
+      index: zobrazení!bijektivní
+    1:
+      index: zobrazení!bijekce
 
 
 .Question:
