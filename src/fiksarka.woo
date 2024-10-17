@@ -19,8 +19,6 @@
 
 .include datastructures.woo
 
-.include mnoziny.woo
-
 .include geometrie.woo
 
 
