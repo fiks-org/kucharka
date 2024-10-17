@@ -299,6 +299,86 @@ Někdy nám ale tyto možnosti stačit nebudou. Ale například chceme ukázat $
   zapisujeme $\{\}$ nebo také $\emptyset$.
 
 
+S množinami ale chceme pracovat, nějak je upravovat, porovnávat.
+Z množiny můžeme chtít třeba vybrat jenom nějaké prvky, například pouze sudá čísla z množiny všech celých čísel ($\Z$).
+Této nové množině pak budeme říkat "podmnožina".notion.
+
+
+.Definition:
+  title: Podmnožina
+  english: Subset
+  label: def-podmnozina
+
+  Buďte $M$, $N$ množiny. $N$ je podmnožinou $M$ právě tehdy, když $\forall x \in N \colon x \in M$.
+  Značíme $N \subseteq M$.
+
+
+  $N$ je "vlastní podmnožinou".notion $M$ pokud $\exists x \in M \colon x \notin N$, značeno $N \subsetneq M$.
+
+
+  $M$ nazýváme nadmnožinou $N$, značeno $M \supseteq M$.
+
+
+.Definition:
+  title: Rovnost množin
+  label: def-mnoziny-rovnost
+
+  Buďte $M$, $N$ množiny. $M$ je rovna $N$ právě tehdy, když $M \subseteq N \land N \subseteq M$. 
+
+
+.Definition:
+  title: Sjednocení množin
+  english: Union
+  label: def-mnoziny-sjednoceni
+
+  Buďte $M$, $N$, $O$ množiny. $O$ je "sjednocením".notion $M$ a $N$ právě tehdy, když $\forall x \in O \colon x \in M \lor x \in N$.
+  Značíme $O = M \cup N$.
+
+
+.Definition:
+  title: Průnik množin
+  english: Intersection
+  label: def-mnoziny-prunik
+
+  Buďte $M$, $N$, $O$ množiny. $O$ je "průnikem".notion $M$ a $N$ právě tehdy, když $\forall x \in O \colon x \in M \land x \in N$.
+  Značíme $O = M \cap N$.
+
+
+.Definition:
+  title: Rozdíl množin 
+  label: def-mnoziny-rozdil
+
+  Buďte $M$, $N$ množiny. Jejich "rozdíl".notion $O = M \setminus N$, je množina pro kterou platí $\forall x \in O \colon x \in M \land x \notin N$.
+
+
+  "Symetrická diference".notion je jiný druh rozdílu. $O$ je symetrickou diferencí $M$ a $N$ právě tehdy, když $O = (M \cap N) \setminus (M \cup N)$.
+  Značíme $O = M \oplus N$.
+
+
+.Definition:
+  title: Kartézský součin
+  label: def-mnoziny-kartezsky
+
+  Buďte $M$, $N$ množiny. Jejich "kartézský součin".notion $O = M \times N$, je množina dvojic $\{(x, y)| x \in M \land y \in N\}$.
+
+
+.Definition:
+  title: Doplňek množiny
+  english: Complement
+  label: def-mnoziny-doplnek
+
+  Buď $M$ množina v univerzu $\UU$. Pak její doplněk $\overline{M}$ je podmnožinou $\UU$ a
+  $\overline{M} = \{x | x \in \UU \land x \notin M \}$.
+
+
+.Definition:
+  title: Potenční množina
+  label: def-mnoziny-potencni
+
+  Buď $M$ množina, její potenční množinou $\PP(M)$ rozumíme možnu $\{x | x \subseteq M\}$.
+  Neboli se jedná o množinu všech podmnožin $M$.
+
+
 .Subsection Zobrazení a funkce
   label: subsec-math-zobrazeni
 
