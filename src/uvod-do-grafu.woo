@@ -405,7 +405,7 @@ již zmíněný fakt, který uvedeme v pozorování.
   že vrchol $v$ bude uzavřen právě tehdy, když existuje $s-v$ cesta.
 
 
-Proof:
+.Proof:
   title: Konečnost BFS
 
   Protože uvažujeme grafy vždy s konečnou množinou vrcholů (vzpomeňte na definici neorientovaného grafu),
