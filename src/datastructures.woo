@@ -506,6 +506,13 @@ Binární haldu si představíme v následujícím problému:
   poznat, o který typ haldy se jedná.
 
 
+.Remark:
+
+  Abychom byli v korelaci s definicí haldy, zavádíme operaci "HeapInsert(Element, Key)".code
+  místo pouhého "HeapInsert(Element)".code. V našem případě předpokládáme,
+  že instance "Key".code jsou porovnatelné, kdežto instance "Element".code být nemusí.
+
+
 .Section Disjoint Set Union
   label: sec-dsu
 
