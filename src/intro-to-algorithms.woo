@@ -231,9 +231,14 @@ a výrokových spojek.
 .Subsection Důkazy
   label: subsec-math-dukazy
 
-Mít možnost zapsat formálně nějakou myšlenku, tak aby byla jednoznačně pochopitelná pro někoho jiného je hezké.
-Ale jenom říct $A \Rightarrow B$ nestačí. Na otázku "Proč?".quoted pak nebudete dlouho čekat. Proto je důležité
-umět svá tvrzení dokázat pomocí jiných výroků, o jejichž platnosti vědí i ostatní. Které výroky to jsou záleží na publiku.
+Důkazy jsou jedním z nejdůležitějších základů matematiky a filozofie. Představte si, že chcete někoho přesvědčit,
+že to co tvrdíte, je skutečně pravda. Jak to uděláte? Své tvrzení dokážete. Jakým způsobem tak provedete, už
+je víceméně jedno, důležité pro vás je, aby vaše protistrana uznala, že říkáte pravdu. V této části si představíme
+základní důkazové techniky, které můžete použít nejenom v našich teoretických a kombinovaných úlohách.
+
+
+Ve všech definicích níže uvažujeme, že chceme dokázat tvrzení $B$ a že máme k dispozici nějaká obecná platná tvrzení $A$ (tzv. "předpoklady".notion).
+Chceme dokázat implikaci $A \Rightarrow B$.
 
 
 .Definition:
