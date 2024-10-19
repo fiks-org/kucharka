@@ -246,9 +246,7 @@ Chceme dokázat implikaci $A \Rightarrow B$.
   label: def-math-dukaz-primy
   index: důkaz!přímý
 
-  Mezi nejjednodužší důkazy patří "důkaz přímý".notion. Kde pokud chceme dokázat $A \Rightarrow B$ využijeme
-  konečného řetězce implikací $(A \Rightarrow A_1) \land (A_1 \Rightarrow A_2) \land \dots (A_n \Rightarrow B)$, pokud
-  je tento řetězec pravdivý, pak je pravdivé i tvrzení $A \Rightarrow B$
+  Uvažujeme pravdivost výroku $A$, z něhož vyvodíme pravdivost výroku $B$.
 
 
 .Definition:
@@ -256,9 +254,7 @@ Chceme dokázat implikaci $A \Rightarrow B$.
   label: def-math-dukaz-neprimy
   index: důkaz!nepřímý
 
-  Dalším jednoduchým důkazem je takzvaný "nepřímý důkaz".notion.
-  Ten využívá ekvivalence tvrzení $A \Rightarrow B$ a $\neg B \Rightarrow \neg A$. Tato "obměněná".notion implikace se pak
-  také musí dokázat, ať už přímo nebo nějakou z dalších forem důkazů.
+  Uvažujeme nepravdivost výroku $B$, z něhož vyvodíme nepravdivost výroku $A$.
 
 
 .Definition:
@@ -266,16 +262,7 @@ Chceme dokázat implikaci $A \Rightarrow B$.
   label: def-math-dukaz-sporem
   index: důkaz!sporem
 
-  Důkaz výroku $A \Rightarrow B$ sporem vychází z pravdivosti této ekvivalence:
-
-  !align:
-  
-    ((A \land \neg B) \Rightarrow \bot) & \Leftrightarrow (\neg(A \land \neg B) \lor \bot) \\
-    & \Leftrightarrow (\neg(A \land \neg B)) \\
-    & \Leftrightarrow (\neg A \lor B) \\
-    & \Leftrightarrow (A \Rightarrow B) \\
-
-  Předpokládáme tedy $A \land \neg B$ a dokážeme, že tento výrok neplatí. To pak ale znamená, že platí $A \Rightarrow B$
+  Uvažujeme pravdivost výroku $A$ a nepravdivost výroku $B$, z nichž vyvodíme obecně nepravdivé tvrzení"tzv. kontradikci či lidově blbost".footnote.
 
 
 Někdy nám ale tyto možnosti stačit nebudou. Ale například chceme ukázat $\forall x \in \Z \colon p(x)$, můžeme využít tvrzení,
