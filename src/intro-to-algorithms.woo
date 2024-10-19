@@ -249,12 +249,28 @@ Chceme dokázat implikaci $A \Rightarrow B$.
   Uvažujeme pravdivost výroku $A$, z něhož vyvodíme pravdivost výroku $B$.
 
 
+  Implikaci $A \Rightarrow B$ dokazujeme "přímo".emphasize.
+
+
 .Definition:
   title: Nepřímý důkaz
   label: def-math-dukaz-neprimy
   index: důkaz!nepřímý
 
   Uvažujeme nepravdivost výroku $B$, z něhož vyvodíme nepravdivost výroku $A$.
+
+
+  Dokazujeme tedy implikaci $\neg B \Rightarrow \neg A$. Implikaci $A \Rightarrow B$
+  dokazujeme "nepřímo".emphasize, pomocí jiného tvrzení.
+
+
+.Remark:
+
+  Nepřímý důkaz funguje na principu ekvivalence tvrzení $A \Rightarrow B$ a
+  $\neg B \Rightarrow \neg A$. Skutečně, zkuste si udělat pravdivostní tabulku
+  pro oba tyto výrazy a zjistíte, že se jejich pravdivostní hodnoty shodují
+  při libovolném "ohodnocení formulí".notion $A$ a $B$ (libovolnému nastavení formulí
+  $A$ a $B$ na pravdu či nepravdu).
 
 
 .Definition:
@@ -265,8 +281,37 @@ Chceme dokázat implikaci $A \Rightarrow B$.
   Uvažujeme pravdivost výroku $A$ a nepravdivost výroku $B$, z nichž vyvodíme obecně nepravdivé tvrzení"tzv. kontradikci či lidově blbost".footnote.
 
 
-Někdy nám ale tyto možnosti stačit nebudou. Ale například chceme ukázat $\forall x \in \Z \colon p(x)$, můžeme využít tvrzení,
-že pokud platí $n$, pak platí i pro $n+1$.
+  Snažíme se dostat k tzv. "sporu".emphasize, proto důkaz sporem.
+
+
+.Remark:
+
+  Důkaz sporem funguje na dvou základních kamenech.
+
+  .itemize:
+
+    .item:
+
+      Každé tvrzení je buď pravda, nebo lež.
+
+    .item:
+
+      Předpokládáme-li pravdivost nějakého tvrzení, ze kterého se logickými důsledky dostaneme k nepravdě (sporu, kontradikci, blbosti),
+      tak původní tvrzení nemohlo být pravdivé.
+
+
+  Pokud tedy vyjdeme z toho, že $A$ je pravda a $B$ je lež a dostaneme se k nepravdě, pak naše předpoklady byly špatně,
+  a tedy $A$ musí lež nebo $B$ musí být pravda"všimněte si, že negace $A \land B$ je $\neg A \lor \neg B$".footnote. Z definice implikace
+  ale víme, že při těchto ohodnoceních je výraz $A \Rightarrow B$ pravdivý.
+
+
+Někdy se nám nemusí hodit dokazovat nějaké tvrzení rovnou. Pokud si všimneme, že jsme schopni dokázat nějaký jednoduší problém, pak ho můžeme využít
+k odvození pravdivosti našeho původního tvrzení. Tento princip je nejenom základem rekurze, ale i matematické indukce"ve skutečnosti platí
+nepsané pravidlo indukce $\Leftrightarrow$ rekurze :-)".footnote.
+
+
+Formalizace indukce je poněkud komplexnější, neboť formálně rozlišujeme dva typy matematické indukce. Zde si pod "důkazem indukcí".emphasize,
+uvedeme tu silnější z nich, tzv. "silný princip matematické indukce".notion.
 
 
 .Definition:
