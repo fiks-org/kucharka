@@ -205,9 +205,9 @@ a výrokových spojek.
 
 
 .Question:
-  solution: $A \land B = $ "jedu metrem a jedu vlakem".quoted, $A \lor B = $ "jedu metrem nebo jedu vlakem".quoted, $A \Rightarrow B = $ "pokud jedu metrem, pak jedu vlakem".quoted, $A \Leftrightarrow B =$ "jedu metrem právě tehdy, když jedu vlakem".quoted.
+  solution: $A \land B = \textrm{"jedu metrem a jedu vlakem"}$, $A \lor B = \textrm{"jedu metrem nebo jedu vlakem"}$, $A \Rightarrow B = \textrm{"pokud jedu metrem, pak jedu vlakem"}$, $A \Leftrightarrow B = \textrm{"jedu metrem právě tehdy, když jedu vlakem"}$.
 
-  Pro výroky $A =$ "jedu metrem".quoted a $B =$ "jedu vlakem".quoted řekněte slovně význam $A \land B,
+  Pro výroky $A = \textrm{"jedu metrem"}$ a $B = \textrm{"jedu vlakem"}$ řekněte slovně význam $A \land B,
   A \lor B, A \Rightarrow B, A \Leftrightarrow B$.
 
 
