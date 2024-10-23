@@ -343,7 +343,7 @@ uvedeme tu silnější z nich, tzv. "silný princip matematické indukce".notion
 
     .item:
 
-      charakterizující vlastností, která z univerza $\mathcal{U}$ všech prvků vybere
+      charakterizující vlastností, která z univerza $\UU$"také množina".footnote všech prvků vybere
       jen ty, splňující zadanou vlastnost $p(x)$, zapisujeme:
 
       .equation:
