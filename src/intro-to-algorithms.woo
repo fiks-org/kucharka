@@ -454,7 +454,7 @@ Této nové množině pak budeme říkat "podmnožina".notion.
   label: def-mnoziny-potencni
   index: množina!potenční
 
-  Buď $M$ množina, její potenční množinou $\PP(M)$ rozumíme možnu $\{x \mid x \subseteq M\}$.
+  Buď $M$ množina, její potenční množinou $\PP(M)$ rozumíme množinu $\{x \mid x \subseteq M\}$.
   Neboli se jedná o množinu všech podmnožin $M$.
 
 
