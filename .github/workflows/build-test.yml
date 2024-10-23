@@ -61,7 +61,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: 'fiks-org/fiks-pdf'
-          ssh-key: ${{ secrets.CI_FIKS_HTML_SSH_KEY }}
+          ssh-key: ${{ secrets.CI_FIKS_PDF_SSH_KEY }}
           path: 'fiks-pdf'
 
       - name: Build PDF
