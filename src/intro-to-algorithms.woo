@@ -435,6 +435,10 @@ Této nové množině pak budeme říkat "podmnožina".notion.
   Buďte $M$, $N$ množiny. Jejich "kartézský součin".notion $O = M \times N$, je množina dvojic $\{(x, y)| x \in M \land y \in N\}$.
 
 
+  Buďte $M_1, M_2, \dots M_n$, $n \in \N$ množiny. Jejich "kartézský součin".notion $M_1 \times M_2 \times \dots \times M_n$ je množina $n$-tic
+  $\{(x_1, x_2, \dots, x_n) \mid x_i \in M_i\}$.
+
+
 .Definition:
   title: Doplňek množiny
   english: Complement
