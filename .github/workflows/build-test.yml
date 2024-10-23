@@ -47,11 +47,7 @@ jobs:
           CI_REGISTRY: ${{ secrets.CI_REGISTRY }}
         run: echo "${CI_REGISTRY_PASSWORD}" | docker login $CI_REGISTRY -u woowoo --password-stdin
 
-      - name: Setup Pages
-        id: pages
-        uses: actions/configure-pages@v5
-
-      - name: Clone template
+      - name: Clone HTML template
         uses: actions/checkout@v4
         with:
           repository: 'fiks-org/fiks-html'
@@ -60,3 +56,13 @@ jobs:
 
       - name: Build HTML
         run: ./kucharka/build-html.sh
+
+      - name: Clone PDF template
+        uses: actions/checkout@v4
+        with:
+          repository: 'fiks-org/fiks-pdf'
+          ssh-key: ${{ secrets.CI_FIKS_HTML_SSH_KEY }}
+          path: 'fiks-pdf'
+
+      - name: Build PDF
+        run: ./kucharka/build-pdf.sh
