@@ -6,11 +6,11 @@ Tohle repo obsahuje všechny texty a obrázky k fiksí kuchařce.
 
 ## Local build
 
-Pro lokální build stačí spusit `./build.sh`, pozor, potřebujete mít vedle této složky
+Pro lokální build stačí spusit `make`, pozor, potřebujete mít vedle této složky
 ještě fiks-html a fiks-pdf, to jsou Woowoo templaty, které kuchařka používá. A také přístup k docker imagi s Woowoo.
 
 
-Pokud chceš build pouze html/pdf spusť pouze `./build-html.sh` respektive `./build-pdf.sh` na ně stačí mít pouze jednu z template.
+Pokud chceš build pouze html/pdf spusť pouze `make html` respektive `make pdf` na ně stačí mít pouze jednu z template.
 
 
 Templaty jsou repozitáře na Githubu pod *fiks-org*. Na přístup k docker imagi získáš přes DM @bertik23.
