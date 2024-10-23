@@ -22,14 +22,10 @@ from manim import (
     config,
 )
 
+from ..fanim import FiksSquare
+
 
 config.background_color = "#1c282e"
-
-
-class FiksSquare(Square):
-    def __init__(self, side_length: float = 2, **kwargs) -> None:
-        super().__init__(side_length, **kwargs)
-        self.set_style(stroke_color="#CACACA", fill_color="#263238", fill_opacity=1)
 
 
 class MergeSort(MovingCameraScene):
